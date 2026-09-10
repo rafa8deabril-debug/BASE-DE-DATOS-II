@@ -1,193 +1,68 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rafael Max Cajahuaringa Camasca · Portafolio · Desarrollo de Aplicaciones I</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;800;900&family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-<link rel="stylesheet" href="styles.css">
-</head>
-
 <body>
 
-<!-- ============================================================
-     HUD SCANLINE BACKGROUND
-     ============================================================ -->
-<div class="hud-grid"></div>
+<!-- LOGIN -->
+<div id="login-screen" class="login-screen">
 
-<!-- ============================================================
-     NAV
-     ============================================================ -->
-<nav>
-  <div class="logo">
-    <span class="logo-hex"><img src="logo.png" class="logo-img" alt="Logo"></span>
-    <span class="logo-text">
-      Rafael Max Cajahuaringa Camasca
-      <small>Ingeniería de Sistemas · UPLA</small>
-    </span>
-  </div>
+    <div class="login-box">
 
-  <ul>
-    <li><a href="#inicio">Inicio</a></li>
-    <li><a href="#informacion">Información</a></li>
-    <li><a href="#unidad1">Unidad I</a></li>
-    <li><a href="#unidad2">Unidad II</a></li>
-    <li><a href="#contacto">Contacto</a></li>
-  </ul>
-</nav>
+        <div class="login-logo">
+            <img src="logo.png" alt="Logo">
+        </div>
 
-<!-- ============================================================
-     HERO
-     ============================================================ -->
-<section id="inicio" class="hero">
-  <span class="hero-eyebrow">Arena de Datos &middot; Consola de Combate</span>
+        <span class="login-status">SISTEMA DE ACCESO</span>
 
-  <div class="avatar-frame">
-    <img src="Rafael.jpeg" alt="Foto de Rafael Max Cajahuaringa Camasca" class="foto-perfil">
-  </div>
+        <h1>RAKION</h1>
 
-  <h1>Portafolio Académico</h1>
+        <p class="login-subtitle">
+            DATA ARENA · UPLA
+        </p>
 
-  <p class="descripcion">
-    Bienvenido a mi portafolio académico del curso <strong>Desarrollo de Aplicaciones I</strong>.
-    Soy estudiante de la carrera profesional de Ingeniería de Sistemas de la
-    Universidad Peruana Los Andes. En este sitio presento mis evidencias, trabajos,
-    prácticas calificadas y actividades desarrolladas durante el periodo académico,
-    organizadas por unidades y semanas.
-  </p>
+        <form id="loginForm">
 
-  <div class="hero-stats">
-    <div class="hstat"><i class="fa-solid fa-layer-group"></i> 2 Unidades</div>
-    <div class="hstat"><i class="fa-solid fa-calendar-week"></i> 8 Semanas</div>
-    <div class="hstat"><i class="fa-solid fa-code"></i> Desarrollo de Aplicaciones I</div>
-  </div>
-</section>
+            <div class="input-group">
+                <i class="fa-solid fa-user"></i>
+                <input 
+                    type="text" 
+                    id="usuario" 
+                    placeholder="Usuario"
+                    autocomplete="off"
+                    required>
+            </div>
 
-<!-- ============================================================
-     INFORMACIÓN ACADÉMICA
-     ============================================================ -->
-<section id="informacion">
-  <div class="section-heading">
-    <span class="roman">01</span>
-    <h2>Información Académica</h2>
-  </div>
+            <div class="input-group">
+                <i class="fa-solid fa-lock"></i>
+                <input 
+                    type="password" 
+                    id="password" 
+                    placeholder="Contraseña"
+                    required>
+            </div>
 
-  <div class="cards">
-    <div class="card">
-      <div class="card-icon"><img src="UPLA.jpg" alt="UPLA" class="card-badge"></div>
-      <h3>Universidad</h3>
-      <p>Universidad Peruana Los Andes</p>
+            <button type="submit" class="login-btn">
+                INGRESAR
+                <i class="fa-solid fa-arrow-right"></i>
+            </button>
+
+            <p id="loginError" class="login-error"></p>
+
+        </form>
+
+        <div class="login-footer">
+            <span>UPLA</span>
+            <span>·</span>
+            <span>INGENIERÍA DE SISTEMAS</span>
+        </div>
+
     </div>
 
-    <div class="card">
-      <div class="card-icon"><i class="fa-solid fa-diagram-project"></i></div>
-      <h3>Escuela Profesional</h3>
-      <p>Ingeniería de Sistemas</p>
-    </div>
+</div>
 
-    <div class="card">
-      <div class="card-icon"><i class="fa-solid fa-laptop-code"></i></div>
-      <h3>Curso</h3>
-      <p>Desarrollo de Aplicaciones I</p>
-    </div>
 
-    <div class="card">
-      <div class="card-icon"><i class="fa-solid fa-user-astronaut"></i></div>
-      <h3>Estudiante</h3>
-      <p>Rafael Max Cajahuaringa Camasca</p>
-    </div>
-  </div>
-</section>
+<!-- PORTAFOLIO -->
+<div id="portfolio" class="portfolio-content">
 
-<!-- ============================================================
-     UNIDAD I
-     ============================================================ -->
-<section id="unidad1" class="unidad">
-  <div class="section-heading">
-    <span class="roman">02</span>
-    <h2>Unidad I</h2>
-  </div>
-  <p class="descripcion small">Semanas 1 al 4</p>
+    <!-- AQUÍ VA TODO TU PORTAFOLIO ACTUAL -->
 
-  <div class="cards">
-    <div class="card">
-      <span class="card-tag">Semana 01</span>
-      <h3>Semana 1</h3>
-      <p>Introducción y herramientas básicas.</p>
-      <a href="Semana 1/index.html" class="btn-doc">Abrir <i class="fa-solid fa-arrow-right"></i></a>
-    </div>
-
-    <div class="card">
-      <span class="card-tag">Semana 02</span>
-      <h3>Semana 2</h3>
-      <p>Aplicación de métodos.</p>
-      <a href="Semana 2/index.html" class="btn-doc">Abrir <i class="fa-solid fa-arrow-right"></i></a>
-    </div>
-
-    <div class="card">
-      <span class="card-tag">Semana 03</span>
-      <h3>Semana 3</h3>
-      <p>Programación orientada a objetos.</p>
-      <a href="Semana 3/index.html" class="btn-doc">Abrir <i class="fa-solid fa-arrow-right"></i></a>
-    </div>
-
-    <div class="card locked">
-      <span class="card-tag">Semana 04</span>
-      <h3>Semana 4</h3>
-      <p>Próximamente.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================
-     UNIDAD II
-     ============================================================ -->
-<section id="unidad2" class="unidad alt">
-  <div class="section-heading">
-    <span class="roman">03</span>
-    <h2>Unidad II</h2>
-  </div>
-  <p class="descripcion small">Semanas 5 al 8</p>
-
-  <div class="cards">
-    <div class="card locked"><span class="card-tag">Semana 05</span><h3>Semana 5</h3><p>Próximamente.</p></div>
-    <div class="card locked"><span class="card-tag">Semana 06</span><h3>Semana 6</h3><p>Próximamente.</p></div>
-    <div class="card locked"><span class="card-tag">Semana 07</span><h3>Semana 7</h3><p>Próximamente.</p></div>
-    <div class="card locked"><span class="card-tag">Semana 08</span><h3>Semana 8</h3><p>Próximamente.</p></div>
-  </div>
-</section>
-
-<!-- ============================================================
-     CONTACTO
-     ============================================================ -->
-<section id="contacto">
-  <div class="section-heading center">
-    <span class="roman">04</span>
-    <h2>Contacto</h2>
-  </div>
-
-  <div class="cards">
-    <div class="card contact-card">
-      <div class="card-icon"><i class="fa-solid fa-location-dot"></i></div>
-      <p>Huancayo &middot; Perú</p>
-      <p><strong>Rafael Max Cajahuaringa Camasca</strong></p>
-      <p>Ingeniería de Sistemas</p>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================
-     FOOTER
-     ============================================================ -->
-<footer>
-  <p>&copy; 2026 Rafael Max Cajahuaringa Camasca</p>
-</footer>
+</div>
 
 </body>
-</html>
