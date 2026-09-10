@@ -226,7 +226,24 @@
                     </div>
                 </div>
 
-                <p style="color: var(--steel-dim); font-size: 12px; margin-bottom: 15px; letter-spacing: 0.5px;">
+                <!-- MATERIAL DE LECTURA (teoría de apoyo entregada por el docente) -->
+                <div class="material-card" tabindex="0" role="button" data-week-label="MATERIAL DE LECTURA" data-pdf="Material/Capitulo1_Introduccion_BD.pdf">
+                    <div class="material-icon"><i class="fa-solid fa-book-open"></i></div>
+                    <div class="material-content">
+                        <span>UNIDAD I · TEORÍA DE APOYO</span>
+                        <h3>Introducción a la administración de base de datos</h3>
+                        <p>
+                            Material de lectura proporcionado por el docente. Repasa las
+                            características de una base de datos, los componentes y
+                            funciones de un DBMS, la evolución de la tecnología de bases
+                            de datos y las arquitecturas cliente/servidor, entre otros
+                            fundamentos previos a la Semana 1.
+                        </p>
+                        <div class="week-pdf-hint"><i class="fa-solid fa-file-pdf"></i> Abrir material</div>
+                    </div>
+                </div>
+
+                <p style="color: var(--steel-dim); font-size: 12px; margin: 20px 0 15px; letter-spacing: 0.5px;">
                     <i class="fa-solid fa-circle-info" style="color: var(--cyan); margin-right: 6px;"></i>
                     Toca una semana para cargar o revisar el PDF de esa evidencia.
                 </p>
@@ -874,7 +891,7 @@
            MODAL DE PDF POR SEMANA
         ================================================= */
 
-        const weekCards = document.querySelectorAll(".week-card");
+        const weekCards = document.querySelectorAll(".week-card, .material-card");
         const pdfModal = document.getElementById("pdfModal");
         const pdfModalClose = document.getElementById("pdfModalClose");
         const pdfModalWeek = document.getElementById("pdfModalWeek");
