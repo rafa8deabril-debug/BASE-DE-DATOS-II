@@ -1,2578 +1,2255 @@
-/* =========================================================
-   VARIABLES
-========================================================= */
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-:root {
+    <title>Rafael Max Cajahuaringa Camasca | Base de Datos II | UPLA</title>
 
-    --void: #05070c;
+    <meta name="description"
+          content="Portafolio académico de Rafael Max Cajahuaringa Camasca - Base de Datos II - Ingeniería de Sistemas y Computación - UPLA">
 
-    --panel: #0a1220;
+    <!-- FUENTES -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    --panel-alt: #0d1a2c;
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Orbitron:wght@400;500;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap"
+          rel="stylesheet">
 
-    --panel-light: #13233a;
+    <!-- ICONOS -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-    --cyan: #00e5ff;
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
 
-    --cyan-bright: #7cf5ff;
+<body>
 
-    --crimson: #ff3860;
+<!-- =====================================================
+     FONDO HUD
+===================================================== -->
 
-    --crimson-bright: #ff7a92;
+<div class="hud-grid"></div>
 
-    --steel: #dbe6ef;
-
-    --steel-dim: #8ba0b5;
-
-    --hairline: rgba(124, 245, 255, 0.16);
-
-    --shadow-deep:
-        0 24px 60px rgba(0, 0, 0, 0.55);
-
-}
-
-
-/* =========================================================
-   GENERAL
-========================================================= */
-
-* {
-
-    margin: 0;
-
-    padding: 0;
-
-    box-sizing: border-box;
-
-}
+<div class="scan-line"></div>
 
 
-html {
+<!-- =====================================================
+     LOGIN
+===================================================== -->
 
-    scroll-behavior: smooth;
+<section id="login-screen" class="login-screen">
 
-}
+    <div class="login-box">
 
+        <div class="login-decoration top"></div>
+        <div class="login-decoration bottom"></div>
 
-body {
+        <div class="login-logo-container">
 
-    background: var(--void);
+            <img src="logo.png"
+                 alt="Logo UPLA"
+                 class="login-logo">
 
-    color: var(--steel);
+        </div>
 
-    font-family: 'Inter', sans-serif;
+        <div class="login-status">
+            ● SISTEMA EN LÍNEA
+        </div>
 
-    overflow-x: hidden;
+        <h1>SISTEMA DE ACCESO</h1>
 
-}
+        <p class="login-game">
+            RAKION
+        </p>
 
-
-a {
-
-    text-decoration: none;
-
-    color: inherit;
-
-}
-
-
-button,
-input {
-
-    font-family: inherit;
-
-}
+        <p class="login-subtitle">
+            DATA ARENA · UPLA
+        </p>
 
 
+        <form id="loginForm">
 
-/* =========================================================
-   HUD BACKGROUND
-========================================================= */
+            <div class="input-group">
 
-.hud-grid {
+                <label for="usuario">
+                    <i class="fa-solid fa-user"></i>
+                    USUARIO
+                </label>
 
-    position: fixed;
+                <input
+                    type="text"
+                    id="usuario"
+                    placeholder="Ingrese usuario"
+                    autocomplete="username"
+                    required
+                >
 
-    inset: 0;
-
-    pointer-events: none;
-
-    z-index: -1;
-
-    opacity: 0.3;
-
-    background-image:
-
-        linear-gradient(
-            rgba(0, 229, 255, 0.04) 1px,
-            transparent 1px
-        ),
-
-        linear-gradient(
-            90deg,
-            rgba(0, 229, 255, 0.04) 1px,
-            transparent 1px
-        );
-
-    background-size: 50px 50px;
-
-}
+            </div>
 
 
+            <div class="input-group">
 
-/* =========================================================
+                <label for="password">
+                    <i class="fa-solid fa-lock"></i>
+                    CONTRASEÑA
+                </label>
+
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Ingrese contraseña"
+                    autocomplete="current-password"
+                    required
+                >
+
+            </div>
+
+
+            <button type="submit" class="login-btn">
+
+                <span>INGRESAR</span>
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </button>
+
+            <p id="loginError" class="login-error"></p>
+
+        </form>
+
+
+        <div class="login-footer">
+
+            <span>UPLA</span>
+            <span>•</span>
+            <span>INGENIERÍA DE SISTEMAS Y COMPUTACIÓN</span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     PORTAFOLIO
+===================================================== -->
+
+<div id="portfolio" class="portfolio-content">
+
+
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
+
+<header class="navbar">
+
+    <div class="nav-left">
+
+        <img src="logo.png"
+             alt="UPLA"
+             class="nav-logo">
+
+        <div>
+
+            <strong>
+                RAFAEL MAX
+            </strong>
+
+            <span>
+                CAJAHUARINGA CAMASCA
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <div class="nav-course">
+
+        <span>
+            INGENIERÍA DE SISTEMAS Y COMPUTACIÓN
+        </span>
+
+        <small>
+            BASE DE DATOS II · 332151
+        </small>
+
+    </div>
+
+
+    <nav>
+
+        <a href="#inicio">
+            <i class="fa-solid fa-house"></i>
+            Inicio
+        </a>
+
+        <a href="#informacion">
+            Información
+        </a>
+
+        <a href="#unidad1">
+            Unidad I
+        </a>
+
+        <a href="#unidad2">
+            Unidad II
+        </a>
+
+        <a href="#unidad3">
+            Unidad III
+        </a>
+
+        <a href="#unidad4">
+            Unidad IV
+        </a>
+
+        <a href="#contacto">
+            Contacto
+        </a>
+
+    </nav>
+
+</header>
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<main>
+
+<section id="inicio" class="hero">
+
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+
+        <div class="hero-profile">
+
+            <div class="profile-frame">
+
+                <img src="Rafael.jpeg"
+                     alt="Rafael Max Cajahuaringa Camasca">
+
+            </div>
+
+            <span class="online-dot"></span>
+
+        </div>
+
+
+        <div class="hero-text">
+
+            <p class="eyebrow">
+                <span>◈</span>
+                DATA ARENA · CONSOLA ACADÉMICA
+            </p>
+
+            <h1>
+                PORTAFOLIO
+                <strong>BASE DE DATOS II</strong>
+            </h1>
+
+            <p class="hero-description">
+
+                Bienvenido al portafolio académico de
+                <strong>Rafael Max Cajahuaringa Camasca</strong>.
+
+                Aquí se presentan las actividades,
+                evidencias y aprendizajes desarrollados
+                durante la asignatura de
+                <strong>Base de Datos II</strong>.
+
+            </p>
+
+
+            <div class="hero-buttons">
+
+                <a href="#unidad1" class="primary-btn">
+                    <i class="fa-solid fa-database"></i>
+                    EXPLORAR PORTAFOLIO
+                </a>
+
+                <button class="secondary-btn"
+                        onclick="toggleMusic()">
+
+                    <i id="musicIcon"
+                       class="fa-solid fa-volume-xmark"></i>
+
+                    <span id="musicText">
+                        ACTIVAR MÚSICA
+                    </span>
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="hero-stats">
+
+        <div class="stat">
+
+            <strong>4</strong>
+
+            <span>
+                UNIDADES
+            </span>
+
+        </div>
+
+
+        <div class="stat">
+
+            <strong>16</strong>
+
+            <span>
+                SEMANAS
+            </span>
+
+        </div>
+
+
+        <div class="stat">
+
+            <strong>332151</strong>
+
+            <span>
+                CÓDIGO
+            </span>
+
+        </div>
+
+
+        <div class="stat">
+
+            <strong>UPLA</strong>
+
+            <span>
+                UNIVERSIDAD
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     INFORMACIÓN
+===================================================== -->
+
+<section id="informacion" class="section">
+
+    <div class="section-heading">
+
+        <span>
+            01 · IDENTIFICACIÓN
+        </span>
+
+        <h2>
+            INFORMACIÓN ACADÉMICA
+        </h2>
+
+        <p>
+            Datos principales del estudiante y de la asignatura.
+        </p>
+
+    </div>
+
+
+    <div class="info-grid">
+
+
+        <article class="info-card university-card">
+
+            <div class="card-icon">
+                <i class="fa-solid fa-building-columns"></i>
+            </div>
+
+            <h3>
+                UNIVERSIDAD
+            </h3>
+
+            <p>
+                Universidad Peruana Los Andes
+            </p>
+
+            <small>
+                UPLA · Facultad de Ingeniería
+            </small>
+
+        </article>
+
+
+        <article class="info-card">
+
+            <div class="card-icon">
+                <i class="fa-solid fa-user-graduate"></i>
+            </div>
+
+            <h3>
+                ESTUDIANTE
+            </h3>
+
+            <p>
+                Rafael Max Cajahuaringa Camasca
+            </p>
+
+            <small>
+                Ingeniería de Sistemas y Computación
+            </small>
+
+        </article>
+
+
+        <article class="info-card">
+
+            <div class="card-icon">
+                <i class="fa-solid fa-database"></i>
+            </div>
+
+            <h3>
+                ASIGNATURA
+            </h3>
+
+            <p>
+                Base de Datos II
+            </p>
+
+            <small>
+                Código: 332151 · Modalidad presencial
+            </small>
+
+        </article>
+
+
+        <article class="info-card">
+
+            <div class="card-icon">
+                <i class="fa-solid fa-chalkboard-user"></i>
+            </div>
+
+            <h3>
+                DOCENTE
+            </h3>
+
+            <p>
+                Mg. Raúl Enrique Fernández Bejarano
+            </p>
+
+            <small>
+                Docente de la asignatura
+            </small>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     UNIDAD I
+===================================================== -->
+
+<section id="unidad1" class="section dark-section">
+
+    <div class="section-heading">
+
+        <span>
+            02 · UNIDAD I
+        </span>
+
+        <h2>
+            ARQUITECTURAS DE BASES DE DATOS
+        </h2>
+
+        <p>
+            Arquitecturas y configuración del entorno corporativo.
+        </p>
+
+    </div>
+
+
+    <div class="capacity-box">
+
+        <i class="fa-solid fa-bullseye"></i>
+
+        <div>
+
+            <strong>
+                CAPACIDAD
+            </strong>
+
+            <p>
+                Identifica las arquitecturas de base de datos
+                mediante su capacidad de implementación en
+                gestores DBMS vigentes para determinar cómo
+                almacenar, organizar e integrar los datos.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="weeks-grid">
+
+
+        <!-- SEMANA 1 -->
+
+        <article class="week-card">
+
+            <div class="week-number">
+                01
+            </div>
+
+            <div class="week-content">
+
+                <span class="week-tag">
+                    SEMANA 01
+                </span>
+
+                <h3>
+                    Formulación del Proyecto
+                    y Selección de la Arquitectura
+                </h3>
+
+                <p>
+                    Definición del alcance de un proyecto
+                    analítico basado en un caso empresarial
+                    real, seleccionando y justificando la
+                    arquitectura centralizada, distribuida
+                    o en la nube.
+                </p>
+
+
+                <button
+                    class="evidence-btn"
+                    onclick="openPDF('evidencias/semana1.pdf', 'Semana 1 · Formulación del Proyecto')">
+
+                    <i class="fa-solid fa-file-pdf"></i>
+
+                    VER EVIDENCIA
+
+                </button>
+
+            </div>
+
+        </article>
+
+
+        <!-- SEMANA 2 -->
+
+        <article class="week-card">
+
+            <div class="week-number">
+                02
+            </div>
+
+            <div class="week-content">
+
+                <span class="week-tag">
+                    SEMANA 02
+                </span>
+
+                <h3>
+                    Despliegue y Configuración
+                    de Motores de Datos
+                </h3>
+
+                <p>
+                    Instalación y configuración óptima del
+                    Sistema de Gestión de Bases de Datos
+                    empresarial, verificando conectividad
+                    y recursos iniciales del servidor.
+                </p>
+
+
+                <button
+                    class="evidence-btn"
+                    onclick="openPDF('evidencias/semana2.pdf', 'Semana 2 · Despliegue y Configuración')">
+
+                    <i class="fa-solid fa-file-pdf"></i>
+
+                    VER EVIDENCIA
+
+                </button>
+
+            </div>
+
+        </article>
+
+
+        <!-- SEMANA 3 -->
+
+        <article class="week-card">
+
+            <div class="week-number">
+                03
+            </div>
+
+            <div class="week-content">
+
+                <span class="week-tag">
+                    SEMANA 03
+                </span>
+
+                <h3>
+                    Modelamiento Físico
+                    e Integración
+                </h3>
+
+                <p>
+                    Estructuración e implementación de
+                    esquemas y tablas maestras dentro del
+                    DBMS, configurando restricciones para
+                    garantizar eficiencia e integración.
+                </p>
+
+
+                <button
+                    class="evidence-btn"
+                    onclick="openPDF('evidencias/semana3.pdf', 'Semana 3 · Modelamiento Físico')">
+
+                    <i class="fa-solid fa-file-pdf"></i>
+
+                    VER EVIDENCIA
+
+                </button>
+
+            </div>
+
+        </article>
+
+
+        <!-- SEMANA 4 -->
+
+        <article class="week-card">
+
+            <div class="week-number">
+                04
+            </div>
+
+            <div class="week-content">
+
+                <span class="week-tag">
+                    SEMANA 04
+                </span>
+
+                <h3>
+                    Sustentación y Validación
+                    de la Infraestructura
+                </h3>
+
+                <p>
+                    Sustentación del primer avance del proyecto
+                    mediante informe técnico formal y
+                    demostración en vivo.
+                </p>
+
+
+                <button
+                    class="evidence-btn"
+                    onclick="openPDF('evidencias/semana4.pdf', 'Semana 4 · Sustentación y Validación')">
+
+                    <i class="fa-solid fa-file-pdf"></i>
+
+                    VER EVIDENCIA
+
+                </button>
+
+            </div>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     UNIDAD II
+===================================================== -->
+
+<section id="unidad2" class="section">
+
+    <div class="section-heading">
+
+        <span>
+            03 · UNIDAD II
+        </span>
+
+        <h2>
+            ADMINISTRACIÓN Y DATOS MASIVOS
+        </h2>
+
+        <p>
+            Administración de instancias, almacenamiento
+            y gestión de grandes volúmenes de información.
+        </p>
+
+    </div>
+
+
+    <div class="topic-panel">
+
+        <div>
+            <i class="fa-solid fa-memory"></i>
+
+            <h3>
+                GESTIÓN DE INSTANCIAS
+            </h3>
+
+            <p>
+                Asignación y administración de memoria.
+            </p>
+
+        </div>
+
+
+        <div>
+            <i class="fa-solid fa-hard-drive"></i>
+
+            <h3>
+                ALMACENAMIENTO
+            </h3>
+
+            <p>
+                Archivos .mdf, .ndf y .ldf.
+            </p>
+
+        </div>
+
+
+        <div>
+            <i class="fa-solid fa-layer-group"></i>
+
+            <h3>
+                INDEXACIÓN
+            </h3>
+
+            <p>
+                Índices clúster y no clúster.
+            </p>
+
+        </div>
+
+
+        <div>
+            <i class="fa-solid fa-server"></i>
+
+            <h3>
+                CARGA MASIVA
+            </h3>
+
+            <p>
+                Pruebas y administración de datos masivos.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="coming-soon">
+
+        <i class="fa-solid fa-lock"></i>
+
+        <span>
+            EVIDENCIAS DE UNIDAD II · PRÓXIMAMENTE
+        </span>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     UNIDAD III
+===================================================== -->
+
+<section id="unidad3" class="section dark-section">
+
+    <div class="section-heading">
+
+        <span>
+            04 · UNIDAD III
+        </span>
+
+        <h2>
+            SEGURIDAD Y ALTA DISPONIBILIDAD
+        </h2>
+
+        <p>
+            Seguridad corporativa, conectividad y continuidad
+            de los servicios de datos.
+        </p>
+
+    </div>
+
+
+    <div class="topic-panel">
+
+        <div>
+            <i class="fa-solid fa-network-wired"></i>
+
+            <h3>
+                TCP/IP
+            </h3>
+
+            <p>
+                Configuración de conectividad de red.
+            </p>
+
+        </div>
+
+
+        <div>
+            <i class="fa-solid fa-shield-halved"></i>
+
+            <h3>
+                SEGURIDAD RBAC
+            </h3>
+
+            <p>
+                Control de acceso basado en roles.
+            </p>
+
+        </div>
+
+
+        <div>
+            <i class="fa-solid fa-clipboard-check"></i>
+
+            <h3>
+                AUDITORÍA
+            </h3>
+
+            <p>
+                Control y seguimiento de actividades.
+            </p>
+
+        </div>
+
+
+        <div>
+            <i class="fa-solid fa-cloud-arrow-down"></i>
+
+            <h3>
+                RESPALDOS
+            </h3>
+
+            <p>
+                Jobs y planes de contingencia.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="coming-soon">
+
+        <i class="fa-solid fa-lock"></i>
+
+        <span>
+            EVIDENCIAS DE UNIDAD III · PRÓXIMAMENTE
+        </span>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     UNIDAD IV
+===================================================== -->
+
+<section id="unidad4" class="section">
+
+    <div class="section-heading">
+
+        <span>
+            05 · UNIDAD IV
+        </span>
+
+        <h2>
+            MONITOREO Y OPTIMIZACIÓN
+        </h2>
+
+        <p>
+            Monitoreo de servidores, tuning SQL y recuperación.
+        </p>
+
+    </div>
+
+
+    <div class="topic-panel">
+
+        <div>
+            <i class="fa-solid fa-chart-line"></i>
+
+            <h3>
+                MONITOREO
+            </h3>
+
+            <p>
+                Supervisión en tiempo real.
+            </p>
+
+        </div>
+
+
+        <div>
+            <i class="fa-solid fa-bolt"></i>
+
+            <h3>
+                SQL TUNING
+            </h3>
+
+            <p>
+                Optimización del desempeño.
+            </p>
+
+        </div>
+
+
+        <div>
+            <i class="fa-solid fa-clock-rotate-left"></i>
+
+            <h3>
+                FLASHBACK
+            </h3>
+
+            <p>
+                Recuperación basada en Flashback.
+            </p>
+
+        </div>
+
+
+        <div>
+            <i class="fa-solid fa-trophy"></i>
+
+            <h3>
+                PROYECTO FINAL
+            </h3>
+
+            <p>
+                Sustentación final.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="coming-soon">
+
+        <i class="fa-solid fa-lock"></i>
+
+        <span>
+            EVIDENCIAS DE UNIDAD IV · PRÓXIMAMENTE
+        </span>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     EVALUACIÓN
+===================================================== -->
+
+<section class="section evaluation-section">
+
+    <div class="section-heading">
+
+        <span>
+            06 · EVALUACIÓN
+        </span>
+
+        <h2>
+            SISTEMA DE EVALUACIÓN
+        </h2>
+
+    </div>
+
+
+    <div class="evaluation-grid">
+
+        <div class="evaluation-card">
+
+            <strong>
+                10%
+            </strong>
+
+            <span>
+                UNIDAD I
+            </span>
+
+        </div>
+
+
+        <div class="evaluation-card">
+
+            <strong>
+                15%
+            </strong>
+
+            <span>
+                UNIDAD II
+            </span>
+
+        </div>
+
+
+        <div class="evaluation-card">
+
+            <strong>
+                20%
+            </strong>
+
+            <span>
+                UNIDAD III
+            </span>
+
+        </div>
+
+
+        <div class="evaluation-card">
+
+            <strong>
+                25%
+            </strong>
+
+            <span>
+                UNIDAD IV
+            </span>
+
+        </div>
+
+
+        <div class="evaluation-card final">
+
+            <strong>
+                30%
+            </strong>
+
+            <span>
+                DESEMPEÑO FINAL
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <div class="requirements">
+
+        <div>
+            <i class="fa-solid fa-star"></i>
+
+            <span>
+                Nota mínima:
+                <strong>13</strong>
+                para ingresantes desde 2026-I
+            </span>
+        </div>
+
+
+        <div>
+            <i class="fa-solid fa-user-check"></i>
+
+            <span>
+                Asistencia mínima:
+                <strong>70%</strong>
+            </span>
+        </div>
+
+
+        <div>
+            <i class="fa-solid fa-file-signature"></i>
+
+            <span>
+                Evaluación sustitutoria:
+                <strong>40%</strong>
+            </span>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     CONTACTO
+===================================================== -->
+
+<section id="contacto" class="section contact-section">
+
+    <div class="contact-box">
+
+        <div class="contact-icon">
+
+            <i class="fa-solid fa-id-card"></i>
+
+        </div>
+
+
+        <div>
+
+            <span class="contact-label">
+                CONTACTO ACADÉMICO
+            </span>
+
+            <h2>
+                Rafael Max Cajahuaringa Camasca
+            </h2>
+
+            <p>
+                Ingeniería de Sistemas y Computación
+                · Universidad Peruana Los Andes
+            </p>
+
+            <a href="tel:982192749"
+               class="phone">
+
+                <i class="fa-solid fa-phone"></i>
+
+                982 192 749
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+    <div>
+
+        <strong>
+            RAKION DATA ARENA
+        </strong>
+
+        <span>
+            PORTAFOLIO ACADÉMICO · UPLA
+        </span>
+
+    </div>
+
+    <p>
+        © 2026 Rafael Max Cajahuaringa Camasca
+    </p>
+
+</footer>
+
+
+<!-- =====================================================
+     VISOR PDF
+===================================================== -->
+
+<div id="pdfModal" class="pdf-modal">
+
+    <div class="pdf-container">
+
+        <div class="pdf-header">
+
+            <div>
+
+                <i class="fa-solid fa-file-pdf"></i>
+
+                <span id="pdfTitle">
+                    Evidencia académica
+                </span>
+
+            </div>
+
+
+            <button onclick="closePDF()"
+                    class="close-pdf">
+
+                <i class="fa-solid fa-xmark"></i>
+
+            </button>
+
+        </div>
+
+
+        <iframe
+            id="pdfViewer"
+            src=""
+            title="Visualizador de evidencia PDF">
+        </iframe>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     BOTÓN MÚSICA
+===================================================== -->
+
+<button id="musicButton"
+        class="floating-music"
+        onclick="toggleMusic()"
+        aria-label="Controlar música">
+
+    <i id="floatingMusicIcon"
+       class="fa-solid fa-volume-xmark"></i>
+
+</button>
+
+
+<!-- =====================================================
+     REPRODUCTOR
+===================================================== -->
+
+<audio id="backgroundMusic"
+       loop
+       preload="auto">
+
+    <source src="musica/rakion.mp3"
+            type="audio/mpeg">
+
+</audio>
+
+
+<!-- =====================================================
+     CHATBOT
+===================================================== -->
+
+<div id="chatbot" class="chatbot">
+
+    <!-- BOTÓN FLOTANTE -->
+
+    <button id="chatToggle"
+            class="chat-toggle"
+            aria-label="Abrir asistente">
+
+        <i class="fa-solid fa-robot"></i>
+
+        <span class="chat-notification">
+            1
+        </span>
+
+    </button>
+
+
+    <!-- VENTANA -->
+
+    <div id="chatWindow"
+         class="chat-window">
+
+
+        <!-- HEADER -->
+
+        <div class="chat-header">
+
+            <div class="chat-agent">
+
+                <div class="agent-icon">
+
+                    <i class="fa-solid fa-robot"></i>
+
+                </div>
+
+                <div>
+
+                    <strong>
+                        RAKION AI
+                    </strong>
+
+                    <span>
+                        ASISTENTE ACADÉMICO
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <button id="chatClose"
+                    class="chat-close">
+
+                <i class="fa-solid fa-xmark"></i>
+
+            </button>
+
+        </div>
+
+
+        <!-- ESTADO -->
+
+        <div class="chat-status">
+
+            <span></span>
+
+            SISTEMA ACTIVO · BASE DE DATOS II
+
+        </div>
+
+
+        <!-- MENSAJES -->
+
+        <div id="chatMessages"
+             class="chat-messages">
+
+            <div class="message bot-message">
+
+                <div class="message-icon">
+                    <i class="fa-solid fa-robot"></i>
+                </div>
+
+                <div>
+
+                    <p>
+                        Hola, soy <strong>RAKION AI</strong>.
+                    </p>
+
+                    <p>
+                        Puedo responder preguntas sobre
+                        Rafael, Base de Datos II, las unidades,
+                        semanas, evidencias y el portafolio.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- PREGUNTAS RÁPIDAS -->
+
+        <div class="quick-questions">
+
+            <button data-question="¿Quién es Rafael?">
+                Rafael
+            </button>
+
+            <button data-question="¿Qué carrera estudia?">
+                Carrera
+            </button>
+
+            <button data-question="¿Qué contiene la Unidad I?">
+                Unidad I
+            </button>
+
+            <button data-question="¿Qué se trabajó en la Semana 1?">
+                Semana 1
+            </button>
+
+            <button data-question="¿Qué se trabajó en la Semana 2?">
+                Semana 2
+            </button>
+
+            <button data-question="¿Cómo puedo ver las evidencias?">
+                Evidencias
+            </button>
+
+            <button data-question="¿Qué es Rakion?">
+                Rakion
+            </button>
+
+            <button data-question="¿Cómo contacto a Rafael?">
+                Contacto
+            </button>
+
+        </div>
+
+
+        <!-- INPUT -->
+
+        <form id="chatForm"
+              class="chat-input-area">
+
+            <input
+                type="text"
+                id="chatInput"
+                placeholder="Escribe tu pregunta..."
+                autocomplete="off"
+            >
+
+            <button type="submit">
+
+                <i class="fa-solid fa-paper-plane"></i>
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+</div>
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script>
+
+/* =====================================================
    LOGIN
-========================================================= */
+===================================================== */
 
-.login-screen {
+const loginForm =
+    document.getElementById("loginForm");
 
-    position: fixed;
+const loginScreen =
+    document.getElementById("login-screen");
 
-    inset: 0;
+const portfolio =
+    document.getElementById("portfolio");
 
-    z-index: 10000;
+const loginError =
+    document.getElementById("loginError");
 
-    display: flex;
 
-    align-items: center;
+loginForm.addEventListener("submit", function(event) {
 
-    justify-content: center;
+    event.preventDefault();
 
-    background:
+    const usuario =
+        document.getElementById("usuario").value.trim();
 
-        radial-gradient(
-            circle at center,
-            rgba(0, 229, 255, 0.08),
-            transparent 35%
-        ),
+    const password =
+        document.getElementById("password").value;
 
-        var(--void);
 
-    transition:
-        opacity 0.5s ease,
-        visibility 0.5s ease;
+    const usuarioCorrecto = "Rafael";
 
-}
+    const passwordCorrecto = "123456";
 
 
-.login-screen.hidden {
+    if (
+        usuario === usuarioCorrecto &&
+        password === passwordCorrecto
+    ) {
 
-    opacity: 0;
+        loginError.textContent = "";
 
-    visibility: hidden;
+        loginScreen.classList.add("hidden");
 
-    pointer-events: none;
+        setTimeout(function() {
 
-}
+            portfolio.classList.add("visible");
 
-
-.login-box {
-
-    width: 420px;
-
-    max-width: calc(100% - 30px);
-
-    padding: 40px 35px 30px;
-
-    background: rgba(10, 18, 32, 0.96);
-
-    border: 1px solid var(--cyan);
-
-    position: relative;
-
-    box-shadow:
-
-        0 0 30px rgba(0, 229, 255, 0.15),
-
-        var(--shadow-deep);
-
-    animation: loginPulse 3s infinite;
-
-}
-
-
-.login-line {
-
-    position: absolute;
-
-    top: 0;
-
-    left: 10%;
-
-    width: 80%;
-
-    height: 2px;
-
-    background: var(--cyan);
-
-    box-shadow:
-        0 0 15px var(--cyan);
-
-}
-
-
-.login-logo-container {
-
-    text-align: center;
-
-    margin-bottom: 15px;
-
-}
-
-
-.login-logo {
-
-    width: 80px;
-
-    height: 80px;
-
-    object-fit: contain;
-
-}
-
-
-.login-status {
-
-    text-align: center;
-
-    color: #00ff88;
-
-    font-family: 'Orbitron', sans-serif;
-
-    font-size: 10px;
-
-    letter-spacing: 2px;
-
-    margin-bottom: 15px;
-
-}
-
-
-.login-box h1 {
-
-    text-align: center;
-
-    color: white;
-
-    font-family: 'Orbitron', sans-serif;
-
-    font-size: 21px;
-
-    letter-spacing: 2px;
-
-}
-
-
-.login-subtitle {
-
-    text-align: center;
-
-    margin-top: 8px;
-
-    color: var(--cyan);
-
-    font-family: 'Rajdhani', sans-serif;
-
-    font-size: 13px;
-
-    font-weight: 600;
-
-    letter-spacing: 3px;
-
-}
-
-
-.login-divider {
-
-    height: 1px;
-
-    background: var(--hairline);
-
-    margin: 25px 0;
-
-}
-
-
-.input-group {
-
-    margin-bottom: 18px;
-
-}
-
-
-.input-group label {
-
-    display: block;
-
-    margin-bottom: 7px;
-
-    color: var(--steel-dim);
-
-    font-family: 'Rajdhani', sans-serif;
-
-    font-weight: 700;
-
-    font-size: 12px;
-
-    letter-spacing: 1px;
-
-}
-
-
-.input-group label i {
-
-    color: var(--cyan);
-
-    margin-right: 5px;
-
-}
-
-
-.input-group input {
-
-    width: 100%;
-
-    padding: 13px;
-
-    background: var(--void);
-
-    color: white;
-
-    border: 1px solid var(--hairline);
-
-    outline: none;
-
-}
-
-
-.input-group input:focus {
-
-    border-color: var(--cyan);
-
-    box-shadow:
-        0 0 12px rgba(0, 229, 255, 0.12);
-
-}
-
-
-.login-btn {
-
-    width: 100%;
-
-    padding: 14px;
-
-    border: 1px solid var(--cyan);
-
-    background: var(--cyan);
-
-    color: var(--void);
-
-    font-family: 'Orbitron', sans-serif;
-
-    font-size: 12px;
-
-    font-weight: 700;
-
-    letter-spacing: 1px;
-
-    cursor: pointer;
-
-    transition: 0.25s;
-
-}
-
-
-.login-btn:hover {
-
-    background: var(--cyan-bright);
-
-    box-shadow:
-        0 0 20px rgba(0, 229, 255, 0.3);
-
-}
-
-
-.login-error {
-
-    min-height: 20px;
-
-    margin-top: 12px;
-
-    text-align: center;
-
-    color: var(--crimson-bright);
-
-    font-size: 12px;
-
-}
-
-
-.login-footer {
-
-    margin-top: 20px;
-
-    padding-top: 15px;
-
-    border-top: 1px solid var(--hairline);
-
-    text-align: center;
-
-    color: var(--steel-dim);
-
-    font-size: 9px;
-
-    letter-spacing: 1px;
-
-}
-
-
-@keyframes loginPulse {
-
-    0%,
-    100% {
-
-        box-shadow:
-            0 0 30px rgba(0, 229, 255, 0.12),
-            var(--shadow-deep);
+        }, 300);
 
     }
 
-    50% {
+    else {
 
-        box-shadow:
-            0 0 45px rgba(0, 229, 255, 0.22),
-            var(--shadow-deep);
+        loginError.textContent =
+            "⚠ ACCESO DENEGADO · DATOS INCORRECTOS";
+
+        document.getElementById("password").value = "";
+
+    }
+
+});
+
+
+/* =====================================================
+   PDF
+===================================================== */
+
+function openPDF(pdf, title) {
+
+    const modal =
+        document.getElementById("pdfModal");
+
+    const viewer =
+        document.getElementById("pdfViewer");
+
+    const pdfTitle =
+        document.getElementById("pdfTitle");
+
+
+    viewer.src = pdf;
+
+    pdfTitle.textContent = title;
+
+    modal.classList.add("active");
+
+    document.body.classList.add("modal-open");
+
+}
+
+
+function closePDF() {
+
+    const modal =
+        document.getElementById("pdfModal");
+
+    const viewer =
+        document.getElementById("pdfViewer");
+
+
+    modal.classList.remove("active");
+
+    viewer.src = "";
+
+    document.body.classList.remove("modal-open");
+
+}
+
+
+document.getElementById("pdfModal")
+    .addEventListener("click", function(event) {
+
+        if (event.target === this) {
+
+            closePDF();
+
+        }
+
+    });
+
+
+/* =====================================================
+   MÚSICA
+===================================================== */
+
+const music =
+    document.getElementById("backgroundMusic");
+
+let musicPlaying = false;
+
+
+function toggleMusic() {
+
+    const icon =
+        document.getElementById("musicIcon");
+
+    const floatingIcon =
+        document.getElementById("floatingMusicIcon");
+
+    const text =
+        document.getElementById("musicText");
+
+
+    if (!musicPlaying) {
+
+        music.play()
+            .then(function() {
+
+                musicPlaying = true;
+
+                icon.className =
+                    "fa-solid fa-volume-high";
+
+                floatingIcon.className =
+                    "fa-solid fa-volume-high";
+
+                text.textContent =
+                    "PAUSAR MÚSICA";
+
+            })
+            .catch(function() {
+
+                alert(
+                    "Coloca el archivo musica/rakion.mp3 para activar la música."
+                );
+
+            });
+
+    }
+
+    else {
+
+        music.pause();
+
+        musicPlaying = false;
+
+        icon.className =
+            "fa-solid fa-volume-xmark";
+
+        floatingIcon.className =
+            "fa-solid fa-volume-xmark";
+
+        text.textContent =
+            "ACTIVAR MÚSICA";
 
     }
 
 }
 
 
-
-/* =========================================================
-   PORTFOLIO
-========================================================= */
-
-.portfolio-content {
-
-    opacity: 0;
-
-    visibility: hidden;
-
-    transform: translateY(15px);
-
-}
-
-
-.portfolio-content.visible {
-
-    opacity: 1;
-
-    visibility: visible;
-
-    transform: translateY(0);
-
-    transition:
-        opacity 0.6s ease,
-        transform 0.6s ease;
-
-}
-
-
-
-/* =========================================================
-   NAVBAR
-========================================================= */
-
-.navbar {
-
-    position: sticky;
-
-    top: 0;
-
-    z-index: 1000;
-
-    background: rgba(5, 7, 12, 0.92);
-
-    backdrop-filter: blur(12px);
-
-    border-bottom: 1px solid var(--hairline);
-
-}
-
-
-.nav-container {
-
-    max-width: 1250px;
-
-    margin: auto;
-
-    padding: 14px 25px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    gap: 25px;
-
-}
-
-
-.brand {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 12px;
-
-}
-
-
-.brand img {
-
-    width: 48px;
-
-    height: 48px;
-
-    object-fit: contain;
-
-}
-
-
-.brand-text {
-
-    display: flex;
-
-    flex-direction: column;
-
-}
-
-
-.brand-text strong {
-
-    color: white;
-
-    font-family: 'Orbitron', sans-serif;
-
-    font-size: 14px;
-
-    letter-spacing: 1px;
-
-}
-
-
-.brand-text span {
-
-    color: var(--cyan);
-
-    font-family: 'Rajdhani', sans-serif;
-
-    font-weight: 700;
-
-    font-size: 11px;
-
-}
-
-
-.brand-text small {
-
-    color: var(--steel-dim);
-
-    font-size: 8px;
-
-    margin-top: 2px;
-
-}
-
-
-.nav-links {
-
-    display: flex;
-
-    gap: 20px;
-
-    flex-wrap: wrap;
-
-    justify-content: flex-end;
-
-}
-
-
-.nav-links a {
-
-    color: var(--steel-dim);
-
-    font-family: 'Rajdhani', sans-serif;
-
-    font-size: 13px;
-
-    font-weight: 700;
-
-    transition: 0.2s;
-
-}
-
-
-.nav-links a:hover {
-
-    color: var(--cyan);
-
-}
-
-
-
-/* =========================================================
-   HERO
-========================================================= */
-
-.hero {
-
-    padding: 100px 25px 60px;
-
-}
-
-
-.hero-container {
-
-    max-width: 1100px;
-
-    margin: auto;
-
-    display: grid;
-
-    grid-template-columns: 1fr 320px;
-
-    align-items: center;
-
-    gap: 80px;
-
-}
-
-
-.eyebrow {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 8px;
-
-    color: var(--cyan);
-
-    font-family: 'Rajdhani', sans-serif;
-
-    font-weight: 700;
-
-    font-size: 12px;
-
-    letter-spacing: 2px;
-
-    margin-bottom: 20px;
-
-}
-
-
-.eyebrow span {
-
-    width: 8px;
-
-    height: 8px;
-
-    background: var(--crimson);
-
-    border-radius: 50%;
-
-    box-shadow:
-        0 0 12px var(--crimson);
-
-}
-
-
-.hero h1 {
-
-    color: white;
-
-    font-family: 'Orbitron', sans-serif;
-
-    font-size: clamp(42px, 7vw, 75px);
-
-    line-height: 0.98;
-
-    letter-spacing: -2px;
-
-}
-
-
-.hero h1 span {
-
-    color: transparent;
-
-    -webkit-text-stroke: 1px var(--cyan);
-
-}
-
-
-.hero-description {
-
-    max-width: 680px;
-
-    margin-top: 28px;
-
-    color: var(--steel-dim);
-
-    line-height: 1.7;
-
-    font-size: 16px;
-
-}
-
-
-.hero-description strong {
-
-    color: var(--cyan-bright);
-
-}
-
-
-.hero-info {
-
-    margin-top: 30px;
-
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 10px;
-
-}
-
-
-.hero-info div {
-
-    color: var(--steel-dim);
-
-    font-size: 13px;
-
-}
-
-
-.hero-info i {
-
-    width: 20px;
-
-    color: var(--cyan);
-
-}
-
-
-
-/* FOTO */
-
-.hero-profile {
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-
-}
-
-
-.profile-frame {
-
-    position: relative;
-
-    width: 260px;
-
-    height: 320px;
-
-    border: 1px solid var(--cyan);
-
-    padding: 8px;
-
-    background: var(--panel);
-
-}
-
-
-.profile-frame img {
-
-    width: 100%;
-
-    height: 100%;
-
-    object-fit: cover;
-
-    display: block;
-
-    filter: saturate(0.85);
-
-}
-
-
-.profile-corner {
-
-    position: absolute;
-
-    width: 25px;
-
-    height: 25px;
-
-    border-color: var(--crimson);
-
-    z-index: 2;
-
-}
-
-
-.top-left {
-
-    top: -5px;
-
-    left: -5px;
-
-    border-top: 3px solid;
-
-    border-left: 3px solid;
-
-}
-
-
-.top-right {
-
-    top: -5px;
-
-    right: -5px;
-
-    border-top: 3px solid;
-
-    border-right: 3px solid;
-
-}
-
-
-.bottom-left {
-
-    bottom: -5px;
-
-    left: -5px;
-
-    border-bottom: 3px solid;
-
-    border-left: 3px solid;
-
-}
-
-
-.bottom-right {
-
-    bottom: -5px;
-
-    right: -5px;
-
-    border-bottom: 3px solid;
-
-    border-right: 3px solid;
-
-}
-
-
-.profile-label {
-
-    width: 260px;
-
-    padding: 12px;
-
-    border: 1px solid var(--hairline);
-
-    border-top: none;
-
-    background: var(--panel-alt);
-
-}
-
-
-.profile-label span {
-
-    display: block;
-
-    color: var(--steel-dim);
-
-    font-size: 8px;
-
-    letter-spacing: 2px;
-
-}
-
-
-.profile-label strong {
-
-    color: white;
-
-    font-family: 'Orbitron', sans-serif;
-
-    font-size: 11px;
-
-}
-
-
-
-/* =========================================================
-   STATS
-========================================================= */
-
-.stats-section {
-
-    padding: 20px 25px 70px;
-
-}
-
-
-.stats-container {
-
-    max-width: 1100px;
-
-    margin: auto;
-
-    display: grid;
-
-    grid-template-columns: repeat(4, 1fr);
-
-    border: 1px solid var(--hairline);
-
-}
-
-
-.stat-card {
-
-    padding: 25px;
-
-    border-right: 1px solid var(--hairline);
-
-    background: rgba(10, 18, 32, 0.55);
-
-}
-
-
-.stat-card:last-child {
-
-    border-right: none;
-
-}
-
-
-.stat-card span {
-
-    display: block;
-
-    color: var(--steel-dim);
-
-    font-size: 9px;
-
-    letter-spacing: 2px;
-
-    margin-bottom: 8px;
-
-}
-
-
-.stat-card strong {
-
-    color: var(--cyan);
-
-    font-family: 'Orbitron', sans-serif;
-
-    font-size: 13px;
-
-}
-
-
-
-/* =========================================================
-   SECCIONES
-========================================================= */
-
-.section {
-
-    max-width: 1100px;
-
-    margin: auto;
-
-    padding: 80px 25px;
-
-}
-
-
-.section-heading {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 18px;
-
-    margin-bottom: 35px;
-
-}
-
-
-.section-number {
-
-    color: var(--crimson);
-
-    font-family: 'Orbitron', sans-serif;
-
-    font-size: 20px;
-
-}
-
-
-.section-heading span {
-
-    color: var(--cyan);
-
-    font-size: 10px;
-
-    font-weight: 700;
-
-    letter-spacing: 2px;
-
-}
-
-
-.section-heading h2 {
-
-    margin-top: 5px;
-
-    color: white;
-
-    font-family: 'Orbitron', sans-serif;
-
-    font-size: clamp(20px, 4vw, 30px);
-
-}
-
-
-
-/* =========================================================
-   INFORMACIÓN
-========================================================= */
-
-.info-grid {
-
-    display: grid;
-
-    grid-template-columns: repeat(2, 1fr);
-
-    gap: 15px;
-
-}
-
-
-.info-card {
-
-    padding: 25px;
-
-    min-height: 190px;
-
-    border: 1px solid var(--hairline);
-
-    background: var(--panel);
-
-    transition: 0.25s;
-
-}
-
-
-.info-card:hover {
-
-    border-color: var(--cyan);
-
-    transform: translateY(-3px);
-
-}
-
-
-.large-card {
-
-    grid-column: span 2;
-
-}
-
-
-.card-icon {
-
-    color: var(--cyan);
-
-    font-size: 22px;
-
-    margin-bottom: 20px;
-
-}
-
-
-.info-card > span {
-
-    color: var(--steel-dim);
-
-    font-size: 9px;
-
-    letter-spacing: 2px;
-
-}
-
-
-.info-card h3 {
-
-    color: white;
-
-    margin-top: 7px;
-
-    font-family: 'Rajdhani', sans-serif;
-
-    font-size: 22px;
-
-}
-
-
-.info-card p {
-
-    margin-top: 6px;
-
-    color: var(--steel-dim);
-
-}
-
-
-
-/* =========================================================
-   UNIDAD I
-========================================================= */
-
-.unit-intro {
-
-    display: flex;
-
-    gap: 20px;
-
-    align-items: flex-start;
-
-    padding: 25px;
-
-    margin-bottom: 25px;
-
-    border-left: 3px solid var(--cyan);
-
-    background: var(--panel);
-
-}
-
-
-.unit-badge {
-
-    padding: 10px;
-
-    border: 1px solid var(--crimson);
-
-    color: var(--crimson-bright);
-
-    font-family: 'Orbitron', sans-serif;
-
-    font-size: 10px;
-
-    white-space: nowrap;
-
-}
-
-
-.unit-intro h3 {
-
-    color: white;
-
-    font-family: 'Rajdhani', sans-serif;
-
-    font-size: 22px;
-
-}
-
-
-.unit-intro p {
-
-    margin-top: 8px;
-
-    color: var(--steel-dim);
-
-    line-height: 1.6;
-
-}
-
-
-.weeks-grid {
-
-    display: grid;
-
-    grid-template-columns: repeat(2, 1fr);
-
-    gap: 15px;
-
-}
-
-
-.week-card {
-
-    display: flex;
-
-    gap: 18px;
-
-    padding: 25px;
-
-    background: var(--panel);
-
-    border: 1px solid var(--hairline);
-
-    transition: 0.25s;
-
-}
-
-
-.week-card:hover {
-
-    border-color: var(--cyan);
-
-}
-
-
-.week-number {
-
-    color: var(--crimson);
-
-    font-family: 'Orbitron', sans-serif;
-
-    font-size: 25px;
-
-    font-weight: 800;
-
-}
-
-
-.week-content > span {
-
-    color: var(--cyan);
-
-    font-size: 9px;
-
-    letter-spacing: 2px;
-
-}
-
-
-.week-content h3 {
-
-    margin: 7px 0;
-
-    color: white;
-
-    font-family: 'Rajdhani', sans-serif;
-
-    font-size: 19px;
-
-}
-
-
-.week-content p {
-
-    color: var(--steel-dim);
-
-    line-height: 1.55;
-
-    font-size: 13px;
-
-}
-
-
-
-/* =========================================================
-   UNIDADES
-========================================================= */
-
-.units-grid {
-
-    display: grid;
-
-    grid-template-columns: repeat(3, 1fr);
-
-    gap: 15px;
-
-}
-
-
-.unit-card {
-
-    padding: 25px;
-
-    background: var(--panel);
-
-    border: 1px solid var(--hairline);
-
-    min-height: 310px;
-
-    transition: 0.25s;
-
-}
-
-
-.unit-card:hover {
-
-    border-color: var(--cyan);
-
-    transform: translateY(-4px);
-
-}
-
-
-.unit-card-top {
-
-    display: flex;
-
-    justify-content: space-between;
-
-    align-items: center;
-
-    color: var(--cyan);
-
-}
-
-
-.unit-card-top span {
-
-    font-family: 'Orbitron', sans-serif;
-
-    font-size: 10px;
-
-}
-
-
-.unit-card-top i {
-
-    font-size: 20px;
-
-}
-
-
-.unit-card h3 {
-
-    margin-top: 30px;
-
-    color: white;
-
-    font-family: 'Rajdhani', sans-serif;
-
-    font-size: 21px;
-
-    line-height: 1.2;
-
-}
-
-
-.unit-card p {
-
-    margin-top: 15px;
-
-    color: var(--steel-dim);
-
-    line-height: 1.55;
-
-    font-size: 13px;
-
-}
-
-
-.unit-tags {
-
-    display: flex;
-
-    flex-wrap: wrap;
-
-    gap: 6px;
-
-    margin-top: 20px;
-
-}
-
-
-.unit-tags span {
-
-    padding: 5px 7px;
-
-    border: 1px solid var(--hairline);
-
-    color: var(--cyan);
-
-    font-size: 8px;
-
-    letter-spacing: 1px;
-
-}
-
-
-
-/* =========================================================
-   EVIDENCIAS
-========================================================= */
-
-.evidence-grid {
-
-    display: grid;
-
-    grid-template-columns: repeat(3, 1fr);
-
-    gap: 15px;
-
-}
-
-
-.evidence-card {
-
-    padding: 30px;
-
-    background: var(--panel);
-
-    border: 1px solid var(--hairline);
-
-}
-
-
-.evidence-icon {
-
-    width: 50px;
-
-    height: 50px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    border: 1px solid var(--cyan);
-
-    color: var(--cyan);
-
-    font-family: 'Orbitron', sans-serif;
-
-    font-weight: 700;
-
-    margin-bottom: 20px;
-
-}
-
-
-.evidence-card h3 {
-
-    color: white;
-
-    font-family: 'Rajdhani', sans-serif;
-
-    font-size: 20px;
-
-}
-
-
-.evidence-card p {
-
-    margin-top: 10px;
-
-    color: var(--steel-dim);
-
-    font-size: 13px;
-
-    line-height: 1.6;
-
-}
-
-
-
-/* =========================================================
-   EVALUACIÓN
-========================================================= */
-
-.evaluation-grid {
-
-    display: grid;
-
-    grid-template-columns: 1fr 1fr;
-
-    gap: 20px;
-
-}
-
-
-.evaluation-chart,
-.requirements-card {
-
-    padding: 30px;
-
-    background: var(--panel);
-
-    border: 1px solid var(--hairline);
-
-}
-
-
-.percentage-item {
-
-    margin-bottom: 22px;
-
-}
-
-
-.percentage-item > div:first-child {
-
-    display: flex;
-
-    justify-content: space-between;
-
-    margin-bottom: 7px;
-
-}
-
-
-.percentage-item span {
-
-    color: var(--steel-dim);
-
-    font-size: 10px;
-
-    letter-spacing: 1px;
-
-}
-
-
-.percentage-item strong {
-
-    color: var(--cyan);
-
-    font-family: 'Orbitron', sans-serif;
-
-    font-size: 11px;
-
-}
-
-
-.percentage-bar {
-
-    width: 100%;
-
-    height: 6px;
-
-    background: var(--panel-light);
-
-}
-
-
-.percentage-bar span {
-
-    display: block;
-
-    height: 100%;
-
-    background: var(--cyan);
-
-}
-
-
-.requirement {
-
-    display: flex;
-
-    gap: 15px;
-
-    padding-bottom: 20px;
-
-    margin-bottom: 20px;
-
-    border-bottom: 1px solid var(--hairline);
-
-}
-
-
-.requirement:last-child {
-
-    border-bottom: none;
-
-    margin-bottom: 0;
-
-    padding-bottom: 0;
-
-}
-
-
-.requirement > i {
-
-    color: var(--cyan);
-
-    font-size: 20px;
-
-}
-
-
-.requirement span {
-
-    display: block;
-
-    color: var(--steel-dim);
-
-    font-size: 9px;
-
-    letter-spacing: 1px;
-
-}
-
-
-.requirement strong {
-
-    display: block;
-
-    margin-top: 3px;
-
-    color: white;
-
-    font-family: 'Orbitron', sans-serif;
-
-    font-size: 23px;
-
-}
-
-
-.requirement p {
-
-    margin-top: 5px;
-
-    color: var(--steel-dim);
-
-    font-size: 12px;
-
-}
-
-
-
-/* =========================================================
-   RAKION
-========================================================= */
-
-.rakion-section {
-
-    padding-top: 30px;
-
-}
-
-
-.rakion-box {
-
-    display: flex;
-
-    gap: 25px;
-
-    align-items: center;
-
-    padding: 35px;
-
-    border: 1px solid var(--crimson);
-
-    background:
-
-        linear-gradient(
-            135deg,
-            rgba(255, 56, 96, 0.08),
-            rgba(0, 229, 255, 0.04)
-        );
-
-}
-
-
-.rakion-icon {
-
-    min-width: 65px;
-
-    height: 65px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    border: 1px solid var(--crimson);
-
-    color: var(--crimson);
-
-    font-size: 25px;
-
-}
-
-
-.rakion-box span {
-
-    color: var(--crimson-bright);
-
-    font-size: 9px;
-
-    letter-spacing: 2px;
-
-}
-
-
-.rakion-box h2 {
-
-    margin-top: 5px;
-
-    color: white;
-
-    font-family: 'Orbitron', sans-serif;
-
-    font-size: 23px;
-
-}
-
-
-.rakion-box p {
-
-    margin-top: 10px;
-
-    color: var(--steel-dim);
-
-    line-height: 1.6;
-
-}
-
-
-
-/* =========================================================
-   CONTACTO
-========================================================= */
-
-.contact-card {
-
-    display: grid;
-
-    grid-template-columns: repeat(2, 1fr);
-
-    border: 1px solid var(--hairline);
-
-}
-
-
-.contact-item {
-
-    display: flex;
-
-    gap: 15px;
-
-    padding: 25px;
-
-    border-right: 1px solid var(--hairline);
-
-    border-bottom: 1px solid var(--hairline);
-
-    background: var(--panel);
-
-}
-
-
-.contact-item > i {
-
-    color: var(--cyan);
-
-    font-size: 20px;
-
-}
-
-
-.contact-item span {
-
-    display: block;
-
-    color: var(--steel-dim);
-
-    font-size: 8px;
-
-    letter-spacing: 2px;
-
-}
-
-
-.contact-item strong {
-
-    display: block;
-
-    margin-top: 5px;
-
-    color: white;
-
-    font-family: 'Rajdhani', sans-serif;
-
-    font-size: 17px;
-
-}
-
-
-
-/* =========================================================
-   FOOTER
-========================================================= */
-
-.footer {
-
-    padding: 35px 25px;
-
-    border-top: 1px solid var(--hairline);
-
-    max-width: 1100px;
-
-    margin: auto;
-
-    display: flex;
-
-    justify-content: space-between;
-
-    align-items: center;
-
-}
-
-
-.footer strong {
-
-    display: block;
-
-    color: white;
-
-    font-family: 'Orbitron', sans-serif;
-
-    font-size: 10px;
-
-}
-
-
-.footer span {
-
-    display: block;
-
-    color: var(--cyan);
-
-    font-size: 9px;
-
-    margin-top: 5px;
-
-}
-
-
-.footer p {
-
-    color: var(--steel-dim);
-
-    font-size: 10px;
-
-}
-
-
-
-/* =========================================================
+/* =====================================================
    CHATBOT
-========================================================= */
+===================================================== */
 
-.chatbot-container {
+const chatToggle =
+    document.getElementById("chatToggle");
 
-    position: fixed;
+const chatWindow =
+    document.getElementById("chatWindow");
 
-    right: 25px;
+const chatClose =
+    document.getElementById("chatClose");
 
-    bottom: 25px;
+const chatForm =
+    document.getElementById("chatForm");
 
-    z-index: 9999;
+const chatInput =
+    document.getElementById("chatInput");
 
-}
-
-
-.chat-toggle {
-
-    width: 65px;
-
-    height: 65px;
-
-    border-radius: 50%;
-
-    border: 2px solid var(--cyan);
-
-    background: var(--panel);
-
-    color: var(--cyan);
-
-    font-size: 25px;
-
-    cursor: pointer;
-
-    box-shadow:
-        0 0 10px rgba(0, 229, 255, 0.4),
-        0 0 25px rgba(0, 229, 255, 0.15);
-
-    transition: 0.3s;
-
-}
+const chatMessages =
+    document.getElementById("chatMessages");
 
 
-.chat-toggle:hover {
+/* ABRIR */
 
-    transform: scale(1.08);
+chatToggle.addEventListener("click", function() {
 
-    box-shadow:
-        0 0 15px rgba(0, 229, 255, 0.7),
-        0 0 35px rgba(0, 229, 255, 0.3);
+    chatWindow.classList.toggle("active");
 
-}
+});
 
 
-.chat-window {
+/* CERRAR */
 
-    position: absolute;
+chatClose.addEventListener("click", function() {
 
-    right: 0;
+    chatWindow.classList.remove("active");
 
-    bottom: 80px;
-
-    width: 370px;
-
-    height: 550px;
-
-    background: rgba(5, 7, 12, 0.98);
-
-    border: 1px solid var(--cyan);
-
-    box-shadow:
-        0 0 20px rgba(0, 229, 255, 0.2),
-        0 25px 60px rgba(0, 0, 0, 0.7);
-
-    display: none;
-
-    flex-direction: column;
-
-    overflow: hidden;
-
-}
+});
 
 
-.chat-window.active {
+/* =====================================================
+   RESPUESTAS DEL BOT
+===================================================== */
 
-    display: flex;
+function getBotResponse(question) {
 
-    animation: chatOpen 0.25s ease;
+    const q =
+        question
+            .toLowerCase()
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "");
 
-}
 
+    /* SALUDO */
 
-@keyframes chatOpen {
+    if (
+        q.includes("hola") ||
+        q.includes("buenas") ||
+        q.includes("buenos dias") ||
+        q.includes("buenas tardes")
+    ) {
 
-    from {
-
-        opacity: 0;
-
-        transform:
-            translateY(15px)
-            scale(0.96);
+        return `
+            ¡Hola! Soy <strong>RAKION AI</strong>.
+            Puedo ayudarte a conocer el portafolio
+            académico de Rafael y la asignatura
+            de Base de Datos II.
+        `;
 
     }
 
-    to {
 
-        opacity: 1;
+    /* RAFAEL */
 
-        transform:
-            translateY(0)
-            scale(1);
+    if (
+        q.includes("quien es rafael") ||
+        q.includes("rafael") ||
+        q.includes("estudiante")
+    ) {
+
+        return `
+            <strong>Rafael Max Cajahuaringa Camasca</strong>
+            es el estudiante responsable de este
+            portafolio académico.
+            Pertenece al Programa de Estudio de
+            <strong>Ingeniería de Sistemas y Computación</strong>
+            de la Universidad Peruana Los Andes (UPLA).
+        `;
 
     }
+
+
+    /* CARRERA */
+
+    if (
+        q.includes("carrera") ||
+        q.includes("que estudia") ||
+        q.includes("ingenieria")
+    ) {
+
+        return `
+            Rafael estudia
+            <strong>Ingeniería de Sistemas y Computación</strong>
+            en la Universidad Peruana Los Andes (UPLA).
+        `;
+
+    }
+
+
+    /* UNIVERSIDAD */
+
+    if (
+        q.includes("universidad") ||
+        q.includes("upla")
+    ) {
+
+        return `
+            El portafolio pertenece a la
+            <strong>Universidad Peruana Los Andes
+            (UPLA)</strong>, Facultad de Ingeniería.
+        `;
+
+    }
+
+
+    /* CURSO */
+
+    if (
+        q.includes("curso") ||
+        q.includes("asignatura") ||
+        q.includes("332151")
+    ) {
+
+        return `
+            El portafolio corresponde a
+            <strong>Base de Datos II</strong>,
+            código <strong>332151</strong>,
+            en modalidad presencial.
+        `;
+
+    }
+
+
+    /* DOCENTE */
+
+    if (
+        q.includes("docente") ||
+        q.includes("profesor")
+    ) {
+
+        return `
+            El docente de la asignatura es
+            <strong>Mg. Raúl Enrique Fernández
+            Bejarano</strong>.
+        `;
+
+    }
+
+
+    /* UNIDAD I */
+
+    if (
+        q.includes("unidad i") ||
+        q.includes("unidad 1")
+    ) {
+
+        return `
+            La <strong>Unidad I</strong> trata sobre
+            <strong>Arquitecturas de Bases de Datos
+            y Configuración del Entorno Corporativo</strong>.
+            
+            Comprende las semanas 1, 2, 3 y 4:
+            formulación del proyecto, configuración
+            de DBMS, modelamiento físico e integración,
+            y sustentación del primer avance.
+        `;
+
+    }
+
+
+    /* SEMANA 1 */
+
+    if (
+        q.includes("semana 1") ||
+        q.includes("semana uno")
+    ) {
+
+        return `
+            <strong>Semana 1:</strong>
+            Formulación del Proyecto y Selección
+            de la Arquitectura.
+            
+            Se define el alcance de un proyecto
+            analítico basado en un caso empresarial
+            real y se selecciona una arquitectura
+            centralizada, distribuida o en la nube.
+        `;
+
+    }
+
+
+    /* SEMANA 2 */
+
+    if (
+        q.includes("semana 2") ||
+        q.includes("semana dos")
+    ) {
+
+        return `
+            <strong>Semana 2:</strong>
+            Despliegue y Configuración de Motores
+            de Datos (DBMS).
+            
+            Se trabaja la instalación y configuración
+            del sistema gestor de bases de datos,
+            verificando conectividad y recursos
+            iniciales del servidor.
+        `;
+
+    }
+
+
+    /* SEMANA 3 */
+
+    if (
+        q.includes("semana 3") ||
+        q.includes("semana tres")
+    ) {
+
+        return `
+            <strong>Semana 3:</strong>
+            Modelamiento Físico y Mecanismos
+            de Integración.
+            
+            Se estructuran e implementan esquemas,
+            tablas maestras y restricciones dentro
+            del DBMS.
+        `;
+
+    }
+
+
+    /* SEMANA 4 */
+
+    if (
+        q.includes("semana 4") ||
+        q.includes("semana cuatro")
+    ) {
+
+        return `
+            <strong>Semana 4:</strong>
+            Sustentación y Validación de la
+            Infraestructura de Datos.
+            
+            Se presenta el primer avance del proyecto
+            mediante un informe técnico y una
+            demostración en vivo.
+        `;
+
+    }
+
+
+    /* UNIDAD II */
+
+    if (
+        q.includes("unidad ii") ||
+        q.includes("unidad 2")
+    ) {
+
+        return `
+            La <strong>Unidad II</strong> aborda la
+            administración de instancias, estructuras
+            de almacenamiento y gestión de datos masivos.
+            
+            Incluye memoria, archivos
+            <strong>.mdf, .ndf y .ldf</strong>,
+            indexación clúster/no clúster y
+            pruebas de carga masiva.
+        `;
+
+    }
+
+
+    /* UNIDAD III */
+
+    if (
+        q.includes("unidad iii") ||
+        q.includes("unidad 3")
+    ) {
+
+        return `
+            La <strong>Unidad III</strong> trata sobre
+            seguridad corporativa, conectividad de red
+            y alta disponibilidad.
+            
+            Incluye TCP/IP, RBAC, auditorías,
+            Jobs de respaldo y planes de contingencia.
+        `;
+
+    }
+
+
+    /* UNIDAD IV */
+
+    if (
+        q.includes("unidad iv") ||
+        q.includes("unidad 4")
+    ) {
+
+        return `
+            La <strong>Unidad IV</strong> comprende
+            monitoreo de servidores, optimización
+            del desempeño y recuperación.
+            
+            Incluye monitoreo en tiempo real,
+            SQL Tuning, Flashback y sustentación final.
+        `;
+
+    }
+
+
+    /* EVIDENCIAS */
+
+    if (
+        q.includes("evidencia") ||
+        q.includes("trabajo") ||
+        q.includes("pdf")
+    ) {
+
+        return `
+            Las evidencias se organizan en:
+            
+            <strong>EC:</strong> Evidencias de Conocimiento.
+            
+            <strong>ED:</strong> Evidencias de Desempeño.
+            
+            <strong>EP:</strong> Evidencias de Producto.
+            
+            Puedes ingresar a cada semana y presionar
+            <strong>VER EVIDENCIA</strong> para abrir
+            el PDF correspondiente.
+        `;
+
+    }
+
+
+    /* RAKION */
+
+    if (
+        q.includes("rakion") ||
+        q.includes("videojuego")
+    ) {
+
+        return `
+            <strong>Rakion</strong> es un videojuego
+            en línea orientado al combate.
+            
+            En este portafolio se utiliza como
+            inspiración visual y como caso de estudio
+            para representar escenarios de datos,
+            usuarios, eventos y alta concurrencia.
+        `;
+
+    }
+
+
+    /* EVALUACIÓN */
+
+    if (
+        q.includes("evaluacion") ||
+        q.includes("porcentaje") ||
+        q.includes("ponderacion")
+    ) {
+
+        return `
+            La ponderación presentada en el portafolio es:
+            
+            <strong>Unidad I:</strong> 10%
+            
+            <strong>Unidad II:</strong> 15%
+            
+            <strong>Unidad III:</strong> 20%
+            
+            <strong>Unidad IV:</strong> 25%
+            
+            <strong>Desempeño Final:</strong> 30%
+        `;
+
+    }
+
+
+    /* NOTA */
+
+    if (
+        q.includes("nota minima") ||
+        q.includes("aprobar") ||
+        q.includes("nota")
+    ) {
+
+        return `
+            La nota mínima indicada es
+            <strong>13</strong> para ingresantes
+            desde el semestre 2026-I.
+            
+            Para ingresantes hasta 2025-II se indica
+            una nota mínima de <strong>11</strong>.
+        `;
+
+    }
+
+
+    /* ASISTENCIA */
+
+    if (
+        q.includes("asistencia")
+    ) {
+
+        return `
+            El requisito de asistencia indicado
+            para la asignatura es de mínimo
+            <strong>70%</strong>.
+        `;
+
+    }
+
+
+    /* CONTACTO */
+
+    if (
+        q.includes("contacto") ||
+        q.includes("telefono") ||
+        q.includes("whatsapp")
+    ) {
+
+        return `
+            Puedes contactar a Rafael mediante:
+            
+            <strong>982 192 749</strong>
+            
+            También puedes utilizar el canal
+            académico institucional.
+        `;
+
+    }
+
+
+    /* AYUDA */
+
+    if (
+        q.includes("ayuda") ||
+        q.includes("puedes hacer")
+    ) {
+
+        return `
+            Puedo responder preguntas sobre:
+            
+            • Rafael
+            
+            • Ingeniería de Sistemas
+            
+            • UPLA
+            
+            • Base de Datos II
+            
+            • Unidades I-IV
+            
+            • Semanas 1-4
+            
+            • Evidencias
+            
+            • Evaluación
+            
+            • Rakion
+            
+            • Contacto
+        `;
+
+    }
+
+
+    /* RESPUESTA POR DEFECTO */
+
+    return `
+        No tengo esa información registrada todavía.
+        
+        Puedes preguntarme, por ejemplo:
+        
+        <strong>¿Quién es Rafael?</strong><br>
+        <strong>¿Qué contiene la Unidad I?</strong><br>
+        <strong>¿Qué se trabajó en la Semana 2?</strong><br>
+        <strong>¿Cómo puedo ver las evidencias?</strong>
+    `;
 
 }
 
 
+/* =====================================================
+   AGREGAR MENSAJE
+===================================================== */
 
-/* HEADER */
+function addMessage(text, type) {
 
-.chat-header {
+    const message =
+        document.createElement("div");
 
-    height: 75px;
+    message.className =
+        "message " +
+        (type === "user"
+            ? "user-message"
+            : "bot-message");
 
-    min-height: 75px;
 
-    background:
-        linear-gradient(
-            135deg,
-            rgba(0, 229, 255, 0.12),
-            rgba(255, 56, 96, 0.08)
+    if (type === "bot") {
+
+        message.innerHTML = `
+
+            <div class="message-icon">
+                <i class="fa-solid fa-robot"></i>
+            </div>
+
+            <div>
+                <p>${text}</p>
+            </div>
+
+        `;
+
+    }
+
+    else {
+
+        message.innerHTML = `
+
+            <div class="user-message-content">
+                ${text}
+            </div>
+
+        `;
+
+    }
+
+
+    chatMessages.appendChild(message);
+
+
+    chatMessages.scrollTop =
+        chatMessages.scrollHeight;
+
+}
+
+
+/* =====================================================
+   ENVIAR PREGUNTA
+===================================================== */
+
+function sendQuestion(question) {
+
+    const cleanQuestion =
+        question.trim();
+
+
+    if (!cleanQuestion) {
+        return;
+    }
+
+
+    addMessage(
+        cleanQuestion,
+        "user"
+    );
+
+
+    chatInput.value = "";
+
+
+    setTimeout(function() {
+
+        const response =
+            getBotResponse(cleanQuestion);
+
+        addMessage(
+            response,
+            "bot"
         );
 
-    border-bottom: 1px solid var(--hairline);
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    padding: 0 15px;
+    }, 400);
 
 }
 
 
-.chat-header-info {
+/* FORMULARIO */
 
-    display: flex;
+chatForm.addEventListener(
+    "submit",
+    function(event) {
 
-    align-items: center;
+        event.preventDefault();
 
-    gap: 12px;
-
-}
-
-
-.bot-icon {
-
-    width: 43px;
-
-    height: 43px;
-
-    border: 1px solid var(--cyan);
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    color: var(--cyan);
-
-    font-size: 19px;
-
-    background: var(--panel);
-
-}
-
-
-.chat-header h3 {
-
-    margin: 0;
-
-    color: white;
-
-    font-family: 'Orbitron', sans-serif;
-
-    font-size: 14px;
-
-    letter-spacing: 1px;
-
-}
-
-
-.chat-header span {
-
-    display: block;
-
-    margin-top: 4px;
-
-    font-size: 10px;
-
-    color: var(--steel-dim);
-
-    letter-spacing: 1px;
-
-}
-
-
-.chat-header span i {
-
-    color: #00ff88;
-
-    font-size: 7px;
-
-    margin-right: 4px;
-
-}
-
-
-.chat-close {
-
-    background: transparent;
-
-    border: none;
-
-    color: var(--steel-dim);
-
-    font-size: 20px;
-
-    cursor: pointer;
-
-}
-
-
-.chat-close:hover {
-
-    color: var(--crimson);
-
-}
-
-
-
-/* MENSAJES */
-
-.chat-messages {
-
-    flex: 1;
-
-    padding: 15px;
-
-    overflow-y: auto;
-
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 12px;
-
-}
-
-
-.message {
-
-    max-width: 88%;
-
-    padding: 12px 14px;
-
-    font-size: 14px;
-
-    line-height: 1.45;
-
-    border-radius: 4px;
-
-}
-
-
-.bot-message {
-
-    align-self: flex-start;
-
-    background: var(--panel-alt);
-
-    border-left: 3px solid var(--cyan);
-
-    color: var(--steel);
-
-}
-
-
-.user-message {
-
-    align-self: flex-end;
-
-    background: rgba(255, 56, 96, 0.12);
-
-    border-right: 3px solid var(--crimson);
-
-    color: white;
-
-    text-align: right;
-
-}
-
-
-.message-label {
-
-    font-family: 'Orbitron', sans-serif;
-
-    font-size: 9px;
-
-    color: var(--cyan);
-
-    letter-spacing: 1px;
-
-    margin-bottom: 5px;
-
-}
-
-
-
-/* PREGUNTAS */
-
-.quick-questions {
-
-    padding: 10px;
-
-    border-top: 1px solid var(--hairline);
-
-    display: flex;
-
-    gap: 6px;
-
-    flex-wrap: wrap;
-
-    max-height: 115px;
-
-    overflow-y: auto;
-
-}
-
-
-.quick-btn {
-
-    background: transparent;
-
-    border: 1px solid var(--hairline);
-
-    color: var(--steel-dim);
-
-    padding: 5px 8px;
-
-    font-family: 'Rajdhani', sans-serif;
-
-    font-size: 11px;
-
-    cursor: pointer;
-
-    transition: 0.2s;
-
-}
-
-
-.quick-btn:hover {
-
-    color: var(--cyan);
-
-    border-color: var(--cyan);
-
-    background: rgba(0, 229, 255, 0.05);
-
-}
-
-
-
-/* INPUT */
-
-.chat-input-area {
-
-    display: flex;
-
-    padding: 10px;
-
-    border-top: 1px solid var(--hairline);
-
-    background: var(--panel);
-
-}
-
-
-.chat-input-area input {
-
-    flex: 1;
-
-    min-width: 0;
-
-    background: var(--void);
-
-    border: 1px solid var(--hairline);
-
-    outline: none;
-
-    color: white;
-
-    padding: 11px;
-
-    font-family: 'Rajdhani', sans-serif;
-
-    font-size: 14px;
-
-}
-
-
-.chat-input-area input:focus {
-
-    border-color: var(--cyan);
-
-}
-
-
-.chat-input-area button {
-
-    width: 45px;
-
-    margin-left: 6px;
-
-    border: 1px solid var(--cyan);
-
-    background: var(--cyan);
-
-    color: var(--void);
-
-    cursor: pointer;
-
-}
-
-
-.chat-input-area button:hover {
-
-    background: var(--cyan-bright);
-
-}
-
-
-
-/* SCROLL */
-
-.chat-messages::-webkit-scrollbar,
-.quick-questions::-webkit-scrollbar {
-
-    width: 5px;
-
-}
-
-
-.chat-messages::-webkit-scrollbar-thumb,
-.quick-questions::-webkit-scrollbar-thumb {
-
-    background: var(--cyan);
-
-}
-
-
-
-/* =========================================================
-   RESPONSIVE
-========================================================= */
-
-@media (max-width: 900px) {
-
-    .nav-container {
-
-        flex-direction: column;
+        sendQuestion(
+            chatInput.value
+        );
 
     }
+);
 
 
-    .nav-links {
+/* PREGUNTAS RÁPIDAS */
 
-        justify-content: center;
+document
+    .querySelectorAll(".quick-questions button")
+    .forEach(function(button) {
 
-    }
+        button.addEventListener(
+            "click",
+            function() {
 
+                sendQuestion(
+                    button.dataset.question
+                );
 
-    .hero-container {
+            }
+        );
 
-        grid-template-columns: 1fr;
-
-        text-align: center;
-
-    }
-
-
-    .hero-info {
-
-        align-items: center;
-
-    }
+    });
 
 
-    .hero-profile {
+/* =====================================================
+   ESCAPE PARA CERRAR MODAL
+===================================================== */
 
-        order: -1;
+document.addEventListener(
+    "keydown",
+    function(event) {
 
-    }
+        if (event.key === "Escape") {
 
+            closePDF();
 
-    .stats-container {
+            chatWindow.classList.remove(
+                "active"
+            );
 
-        grid-template-columns: repeat(2, 1fr);
-
-    }
-
-
-    .stat-card:nth-child(2) {
-
-        border-right: none;
+        }
 
     }
+);
 
+</script>
 
-    .stat-card:nth-child(1),
-    .stat-card:nth-child(2) {
-
-        border-bottom: 1px solid var(--hairline);
-
-    }
-
-
-    .weeks-grid,
-    .units-grid,
-    .evidence-grid {
-
-        grid-template-columns: 1fr;
-
-    }
-
-
-    .large-card {
-
-        grid-column: span 1;
-
-    }
-
-
-    .evaluation-grid {
-
-        grid-template-columns: 1fr;
-
-    }
-
-}
-
-
-@media (max-width: 600px) {
-
-    .login-box {
-
-        padding: 30px 22px 25px;
-
-    }
-
-
-    .brand-text small {
-
-        display: none;
-
-    }
-
-
-    .nav-links {
-
-        gap: 12px;
-
-    }
-
-
-    .nav-links a {
-
-        font-size: 11px;
-
-    }
-
-
-    .hero {
-
-        padding-top: 60px;
-
-    }
-
-
-    .hero h1 {
-
-        font-size: 43px;
-
-    }
-
-
-    .profile-frame {
-
-        width: 220px;
-
-        height: 270px;
-
-    }
-
-
-    .profile-label {
-
-        width: 220px;
-
-    }
-
-
-    .stats-container {
-
-        grid-template-columns: 1fr;
-
-    }
-
-
-    .stat-card {
-
-        border-right: none;
-
-        border-bottom: 1px solid var(--hairline);
-
-    }
-
-
-    .stat-card:last-child {
-
-        border-bottom: none;
-
-    }
-
-
-    .info-grid,
-    .contact-card {
-
-        grid-template-columns: 1fr;
-
-    }
-
-
-    .unit-intro {
-
-        flex-direction: column;
-
-    }
-
-
-    .footer {
-
-        flex-direction: column;
-
-        gap: 15px;
-
-        text-align: center;
-
-    }
-
-
-    .chatbot-container {
-
-        right: 15px;
-
-        bottom: 15px;
-
-    }
-
-
-    .chat-window {
-
-        width: calc(100vw - 30px);
-
-        height: 520px;
-
-        right: 0;
-
-        bottom: 75px;
-
-    }
-
-
-    .chat-toggle {
-
-        width: 58px;
-
-        height: 58px;
-
-    }
-
-}
+</body>
+</html>
