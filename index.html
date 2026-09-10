@@ -3,982 +3,2253 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rafael Max Cajahuaringa Camasca · Portafolio · Base de Datos II</title>
 
-    <!-- GOOGLE FONTS -->
+    <title>Rafael Max Cajahuaringa Camasca | Base de Datos II | UPLA</title>
+
+    <meta name="description"
+          content="Portafolio académico de Rafael Max Cajahuaringa Camasca - Base de Datos II - Ingeniería de Sistemas y Computación - UPLA">
+
+    <!-- FUENTES -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Orbitron:wght@500;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- FONT AWESOME -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Orbitron:wght@400;500;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <!-- ICONOS -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
     <!-- CSS -->
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
 
-    <!-- FONDO HUD -->
-    <div class="hud-grid"></div>
+<!-- =====================================================
+     FONDO HUD
+===================================================== -->
+
+<div class="hud-grid"></div>
+
+<div class="scan-line"></div>
 
 
-    <!-- =====================================================
-         LOGIN
-    ====================================================== -->
-    <section id="login-screen" class="login-screen">
-        <div class="login-box">
-            <div class="login-line"></div>
+<!-- =====================================================
+     LOGIN
+===================================================== -->
 
-            <div class="login-logo-container">
-                <img src="logo.png" alt="UPLA" class="login-logo">
+<section id="login-screen" class="login-screen">
+
+    <div class="login-box">
+
+        <div class="login-decoration top"></div>
+        <div class="login-decoration bottom"></div>
+
+        <div class="login-logo-container">
+
+            <img src="logo.png"
+                 alt="Logo UPLA"
+                 class="login-logo">
+
+        </div>
+
+        <div class="login-status">
+            ● SISTEMA EN LÍNEA
+        </div>
+
+        <h1>SISTEMA DE ACCESO</h1>
+
+        <p class="login-game">
+            RAKION
+        </p>
+
+        <p class="login-subtitle">
+            DATA ARENA · UPLA
+        </p>
+
+
+        <form id="loginForm">
+
+            <div class="input-group">
+
+                <label for="usuario">
+                    <i class="fa-solid fa-user"></i>
+                    USUARIO
+                </label>
+
+                <input
+                    type="text"
+                    id="usuario"
+                    placeholder="Ingrese usuario"
+                    autocomplete="username"
+                    required
+                >
+
             </div>
 
-            <p class="login-status">● SISTEMA ONLINE</p>
-            <h1>SISTEMA DE ACCESO</h1>
-            <div class="login-subtitle">DATA ARENA · UPLA</div>
-            <div class="login-divider"></div>
 
-            <form id="loginForm">
-                <div class="input-group">
-                    <label for="usuario"><i class="fa-solid fa-user"></i> USUARIO</label>
-                    <input type="text" id="usuario" placeholder="Ingrese usuario" autocomplete="off" required>
-                </div>
+            <div class="input-group">
 
-                <div class="input-group">
-                    <label for="password"><i class="fa-solid fa-lock"></i> CONTRASEÑA</label>
-                    <input type="password" id="password" placeholder="Ingrese contraseña" required>
-                </div>
+                <label for="password">
+                    <i class="fa-solid fa-lock"></i>
+                    CONTRASEÑA
+                </label>
 
-                <button type="submit" class="login-btn">
-                    <i class="fa-solid fa-right-to-bracket"></i> INGRESAR
-                </button>
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Ingrese contraseña"
+                    autocomplete="current-password"
+                    required
+                >
 
-                <p id="loginError" class="login-error"></p>
-            </form>
+            </div>
 
-            <div class="login-footer">UPLA · INGENIERÍA DE SISTEMAS Y COMPUTACIÓN</div>
+
+            <button type="submit" class="login-btn">
+
+                <span>INGRESAR</span>
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </button>
+
+            <p id="loginError" class="login-error"></p>
+
+        </form>
+
+
+        <div class="login-footer">
+
+            <span>UPLA</span>
+            <span>•</span>
+            <span>INGENIERÍA DE SISTEMAS Y COMPUTACIÓN</span>
+
         </div>
-    </section>
+
+    </div>
+
+</section>
 
 
-    <!-- =====================================================
-         PORTAFOLIO
-    ====================================================== -->
-    <div id="portfolio" class="portfolio-content">
+<!-- =====================================================
+     PORTAFOLIO
+===================================================== -->
 
-        <!-- NAVBAR -->
-        <header class="navbar">
-            <div class="nav-container">
-                <a href="#inicio" class="brand">
-                    <img src="logo.png" alt="UPLA">
-                    <div class="brand-text">
-                        <strong>RAFAEL MAX</strong>
-                        <span>CAJAHUARINGA CAMASCA</span>
-                        <small>INGENIERÍA DE SISTEMAS Y COMPUTACIÓN · UPLA</small>
-                    </div>
+<div id="portfolio" class="portfolio-content">
+
+
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
+
+<header class="navbar">
+
+    <div class="nav-left">
+
+        <img src="logo.png"
+             alt="UPLA"
+             class="nav-logo">
+
+        <div>
+
+            <strong>
+                RAFAEL MAX
+            </strong>
+
+            <span>
+                CAJAHUARINGA CAMASCA
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <div class="nav-course">
+
+        <span>
+            INGENIERÍA DE SISTEMAS Y COMPUTACIÓN
+        </span>
+
+        <small>
+            BASE DE DATOS II · 332151
+        </small>
+
+    </div>
+
+
+    <nav>
+
+        <a href="#inicio">
+            <i class="fa-solid fa-house"></i>
+            Inicio
+        </a>
+
+        <a href="#informacion">
+            Información
+        </a>
+
+        <a href="#unidad1">
+            Unidad I
+        </a>
+
+        <a href="#unidad2">
+            Unidad II
+        </a>
+
+        <a href="#unidad3">
+            Unidad III
+        </a>
+
+        <a href="#unidad4">
+            Unidad IV
+        </a>
+
+        <a href="#contacto">
+            Contacto
+        </a>
+
+    </nav>
+
+</header>
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<main>
+
+<section id="inicio" class="hero">
+
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+
+        <div class="hero-profile">
+
+            <div class="profile-frame">
+
+                <img src="Rafael.jpeg"
+                     alt="Rafael Max Cajahuaringa Camasca">
+
+            </div>
+
+            <span class="online-dot"></span>
+
+        </div>
+
+
+        <div class="hero-text">
+
+            <p class="eyebrow">
+                <span>◈</span>
+                DATA ARENA · CONSOLA ACADÉMICA
+            </p>
+
+            <h1>
+                PORTAFOLIO
+                <strong>BASE DE DATOS II</strong>
+            </h1>
+
+            <p class="hero-description">
+
+                Bienvenido al portafolio académico de
+                <strong>Rafael Max Cajahuaringa Camasca</strong>.
+
+                Aquí se presentan las actividades,
+                evidencias y aprendizajes desarrollados
+                durante la asignatura de
+                <strong>Base de Datos II</strong>.
+
+            </p>
+
+
+            <div class="hero-buttons">
+
+                <a href="#unidad1" class="primary-btn">
+                    <i class="fa-solid fa-database"></i>
+                    EXPLORAR PORTAFOLIO
                 </a>
 
-                <nav class="nav-links">
-                    <a href="#inicio">Inicio</a>
-                    <a href="#informacion">Información</a>
-                    <a href="#unidad1">Unidad I</a>
-                    <a href="#unidades">Unidades</a>
-                    <a href="#evaluacion">Evaluación</a>
-                    <a href="#contacto">Contacto</a>
-                </nav>
+                <button class="secondary-btn"
+                        onclick="toggleMusic()">
+
+                    <i id="musicIcon"
+                       class="fa-solid fa-volume-xmark"></i>
+
+                    <span id="musicText">
+                        ACTIVAR MÚSICA
+                    </span>
+
+                </button>
+
             </div>
-        </header>
+
+        </div>
+
+    </div>
 
 
-        <main id="inicio">
+    <div class="hero-stats">
 
-            <!-- HERO -->
-            <section class="hero">
-                <div class="hero-container">
-                    <div class="hero-content">
-                        <div class="eyebrow">
-                            <span></span>
-                            BASE DE DATOS II · DATA ARENA
-                        </div>
+        <div class="stat">
 
-                        <h1>PORTAFOLIO<br><span>ACADÉMICO</span></h1>
+            <strong>4</strong>
 
-                        <p class="hero-description">
-                            Portafolio académico correspondiente a la asignatura
-                            <strong>Base de Datos II</strong>, donde se presentan los
-                            conocimientos, actividades y evidencias desarrolladas
-                            durante el semestre.
-                        </p>
+            <span>
+                UNIDADES
+            </span>
 
-                        <div class="hero-info">
-                            <div><i class="fa-solid fa-user"></i> Rafael Max Cajahuaringa Camasca</div>
-                            <div><i class="fa-solid fa-graduation-cap"></i> Ingeniería de Sistemas y Computación</div>
-                            <div><i class="fa-solid fa-building-columns"></i> Universidad Peruana Los Andes · UPLA</div>
-                        </div>
-                    </div>
-
-                    <div class="hero-profile">
-                        <div class="profile-frame">
-                            <div class="profile-corner top-left"></div>
-                            <div class="profile-corner top-right"></div>
-                            <div class="profile-corner bottom-left"></div>
-                            <div class="profile-corner bottom-right"></div>
-                            <img src="Rafael.jpeg" alt="Rafael Max Cajahuaringa Camasca">
-                        </div>
-
-                        <div class="profile-label">
-                            <span>STUDENT ID</span>
-                            <strong>RAFAEL MAX</strong>
-                        </div>
-                    </div>
-                </div>
-            </section>
+        </div>
 
 
-            <!-- ESTADÍSTICAS -->
-            <section class="stats-section">
-                <div class="stats-container">
-                    <div class="stat-card">
-                        <span>ASIGNATURA</span>
-                        <strong>BASE DE DATOS II</strong>
-                    </div>
-                    <div class="stat-card">
-                        <span>CÓDIGO</span>
-                        <strong>332151</strong>
-                    </div>
-                    <div class="stat-card">
-                        <span>UNIDADES</span>
-                        <strong>04</strong>
-                    </div>
-                    <div class="stat-card">
-                        <span>MODALIDAD</span>
-                        <strong>PRESENCIAL</strong>
-                    </div>
-                </div>
-            </section>
+        <div class="stat">
+
+            <strong>16</strong>
+
+            <span>
+                SEMANAS
+            </span>
+
+        </div>
 
 
-            <!-- INFORMACIÓN ACADÉMICA -->
-            <section id="informacion" class="section">
-                <div class="section-heading">
-                    <div class="section-number">01</div>
-                    <div>
-                        <span>IDENTIFICACIÓN</span>
-                        <h2>INFORMACIÓN ACADÉMICA</h2>
-                    </div>
-                </div>
+        <div class="stat">
 
-                <div class="info-grid">
-                    <article class="info-card large-card">
-                        <div class="card-icon"><i class="fa-solid fa-building-columns"></i></div>
-                        <span>UNIVERSIDAD</span>
-                        <h3>Universidad Peruana Los Andes</h3>
-                        <p>Facultad de Ingeniería · UPLA</p>
-                    </article>
+            <strong>332151</strong>
 
-                    <article class="info-card">
-                        <div class="card-icon"><i class="fa-solid fa-microchip"></i></div>
-                        <span>CARRERA</span>
-                        <h3>Ingeniería de Sistemas y Computación</h3>
-                    </article>
+            <span>
+                CÓDIGO
+            </span>
 
-                    <article class="info-card">
-                        <div class="card-icon"><i class="fa-solid fa-database"></i></div>
-                        <span>ASIGNATURA</span>
-                        <h3>Base de Datos II</h3>
-                        <p>Código: 332151</p>
-                    </article>
-
-                    <article class="info-card">
-                        <div class="card-icon"><i class="fa-solid fa-chalkboard-user"></i></div>
-                        <span>DOCENTE</span>
-                        <h3>Mg. Raúl Enrique Fernández Bejarano</h3>
-                    </article>
-
-                    <article class="info-card">
-                        <div class="card-icon"><i class="fa-solid fa-user-graduate"></i></div>
-                        <span>ESTUDIANTE</span>
-                        <h3>Rafael Max Cajahuaringa Camasca</h3>
-                    </article>
-                </div>
-            </section>
+        </div>
 
 
-            <!-- UNIDAD I -->
-            <section id="unidad1" class="section unit-section">
-                <div class="section-heading">
-                    <div class="section-number">02</div>
-                    <div>
-                        <span>UNIDAD I</span>
-                        <h2>ARQUITECTURAS DE BASES DE DATOS</h2>
-                    </div>
-                </div>
+        <div class="stat">
 
-                <div class="unit-intro">
-                    <div class="unit-badge">UNIDAD 01</div>
-                    <div>
-                        <h3>Arquitecturas de Bases de Datos y Configuración del Entorno Corporativo</h3>
-                        <p>
-                            Identifica las arquitecturas de base de datos mediante su
-                            capacidad de implementación en gestores DBMS vigentes para
-                            determinar cómo almacenar, organizar e integrar los datos.
-                        </p>
-                    </div>
-                </div>
+            <strong>UPLA</strong>
 
-                <p style="color: var(--steel-dim); font-size: 12px; margin-bottom: 15px; letter-spacing: 0.5px;">
-                    <i class="fa-solid fa-circle-info" style="color: var(--cyan); margin-right: 6px;"></i>
-                    Toca una semana para cargar o revisar el PDF de esa evidencia.
+            <span>
+                UNIVERSIDAD
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     INFORMACIÓN
+===================================================== -->
+
+<section id="informacion" class="section">
+
+    <div class="section-heading">
+
+        <span>
+            01 · IDENTIFICACIÓN
+        </span>
+
+        <h2>
+            INFORMACIÓN ACADÉMICA
+        </h2>
+
+        <p>
+            Datos principales del estudiante y de la asignatura.
+        </p>
+
+    </div>
+
+
+    <div class="info-grid">
+
+
+        <article class="info-card university-card">
+
+            <div class="card-icon">
+                <i class="fa-solid fa-building-columns"></i>
+            </div>
+
+            <h3>
+                UNIVERSIDAD
+            </h3>
+
+            <p>
+                Universidad Peruana Los Andes
+            </p>
+
+            <small>
+                UPLA · Facultad de Ingeniería
+            </small>
+
+        </article>
+
+
+        <article class="info-card">
+
+            <div class="card-icon">
+                <i class="fa-solid fa-user-graduate"></i>
+            </div>
+
+            <h3>
+                ESTUDIANTE
+            </h3>
+
+            <p>
+                Rafael Max Cajahuaringa Camasca
+            </p>
+
+            <small>
+                Ingeniería de Sistemas y Computación
+            </small>
+
+        </article>
+
+
+        <article class="info-card">
+
+            <div class="card-icon">
+                <i class="fa-solid fa-database"></i>
+            </div>
+
+            <h3>
+                ASIGNATURA
+            </h3>
+
+            <p>
+                Base de Datos II
+            </p>
+
+            <small>
+                Código: 332151 · Modalidad presencial
+            </small>
+
+        </article>
+
+
+        <article class="info-card">
+
+            <div class="card-icon">
+                <i class="fa-solid fa-chalkboard-user"></i>
+            </div>
+
+            <h3>
+                DOCENTE
+            </h3>
+
+            <p>
+                Mg. Raúl Enrique Fernández Bejarano
+            </p>
+
+            <small>
+                Docente de la asignatura
+            </small>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     UNIDAD I
+===================================================== -->
+
+<section id="unidad1" class="section dark-section">
+
+    <div class="section-heading">
+
+        <span>
+            02 · UNIDAD I
+        </span>
+
+        <h2>
+            ARQUITECTURAS DE BASES DE DATOS
+        </h2>
+
+        <p>
+            Arquitecturas y configuración del entorno corporativo.
+        </p>
+
+    </div>
+
+
+    <div class="capacity-box">
+
+        <i class="fa-solid fa-bullseye"></i>
+
+        <div>
+
+            <strong>
+                CAPACIDAD
+            </strong>
+
+            <p>
+                Identifica las arquitecturas de base de datos
+                mediante su capacidad de implementación en
+                gestores DBMS vigentes para determinar cómo
+                almacenar, organizar e integrar los datos.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="weeks-grid">
+
+
+        <!-- SEMANA 1 -->
+
+        <article class="week-card">
+
+            <div class="week-number">
+                01
+            </div>
+
+            <div class="week-content">
+
+                <span class="week-tag">
+                    SEMANA 01
+                </span>
+
+                <h3>
+                    Formulación del Proyecto
+                    y Selección de la Arquitectura
+                </h3>
+
+                <p>
+                    Definición del alcance de un proyecto
+                    analítico basado en un caso empresarial
+                    real, seleccionando y justificando la
+                    arquitectura centralizada, distribuida
+                    o en la nube.
                 </p>
 
-                <!-- SEMANAS -->
-                <div class="weeks-grid">
 
-                    <!-- SEMANA 1 -->
-                    <article class="week-card" tabindex="0" role="button" data-week-label="SEMANA 01" data-pdf="">
-                        <div class="week-number">01</div>
-                        <div class="week-content">
-                            <span>SEMANA 01</span>
-                            <h3>Formulación del Proyecto y Selección de la Arquitectura</h3>
-                            <p>
-                                Definición del alcance de un proyecto analítico basado en un
-                                caso empresarial real, seleccionando y justificando una
-                                arquitectura centralizada, distribuida o en la nube.
-                            </p>
-                            <div class="week-pdf-hint"><i class="fa-solid fa-file-pdf"></i> Ver / cargar PDF</div>
-                        </div>
-                    </article>
+                <button
+                    class="evidence-btn"
+                    onclick="openPDF('evidencias/semana1.pdf', 'Semana 1 · Formulación del Proyecto')">
 
-                    <!-- SEMANA 2 -->
-                    <article class="week-card" tabindex="0" role="button" data-week-label="SEMANA 02" data-pdf="">
-                        <div class="week-number">02</div>
-                        <div class="week-content">
-                            <span>SEMANA 02</span>
-                            <h3>Despliegue y Configuración de Motores de Datos</h3>
-                            <p>
-                                Instalación y configuración óptima del Sistema de Gestión de
-                                Bases de Datos empresarial, verificando conectividad y
-                                recursos iniciales del servidor.
-                            </p>
-                            <div class="week-pdf-hint"><i class="fa-solid fa-file-pdf"></i> Ver / cargar PDF</div>
-                        </div>
-                    </article>
-
-                    <!-- SEMANA 3 -->
-                    <article class="week-card" tabindex="0" role="button" data-week-label="SEMANA 03" data-pdf="">
-                        <div class="week-number">03</div>
-                        <div class="week-content">
-                            <span>SEMANA 03</span>
-                            <h3>Modelamiento Físico y Mecanismos de Integración</h3>
-                            <p>
-                                Estructuración e implementación de esquemas y tablas
-                                maestras dentro del DBMS, configurando restricciones para
-                                eficiencia e integración de datos.
-                            </p>
-                            <div class="week-pdf-hint"><i class="fa-solid fa-file-pdf"></i> Ver / cargar PDF</div>
-                        </div>
-                    </article>
-
-                    <!-- SEMANA 4 -->
-                    <article class="week-card" tabindex="0" role="button" data-week-label="SEMANA 04" data-pdf="">
-                        <div class="week-number">04</div>
-                        <div class="week-content">
-                            <span>SEMANA 04</span>
-                            <h3>Sustentación y Validación de la Infraestructura de Datos</h3>
-                            <p>
-                                Sustentación del primer avance mediante informe técnico
-                                formal y demostración en vivo.
-                            </p>
-                            <div class="week-pdf-hint"><i class="fa-solid fa-file-pdf"></i> Ver / cargar PDF</div>
-                        </div>
-                    </article>
-
-                </div>
-            </section>
-
-
-            <!-- UNIDADES II III IV -->
-            <section id="unidades" class="section">
-                <div class="section-heading">
-                    <div class="section-number">03</div>
-                    <div>
-                        <span>PLAN ACADÉMICO</span>
-                        <h2>UNIDADES II · III · IV</h2>
-                    </div>
-                </div>
-
-                <div class="units-grid">
-                    <article class="unit-card">
-                        <div class="unit-card-top">
-                            <span>UNIDAD II</span>
-                            <i class="fa-solid fa-server"></i>
-                        </div>
-                        <h3>Administración de Instancias, Estructuras de Almacenamiento y Gestión de Datos Masivos</h3>
-                        <p>
-                            Asignación de memoria, archivos primarios y secundarios,
-                            archivos de log, indexación y pruebas de carga masiva.
-                        </p>
-                        <div class="unit-tags">
-                            <span>.MDF</span>
-                            <span>.NDF</span>
-                            <span>.LDF</span>
-                            <span>INDEXACIÓN</span>
-                        </div>
-                    </article>
-
-                    <article class="unit-card">
-                        <div class="unit-card-top">
-                            <span>UNIDAD III</span>
-                            <i class="fa-solid fa-shield-halved"></i>
-                        </div>
-                        <h3>Seguridad Corporativa, Conectividad de Red y Alta Disponibilidad de Datos</h3>
-                        <p>
-                            Configuración TCP/IP, control de accesos RBAC, auditorías,
-                            automatización de respaldos y planes de contingencia.
-                        </p>
-                        <div class="unit-tags">
-                            <span>TCP/IP</span>
-                            <span>RBAC</span>
-                            <span>JOBS</span>
-                            <span>BACKUP</span>
-                        </div>
-                    </article>
-
-                    <article class="unit-card">
-                        <div class="unit-card-top">
-                            <span>UNIDAD IV</span>
-                            <i class="fa-solid fa-chart-line"></i>
-                        </div>
-                        <h3>Monitoreo de Servidores, Optimización del Desempeño y Recuperación</h3>
-                        <p>
-                            Monitoreo en tiempo real, afinamiento de consultas SQL,
-                            tecnología Flashback y sustentación final del proyecto.
-                        </p>
-                        <div class="unit-tags">
-                            <span>MONITOREO</span>
-                            <span>SQL TUNING</span>
-                            <span>FLASHBACK</span>
-                        </div>
-                    </article>
-                </div>
-            </section>
-
-
-            <!-- EVIDENCIAS -->
-            <section class="section">
-                <div class="section-heading">
-                    <div class="section-number">04</div>
-                    <div>
-                        <span>EVIDENCIAS</span>
-                        <h2>APRENDIZAJE ACADÉMICO</h2>
-                    </div>
-                </div>
-
-                <div class="evidence-grid">
-                    <article class="evidence-card">
-                        <div class="evidence-icon">EC</div>
-                        <h3>Evidencias de Conocimiento</h3>
-                        <p>Cuestionarios, guías teóricas resueltas y evaluaciones escritas.</p>
-                    </article>
-
-                    <article class="evidence-card">
-                        <div class="evidence-icon">ED</div>
-                        <h3>Evidencias de Desempeño</h3>
-                        <p>Informes de laboratorio, participación activa y demostraciones prácticas.</p>
-                    </article>
-
-                    <article class="evidence-card">
-                        <div class="evidence-icon">EP</div>
-                        <h3>Evidencias de Producto</h3>
-                        <p>Scripts SQL, diseños de esquemas, carpetas de trabajo e informes técnicos.</p>
-                    </article>
-                </div>
-            </section>
-
-
-            <!-- EVALUACIÓN -->
-            <section id="evaluacion" class="section evaluation-section">
-                <div class="section-heading">
-                    <div class="section-number">05</div>
-                    <div>
-                        <span>SISTEMA DE EVALUACIÓN</span>
-                        <h2>CRITERIOS ACADÉMICOS</h2>
-                    </div>
-                </div>
-
-                <div class="evaluation-grid">
-                    <div class="evaluation-chart">
-                        <div class="percentage-item">
-                            <div><span>UNIDAD I</span><strong>10%</strong></div>
-                            <div class="percentage-bar"><span style="width: 10%;"></span></div>
-                        </div>
-                        <div class="percentage-item">
-                            <div><span>UNIDAD II</span><strong>15%</strong></div>
-                            <div class="percentage-bar"><span style="width: 15%;"></span></div>
-                        </div>
-                        <div class="percentage-item">
-                            <div><span>UNIDAD III</span><strong>20%</strong></div>
-                            <div class="percentage-bar"><span style="width: 20%;"></span></div>
-                        </div>
-                        <div class="percentage-item">
-                            <div><span>UNIDAD IV</span><strong>25%</strong></div>
-                            <div class="percentage-bar"><span style="width: 25%;"></span></div>
-                        </div>
-                        <div class="percentage-item">
-                            <div><span>DESEMPEÑO FINAL</span><strong>30%</strong></div>
-                            <div class="percentage-bar"><span style="width: 30%;"></span></div>
-                        </div>
-                    </div>
-
-                    <div class="requirements-card">
-                        <div class="requirement">
-                            <i class="fa-solid fa-check"></i>
-                            <div>
-                                <span>NOTA MÍNIMA</span>
-                                <strong>13</strong>
-                                <p>Para ingresantes desde 2026-I.</p>
-                            </div>
-                        </div>
-
-                        <div class="requirement">
-                            <i class="fa-solid fa-clock"></i>
-                            <div>
-                                <span>ASISTENCIA</span>
-                                <strong>70%</strong>
-                                <p>Mínimo de asistencia obligatoria.</p>
-                            </div>
-                        </div>
-
-                        <div class="requirement">
-                            <i class="fa-solid fa-file-circle-check"></i>
-                            <div>
-                                <span>SUSTITUTORIA</span>
-                                <strong>40%</strong>
-                                <p>Reemplaza la nota más baja bajo las condiciones establecidas.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-
-            <!-- RAKION -->
-            <section class="section rakion-section">
-                <div class="rakion-box">
-                    <div class="rakion-icon"><i class="fa-solid fa-gamepad"></i></div>
-                    <div>
-                        <span>CASO DE ESTUDIO</span>
-                        <h2>¿QUÉ ES RAKION?</h2>
-                        <p>
-                            Rakion se utiliza como concepto visual y caso de estudio
-                            práctico para representar escenarios relacionados con bases
-                            de datos de alta concurrencia, eventos en tiempo real y
-                            almacenamiento masivo de información de usuarios.
-                        </p>
-                    </div>
-                </div>
-            </section>
-
-
-            <!-- CONTACTO -->
-            <section id="contacto" class="section contact-section">
-                <div class="section-heading">
-                    <div class="section-number">06</div>
-                    <div>
-                        <span>INFORMACIÓN</span>
-                        <h2>CONTACTO</h2>
-                    </div>
-                </div>
-
-                <div class="contact-card">
-                    <div class="contact-item">
-                        <i class="fa-solid fa-user"></i>
-                        <div>
-                            <span>ESTUDIANTE</span>
-                            <strong>Rafael Max Cajahuaringa Camasca</strong>
-                        </div>
-                    </div>
-
-                    <div class="contact-item">
-                        <i class="fa-solid fa-phone"></i>
-                        <div>
-                            <span>TELÉFONO / WHATSAPP</span>
-                            <strong>982192749</strong>
-                        </div>
-                    </div>
-
-                    <div class="contact-item">
-                        <i class="fa-solid fa-location-dot"></i>
-                        <div>
-                            <span>UBICACIÓN</span>
-                            <strong>Huancayo · Perú</strong>
-                        </div>
-                    </div>
-
-                    <div class="contact-item">
-                        <i class="fa-solid fa-graduation-cap"></i>
-                        <div>
-                            <span>UNIVERSIDAD</span>
-                            <strong>Universidad Peruana Los Andes</strong>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-        </main>
-
-
-        <!-- FOOTER -->
-        <footer class="footer">
-            <div>
-                <strong>RAFAEL MAX CAJAHUARINGA CAMASCA</strong>
-                <span>BASE DE DATOS II · UPLA</span>
-            </div>
-            <p>© 2026 · Portafolio Académico</p>
-        </footer>
-
-    </div>
-    <!-- FIN #portfolio -->
-
-
-    <!-- =====================================================
-         A PARTIR DE AQUÍ: elementos flotantes (chatbot, música,
-         modal de PDF). Van FUERA de #portfolio a propósito, para
-         que su position:fixed se ancle a la ventana y no al
-         contenedor con transform. Ver nota en styles.css.
-    ====================================================== -->
-
-
-    <!-- REPRODUCTOR DE MÚSICA DE FONDO -->
-    <div class="music-player">
-        <audio id="bgMusic" loop preload="none">
-            <source src="musica.mp3" type="audio/mpeg">
-        </audio>
-        <button id="musicToggle" class="music-toggle" aria-label="Reproducir música de fondo" title="Música de fondo">
-            <i class="fa-solid fa-play"></i>
-            <span class="music-note"><i class="fa-solid fa-music"></i></span>
-        </button>
-    </div>
-
-
-    <!-- CHATBOT RAKION AI -->
-    <div class="chatbot-container">
-
-        <button id="chatToggle" class="chat-toggle" aria-label="Abrir asistente">
-            <i class="fa-solid fa-robot"></i>
-        </button>
-
-        <div id="chatWindow" class="chat-window">
-
-            <div class="chat-header">
-                <div class="chat-header-info">
-                    <div class="bot-icon"><i class="fa-solid fa-robot"></i></div>
-                    <div>
-                        <h3>RAKION AI</h3>
-                        <span><i class="fa-solid fa-circle"></i> ASISTENTE ACADÉMICO</span>
-                    </div>
-                </div>
-                <button id="chatClose" class="chat-close"><i class="fa-solid fa-xmark"></i></button>
-            </div>
-
-            <div id="chatMessages" class="chat-messages">
-                <div class="message bot-message">
-                    <div class="message-label">RAKION AI</div>
-                    Hola. Soy el asistente académico del portafolio de
-                    <strong>Rafael Max Cajahuaringa Camasca</strong>.
-                    <br><br>
-                    Puedo responder preguntas sobre <strong>Base de Datos II</strong>,
-                    unidades, semanas, evidencias, evaluación y contacto.
-                </div>
-            </div>
-
-            <div class="quick-questions">
-                <button class="quick-btn" data-question="¿Quién es Rafael?">¿Quién es Rafael?</button>
-                <button class="quick-btn" data-question="¿Qué carrera estudia?">Carrera</button>
-                <button class="quick-btn" data-question="¿Qué curso corresponde al portafolio?">Curso</button>
-                <button class="quick-btn" data-question="¿Quién es el docente?">Docente</button>
-                <button class="quick-btn" data-question="¿Qué contiene la Unidad I?">Unidad I</button>
-                <button class="quick-btn" data-question="¿Qué se trabajó en la Semana 1?">Semana 1</button>
-                <button class="quick-btn" data-question="¿Qué se trabajó en la Semana 2?">Semana 2</button>
-                <button class="quick-btn" data-question="¿Qué se trabajó en la Semana 3?">Semana 3</button>
-                <button class="quick-btn" data-question="¿Qué se trabajó en la Semana 4?">Semana 4</button>
-                <button class="quick-btn" data-question="¿Qué contiene la Unidad II?">Unidad II</button>
-                <button class="quick-btn" data-question="¿Qué contiene la Unidad III?">Unidad III</button>
-                <button class="quick-btn" data-question="¿Qué contiene la Unidad IV?">Unidad IV</button>
-                <button class="quick-btn" data-question="¿Cómo puedo ver las evidencias?">Evidencias</button>
-                <button class="quick-btn" data-question="¿Cuál es la nota mínima?">Evaluación</button>
-                <button class="quick-btn" data-question="¿Cómo contacto a Rafael?">Contacto</button>
-            </div>
-
-            <form id="chatForm" class="chat-input-area">
-                <input type="text" id="chatInput" placeholder="Escribe tu pregunta..." autocomplete="off">
-                <button type="submit" aria-label="Enviar pregunta"><i class="fa-solid fa-paper-plane"></i></button>
-            </form>
-
-        </div>
-    </div>
-
-
-    <!-- MODAL DE PDF POR SEMANA -->
-    <div id="pdfModal" class="pdf-modal">
-        <div class="pdf-modal-box">
-
-            <div class="pdf-modal-header">
-                <div>
-                    <span id="pdfModalWeek">SEMANA</span>
-                    <h3 id="pdfModalTitle">Título de la semana</h3>
-                </div>
-                <button id="pdfModalClose" class="pdf-modal-close" aria-label="Cerrar">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
-            </div>
-
-            <div class="pdf-modal-body">
-
-                <div id="pdfViewerWrap" class="pdf-viewer-wrap">
-                    <iframe id="pdfViewer" class="pdf-viewer" title="Vista previa del PDF"></iframe>
-                </div>
-
-                <div id="pdfEmptyState" class="pdf-empty-state">
                     <i class="fa-solid fa-file-pdf"></i>
-                    <p>Aún no hay ningún PDF cargado para esta semana.<br>Sube un archivo o enlaza uno fijo abajo.</p>
-                </div>
 
-                <div class="pdf-modal-actions">
-                    <label class="pdf-upload-btn" for="pdfFileInput">
-                        <i class="fa-solid fa-upload"></i> Subir PDF
-                    </label>
-                    <input type="file" id="pdfFileInput" accept="application/pdf" hidden>
+                    VER EVIDENCIA
 
-                    <div class="pdf-fixed-link">
-                        <input type="text" id="pdfFixedPath" placeholder="ej: pdfs/semana1.pdf">
-                        <button id="pdfFixedLoad" type="button">Abrir enlace</button>
-                    </div>
-                </div>
+                </button>
 
             </div>
-        </div>
+
+        </article>
+
+
+        <!-- SEMANA 2 -->
+
+        <article class="week-card">
+
+            <div class="week-number">
+                02
+            </div>
+
+            <div class="week-content">
+
+                <span class="week-tag">
+                    SEMANA 02
+                </span>
+
+                <h3>
+                    Despliegue y Configuración
+                    de Motores de Datos
+                </h3>
+
+                <p>
+                    Instalación y configuración óptima del
+                    Sistema de Gestión de Bases de Datos
+                    empresarial, verificando conectividad
+                    y recursos iniciales del servidor.
+                </p>
+
+
+                <button
+                    class="evidence-btn"
+                    onclick="openPDF('evidencias/semana2.pdf', 'Semana 2 · Despliegue y Configuración')">
+
+                    <i class="fa-solid fa-file-pdf"></i>
+
+                    VER EVIDENCIA
+
+                </button>
+
+            </div>
+
+        </article>
+
+
+        <!-- SEMANA 3 -->
+
+        <article class="week-card">
+
+            <div class="week-number">
+                03
+            </div>
+
+            <div class="week-content">
+
+                <span class="week-tag">
+                    SEMANA 03
+                </span>
+
+                <h3>
+                    Modelamiento Físico
+                    e Integración
+                </h3>
+
+                <p>
+                    Estructuración e implementación de
+                    esquemas y tablas maestras dentro del
+                    DBMS, configurando restricciones para
+                    garantizar eficiencia e integración.
+                </p>
+
+
+                <button
+                    class="evidence-btn"
+                    onclick="openPDF('evidencias/semana3.pdf', 'Semana 3 · Modelamiento Físico')">
+
+                    <i class="fa-solid fa-file-pdf"></i>
+
+                    VER EVIDENCIA
+
+                </button>
+
+            </div>
+
+        </article>
+
+
+        <!-- SEMANA 4 -->
+
+        <article class="week-card">
+
+            <div class="week-number">
+                04
+            </div>
+
+            <div class="week-content">
+
+                <span class="week-tag">
+                    SEMANA 04
+                </span>
+
+                <h3>
+                    Sustentación y Validación
+                    de la Infraestructura
+                </h3>
+
+                <p>
+                    Sustentación del primer avance del proyecto
+                    mediante informe técnico formal y
+                    demostración en vivo.
+                </p>
+
+
+                <button
+                    class="evidence-btn"
+                    onclick="openPDF('evidencias/semana4.pdf', 'Semana 4 · Sustentación y Validación')">
+
+                    <i class="fa-solid fa-file-pdf"></i>
+
+                    VER EVIDENCIA
+
+                </button>
+
+            </div>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     UNIDAD II
+===================================================== -->
+
+<section id="unidad2" class="section">
+
+    <div class="section-heading">
+
+        <span>
+            03 · UNIDAD II
+        </span>
+
+        <h2>
+            ADMINISTRACIÓN Y DATOS MASIVOS
+        </h2>
+
+        <p>
+            Administración de instancias, almacenamiento
+            y gestión de grandes volúmenes de información.
+        </p>
+
     </div>
 
 
-    <!-- =====================================================
-         JAVASCRIPT
-    ====================================================== -->
-    <script>
+    <div class="topic-panel">
 
-        /* =================================================
-           LOGIN
-        ================================================= */
+        <div>
+            <i class="fa-solid fa-memory"></i>
 
-        const loginForm = document.getElementById("loginForm");
-        const loginScreen = document.getElementById("login-screen");
-        const portfolio = document.getElementById("portfolio");
-        const loginError = document.getElementById("loginError");
+            <h3>
+                GESTIÓN DE INSTANCIAS
+            </h3>
 
-        loginForm.addEventListener("submit", function (event) {
-            event.preventDefault();
+            <p>
+                Asignación y administración de memoria.
+            </p>
 
-            const usuario = document.getElementById("usuario").value.trim();
-            const password = document.getElementById("password").value;
-
-            const usuarioCorrecto = "Rafael";
-            const passwordCorrecto = "123456";
-
-            if (usuario === usuarioCorrecto && password === passwordCorrecto) {
-                loginError.textContent = "";
-                loginScreen.classList.add("hidden");
-
-                setTimeout(function () {
-                    portfolio.classList.add("visible");
-                }, 300);
-            } else {
-                loginError.textContent = "⚠ ACCESO DENEGADO · DATOS INCORRECTOS";
-                document.getElementById("password").value = "";
-            }
-        });
+        </div>
 
 
-        /* =================================================
-           CHATBOT
-        ================================================= */
+        <div>
+            <i class="fa-solid fa-hard-drive"></i>
 
-        const chatToggle = document.getElementById("chatToggle");
-        const chatWindow = document.getElementById("chatWindow");
-        const chatClose = document.getElementById("chatClose");
-        const chatForm = document.getElementById("chatForm");
-        const chatInput = document.getElementById("chatInput");
-        const chatMessages = document.getElementById("chatMessages");
-        const quickButtons = document.querySelectorAll(".quick-btn");
+            <h3>
+                ALMACENAMIENTO
+            </h3>
 
-        chatToggle.addEventListener("click", function () {
-            chatWindow.classList.toggle("active");
-            if (chatWindow.classList.contains("active")) {
-                setTimeout(function () { chatInput.focus(); }, 100);
-            }
-        });
+            <p>
+                Archivos .mdf, .ndf y .ldf.
+            </p>
 
-        chatClose.addEventListener("click", function () {
-            chatWindow.classList.remove("active");
-        });
+        </div>
 
-        function addMessage(text, type) {
-            const message = document.createElement("div");
-            message.classList.add("message");
 
-            if (type === "bot") {
-                message.classList.add("bot-message");
-                message.innerHTML = `<div class="message-label">RAKION AI</div>${text}`;
-            } else {
-                message.classList.add("user-message");
-                message.textContent = text;
-            }
+        <div>
+            <i class="fa-solid fa-layer-group"></i>
 
-            chatMessages.appendChild(message);
-            chatMessages.scrollTop = chatMessages.scrollHeight;
+            <h3>
+                INDEXACIÓN
+            </h3>
+
+            <p>
+                Índices clúster y no clúster.
+            </p>
+
+        </div>
+
+
+        <div>
+            <i class="fa-solid fa-server"></i>
+
+            <h3>
+                CARGA MASIVA
+            </h3>
+
+            <p>
+                Pruebas y administración de datos masivos.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="coming-soon">
+
+        <i class="fa-solid fa-lock"></i>
+
+        <span>
+            EVIDENCIAS DE UNIDAD II · PRÓXIMAMENTE
+        </span>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     UNIDAD III
+===================================================== -->
+
+<section id="unidad3" class="section dark-section">
+
+    <div class="section-heading">
+
+        <span>
+            04 · UNIDAD III
+        </span>
+
+        <h2>
+            SEGURIDAD Y ALTA DISPONIBILIDAD
+        </h2>
+
+        <p>
+            Seguridad corporativa, conectividad y continuidad
+            de los servicios de datos.
+        </p>
+
+    </div>
+
+
+    <div class="topic-panel">
+
+        <div>
+            <i class="fa-solid fa-network-wired"></i>
+
+            <h3>
+                TCP/IP
+            </h3>
+
+            <p>
+                Configuración de conectividad de red.
+            </p>
+
+        </div>
+
+
+        <div>
+            <i class="fa-solid fa-shield-halved"></i>
+
+            <h3>
+                SEGURIDAD RBAC
+            </h3>
+
+            <p>
+                Control de acceso basado en roles.
+            </p>
+
+        </div>
+
+
+        <div>
+            <i class="fa-solid fa-clipboard-check"></i>
+
+            <h3>
+                AUDITORÍA
+            </h3>
+
+            <p>
+                Control y seguimiento de actividades.
+            </p>
+
+        </div>
+
+
+        <div>
+            <i class="fa-solid fa-cloud-arrow-down"></i>
+
+            <h3>
+                RESPALDOS
+            </h3>
+
+            <p>
+                Jobs y planes de contingencia.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="coming-soon">
+
+        <i class="fa-solid fa-lock"></i>
+
+        <span>
+            EVIDENCIAS DE UNIDAD III · PRÓXIMAMENTE
+        </span>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     UNIDAD IV
+===================================================== -->
+
+<section id="unidad4" class="section">
+
+    <div class="section-heading">
+
+        <span>
+            05 · UNIDAD IV
+        </span>
+
+        <h2>
+            MONITOREO Y OPTIMIZACIÓN
+        </h2>
+
+        <p>
+            Monitoreo de servidores, tuning SQL y recuperación.
+        </p>
+
+    </div>
+
+
+    <div class="topic-panel">
+
+        <div>
+            <i class="fa-solid fa-chart-line"></i>
+
+            <h3>
+                MONITOREO
+            </h3>
+
+            <p>
+                Supervisión en tiempo real.
+            </p>
+
+        </div>
+
+
+        <div>
+            <i class="fa-solid fa-bolt"></i>
+
+            <h3>
+                SQL TUNING
+            </h3>
+
+            <p>
+                Optimización del desempeño.
+            </p>
+
+        </div>
+
+
+        <div>
+            <i class="fa-solid fa-clock-rotate-left"></i>
+
+            <h3>
+                FLASHBACK
+            </h3>
+
+            <p>
+                Recuperación basada en Flashback.
+            </p>
+
+        </div>
+
+
+        <div>
+            <i class="fa-solid fa-trophy"></i>
+
+            <h3>
+                PROYECTO FINAL
+            </h3>
+
+            <p>
+                Sustentación final.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="coming-soon">
+
+        <i class="fa-solid fa-lock"></i>
+
+        <span>
+            EVIDENCIAS DE UNIDAD IV · PRÓXIMAMENTE
+        </span>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     EVALUACIÓN
+===================================================== -->
+
+<section class="section evaluation-section">
+
+    <div class="section-heading">
+
+        <span>
+            06 · EVALUACIÓN
+        </span>
+
+        <h2>
+            SISTEMA DE EVALUACIÓN
+        </h2>
+
+    </div>
+
+
+    <div class="evaluation-grid">
+
+        <div class="evaluation-card">
+
+            <strong>
+                10%
+            </strong>
+
+            <span>
+                UNIDAD I
+            </span>
+
+        </div>
+
+
+        <div class="evaluation-card">
+
+            <strong>
+                15%
+            </strong>
+
+            <span>
+                UNIDAD II
+            </span>
+
+        </div>
+
+
+        <div class="evaluation-card">
+
+            <strong>
+                20%
+            </strong>
+
+            <span>
+                UNIDAD III
+            </span>
+
+        </div>
+
+
+        <div class="evaluation-card">
+
+            <strong>
+                25%
+            </strong>
+
+            <span>
+                UNIDAD IV
+            </span>
+
+        </div>
+
+
+        <div class="evaluation-card final">
+
+            <strong>
+                30%
+            </strong>
+
+            <span>
+                DESEMPEÑO FINAL
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <div class="requirements">
+
+        <div>
+            <i class="fa-solid fa-star"></i>
+
+            <span>
+                Nota mínima:
+                <strong>13</strong>
+                para ingresantes desde 2026-I
+            </span>
+        </div>
+
+
+        <div>
+            <i class="fa-solid fa-user-check"></i>
+
+            <span>
+                Asistencia mínima:
+                <strong>70%</strong>
+            </span>
+        </div>
+
+
+        <div>
+            <i class="fa-solid fa-file-signature"></i>
+
+            <span>
+                Evaluación sustitutoria:
+                <strong>40%</strong>
+            </span>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     CONTACTO
+===================================================== -->
+
+<section id="contacto" class="section contact-section">
+
+    <div class="contact-box">
+
+        <div class="contact-icon">
+
+            <i class="fa-solid fa-id-card"></i>
+
+        </div>
+
+
+        <div>
+
+            <span class="contact-label">
+                CONTACTO ACADÉMICO
+            </span>
+
+            <h2>
+                Rafael Max Cajahuaringa Camasca
+            </h2>
+
+            <p>
+                Ingeniería de Sistemas y Computación
+                · Universidad Peruana Los Andes
+            </p>
+
+            <a href="tel:982192749"
+               class="phone">
+
+                <i class="fa-solid fa-phone"></i>
+
+                982 192 749
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+    <div>
+
+        <strong>
+            RAKION DATA ARENA
+        </strong>
+
+        <span>
+            PORTAFOLIO ACADÉMICO · UPLA
+        </span>
+
+    </div>
+
+    <p>
+        © 2026 Rafael Max Cajahuaringa Camasca
+    </p>
+
+</footer>
+
+
+<!-- =====================================================
+     VISOR PDF
+===================================================== -->
+
+<div id="pdfModal" class="pdf-modal">
+
+    <div class="pdf-container">
+
+        <div class="pdf-header">
+
+            <div>
+
+                <i class="fa-solid fa-file-pdf"></i>
+
+                <span id="pdfTitle">
+                    Evidencia académica
+                </span>
+
+            </div>
+
+
+            <button onclick="closePDF()"
+                    class="close-pdf">
+
+                <i class="fa-solid fa-xmark"></i>
+
+            </button>
+
+        </div>
+
+
+        <iframe
+            id="pdfViewer"
+            src=""
+            title="Visualizador de evidencia PDF">
+        </iframe>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     BOTÓN MÚSICA
+===================================================== -->
+
+<button id="musicButton"
+        class="floating-music"
+        onclick="toggleMusic()"
+        aria-label="Controlar música">
+
+    <i id="floatingMusicIcon"
+       class="fa-solid fa-volume-xmark"></i>
+
+</button>
+
+
+<!-- =====================================================
+     REPRODUCTOR
+===================================================== -->
+
+<audio id="backgroundMusic"
+       loop
+       preload="auto">
+
+    <source src="musica/rakion.mp3"
+            type="audio/mpeg">
+
+</audio>
+
+
+<!-- =====================================================
+     CHATBOT
+===================================================== -->
+
+<div id="chatbot" class="chatbot">
+
+    <!-- BOTÓN FLOTANTE -->
+
+    <button id="chatToggle"
+            class="chat-toggle"
+            aria-label="Abrir asistente">
+
+        <i class="fa-solid fa-robot"></i>
+
+        <span class="chat-notification">
+            1
+        </span>
+
+    </button>
+
+
+    <!-- VENTANA -->
+
+    <div id="chatWindow"
+         class="chat-window">
+
+
+        <!-- HEADER -->
+
+        <div class="chat-header">
+
+            <div class="chat-agent">
+
+                <div class="agent-icon">
+
+                    <i class="fa-solid fa-robot"></i>
+
+                </div>
+
+                <div>
+
+                    <strong>
+                        RAKION AI
+                    </strong>
+
+                    <span>
+                        ASISTENTE ACADÉMICO
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <button id="chatClose"
+                    class="chat-close">
+
+                <i class="fa-solid fa-xmark"></i>
+
+            </button>
+
+        </div>
+
+
+        <!-- ESTADO -->
+
+        <div class="chat-status">
+
+            <span></span>
+
+            SISTEMA ACTIVO · BASE DE DATOS II
+
+        </div>
+
+
+        <!-- MENSAJES -->
+
+        <div id="chatMessages"
+             class="chat-messages">
+
+            <div class="message bot-message">
+
+                <div class="message-icon">
+                    <i class="fa-solid fa-robot"></i>
+                </div>
+
+                <div>
+
+                    <p>
+                        Hola, soy <strong>RAKION AI</strong>.
+                    </p>
+
+                    <p>
+                        Puedo responder preguntas sobre
+                        Rafael, Base de Datos II, las unidades,
+                        semanas, evidencias y el portafolio.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- PREGUNTAS RÁPIDAS -->
+
+        <div class="quick-questions">
+
+            <button data-question="¿Quién es Rafael?">
+                Rafael
+            </button>
+
+            <button data-question="¿Qué carrera estudia?">
+                Carrera
+            </button>
+
+            <button data-question="¿Qué contiene la Unidad I?">
+                Unidad I
+            </button>
+
+            <button data-question="¿Qué se trabajó en la Semana 1?">
+                Semana 1
+            </button>
+
+            <button data-question="¿Qué se trabajó en la Semana 2?">
+                Semana 2
+            </button>
+
+            <button data-question="¿Cómo puedo ver las evidencias?">
+                Evidencias
+            </button>
+
+            <button data-question="¿Qué es Rakion?">
+                Rakion
+            </button>
+
+            <button data-question="¿Cómo contacto a Rafael?">
+                Contacto
+            </button>
+
+        </div>
+
+
+        <!-- INPUT -->
+
+        <form id="chatForm"
+              class="chat-input-area">
+
+            <input
+                type="text"
+                id="chatInput"
+                placeholder="Escribe tu pregunta..."
+                autocomplete="off"
+            >
+
+            <button type="submit">
+
+                <i class="fa-solid fa-paper-plane"></i>
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+</div>
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script>
+
+/* =====================================================
+   LOGIN
+===================================================== */
+
+const loginForm =
+    document.getElementById("loginForm");
+
+const loginScreen =
+    document.getElementById("login-screen");
+
+const portfolio =
+    document.getElementById("portfolio");
+
+const loginError =
+    document.getElementById("loginError");
+
+
+loginForm.addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+    const usuario =
+        document.getElementById("usuario").value.trim();
+
+    const password =
+        document.getElementById("password").value;
+
+
+    const usuarioCorrecto = "Rafael";
+
+    const passwordCorrecto = "123456";
+
+
+    if (
+        usuario === usuarioCorrecto &&
+        password === passwordCorrecto
+    ) {
+
+        loginError.textContent = "";
+
+        loginScreen.classList.add("hidden");
+
+        setTimeout(function() {
+
+            portfolio.classList.add("visible");
+
+        }, 300);
+
+    }
+
+    else {
+
+        loginError.textContent =
+            "⚠ ACCESO DENEGADO · DATOS INCORRECTOS";
+
+        document.getElementById("password").value = "";
+
+    }
+
+});
+
+
+/* =====================================================
+   PDF
+===================================================== */
+
+function openPDF(pdf, title) {
+
+    const modal =
+        document.getElementById("pdfModal");
+
+    const viewer =
+        document.getElementById("pdfViewer");
+
+    const pdfTitle =
+        document.getElementById("pdfTitle");
+
+
+    viewer.src = pdf;
+
+    pdfTitle.textContent = title;
+
+    modal.classList.add("active");
+
+    document.body.classList.add("modal-open");
+
+}
+
+
+function closePDF() {
+
+    const modal =
+        document.getElementById("pdfModal");
+
+    const viewer =
+        document.getElementById("pdfViewer");
+
+
+    modal.classList.remove("active");
+
+    viewer.src = "";
+
+    document.body.classList.remove("modal-open");
+
+}
+
+
+document.getElementById("pdfModal")
+    .addEventListener("click", function(event) {
+
+        if (event.target === this) {
+
+            closePDF();
+
         }
 
-        function getBotResponse(question) {
-            const q = question.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    });
 
-            if (q.includes("hola") || q.includes("buenas") || q.includes("buenos dias") || q.includes("buenas tardes") || q.includes("buenas noches")) {
-                return `Hola. Bienvenido al <strong>RAKION AI ASSISTANT</strong>.<br><br>Puedo ayudarte con información académica sobre Rafael, Base de Datos II, unidades, semanas, evidencias y evaluación.`;
-            }
 
-            if (q.includes("quien es rafael") || q.includes("quien es") || q.includes("rafael")) {
-                return `<strong>Rafael Max Cajahuaringa Camasca</strong> es el estudiante responsable de la elaboración y presentación de este portafolio académico.<br><br>Pertenece al Programa de Estudio de <strong>Ingeniería de Sistemas y Computación</strong> de la <strong>Universidad Peruana Los Andes (UPLA)</strong>.`;
-            }
+/* =====================================================
+   MÚSICA
+===================================================== */
 
-            if (q.includes("carrera") || q.includes("que estudia") || q.includes("estudia")) {
-                return `Rafael estudia la carrera profesional de <strong>Ingeniería de Sistemas y Computación</strong>.`;
-            }
+const music =
+    document.getElementById("backgroundMusic");
 
-            if (q.includes("universidad") || q.includes("upla")) {
-                return `Rafael estudia en la <strong>Universidad Peruana Los Andes (UPLA)</strong>, Facultad de Ingeniería.`;
-            }
+let musicPlaying = false;
 
-            if (q.includes("curso") || q.includes("asignatura") || q.includes("materia")) {
-                return `El portafolio corresponde a la asignatura <strong>Base de Datos II</strong>.<br><br>Código: <strong>332151</strong><br>Modalidad: <strong>Presencial</strong>.`;
-            }
 
-            if (q.includes("docente") || q.includes("profesor") || q.includes("raul") || q.includes("fernandez") || q.includes("quien dicta")) {
-                return `El docente de la asignatura es:<br><br><strong>Mg. Raúl Enrique Fernández Bejarano</strong>.`;
-            }
+function toggleMusic() {
 
-            if (q.includes("unidad i") || q.includes("unidad 1")) {
-                return `<strong>UNIDAD I</strong><br><br><strong>Arquitecturas de Bases de Datos y Configuración del Entorno Corporativo</strong>.<br><br>La unidad aborda:<br>• Selección de arquitectura corporativa.<br>• Despliegue del DBMS.<br>• Modelamiento físico.<br>• Integración de datos.<br>• Sustentación del primer avance del proyecto.`;
-            }
+    const icon =
+        document.getElementById("musicIcon");
 
-            if (q.includes("semana 1") || q.includes("semana uno")) {
-                return `<strong>SEMANA 1</strong><br><br><strong>Formulación del Proyecto y Selección de la Arquitectura</strong>.<br><br>Se define el alcance de un proyecto analítico basado en un caso empresarial real.<br><br>Se selecciona y justifica una arquitectura:<br>• Centralizada<br>• Distribuida<br>• En la nube`;
-            }
+    const floatingIcon =
+        document.getElementById("floatingMusicIcon");
 
-            if (q.includes("semana 2") || q.includes("semana dos")) {
-                return `<strong>SEMANA 2</strong><br><br><strong>Despliegue y Configuración de Motores de Datos (DBMS)</strong>.<br><br>Se trabaja en la instalación y configuración óptima de un Sistema de Gestión de Bases de Datos empresarial.<br><br>También se verifica la conectividad y los recursos iniciales del servidor.`;
-            }
+    const text =
+        document.getElementById("musicText");
 
-            if (q.includes("semana 3") || q.includes("semana tres")) {
-                return `<strong>SEMANA 3</strong><br><br><strong>Modelamiento Físico y Mecanismos de Integración</strong>.<br><br>Se estructuran e implementan esquemas de bases de datos y tablas maestras dentro del DBMS.<br><br>También se configuran restricciones para garantizar eficiencia de almacenamiento e integración de datos masivos.`;
-            }
 
-            if (q.includes("semana 4") || q.includes("semana cuatro")) {
-                return `<strong>SEMANA 4</strong><br><br><strong>Sustentación y Validación de la Infraestructura de Datos</strong>.<br><br>Se realiza la sustentación del primer avance mediante un informe técnico formal y una demostración en vivo.`;
-            }
+    if (!musicPlaying) {
 
-            if (q.includes("unidad ii") || q.includes("unidad 2")) {
-                return `<strong>UNIDAD II</strong><br><br>Administración de Instancias, Estructuras de Almacenamiento y Gestión de Datos Masivos.<br><br>Temas principales:<br>• Asignación de memoria.<br>• Archivos .mdf, .ndf y .ldf.<br>• Indexación clúster y no clúster.<br>• Pruebas de carga masiva.`;
-            }
+        music.play()
+            .then(function() {
 
-            if (q.includes("unidad iii") || q.includes("unidad 3")) {
-                return `<strong>UNIDAD III</strong><br><br>Seguridad Corporativa, Conectividad de Red y Alta Disponibilidad de Datos.<br><br>Incluye:<br>• Configuración TCP/IP.<br>• Control de accesos RBAC.<br>• Auditorías.<br>• Automatización de respaldos.<br>• Planes de contingencia.`;
-            }
+                musicPlaying = true;
 
-            if (q.includes("unidad iv") || q.includes("unidad 4")) {
-                return `<strong>UNIDAD IV</strong><br><br>Monitoreo de Servidores, Optimización del Desempeño y Recuperación Basada en Flashback.<br><br>Incluye:<br>• Monitoreo en tiempo real.<br>• Tuning SQL.<br>• Tecnología Flashback.<br>• Sustentación final del proyecto.`;
-            }
+                icon.className =
+                    "fa-solid fa-volume-high";
 
-            if (q.includes("evidencia") || q.includes("evidencias") || q.includes("trabajos")) {
-                return `Las evidencias del portafolio se organizan en tres categorías:<br><br><strong>EC — Evidencias de Conocimiento</strong><br>Cuestionarios, guías teóricas y evaluaciones escritas.<br><br><strong>ED — Evidencias de Desempeño</strong><br>Informes de laboratorio, participación y demostraciones prácticas.<br><br><strong>EP — Evidencias de Producto</strong><br>Scripts SQL, diseños de esquemas, carpetas de trabajo e informes técnicos.<br><br>Puedes cargar el PDF de cada semana tocando su tarjeta en la sección Unidad I.`;
-            }
+                floatingIcon.className =
+                    "fa-solid fa-volume-high";
 
-            if (q.includes("rakion")) {
-                return `<strong>Rakion</strong> se utiliza en este portafolio como concepto visual y caso de estudio práctico.<br><br>Permite representar escenarios relacionados con bases de datos de alta concurrencia, eventos en tiempo real y almacenamiento masivo de usuarios.`;
-            }
+                text.textContent =
+                    "PAUSAR MÚSICA";
 
-            if (q.includes("evaluacion") || q.includes("nota") || q.includes("aprobar") || q.includes("aprobatoria")) {
-                return `<strong>SISTEMA DE EVALUACIÓN</strong><br><br>Unidad I: <strong>10%</strong><br>Unidad II: <strong>15%</strong><br>Unidad III: <strong>20%</strong><br>Unidad IV: <strong>25%</strong><br>Desempeño Final: <strong>30%</strong><br><br>Nota mínima indicada: <strong>13</strong> para ingresantes desde 2026-I.<br><br>Asistencia mínima: <strong>70%</strong>.`;
-            }
+            })
+            .catch(function() {
 
-            if (q.includes("contacto") || q.includes("telefono") || q.includes("whatsapp") || q.includes("numero")) {
-                return `Puedes contactar a Rafael mediante:<br><br><strong>Teléfono / WhatsApp:</strong> 982192749<br><br>También puedes utilizar el canal académico institucional.`;
-            }
+                alert(
+                    "Coloca el archivo musica/rakion.mp3 para activar la música."
+                );
 
-            if (q.includes("gracias") || q.includes("adios") || q.includes("chau")) {
-                return `Ha sido un gusto ayudarte.<br><br><strong>RAKION AI · DATA ARENA · UPLA</strong>`;
-            }
-
-            return `No tengo esa información registrada todavía.<br><br>Puedes preguntarme:<br>• ¿Quién es Rafael?<br>• ¿Qué carrera estudia?<br>• ¿Qué curso corresponde al portafolio?<br>• ¿Qué contiene la Unidad I?<br>• ¿Qué se trabajó en la Semana 1?<br>• ¿Qué se trabajó en la Semana 2?<br>• ¿Qué son las evidencias?<br>• ¿Cuál es la nota mínima?<br>• ¿Cómo contacto a Rafael?`;
-        }
-
-        function sendQuestion(question) {
-            question = question.trim();
-            if (question === "") return;
-
-            addMessage(question, "user");
-            chatInput.value = "";
-
-            setTimeout(function () {
-                const response = getBotResponse(question);
-                addMessage(response, "bot");
-            }, 400);
-        }
-
-        chatForm.addEventListener("submit", function (event) {
-            event.preventDefault();
-            sendQuestion(chatInput.value);
-        });
-
-        quickButtons.forEach(function (button) {
-            button.addEventListener("click", function () {
-                sendQuestion(button.dataset.question);
             });
-        });
+
+    }
+
+    else {
+
+        music.pause();
+
+        musicPlaying = false;
+
+        icon.className =
+            "fa-solid fa-volume-xmark";
+
+        floatingIcon.className =
+            "fa-solid fa-volume-xmark";
+
+        text.textContent =
+            "ACTIVAR MÚSICA";
+
+    }
+
+}
 
 
-        /* =================================================
-           REPRODUCTOR DE MÚSICA
-        ================================================= */
+/* =====================================================
+   CHATBOT
+===================================================== */
 
-        const musicToggle = document.getElementById("musicToggle");
-        const bgMusic = document.getElementById("bgMusic");
+const chatToggle =
+    document.getElementById("chatToggle");
 
-        musicToggle.addEventListener("click", function () {
-            if (bgMusic.paused) {
-                bgMusic.play().then(function () {
-                    musicToggle.classList.add("playing");
-                    musicToggle.querySelector("i").className = "fa-solid fa-pause";
-                }).catch(function () {
-                    alert('No se pudo reproducir la música. Verifica que el archivo "musica.mp3" exista en la misma carpeta que este index.html.');
-                });
-            } else {
-                bgMusic.pause();
-                musicToggle.classList.remove("playing");
-                musicToggle.querySelector("i").className = "fa-solid fa-play";
+const chatWindow =
+    document.getElementById("chatWindow");
+
+const chatClose =
+    document.getElementById("chatClose");
+
+const chatForm =
+    document.getElementById("chatForm");
+
+const chatInput =
+    document.getElementById("chatInput");
+
+const chatMessages =
+    document.getElementById("chatMessages");
+
+
+/* ABRIR */
+
+chatToggle.addEventListener("click", function() {
+
+    chatWindow.classList.toggle("active");
+
+});
+
+
+/* CERRAR */
+
+chatClose.addEventListener("click", function() {
+
+    chatWindow.classList.remove("active");
+
+});
+
+
+/* =====================================================
+   RESPUESTAS DEL BOT
+===================================================== */
+
+function getBotResponse(question) {
+
+    const q =
+        question
+            .toLowerCase()
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "");
+
+
+    /* SALUDO */
+
+    if (
+        q.includes("hola") ||
+        q.includes("buenas") ||
+        q.includes("buenos dias") ||
+        q.includes("buenas tardes")
+    ) {
+
+        return `
+            ¡Hola! Soy <strong>RAKION AI</strong>.
+            Puedo ayudarte a conocer el portafolio
+            académico de Rafael y la asignatura
+            de Base de Datos II.
+        `;
+
+    }
+
+
+    /* RAFAEL */
+
+    if (
+        q.includes("quien es rafael") ||
+        q.includes("rafael") ||
+        q.includes("estudiante")
+    ) {
+
+        return `
+            <strong>Rafael Max Cajahuaringa Camasca</strong>
+            es el estudiante responsable de este
+            portafolio académico.
+            Pertenece al Programa de Estudio de
+            <strong>Ingeniería de Sistemas y Computación</strong>
+            de la Universidad Peruana Los Andes (UPLA).
+        `;
+
+    }
+
+
+    /* CARRERA */
+
+    if (
+        q.includes("carrera") ||
+        q.includes("que estudia") ||
+        q.includes("ingenieria")
+    ) {
+
+        return `
+            Rafael estudia
+            <strong>Ingeniería de Sistemas y Computación</strong>
+            en la Universidad Peruana Los Andes (UPLA).
+        `;
+
+    }
+
+
+    /* UNIVERSIDAD */
+
+    if (
+        q.includes("universidad") ||
+        q.includes("upla")
+    ) {
+
+        return `
+            El portafolio pertenece a la
+            <strong>Universidad Peruana Los Andes
+            (UPLA)</strong>, Facultad de Ingeniería.
+        `;
+
+    }
+
+
+    /* CURSO */
+
+    if (
+        q.includes("curso") ||
+        q.includes("asignatura") ||
+        q.includes("332151")
+    ) {
+
+        return `
+            El portafolio corresponde a
+            <strong>Base de Datos II</strong>,
+            código <strong>332151</strong>,
+            en modalidad presencial.
+        `;
+
+    }
+
+
+    /* DOCENTE */
+
+    if (
+        q.includes("docente") ||
+        q.includes("profesor")
+    ) {
+
+        return `
+            El docente de la asignatura es
+            <strong>Mg. Raúl Enrique Fernández
+            Bejarano</strong>.
+        `;
+
+    }
+
+
+    /* UNIDAD I */
+
+    if (
+        q.includes("unidad i") ||
+        q.includes("unidad 1")
+    ) {
+
+        return `
+            La <strong>Unidad I</strong> trata sobre
+            <strong>Arquitecturas de Bases de Datos
+            y Configuración del Entorno Corporativo</strong>.
+            
+            Comprende las semanas 1, 2, 3 y 4:
+            formulación del proyecto, configuración
+            de DBMS, modelamiento físico e integración,
+            y sustentación del primer avance.
+        `;
+
+    }
+
+
+    /* SEMANA 1 */
+
+    if (
+        q.includes("semana 1") ||
+        q.includes("semana uno")
+    ) {
+
+        return `
+            <strong>Semana 1:</strong>
+            Formulación del Proyecto y Selección
+            de la Arquitectura.
+            
+            Se define el alcance de un proyecto
+            analítico basado en un caso empresarial
+            real y se selecciona una arquitectura
+            centralizada, distribuida o en la nube.
+        `;
+
+    }
+
+
+    /* SEMANA 2 */
+
+    if (
+        q.includes("semana 2") ||
+        q.includes("semana dos")
+    ) {
+
+        return `
+            <strong>Semana 2:</strong>
+            Despliegue y Configuración de Motores
+            de Datos (DBMS).
+            
+            Se trabaja la instalación y configuración
+            del sistema gestor de bases de datos,
+            verificando conectividad y recursos
+            iniciales del servidor.
+        `;
+
+    }
+
+
+    /* SEMANA 3 */
+
+    if (
+        q.includes("semana 3") ||
+        q.includes("semana tres")
+    ) {
+
+        return `
+            <strong>Semana 3:</strong>
+            Modelamiento Físico y Mecanismos
+            de Integración.
+            
+            Se estructuran e implementan esquemas,
+            tablas maestras y restricciones dentro
+            del DBMS.
+        `;
+
+    }
+
+
+    /* SEMANA 4 */
+
+    if (
+        q.includes("semana 4") ||
+        q.includes("semana cuatro")
+    ) {
+
+        return `
+            <strong>Semana 4:</strong>
+            Sustentación y Validación de la
+            Infraestructura de Datos.
+            
+            Se presenta el primer avance del proyecto
+            mediante un informe técnico y una
+            demostración en vivo.
+        `;
+
+    }
+
+
+    /* UNIDAD II */
+
+    if (
+        q.includes("unidad ii") ||
+        q.includes("unidad 2")
+    ) {
+
+        return `
+            La <strong>Unidad II</strong> aborda la
+            administración de instancias, estructuras
+            de almacenamiento y gestión de datos masivos.
+            
+            Incluye memoria, archivos
+            <strong>.mdf, .ndf y .ldf</strong>,
+            indexación clúster/no clúster y
+            pruebas de carga masiva.
+        `;
+
+    }
+
+
+    /* UNIDAD III */
+
+    if (
+        q.includes("unidad iii") ||
+        q.includes("unidad 3")
+    ) {
+
+        return `
+            La <strong>Unidad III</strong> trata sobre
+            seguridad corporativa, conectividad de red
+            y alta disponibilidad.
+            
+            Incluye TCP/IP, RBAC, auditorías,
+            Jobs de respaldo y planes de contingencia.
+        `;
+
+    }
+
+
+    /* UNIDAD IV */
+
+    if (
+        q.includes("unidad iv") ||
+        q.includes("unidad 4")
+    ) {
+
+        return `
+            La <strong>Unidad IV</strong> comprende
+            monitoreo de servidores, optimización
+            del desempeño y recuperación.
+            
+            Incluye monitoreo en tiempo real,
+            SQL Tuning, Flashback y sustentación final.
+        `;
+
+    }
+
+
+    /* EVIDENCIAS */
+
+    if (
+        q.includes("evidencia") ||
+        q.includes("trabajo") ||
+        q.includes("pdf")
+    ) {
+
+        return `
+            Las evidencias se organizan en:
+            
+            <strong>EC:</strong> Evidencias de Conocimiento.
+            
+            <strong>ED:</strong> Evidencias de Desempeño.
+            
+            <strong>EP:</strong> Evidencias de Producto.
+            
+            Puedes ingresar a cada semana y presionar
+            <strong>VER EVIDENCIA</strong> para abrir
+            el PDF correspondiente.
+        `;
+
+    }
+
+
+    /* RAKION */
+
+    if (
+        q.includes("rakion") ||
+        q.includes("videojuego")
+    ) {
+
+        return `
+            <strong>Rakion</strong> es un videojuego
+            en línea orientado al combate.
+            
+            En este portafolio se utiliza como
+            inspiración visual y como caso de estudio
+            para representar escenarios de datos,
+            usuarios, eventos y alta concurrencia.
+        `;
+
+    }
+
+
+    /* EVALUACIÓN */
+
+    if (
+        q.includes("evaluacion") ||
+        q.includes("porcentaje") ||
+        q.includes("ponderacion")
+    ) {
+
+        return `
+            La ponderación presentada en el portafolio es:
+            
+            <strong>Unidad I:</strong> 10%
+            
+            <strong>Unidad II:</strong> 15%
+            
+            <strong>Unidad III:</strong> 20%
+            
+            <strong>Unidad IV:</strong> 25%
+            
+            <strong>Desempeño Final:</strong> 30%
+        `;
+
+    }
+
+
+    /* NOTA */
+
+    if (
+        q.includes("nota minima") ||
+        q.includes("aprobar") ||
+        q.includes("nota")
+    ) {
+
+        return `
+            La nota mínima indicada es
+            <strong>13</strong> para ingresantes
+            desde el semestre 2026-I.
+            
+            Para ingresantes hasta 2025-II se indica
+            una nota mínima de <strong>11</strong>.
+        `;
+
+    }
+
+
+    /* ASISTENCIA */
+
+    if (
+        q.includes("asistencia")
+    ) {
+
+        return `
+            El requisito de asistencia indicado
+            para la asignatura es de mínimo
+            <strong>70%</strong>.
+        `;
+
+    }
+
+
+    /* CONTACTO */
+
+    if (
+        q.includes("contacto") ||
+        q.includes("telefono") ||
+        q.includes("whatsapp")
+    ) {
+
+        return `
+            Puedes contactar a Rafael mediante:
+            
+            <strong>982 192 749</strong>
+            
+            También puedes utilizar el canal
+            académico institucional.
+        `;
+
+    }
+
+
+    /* AYUDA */
+
+    if (
+        q.includes("ayuda") ||
+        q.includes("puedes hacer")
+    ) {
+
+        return `
+            Puedo responder preguntas sobre:
+            
+            • Rafael
+            
+            • Ingeniería de Sistemas
+            
+            • UPLA
+            
+            • Base de Datos II
+            
+            • Unidades I-IV
+            
+            • Semanas 1-4
+            
+            • Evidencias
+            
+            • Evaluación
+            
+            • Rakion
+            
+            • Contacto
+        `;
+
+    }
+
+
+    /* RESPUESTA POR DEFECTO */
+
+    return `
+        No tengo esa información registrada todavía.
+        
+        Puedes preguntarme, por ejemplo:
+        
+        <strong>¿Quién es Rafael?</strong><br>
+        <strong>¿Qué contiene la Unidad I?</strong><br>
+        <strong>¿Qué se trabajó en la Semana 2?</strong><br>
+        <strong>¿Cómo puedo ver las evidencias?</strong>
+    `;
+
+}
+
+
+/* =====================================================
+   AGREGAR MENSAJE
+===================================================== */
+
+function addMessage(text, type) {
+
+    const message =
+        document.createElement("div");
+
+    message.className =
+        "message " +
+        (type === "user"
+            ? "user-message"
+            : "bot-message");
+
+
+    if (type === "bot") {
+
+        message.innerHTML = `
+
+            <div class="message-icon">
+                <i class="fa-solid fa-robot"></i>
+            </div>
+
+            <div>
+                <p>${text}</p>
+            </div>
+
+        `;
+
+    }
+
+    else {
+
+        message.innerHTML = `
+
+            <div class="user-message-content">
+                ${text}
+            </div>
+
+        `;
+
+    }
+
+
+    chatMessages.appendChild(message);
+
+
+    chatMessages.scrollTop =
+        chatMessages.scrollHeight;
+
+}
+
+
+/* =====================================================
+   ENVIAR PREGUNTA
+===================================================== */
+
+function sendQuestion(question) {
+
+    const cleanQuestion =
+        question.trim();
+
+
+    if (!cleanQuestion) {
+        return;
+    }
+
+
+    addMessage(
+        cleanQuestion,
+        "user"
+    );
+
+
+    chatInput.value = "";
+
+
+    setTimeout(function() {
+
+        const response =
+            getBotResponse(cleanQuestion);
+
+        addMessage(
+            response,
+            "bot"
+        );
+
+    }, 400);
+
+}
+
+
+/* FORMULARIO */
+
+chatForm.addEventListener(
+    "submit",
+    function(event) {
+
+        event.preventDefault();
+
+        sendQuestion(
+            chatInput.value
+        );
+
+    }
+);
+
+
+/* PREGUNTAS RÁPIDAS */
+
+document
+    .querySelectorAll(".quick-questions button")
+    .forEach(function(button) {
+
+        button.addEventListener(
+            "click",
+            function() {
+
+                sendQuestion(
+                    button.dataset.question
+                );
+
             }
-        });
+        );
+
+    });
 
 
-        /* =================================================
-           MODAL DE PDF POR SEMANA
-        ================================================= */
+/* =====================================================
+   ESCAPE PARA CERRAR MODAL
+===================================================== */
 
-        const weekCards = document.querySelectorAll(".week-card");
-        const pdfModal = document.getElementById("pdfModal");
-        const pdfModalClose = document.getElementById("pdfModalClose");
-        const pdfModalWeek = document.getElementById("pdfModalWeek");
-        const pdfModalTitle = document.getElementById("pdfModalTitle");
-        const pdfViewer = document.getElementById("pdfViewer");
-        const pdfViewerWrap = document.getElementById("pdfViewerWrap");
-        const pdfEmptyState = document.getElementById("pdfEmptyState");
-        const pdfFileInput = document.getElementById("pdfFileInput");
-        const pdfFixedPath = document.getElementById("pdfFixedPath");
-        const pdfFixedLoad = document.getElementById("pdfFixedLoad");
+document.addEventListener(
+    "keydown",
+    function(event) {
 
-        let currentBlobUrl = null;
+        if (event.key === "Escape") {
 
-        function showPdf(url) {
-            if (currentBlobUrl) {
-                URL.revokeObjectURL(currentBlobUrl);
-                currentBlobUrl = null;
-            }
-            pdfViewer.src = url;
-            pdfViewerWrap.style.display = "block";
-            pdfEmptyState.style.display = "none";
+            closePDF();
+
+            chatWindow.classList.remove(
+                "active"
+            );
+
         }
 
-        function clearPdf() {
-            if (currentBlobUrl) {
-                URL.revokeObjectURL(currentBlobUrl);
-                currentBlobUrl = null;
-            }
-            pdfViewer.src = "";
-            pdfViewerWrap.style.display = "none";
-            pdfEmptyState.style.display = "flex";
-        }
+    }
+);
 
-        function openPdfModal(card) {
-            const weekLabel = card.dataset.weekLabel || "SEMANA";
-            const weekTitleEl = card.querySelector("h3");
-            const weekTitle = weekTitleEl ? weekTitleEl.textContent.trim() : "";
-
-            pdfModalWeek.textContent = weekLabel;
-            pdfModalTitle.textContent = weekTitle;
-            pdfFixedPath.value = card.dataset.pdf || "";
-            pdfFileInput.value = "";
-
-            clearPdf();
-
-            const defaultPdf = card.dataset.pdf;
-            if (defaultPdf) {
-                showPdf(defaultPdf);
-            }
-
-            pdfModal.classList.add("active");
-            document.body.classList.add("modal-open");
-        }
-
-        function closePdfModal() {
-            pdfModal.classList.remove("active");
-            document.body.classList.remove("modal-open");
-            clearPdf();
-            pdfFileInput.value = "";
-        }
-
-        weekCards.forEach(function (card) {
-            card.addEventListener("click", function () {
-                openPdfModal(card);
-            });
-
-            card.addEventListener("keydown", function (event) {
-                if (event.key === "Enter" || event.key === " ") {
-                    event.preventDefault();
-                    openPdfModal(card);
-                }
-            });
-        });
-
-        pdfModalClose.addEventListener("click", closePdfModal);
-
-        pdfModal.addEventListener("click", function (event) {
-            if (event.target === pdfModal) closePdfModal();
-        });
-
-        document.addEventListener("keydown", function (event) {
-            if (event.key === "Escape" && pdfModal.classList.contains("active")) {
-                closePdfModal();
-            }
-        });
-
-        pdfFileInput.addEventListener("change", function () {
-            const file = pdfFileInput.files[0];
-            if (!file) return;
-
-            if (file.type !== "application/pdf") {
-                alert("Por favor selecciona un archivo PDF.");
-                return;
-            }
-
-            const url = URL.createObjectURL(file);
-            currentBlobUrl = url;
-            showPdf(url);
-        });
-
-        pdfFixedLoad.addEventListener("click", function () {
-            const path = pdfFixedPath.value.trim();
-            if (!path) return;
-            showPdf(path);
-        });
-
-    </script>
+</script>
 
 </body>
 </html>
