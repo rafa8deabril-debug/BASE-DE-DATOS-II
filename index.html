@@ -1,258 +1,193 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rafael Max Cajahuaringa Camasca · Portafolio · Desarrollo de Aplicaciones I</title>
 
-<title>Portafolio Académico</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;800;900&family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <link rel="stylesheet" href="styles.css">
-
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
 </head>
 
 <body>
 
-<!-- MENU -->
+<!-- ============================================================
+     HUD SCANLINE BACKGROUND
+     ============================================================ -->
+<div class="hud-grid"></div>
 
+<!-- ============================================================
+     NAV
+     ============================================================ -->
 <nav>
+  <div class="logo">
+    <span class="logo-hex"><img src="logo.png" class="logo-img" alt="Logo"></span>
+    <span class="logo-text">
+      Rafael Max Cajahuaringa Camasca
+      <small>Ingeniería de Sistemas · UPLA</small>
+    </span>
+  </div>
 
-<div class="logo">
-
-<img src="logo.png" class="logo-img">
-
-<span>
-Rafael Max Cajahuaringa Camasca
-</span>
-
-</div>
-
-<ul>
-
-<li><a href="#inicio">Inicio</a></li>
-<li><a href="#informacion">Información</a></li>
-<li><a href="#herramientas">Herramientas</a></li>
-<li><a href="#unidad1">Unidad I</a></li>
-<li><a href="#unidad2">Unidad II</a></li>
-<li><a href="#contacto">Contacto</a></li>
-
-</ul>
-
+  <ul>
+    <li><a href="#inicio">Inicio</a></li>
+    <li><a href="#informacion">Información</a></li>
+    <li><a href="#unidad1">Unidad I</a></li>
+    <li><a href="#unidad2">Unidad II</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
 </nav>
 
-<!-- PORTADA -->
-
+<!-- ============================================================
+     HERO
+     ============================================================ -->
 <section id="inicio" class="hero">
+  <span class="hero-eyebrow">Arena de Datos &middot; Consola de Combate</span>
 
-<img src="Rafael.jpeg" alt="Foto de Rafael" class="foto-perfil">
+  <div class="avatar-frame">
+    <img src="Rafael.jpeg" alt="Foto de Rafael Max Cajahuaringa Camasca" class="foto-perfil">
+  </div>
 
-<h1>
-Portafolio Académico
-</h1>
+  <h1>Portafolio Académico</h1>
 
-<p class="descripcion">
+  <p class="descripcion">
+    Bienvenido a mi portafolio académico del curso <strong>Desarrollo de Aplicaciones I</strong>.
+    Soy estudiante de la carrera profesional de Ingeniería de Sistemas de la
+    Universidad Peruana Los Andes. En este sitio presento mis evidencias, trabajos,
+    prácticas calificadas y actividades desarrolladas durante el periodo académico,
+    organizadas por unidades y semanas.
+  </p>
 
-Bienvenido a mi portafolio académico del curso
-Desarrollo de Aplicaciones I.
-
-Soy estudiante de la carrera profesional de
-Ingeniería de Sistemas de la Universidad Peruana
-Los Andes.
-
-En este sitio web presento mis evidencias,
-trabajos, prácticas calificadas y actividades
-desarrolladas durante el periodo académico,
-organizadas por unidades y semanas.
-
-Asimismo, se incluyen recursos relacionados con
-Git y GitHub como herramientas fundamentales
-para el control de versiones y trabajo colaborativo.
-
-</p>
-
+  <div class="hero-stats">
+    <div class="hstat"><i class="fa-solid fa-layer-group"></i> 2 Unidades</div>
+    <div class="hstat"><i class="fa-solid fa-calendar-week"></i> 8 Semanas</div>
+    <div class="hstat"><i class="fa-solid fa-code"></i> Desarrollo de Aplicaciones I</div>
+  </div>
 </section>
 
-<!-- INFORMACION -->
-
+<!-- ============================================================
+     INFORMACIÓN ACADÉMICA
+     ============================================================ -->
 <section id="informacion">
+  <div class="section-heading">
+    <span class="roman">01</span>
+    <h2>Información Académica</h2>
+  </div>
 
-<h2>Información Académica</h2>
+  <div class="cards">
+    <div class="card">
+      <div class="card-icon"><img src="UPLA.jpg" alt="UPLA" class="card-badge"></div>
+      <h3>Universidad</h3>
+      <p>Universidad Peruana Los Andes</p>
+    </div>
 
-<div class="cards">
+    <div class="card">
+      <div class="card-icon"><i class="fa-solid fa-diagram-project"></i></div>
+      <h3>Escuela Profesional</h3>
+      <p>Ingeniería de Sistemas</p>
+    </div>
 
-<div class="card">
-<h3>Universidad</h3>
-<p>Universidad Peruana Los Andes</p>
-</div>
+    <div class="card">
+      <div class="card-icon"><i class="fa-solid fa-laptop-code"></i></div>
+      <h3>Curso</h3>
+      <p>Desarrollo de Aplicaciones I</p>
+    </div>
 
-<div class="card">
-<h3>Escuela Profesional</h3>
-<p>Ingeniería de Sistemas</p>
-</div>
-
-<div class="card">
-<h3>Curso</h3>
-<p>Desarrollo de Aplicaciones I</p>
-</div>
-
-<div class="card">
-<h3>Estudiante</h3>
-<p>Rafael Max Cajahuaringa Camasca</p>
-</div>
-
-</div>
-
+    <div class="card">
+      <div class="card-icon"><i class="fa-solid fa-user-astronaut"></i></div>
+      <h3>Estudiante</h3>
+      <p>Rafael Max Cajahuaringa Camasca</p>
+    </div>
+  </div>
 </section>
 
-<!-- HERRAMIENTAS -->
+<!-- ============================================================
+     UNIDAD I
+     ============================================================ -->
+<section id="unidad1" class="unidad">
+  <div class="section-heading">
+    <span class="roman">02</span>
+    <h2>Unidad I</h2>
+  </div>
+  <p class="descripcion small">Semanas 1 al 4</p>
 
-<section id="herramientas">
+  <div class="cards">
+    <div class="card">
+      <span class="card-tag">Semana 01</span>
+      <h3>Semana 1</h3>
+      <p>Introducción y herramientas básicas.</p>
+      <a href="Semana 1/index.html" class="btn-doc">Abrir <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
 
-<h2>Herramientas Tecnológicas</h2>
+    <div class="card">
+      <span class="card-tag">Semana 02</span>
+      <h3>Semana 2</h3>
+      <p>Aplicación de métodos.</p>
+      <a href="Semana 2/index.html" class="btn-doc">Abrir <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
 
-<div class="cards">
+    <div class="card">
+      <span class="card-tag">Semana 03</span>
+      <h3>Semana 3</h3>
+      <p>Programación orientada a objetos.</p>
+      <a href="Semana 3/index.html" class="btn-doc">Abrir <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
 
-<div class="card">
-
-<h3>Git</h3>
-
-<p>
-Sistema de control de versiones para proyectos.
-</p>
-
-<a href="Git/index.html" class="btn-doc">
-Abrir
-</a>
-
-</div>
-
-<div class="card">
-
-<h3>GitHub</h3>
-
-<p>
-Plataforma para alojar repositorios y colaborar.
-</p>
-
-<a href="Github/index.html" class="btn-doc">
-Abrir
-</a>
-
-</div>
-
-</div>
-
+    <div class="card locked">
+      <span class="card-tag">Semana 04</span>
+      <h3>Semana 4</h3>
+      <p>Próximamente.</p>
+    </div>
+  </div>
 </section>
 
-<!-- UNIDAD 1 -->
+<!-- ============================================================
+     UNIDAD II
+     ============================================================ -->
+<section id="unidad2" class="unidad alt">
+  <div class="section-heading">
+    <span class="roman">03</span>
+    <h2>Unidad II</h2>
+  </div>
+  <p class="descripcion small">Semanas 5 al 8</p>
 
-<section id="unidad1">
-
-<h2>Unidad I</h2>
-
-<p class="descripcion">
-Semanas 1 al 4
-</p>
-
-<div class="cards">
-
-<div class="card">
-<h3>Semana 1</h3>
-<p>Introducción y herramientas básicas.</p>
-<a href="Semana 1/index.html" class="btn-doc">Abrir</a>
-</div>
-
-<div class="card">
-<h3>Semana 2</h3>
-<p>Aplicación de métodos.</p>
-<a href="Semana 2/index.html" class="btn-doc">Abrir</a>
-</div>
-
-<div class="card">
-<h3>Semana 3</h3>
-<p>Programación orientada a objetos.</p>
-<a href="Semana 3/index.html" class="btn-doc">Abrir</a>
-</div>
-
-<div class="card">
-<h3>Semana 4</h3>
-<p>Próximamente.</p>
-</div>
-
-</div>
-
+  <div class="cards">
+    <div class="card locked"><span class="card-tag">Semana 05</span><h3>Semana 5</h3><p>Próximamente.</p></div>
+    <div class="card locked"><span class="card-tag">Semana 06</span><h3>Semana 6</h3><p>Próximamente.</p></div>
+    <div class="card locked"><span class="card-tag">Semana 07</span><h3>Semana 7</h3><p>Próximamente.</p></div>
+    <div class="card locked"><span class="card-tag">Semana 08</span><h3>Semana 8</h3><p>Próximamente.</p></div>
+  </div>
 </section>
 
-<!-- UNIDAD 2 -->
-
-<section id="unidad2">
-
-<h2>Unidad II</h2>
-
-<p class="descripcion">
-Semanas 5 al 8
-</p>
-
-<div class="cards">
-
-<div class="card">
-<h3>Semana 5</h3>
-<p>Próximamente.</p>
-</div>
-
-<div class="card">
-<h3>Semana 6</h3>
-<p>Próximamente.</p>
-</div>
-
-<div class="card">
-<h3>Semana 7</h3>
-<p>Próximamente.</p>
-</div>
-
-<div class="card">
-<h3>Semana 8</h3>
-<p>Próximamente.</p>
-</div>
-
-</div>
-
-</section>
-
-<!-- CONTACTO -->
-
+<!-- ============================================================
+     CONTACTO
+     ============================================================ -->
 <section id="contacto">
+  <div class="section-heading center">
+    <span class="roman">04</span>
+    <h2>Contacto</h2>
+  </div>
 
-<h2>Contacto</h2>
-
-<div class="cards">
-
-<div class="card">
-
-<p>Huancayo - Perú</p>
-<p>Rafael Max Cajahuaringa Camasca</p>
-<p>Ingeniería de Sistemas</p>
-
-</div>
-
-</div>
-
+  <div class="cards">
+    <div class="card contact-card">
+      <div class="card-icon"><i class="fa-solid fa-location-dot"></i></div>
+      <p>Huancayo &middot; Perú</p>
+      <p><strong>Rafael Max Cajahuaringa Camasca</strong></p>
+      <p>Ingeniería de Sistemas</p>
+    </div>
+  </div>
 </section>
 
-<!-- FOOTER -->
-
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
 <footer>
-
-<p>
-© 2026 Rafael Max Cajahuaringa Camasca
-</p>
-
+  <p>&copy; 2026 Rafael Max Cajahuaringa Camasca</p>
 </footer>
 
 </body>
-
 </html>
