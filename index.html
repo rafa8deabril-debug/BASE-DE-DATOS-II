@@ -266,6 +266,47 @@
                         </div>
                     </article>
 
+                    <!-- EVIDENCIAS DE LA SEMANA 01 -->
+                    <section class="week-evidence-panel" aria-labelledby="evidenciasSemana1">
+                        <div class="evidence-heading">
+                            <div class="evidence-kicker"><span></span> SEMANA 01 · EVIDENCIAS</div>
+                            <h3 id="evidenciasSemana1">Trabajos realizados · Fundamentos de Base de Datos</h3>
+                            <p>Compendio visual de las cinco infografías desarrolladas a partir del material académico proporcionado por el docente.</p>
+                        </div>
+
+                        <div class="infographic-grid">
+                            <article class="infographic-card" data-infographic="Semana 1/Infografias/01-caracteristicas-base-datos.png" data-infographic-title="01 · Características de la Base de Datos">
+                                <div class="infographic-number">01</div>
+                                <div class="infographic-image-wrap"><img src="Semana 1/Infografias/01-caracteristicas-base-datos.png" alt="Infografía: Características de la Base de Datos" loading="lazy"></div>
+                                <div class="infographic-info"><span>INFOGRAFÍA 01</span><h4>Características de la Base de Datos</h4><p>Persistencia, compartición, interrelación y fundamentos para organizar la información.</p><button type="button" class="infographic-btn">Ver infografía <i class="fa-solid fa-expand"></i></button></div>
+                            </article>
+
+                            <article class="infographic-card" data-infographic="Semana 1/Infografias/02-caracteristicas-sgbd.png" data-infographic-title="02 · Características de los Sistemas de Administración de Bases de Datos">
+                                <div class="infographic-number">02</div>
+                                <div class="infographic-image-wrap"><img src="Semana 1/Infografias/02-caracteristicas-sgbd.png" alt="Infografía: Características de los Sistemas de Administración de Bases de Datos" loading="lazy"></div>
+                                <div class="infographic-info"><span>INFOGRAFÍA 02</span><h4>Características de los Sistemas de Administración de Bases de Datos</h4><p>Funciones, acceso, aplicaciones, transacciones y soporte de un DBMS o SGBD.</p><button type="button" class="infographic-btn">Ver infografía <i class="fa-solid fa-expand"></i></button></div>
+                            </article>
+
+                            <article class="infographic-card" data-infographic="Semana 1/Infografias/03-desarrollo-tecnologia-bd-mercado.png" data-infographic-title="03 · Desarrollo de la Tecnología de Bases de Datos y Estructura de Mercado">
+                                <div class="infographic-number">03</div>
+                                <div class="infographic-image-wrap"><img src="Semana 1/Infografias/03-desarrollo-tecnologia-bd-mercado.png" alt="Infografía: Desarrollo de la Tecnología de Bases de Datos y Estructura de Mercado" loading="lazy"></div>
+                                <div class="infographic-info"><span>INFOGRAFÍA 03</span><h4>Desarrollo de la Tecnología de Bases de Datos y Estructura de Mercado</h4><p>Evolución tecnológica, generaciones de DBMS y transformación del mercado.</p><button type="button" class="infographic-btn">Ver infografía <i class="fa-solid fa-expand"></i></button></div>
+                            </article>
+
+                            <article class="infographic-card" data-infographic="Semana 1/Infografias/04-arquitecturas-sistemas-sgbd.png" data-infographic-title="04 · Arquitecturas de los Sistemas de Administración de las Bases de Datos">
+                                <div class="infographic-number">04</div>
+                                <div class="infographic-image-wrap"><img src="Semana 1/Infografias/04-arquitecturas-sistemas-sgbd.png" alt="Infografía: Arquitecturas de los Sistemas de Administración de las Bases de Datos" loading="lazy"></div>
+                                <div class="infographic-info"><span>INFOGRAFÍA 04</span><h4>Arquitecturas de los Sistemas de Administración de las Bases de Datos</h4><p>Independencia de datos, tres esquemas, procesamiento distribuido y cliente-servidor.</p><button type="button" class="infographic-btn">Ver infografía <i class="fa-solid fa-expand"></i></button></div>
+                            </article>
+
+                            <article class="infographic-card" data-infographic="Semana 1/Infografias/05-impactos-organizacionales.png" data-infographic-title="05 · Impactos Organizacionales de la Tecnología de Base de Datos">
+                                <div class="infographic-number">05</div>
+                                <div class="infographic-image-wrap"><img src="Semana 1/Infografias/05-impactos-organizacionales.png" alt="Infografía: Impactos Organizacionales de la Tecnología de Base de Datos" loading="lazy"></div>
+                                <div class="infographic-info"><span>INFOGRAFÍA 05</span><h4>Impactos Organizacionales de la Tecnología de Base de Datos</h4><p>Usuarios, roles profesionales, administración de recursos y efectos en la organización.</p><button type="button" class="infographic-btn">Ver infografía <i class="fa-solid fa-expand"></i></button></div>
+                            </article>
+                        </div>
+                    </section>
+
                     <!-- SEMANA 2 -->
                     <article class="week-card" tabindex="0" role="button" data-week-label="SEMANA 02" data-pdf="Semana 2/APLICACIONES 4.pdf">
                         <div class="week-number">02</div>
@@ -639,6 +680,17 @@
     </div>
 
 
+    <!-- MODAL DE INFOGRAFÍAS -->
+    <div id="infographicModal" class="infographic-modal" aria-hidden="true">
+        <div class="infographic-modal-box">
+            <div class="infographic-modal-header">
+                <div><span>SEMANA 01 · EVIDENCIA</span><h3 id="infographicModalTitle">Infografía</h3></div>
+                <button id="infographicModalClose" class="pdf-modal-close" aria-label="Cerrar"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="infographic-modal-body"><img id="infographicViewer" src="" alt="Vista ampliada de la infografía"></div>
+        </div>
+    </div>
+
     <!-- MODAL DE PDF POR SEMANA -->
     <div id="pdfModal" class="pdf-modal">
         <div class="pdf-modal-box">
@@ -886,6 +938,41 @@
             }
         });
 
+
+        /* =================================================
+           GALERÍA DE INFOGRAFÍAS · SEMANA 01
+        ================================================= */
+        const infographicCards = document.querySelectorAll('.infographic-card');
+        const infographicModal = document.getElementById('infographicModal');
+        const infographicViewer = document.getElementById('infographicViewer');
+        const infographicModalTitle = document.getElementById('infographicModalTitle');
+        const infographicModalClose = document.getElementById('infographicModalClose');
+
+        function openInfographic(card) {
+            infographicViewer.src = card.dataset.infographic;
+            infographicViewer.alt = card.dataset.infographicTitle;
+            infographicModalTitle.textContent = card.dataset.infographicTitle;
+            infographicModal.classList.add('active');
+            infographicModal.setAttribute('aria-hidden', 'false');
+            document.body.classList.add('modal-open');
+        }
+        function closeInfographic() {
+            infographicModal.classList.remove('active');
+            infographicModal.setAttribute('aria-hidden', 'true');
+            infographicViewer.src = '';
+            document.body.classList.remove('modal-open');
+        }
+        infographicCards.forEach(function(card) {
+            card.addEventListener('click', function(e) {
+                if (e.target.closest('.infographic-btn') || e.currentTarget === card) openInfographic(card);
+            });
+            card.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openInfographic(card); }
+            });
+            card.setAttribute('tabindex','0');
+        });
+        infographicModalClose.addEventListener('click', closeInfographic);
+        infographicModal.addEventListener('click', function(e) { if (e.target === infographicModal) closeInfographic(); });
 
         /* =================================================
            MODAL DE PDF POR SEMANA
