@@ -1828,3 +1828,306 @@ input {
 .infographic-modal-body img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;box-shadow:0 15px 50px rgba(0,0,0,.5)}
 @media (max-width:1050px){.infographic-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.infographic-card:nth-child(4),.infographic-card:nth-child(5){grid-column:auto}}
 @media (max-width:650px){.week-evidence-panel{padding:20px 14px}.infographic-grid{grid-template-columns:1fr}.infographic-image-wrap{height:360px}.evidence-heading h3{font-size:19px}}
+/* =========================================
+   SEMANA 1 - PORTAFOLIO
+   ========================================= */
+
+.week-page {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 80px 40px;
+}
+
+
+/* ENCABEZADO */
+
+.week-header {
+    margin-bottom: 70px;
+    text-align: center;
+}
+
+.week-label {
+    color: #00eaff;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 3px;
+}
+
+.week-header h1 {
+    font-size: clamp(55px, 8vw, 110px);
+    margin: 20px 0;
+    font-weight: 900;
+    letter-spacing: -4px;
+}
+
+.week-header h1 span {
+    color: #00eaff;
+}
+
+.week-header p {
+    max-width: 800px;
+    margin: auto;
+    color: #91a4b8;
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+
+/* ACTIVIDADES */
+
+.activity-section {
+    margin-bottom: 90px;
+}
+
+.activity-title {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    margin-bottom: 35px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(0, 234, 255, 0.2);
+}
+
+.activity-number {
+    min-width: 65px;
+    height: 65px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 2px solid #00eaff;
+    border-radius: 15px;
+
+    color: #00eaff;
+    font-size: 22px;
+    font-weight: 900;
+}
+
+.activity-title h2 {
+    margin: 0 0 8px;
+    font-size: 28px;
+}
+
+.activity-title p {
+    margin: 0;
+    color: #8295a9;
+}
+
+
+/* GRID */
+
+.infografia-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(320px, 1fr));
+
+    gap: 25px;
+}
+
+
+/* TARJETAS */
+
+.infografia-card {
+    overflow: hidden;
+
+    background: rgba(8, 17, 29, 0.9);
+
+    border: 1px solid rgba(0, 234, 255, 0.16);
+
+    border-radius: 18px;
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.infografia-card:hover {
+    transform: translateY(-8px);
+
+    border-color: #00eaff;
+
+    box-shadow:
+        0 15px 50px rgba(0, 234, 255, 0.12);
+}
+
+
+/* IMAGEN */
+
+.infografia-image {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+
+    overflow: hidden;
+
+    background: #050b12;
+}
+
+.infografia-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+
+    transition: transform 0.5s ease;
+}
+
+.infografia-card:hover .infografia-image img {
+    transform: scale(1.04);
+}
+
+
+/* INFORMACIÓN */
+
+.infografia-info {
+    padding: 25px;
+}
+
+.infografia-info span {
+    color: #00eaff;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+}
+
+.infografia-info h3 {
+    font-size: 21px;
+
+    margin:
+        10px 0 10px;
+}
+
+.infografia-info p {
+    color: #8295a9;
+
+    line-height: 1.6;
+
+    font-size: 14px;
+
+    min-height: 45px;
+}
+
+
+/* BOTONES */
+
+.btn-doc {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    margin-top: 15px;
+
+    padding: 11px 20px;
+
+    border: 1px solid #00eaff;
+
+    border-radius: 8px;
+
+    color: #00eaff;
+
+    text-decoration: none;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    transition:
+        background 0.3s ease,
+        color 0.3s ease;
+}
+
+.btn-doc:hover {
+    background: #00eaff;
+
+    color: #031018;
+}
+
+
+/* DOCUMENTO PDF */
+
+.document-section {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 30px;
+
+    padding: 35px;
+
+    margin-top: 30px;
+
+    border: 1px solid rgba(0, 234, 255, 0.18);
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(0, 234, 255, 0.05),
+            rgba(255, 255, 255, 0.02)
+        );
+}
+
+.document-section span {
+    color: #00eaff;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+}
+
+.document-section h2 {
+    margin: 8px 0;
+}
+
+.document-section p {
+    margin: 0;
+
+    color: #8295a9;
+}
+
+
+/* VOLVER */
+
+.back-section {
+    text-align: center;
+
+    margin-top: 60px;
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 700px) {
+
+    .week-page {
+        padding: 50px 20px;
+    }
+
+    .activity-title {
+        align-items: flex-start;
+    }
+
+    .activity-title h2 {
+        font-size: 22px;
+    }
+
+    .document-section {
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+}
