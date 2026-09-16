@@ -1828,36 +1828,85 @@ input {
 .infographic-modal-body img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;box-shadow:0 15px 50px rgba(0,0,0,.5)}
 @media (max-width:1050px){.infographic-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.infographic-card:nth-child(4),.infographic-card:nth-child(5){grid-column:auto}}
 @media (max-width:650px){.week-evidence-panel{padding:20px 14px}.infographic-grid{grid-template-columns:1fr}.infographic-image-wrap{height:360px}.evidence-heading h3{font-size:19px}}
-/* =========================================
-   SEMANA 1 - PORTAFOLIO
-   ========================================= */
 
-.week-page {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 80px 40px;
+
+
+
+
+
+/* =========================================================
+   PORTAFOLIO ACADÉMICO - BASE DE DATOS II
+   RAFAEL MAX CAJAHUARINGA CAMASCA
+   ESTILO GENERAL
+   ========================================================= */
+
+/* ---------- CONFIGURACIÓN GENERAL ---------- */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background:
+        radial-gradient(circle at 20% 10%, rgba(0, 234, 255, 0.06), transparent 30%),
+        radial-gradient(circle at 80% 80%, rgba(0, 120, 255, 0.05), transparent 30%),
+        #03070d;
+    color: #ffffff;
+    min-height: 100vh;
 }
 
 
-/* ENCABEZADO */
+/* =========================================================
+   SEMANA 1
+   ========================================================= */
+
+section {
+    width: 100%;
+}
+
+
+/* ---------- CONTENEDOR PRINCIPAL ---------- */
+
+.week-page {
+    width: 100%;
+    max-width: 1450px;
+    margin: 0 auto;
+    padding: 70px 40px 100px;
+}
+
+
+/* =========================================================
+   ENCABEZADO SEMANA 1
+   ========================================================= */
 
 .week-header {
-    margin-bottom: 70px;
     text-align: center;
+    margin-bottom: 75px;
 }
 
 .week-label {
+    display: inline-block;
     color: #00eaff;
     font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 3px;
+    font-weight: 800;
+    letter-spacing: 4px;
+    margin-bottom: 18px;
 }
 
 .week-header h1 {
-    font-size: clamp(55px, 8vw, 110px);
-    margin: 20px 0;
+    font-size: clamp(50px, 7vw, 100px);
+    line-height: 0.95;
+    margin: 10px 0 25px;
     font-weight: 900;
     letter-spacing: -4px;
+    text-transform: uppercase;
 }
 
 .week-header h1 span {
@@ -1865,15 +1914,17 @@ input {
 }
 
 .week-header p {
-    max-width: 800px;
-    margin: auto;
+    max-width: 850px;
+    margin: 0 auto;
     color: #91a4b8;
     font-size: 18px;
     line-height: 1.7;
 }
 
 
-/* ACTIVIDADES */
+/* =========================================================
+   TÍTULOS DE ACTIVIDADES
+   ========================================================= */
 
 .activity-section {
     margin-bottom: 90px;
@@ -1882,14 +1933,23 @@ input {
 .activity-title {
     display: flex;
     align-items: center;
-    gap: 25px;
+    gap: 22px;
     margin-bottom: 35px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid rgba(0, 234, 255, 0.2);
+    padding: 22px 25px;
+    border: 1px solid rgba(0, 234, 255, 0.18);
+    border-radius: 16px;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(0, 234, 255, 0.06),
+            rgba(8, 17, 29, 0.8)
+        );
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.25);
 }
 
 .activity-number {
     min-width: 65px;
+    width: 65px;
     height: 65px;
 
     display: flex;
@@ -1902,47 +1962,85 @@ input {
     color: #00eaff;
     font-size: 22px;
     font-weight: 900;
+
+    background: rgba(0, 234, 255, 0.05);
+
+    box-shadow:
+        0 0 20px rgba(0, 234, 255, 0.15);
 }
 
 .activity-title h2 {
     margin: 0 0 8px;
     font-size: 28px;
+    font-weight: 800;
+    text-transform: uppercase;
 }
 
 .activity-title p {
     margin: 0;
     color: #8295a9;
+    font-size: 14px;
 }
 
 
-/* GRID */
+/* =========================================================
+   GRID DE INFOGRAFÍAS
+   ========================================================= */
 
 .infografia-grid {
     display: grid;
-
-    grid-template-columns:
-        repeat(auto-fit, minmax(320px, 1fr));
-
-    gap: 25px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 30px;
 }
 
 
-/* TARJETAS */
+/* =========================================================
+   TARJETA DE INFOGRAFÍA
+   ========================================================= */
 
 .infografia-card {
     overflow: hidden;
 
-    background: rgba(8, 17, 29, 0.9);
+    background:
+        linear-gradient(
+            145deg,
+            rgba(10, 23, 38, 0.98),
+            rgba(4, 10, 18, 0.98)
+        );
 
     border: 1px solid rgba(0, 234, 255, 0.16);
-
-    border-radius: 18px;
+    border-radius: 20px;
 
     transition:
         transform 0.3s ease,
         border-color 0.3s ease,
         box-shadow 0.3s ease;
+
+    box-shadow:
+        0 10px 40px rgba(0, 0, 0, 0.3);
+
+    position: relative;
 }
+
+
+/* Línea decorativa superior */
+
+.infografia-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 3px;
+
+    background: #00eaff;
+
+    opacity: 0.8;
+}
+
+
+/* Hover */
 
 .infografia-card:hover {
     transform: translateY(-8px);
@@ -1950,72 +2048,101 @@ input {
     border-color: #00eaff;
 
     box-shadow:
-        0 15px 50px rgba(0, 234, 255, 0.12);
+        0 15px 55px rgba(0, 234, 255, 0.15),
+        0 0 25px rgba(0, 234, 255, 0.05);
 }
 
 
-/* IMAGEN */
+/* =========================================================
+   IMAGEN DE INFOGRAFÍA
+   ========================================================= */
 
 .infografia-image {
     width: 100%;
-    aspect-ratio: 16 / 10;
 
-    overflow: hidden;
+    /* Mantiene proporción sin deformar */
+    background: #02060b;
 
-    background: #050b12;
+    padding: 15px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-bottom: 1px solid rgba(0, 234, 255, 0.12);
 }
 
 .infografia-image img {
     width: 100%;
-    height: 100%;
+    height: auto;
 
-    object-fit: cover;
+    max-height: 850px;
+
+    object-fit: contain;
 
     display: block;
 
-    transition: transform 0.5s ease;
+    border-radius: 10px;
+
+    transition:
+        transform 0.5s ease,
+        filter 0.5s ease;
+
+    cursor: zoom-in;
 }
+
+
+/* Zoom suave */
 
 .infografia-card:hover .infografia-image img {
-    transform: scale(1.04);
+    transform: scale(1.015);
 }
 
 
-/* INFORMACIÓN */
+/* =========================================================
+   INFORMACIÓN DE LA INFOGRAFÍA
+   ========================================================= */
 
 .infografia-info {
     padding: 25px;
 }
 
 .infografia-info span {
+    display: inline-block;
+
     color: #00eaff;
 
     font-size: 11px;
-
     font-weight: 800;
 
     letter-spacing: 2px;
+
+    margin-bottom: 8px;
 }
 
 .infografia-info h3 {
-    font-size: 21px;
+    font-size: 22px;
+    line-height: 1.3;
 
-    margin:
-        10px 0 10px;
+    margin: 0 0 10px;
+
+    font-weight: 800;
+    text-transform: uppercase;
 }
 
 .infografia-info p {
     color: #8295a9;
 
     line-height: 1.6;
-
     font-size: 14px;
 
-    min-height: 45px;
+    margin-bottom: 5px;
 }
 
 
-/* BOTONES */
+/* =========================================================
+   BOTÓN VER INFOGRAFÍA
+   ========================================================= */
 
 .btn-doc {
     display: inline-flex;
@@ -2025,49 +2152,55 @@ input {
 
     margin-top: 15px;
 
-    padding: 11px 20px;
+    padding: 12px 22px;
 
     border: 1px solid #00eaff;
-
     border-radius: 8px;
 
     color: #00eaff;
 
+    background: transparent;
+
     text-decoration: none;
 
     font-size: 13px;
-
     font-weight: 700;
 
     transition:
         background 0.3s ease,
-        color 0.3s ease;
+        color 0.3s ease,
+        box-shadow 0.3s ease,
+        transform 0.3s ease;
 }
 
 .btn-doc:hover {
     background: #00eaff;
-
     color: #031018;
+
+    box-shadow:
+        0 0 20px rgba(0, 234, 255, 0.3);
+
+    transform: translateY(-2px);
 }
 
 
-/* DOCUMENTO PDF */
+/* =========================================================
+   DOCUMENTO PDF
+   ========================================================= */
 
 .document-section {
     display: flex;
 
     align-items: center;
-
     justify-content: space-between;
 
     gap: 30px;
 
     padding: 35px;
 
-    margin-top: 30px;
+    margin-top: 40px;
 
     border: 1px solid rgba(0, 234, 255, 0.18);
-
     border-radius: 18px;
 
     background:
@@ -2076,13 +2209,15 @@ input {
             rgba(0, 234, 255, 0.05),
             rgba(255, 255, 255, 0.02)
         );
+
+    box-shadow:
+        0 10px 40px rgba(0, 0, 0, 0.2);
 }
 
 .document-section span {
     color: #00eaff;
 
     font-size: 11px;
-
     font-weight: 800;
 
     letter-spacing: 2px;
@@ -2090,44 +2225,156 @@ input {
 
 .document-section h2 {
     margin: 8px 0;
+
+    font-size: 25px;
 }
 
 .document-section p {
     margin: 0;
 
     color: #8295a9;
+
+    line-height: 1.6;
 }
 
 
-/* VOLVER */
+/* =========================================================
+   BOTÓN VOLVER
+   ========================================================= */
 
 .back-section {
     text-align: center;
 
-    margin-top: 60px;
+    margin-top: 70px;
+}
+
+.back-section .btn-doc {
+    min-width: 180px;
 }
 
 
-/* RESPONSIVE */
+/* =========================================================
+   SEPARADOR DECORATIVO
+   ========================================================= */
 
-@media (max-width: 700px) {
+.activity-section + .activity-section {
+    padding-top: 20px;
+}
+
+
+/* =========================================================
+   ANIMACIÓN
+   ========================================================= */
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.infografia-card {
+    animation: aparecer 0.6s ease both;
+}
+
+
+/* =========================================================
+   RESPONSIVE - TABLET
+   ========================================================= */
+
+@media (max-width: 950px) {
 
     .week-page {
-        padding: 50px 20px;
+        padding: 55px 25px 80px;
+    }
+
+    .infografia-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .week-header h1 {
+        font-size: clamp(45px, 10vw, 75px);
+    }
+
+    .activity-title {
+        padding: 20px;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE - CELULAR
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    .week-page {
+        padding: 40px 15px 60px;
+    }
+
+    .week-header {
+        margin-bottom: 50px;
+    }
+
+    .week-header h1 {
+        font-size: 45px;
+        letter-spacing: -2px;
+    }
+
+    .week-header p {
+        font-size: 15px;
     }
 
     .activity-title {
         align-items: flex-start;
+
+        gap: 15px;
+
+        padding: 18px;
+    }
+
+    .activity-number {
+        min-width: 52px;
+        width: 52px;
+        height: 52px;
+
+        font-size: 18px;
     }
 
     .activity-title h2 {
-        font-size: 22px;
+        font-size: 20px;
+    }
+
+    .activity-title p {
+        font-size: 13px;
+    }
+
+    .infografia-grid {
+        gap: 20px;
+    }
+
+    .infografia-image {
+        padding: 8px;
+    }
+
+    .infografia-info {
+        padding: 20px;
+    }
+
+    .infografia-info h3 {
+        font-size: 18px;
     }
 
     .document-section {
         flex-direction: column;
 
         align-items: flex-start;
-    }
 
+        padding: 25px;
+    }
 }
