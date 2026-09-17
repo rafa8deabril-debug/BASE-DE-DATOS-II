@@ -3197,6 +3197,16 @@
                     "click",
                     function () {
 
+                        // SEMANA 02 abre su página independiente
+                        // ubicada en: Semana 2/index.html
+                        if (
+                            card.dataset.weekLabel === "SEMANA 02"
+                        ) {
+                            window.location.href = "Semana 2/index.html";
+                            return;
+                        }
+
+                        // Las demás semanas mantienen su funcionamiento actual
                         openPdfModal(card);
 
                     }
@@ -3213,6 +3223,14 @@
                         ) {
 
                             event.preventDefault();
+
+                            // También funciona con teclado para SEMANA 02
+                            if (
+                                card.dataset.weekLabel === "SEMANA 02"
+                            ) {
+                                window.location.href = "Semana 2/index.html";
+                                return;
+                            }
 
                             openPdfModal(card);
 
