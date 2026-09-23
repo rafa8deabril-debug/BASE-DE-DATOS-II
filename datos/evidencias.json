@@ -6,5 +6,173 @@
     "titulo": "Arquitectura centralizada",
     "tipo": "Infografía",
     "archivo": "Semana 1/infografias/actividad-01/arquitectura-centralizada.png"
+  },
+  {
+    "id": 2,
+    "semana": "Semana 1",
+    "actividad": "Actividad 1",
+    "titulo": "Arquitectura cliente-servidor",
+    "tipo": "Infografía",
+    "archivo": "Semana 1/infografias/actividad-01/arquitectura-cliente-servidor.png"
+  },
+  {
+    "id": 3,
+    "semana": "Semana 1",
+    "actividad": "Actividad 1",
+    "titulo": "Arquitectura distribuida",
+    "tipo": "Infografía",
+    "archivo": "Semana 1/infografias/actividad-01/arquitectura-distribuida.png"
+  },
+  {
+    "id": 4,
+    "semana": "Semana 1",
+    "actividad": "Actividad 1",
+    "titulo": "Arquitectura en la nube y multitenencia",
+    "tipo": "Infografía",
+    "archivo": "Semana 1/infografias/actividad-01/arquitectura-nube-multitenencia.png"
+  },
+  {
+    "id": 5,
+    "semana": "Semana 1",
+    "actividad": "Actividad 2",
+    "titulo": "Características de la Base de Datos",
+    "tipo": "Infografía",
+    "archivo": "Semana 1/infografias/actividad-02/caracteristicas-base-datos.png"
+  },
+  {
+    "id": 6,
+    "semana": "Semana 1",
+    "actividad": "Actividad 2",
+    "titulo": "Características de los Sistemas de Administración de Bases de Datos",
+    "tipo": "Infografía",
+    "archivo": "Semana 1/infografias/actividad-02/caracteristicas-sgbd.png"
+  },
+  {
+    "id": 7,
+    "semana": "Semana 1",
+    "actividad": "Actividad 2",
+    "titulo": "Desarrollo de la Tecnología de Bases de Datos y Estructura de Mercado",
+    "tipo": "Infografía",
+    "archivo": "Semana 1/infografias/actividad-02/tecnologia-base-datos-mercado.png"
+  },
+  {
+    "id": 8,
+    "semana": "Semana 1",
+    "actividad": "Actividad 2",
+    "titulo": "Arquitecturas de los Sistemas de Administración de las Bases de Datos",
+    "tipo": "Infografía",
+    "archivo": "Semana 1/infografias/actividad-02/arquitecturas-sistemas-administracion.png"
+  },
+  {
+    "id": 9,
+    "semana": "Semana 1",
+    "actividad": "Actividad 2",
+    "titulo": "Impactos Organizacionales de la Tecnología de Base de Datos",
+    "tipo": "Infografía",
+    "archivo": "Semana 1/infografias/actividad-02/impactos-organizacionales.png"
+  },
+  {
+    "id": 10,
+    "semana": "Semana 2",
+    "actividad": "Actividad 2",
+    "titulo": "Capítulo 1 de Reglamento de Grados y Títulos",
+    "tipo": "Infografía",
+    "archivo": "Semana 2/infografias/actividad-02/infografia-01.png"
+  },
+  {
+    "id": 11,
+    "semana": "Semana 2",
+    "actividad": "Actividad 2",
+    "titulo": "Capítulo 2 de Reglamento de Grados y Títulos",
+    "tipo": "Infografía",
+    "archivo": "Semana 2/infografias/actividad-02/infografia-02.png"
+  },
+  {
+    "id": 12,
+    "semana": "Semana 2",
+    "actividad": "Actividad 2",
+    "titulo": "Capítulo 3 de Reglamento de Grados y Títulos",
+    "tipo": "Infografía",
+    "archivo": "Semana 2/infografias/actividad-02/infografia-03.png"
+  },
+  {
+    "id": 13,
+    "semana": "Semana 2",
+    "actividad": "Actividad 2",
+    "titulo": "Capítulo 4 de Reglamento de Grados y Títulos",
+    "tipo": "Infografía",
+    "archivo": "Semana 2/infografias/actividad-02/infografia-04.png"
+  },
+  {
+    "id": 14,
+    "semana": "Semana 2",
+    "actividad": "Actividad 2",
+    "titulo": "Capítulo 5 de Reglamento de Grados y Títulos",
+    "tipo": "Infografía",
+    "archivo": "Semana 2/infografias/actividad-02/infografia-05.png"
+  },
+  {
+    "id": 15,
+    "semana": "Semana 2",
+    "actividad": "Actividad 2",
+    "titulo": "Capítulo 6 de Reglamento de Grados y Títulos",
+    "tipo": "Infografía",
+    "archivo": "Semana 2/infografias/actividad-02/infografia-06.png"
+  },
+  {
+    "id": 16,
+    "semana": "Semana 2",
+    "actividad": "Actividad 2",
+    "titulo": "Capítulo 7 de Reglamento de Grados y Títulos",
+    "tipo": "Infografía",
+    "archivo": "Semana 2/infografias/actividad-02/infografia-07.png"
+  },
+  {
+    "id": 17,
+    "semana": "Semana 2",
+    "actividad": "Actividad 2",
+    "titulo": "Capítulo 8 de Reglamento de Grados y Títulos",
+    "tipo": "Infografía",
+    "archivo": "Semana 2/infografias/actividad-02/infografia-08.png"
+  },
+  {
+    "id": 18,
+    "semana": "Semana 2",
+    "actividad": "Actividad 3",
+    "titulo": "MongoDB",
+    "tipo": "Infografía",
+    "archivo": "Semana 2/infografias/actividad-03/mongodb.png"
+  },
+  {
+    "id": 19,
+    "semana": "Semana 2",
+    "actividad": "Actividad 3",
+    "titulo": "MS SQL Server",
+    "tipo": "Infografía",
+    "archivo": "Semana 2/infografias/actividad-03/ms-sql-server.png"
+  },
+  {
+    "id": 20,
+    "semana": "Semana 2",
+    "actividad": "Actividad 3",
+    "titulo": "MySQL",
+    "tipo": "Infografía",
+    "archivo": "Semana 2/infografias/actividad-03/mysql.png"
+  },
+  {
+    "id": 21,
+    "semana": "Semana 2",
+    "actividad": "Actividad 3",
+    "titulo": "Oracle",
+    "tipo": "Infografía",
+    "archivo": "Semana 2/infografias/actividad-03/oracle.png"
+  },
+  {
+    "id": 22,
+    "semana": "Semana 2",
+    "actividad": "Actividad 3",
+    "titulo": "PostgreSQL",
+    "tipo": "Infografía",
+    "archivo": "Semana 2/infografias/actividad-03/postgresql.png"
   }
 ]
