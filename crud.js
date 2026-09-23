@@ -96,4 +96,3 @@ async function cargarEvidencias() {
         `;
     }
 });
-.
