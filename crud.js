@@ -95,4 +95,4 @@ async function cargarEvidencias() {
             </div>
         `;
     }
-});
+};
