@@ -2378,3 +2378,191 @@ section {
         padding: 25px;
     }
 }
+
+
+
+/* =========================================================
+   CRUD · GESTIÓN DE EVIDENCIAS
+   ========================================================= */
+
+.crud-section {
+    width: min(1400px, 92%);
+    margin: 90px auto;
+    padding: 50px 40px;
+    border: 1px solid rgba(0, 234, 255, 0.22);
+    border-radius: 24px;
+    background: rgba(5, 12, 24, 0.78);
+    box-shadow:
+        0 0 30px rgba(0, 234, 255, 0.08),
+        inset 0 0 40px rgba(0, 234, 255, 0.025);
+}
+
+.crud-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.crud-kicker {
+    display: inline-block;
+    margin-bottom: 12px;
+    font-family: "Orbitron", sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+    color: #00eaff;
+}
+
+.crud-header h2 {
+    margin: 0 0 15px;
+    font-family: "Orbitron", sans-serif;
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    letter-spacing: 0.05em;
+}
+
+.crud-header p {
+    max-width: 760px;
+    margin: 0 auto 20px;
+    color: rgba(255, 255, 255, 0.72);
+    line-height: 1.7;
+}
+
+.crud-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 9px 16px;
+    border: 1px solid rgba(0, 234, 255, 0.2);
+    border-radius: 999px;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.85rem;
+}
+
+.crud-status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #00eaff;
+    box-shadow: 0 0 12px #00eaff;
+}
+
+.crud-evidencias-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.crud-evidencia-card {
+    position: relative;
+    overflow: hidden;
+    padding: 26px;
+    border: 1px solid rgba(0, 234, 255, 0.18);
+    border-radius: 18px;
+    background: rgba(8, 18, 32, 0.88);
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.crud-evidencia-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(0, 234, 255, 0.55);
+    box-shadow: 0 12px 35px rgba(0, 234, 255, 0.12);
+}
+
+.crud-evidencia-id {
+    margin-bottom: 18px;
+    font-family: "Orbitron", sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    color: #00eaff;
+}
+
+.crud-evidencia-semana {
+    display: inline-block;
+    margin-bottom: 10px;
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.55);
+}
+
+.crud-evidencia-content h3 {
+    margin: 0 0 12px;
+    font-size: 1.05rem;
+    line-height: 1.45;
+}
+
+.crud-evidencia-actividad {
+    margin: 0 0 8px;
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 0.9rem;
+}
+
+.crud-evidencia-tipo {
+    margin: 0 0 22px;
+    color: #00eaff;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.crud-btn-ver {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 40px;
+    padding: 9px 16px;
+    border: 1px solid rgba(0, 234, 255, 0.45);
+    border-radius: 8px;
+    color: #fff;
+    text-decoration: none;
+    background: rgba(0, 234, 255, 0.06);
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.crud-btn-ver:hover {
+    background: rgba(0, 234, 255, 0.14);
+    border-color: #00eaff;
+    transform: translateY(-2px);
+}
+
+.crud-loading,
+.crud-error {
+    grid-column: 1 / -1;
+    padding: 35px;
+    text-align: center;
+    border: 1px dashed rgba(0, 234, 255, 0.25);
+    border-radius: 16px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.crud-error {
+    color: #ff8f8f;
+}
+
+.crud-error code {
+    color: #00eaff;
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 1000px) {
+    .crud-evidencias-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 650px) {
+    .crud-section {
+        width: 94%;
+        padding: 35px 20px;
+    }
+
+    .crud-evidencias-grid {
+        grid-template-columns: 1fr;
+    }
+}

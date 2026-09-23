@@ -11,11 +11,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Orbitron:wght@500;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap"
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Orbitron:wght@500;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap"
         rel="stylesheet">
 
     <!-- FONT AWESOME -->
-    <link rel="stylesheet"
+    <link
+        rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
     <!-- CSS -->
@@ -54,7 +56,6 @@
             </div>
 
             <div class="login-divider"></div>
-
 
             <form id="loginForm">
 
@@ -574,7 +575,9 @@
                 <div class="weeks-grid">
 
 
-                    <!-- SEMANA 1 -->
+                    <!-- =================================================
+                         SEMANA 1
+                    ================================================== -->
 
                     <article
                         class="week-card"
@@ -654,9 +657,7 @@
                         <div class="infographic-grid">
 
 
-                            <!-- =========================
-                                 ACTIVIDAD 01
-                            ========================== -->
+                            <!-- ACTIVIDAD 01 -->
 
                             <article
                                 class="infographic-card"
@@ -853,9 +854,7 @@
                             </article>
 
 
-                            <!-- =========================
-                                 ACTIVIDAD 02
-                            ========================== -->
+                            <!-- ACTIVIDAD 02 -->
 
                             <article
                                 class="infographic-card"
@@ -1106,7 +1105,9 @@
                     </section>
 
 
-                    <!-- SEMANA 2 -->
+                    <!-- =================================================
+                         SEMANA 2
+                    ================================================== -->
 
                     <article
                         class="week-card"
@@ -1151,7 +1152,9 @@
                     </article>
 
 
-                    <!-- SEMANA 3 -->
+                    <!-- =================================================
+                         SEMANA 3
+                    ================================================== -->
 
                     <article
                         class="week-card"
@@ -1195,7 +1198,9 @@
                     </article>
 
 
-                    <!-- SEMANA 4 -->
+                    <!-- =================================================
+                         SEMANA 4
+                    ================================================== -->
 
                     <article
                         class="week-card"
@@ -1239,6 +1244,93 @@
                     </article>
 
                 </div>
+
+
+                <!-- =================================================
+                     GESTIÓN DINÁMICA DE EVIDENCIAS
+                     CARGADAS DESDE datos/evidencias.json
+                ================================================== -->
+
+                <section
+                    id="crud-evidencias-section"
+                    class="crud-section"
+                >
+
+                    <div class="section-heading">
+
+                        <div class="section-number">
+                            02A
+                        </div>
+
+                        <div>
+
+                            <span>
+                                REGISTRO ACADÉMICO
+                            </span>
+
+                            <h2>
+                                GESTIÓN DE EVIDENCIAS
+                            </h2>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="evidence-heading">
+
+                        <div class="evidence-kicker">
+
+                            <span></span>
+
+                            BASE DE DATOS DE EVIDENCIAS
+
+                        </div>
+
+                        <h3>
+                            Registro documental del portafolio
+                        </h3>
+
+                        <p>
+                            Las evidencias se cargan dinámicamente desde
+                            <strong>datos/evidencias.json</strong>.
+                            Actualmente se registran 22 evidencias:
+                            9 de Semana 1, 8 de Semana 2 · Actividad 2
+                            y 5 de Semana 2 · Actividad 3.
+                        </p>
+
+                        <div
+                            id="crudContador"
+                            style="
+                            margin-top:15px;
+                            color:var(--cyan);
+                            font-family:'Orbitron',sans-serif;
+                            font-size:13px;
+                            letter-spacing:1px;
+                            "
+                        >
+                            Cargando evidencias...
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        id="crudEvidencias"
+                        class="crud-evidencias-grid"
+                    >
+
+                        <div class="crud-loading">
+
+                            <i class="fa-solid fa-spinner fa-spin"></i>
+
+                            Cargando registros...
+
+                        </div>
+
+                    </div>
+
+                </section>
 
             </section>
 
@@ -2079,7 +2171,7 @@
 
                 <div>
 
-                    <span>
+                    <span id="infographicModalWeek">
                         SEMANA 01 · EVIDENCIA
                     </span>
 
@@ -2238,7 +2330,18 @@
 
 
     <!-- =====================================================
-         JAVASCRIPT
+         CRUD / EVIDENCIAS JSON
+         
+         IMPORTANTE:
+         crud.js se carga AQUÍ y no en el HEAD.
+         Así #crudEvidencias y #crudContador ya existen.
+    ====================================================== -->
+
+    <script src="crud.js"></script>
+
+
+    <!-- =====================================================
+         JAVASCRIPT PRINCIPAL
     ====================================================== -->
 
     <script>
@@ -2586,8 +2689,34 @@
                         de Motores de Datos
                     </strong>.
                     <br><br>
-                    Se trabaja en la instalación
-                    y configuración de un DBMS empresarial.
+
+                    La Semana 2 contiene
+                    <strong>3 actividades</strong>.
+
+                    <br><br>
+
+                    <strong>Actividad 01:</strong>
+                    <br>
+                    Evidencia en formato PDF:
+                    <strong>APLICACIONES 4.pdf</strong>.
+
+                    <br><br>
+
+                    <strong>Actividad 02:</strong>
+                    <br>
+                    8 evidencias correspondientes a los
+                    capítulos del
+                    <strong>
+                        Reglamento de Grados y Títulos
+                    </strong>.
+
+                    <br><br>
+
+                    <strong>Actividad 03:</strong>
+                    <br>
+                    5 evidencias relacionadas con:
+                    MongoDB, MS-SQL Server, MySQL,
+                    Oracle y PostgreSQL.
                 `;
 
             }
@@ -2681,30 +2810,113 @@
             ) {
 
                 return `
-                    Las evidencias del portafolio incluyen:
+                    Las evidencias registradas actualmente
+                    en el sistema son:
+
                     <br><br>
+
                     <strong>
-                        Actividad 01
+                        SEMANA 1
                     </strong>
                     <br>
-                    4 infografías.
+                    9 evidencias.
+
                     <br><br>
+
                     <strong>
-                        Actividad 02
+                        SEMANA 2 · ACTIVIDAD 02
                     </strong>
                     <br>
-                    5 infografías.
+                    8 evidencias correspondientes a los
+                    capítulos del Reglamento de Grados y Títulos.
+
                     <br><br>
-                    En total:
+
                     <strong>
-                        9 infografías en Semana 1.
+                        SEMANA 2 · ACTIVIDAD 03
+                    </strong>
+                    <br>
+                    5 evidencias correspondientes a
+                    MongoDB, MS-SQL Server, MySQL,
+                    Oracle y PostgreSQL.
+
+                    <br><br>
+
+                    Total registrado:
+                    <strong>
+                        22 evidencias.
                     </strong>
                 `;
 
             }
 
 
-            if (q.includes("evaluacion") || q.includes("nota")) {
+            if (
+                q.includes("reglamento") ||
+                q.includes("capitulo")
+            ) {
+
+                return `
+                    En la Semana 2, Actividad 02,
+                    se registraron
+                    <strong>8 evidencias</strong>:
+
+                    <br><br>
+
+                    Capítulo 1 de Reglamento de Grados y Títulos.
+                    <br>
+                    Capítulo 2 de Reglamento de Grados y Títulos.
+                    <br>
+                    Capítulo 3 de Reglamento de Grados y Títulos.
+                    <br>
+                    Capítulo 4 de Reglamento de Grados y Títulos.
+                    <br>
+                    Capítulo 5 de Reglamento de Grados y Títulos.
+                    <br>
+                    Capítulo 6 de Reglamento de Grados y Títulos.
+                    <br>
+                    Capítulo 7 de Reglamento de Grados y Títulos.
+                    <br>
+                    Capítulo 8 de Reglamento de Grados y Títulos.
+                `;
+
+            }
+
+
+            if (
+                q.includes("mongodb") ||
+                q.includes("ms sql") ||
+                q.includes("sql server") ||
+                q.includes("mysql") ||
+                q.includes("oracle") ||
+                q.includes("postgresql")
+            ) {
+
+                return `
+                    La Actividad 03 de la Semana 2
+                    contiene cinco evidencias relacionadas
+                    con sistemas gestores de bases de datos:
+
+                    <br><br>
+
+                    • MongoDB
+                    <br>
+                    • MS-SQL Server
+                    <br>
+                    • MySQL
+                    <br>
+                    • Oracle
+                    <br>
+                    • PostgreSQL
+                `;
+
+            }
+
+
+            if (
+                q.includes("evaluacion") ||
+                q.includes("nota")
+            ) {
 
                 return `
                     <strong>
@@ -2765,6 +2977,18 @@
                 • Unidad I
                 <br>
                 • Semana 1
+                <br>
+                • Semana 2
+                <br>
+                • Reglamento
+                <br>
+                • MongoDB
+                <br>
+                • MySQL
+                <br>
+                • Oracle
+                <br>
+                • PostgreSQL
                 <br>
                 • Evidencias
                 <br>
@@ -2904,6 +3128,11 @@
                 "infographicModalTitle"
             );
 
+        const infographicModalWeek =
+            document.getElementById(
+                "infographicModalWeek"
+            );
+
         const infographicModalClose =
             document.getElementById(
                 "infographicModalClose"
@@ -2920,6 +3149,10 @@
 
             infographicModalTitle.textContent =
                 card.dataset.infographicTitle;
+
+            infographicModalWeek.textContent =
+                card.dataset.infographicWeek ||
+                "SEMANA 01 · EVIDENCIA";
 
             infographicModal.classList.add("active");
 
@@ -3197,16 +3430,21 @@
                     "click",
                     function () {
 
-                        // SEMANA 02 abre su página independiente
-                        // ubicada en: Semana 2/index.html
+                        /*
+                         * SEMANA 02 conserva su página independiente.
+                         */
                         if (
                             card.dataset.weekLabel === "SEMANA 02"
                         ) {
-                            window.location.href = "Semana 2/index.html";
+
+                            window.location.href =
+                                "Semana 2/index.html";
+
                             return;
+
                         }
 
-                        // Las demás semanas mantienen su funcionamiento actual
+
                         openPdfModal(card);
 
                     }
@@ -3224,13 +3462,18 @@
 
                             event.preventDefault();
 
-                            // También funciona con teclado para SEMANA 02
+
                             if (
                                 card.dataset.weekLabel === "SEMANA 02"
                             ) {
-                                window.location.href = "Semana 2/index.html";
+
+                                window.location.href =
+                                    "Semana 2/index.html";
+
                                 return;
+
                             }
+
 
                             openPdfModal(card);
 
