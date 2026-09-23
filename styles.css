@@ -734,6 +734,7 @@ input {
 
 .week-card {
     display: flex;
+    align-items: stretch;
     gap: 18px;
     padding: 25px;
     background: var(--panel);
@@ -753,6 +754,16 @@ input {
     outline-offset: 3px;
 }
 
+/* Columna izquierda de la tarjeta: número + texto.
+   El botón "VER EVIDENCIAS" es la otra columna,
+   hermana de esta, dentro de .week-card. */
+.week-card-main {
+    display: flex;
+    gap: 18px;
+    flex: 1;
+    min-width: 0;
+}
+
 .week-number {
     color: var(--crimson);
     font-family: 'Orbitron', sans-serif;
@@ -762,6 +773,7 @@ input {
 
 .week-content {
     flex: 1;
+    min-width: 0;
 }
 
 .week-content > span {
@@ -801,6 +813,41 @@ input {
 .week-card:hover .week-pdf-hint {
     border-color: var(--cyan);
     background: rgba(0, 229, 255, 0.06);
+}
+
+
+/* Caja "VER EVIDENCIAS" a la derecha de cada tarjeta
+   de semana (mismo diseño para las 4 semanas). */
+.week-evidence-btn {
+    flex: 0 0 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    text-align: center;
+    padding: 16px 10px;
+    border: 1px solid rgba(0, 229, 255, .45);
+    background: rgba(0, 229, 255, .04);
+    color: #dffcff;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    cursor: pointer;
+    transition: .25s ease;
+}
+
+.week-evidence-btn i {
+    font-size: 20px;
+}
+
+.week-evidence-btn:hover,
+.week-evidence-btn.active {
+    background: rgba(0, 229, 255, .14);
+    border-color: var(--cyan);
+    color: #fff;
+    box-shadow: 0 0 18px rgba(0, 229, 255, .10);
 }
 
 
@@ -1779,39 +1826,26 @@ input {
         flex-direction: column;
         align-items: stretch;
     }
+
+    /* Semanas: la caja "VER EVIDENCIAS" pasa a
+       ocupar el ancho completo, debajo del texto,
+       en vez de ser una columna lateral angosta. */
+    .week-card {
+        flex-direction: column;
+    }
+
+    .week-evidence-btn {
+        flex: none;
+        width: 100%;
+        flex-direction: row;
+        padding: 12px;
+    }
 }
 /* =====================================================
    GALERÍA DE INFOGRAFÍAS · SEMANA 01
    ===================================================== */
 .week-evidence-panel[hidden]{
     display:none !important;
-}
-
-.week-evidence-btn{
-    margin-top:14px;
-    width:100%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:8px;
-    padding:11px 14px;
-    border:1px solid rgba(0,229,255,.45);
-    background:rgba(0,229,255,.055);
-    color:#dffcff;
-    font-family:var(--font-heading,Orbitron,sans-serif);
-    font-size:9px;
-    font-weight:700;
-    letter-spacing:1.2px;
-    cursor:pointer;
-    transition:.25s ease;
-}
-
-.week-evidence-btn:hover,
-.week-evidence-btn.active{
-    background:rgba(0,229,255,.14);
-    border-color:var(--cyan);
-    color:#fff;
-    box-shadow:0 0 18px rgba(0,229,255,.10);
 }
 
 .week-evidence-panel{
@@ -1835,9 +1869,54 @@ input {
 .evidence-kicker span{display:inline-block;width:8px;height:8px;border-radius:50%;background:#ff3864;box-shadow:0 0 12px #ff3864;margin-right:8px}
 .evidence-heading h3{margin:8px 0 7px;font-family:var(--font-heading,Orbitron,sans-serif);font-size:25px;line-height:1.2;color:#fff}
 .evidence-heading p{margin:0;color:#8194aa;line-height:1.6;font-size:13px}
+
+/* Encabezados que agrupan las infografías por actividad
+   dentro del panel de evidencias de cada semana. */
+.evidence-activity-group + .evidence-activity-group {
+    margin-top: 36px;
+}
+
+.evidence-activity-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid rgba(0, 229, 255, .18);
+}
+
+.evidence-activity-number {
+    min-width: 44px;
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--cyan);
+    background: rgba(0, 229, 255, .05);
+    color: var(--cyan);
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 800;
+    font-size: 15px;
+}
+
+.evidence-activity-header h4 {
+    margin: 0 0 4px;
+    color: #fff;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 17px;
+    letter-spacing: .5px;
+}
+
+.evidence-activity-header span {
+    color: var(--steel-dim);
+    font-size: 11px;
+    letter-spacing: 1px;
+}
+
 .infographic-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
 .infographic-card{position:relative;border:1px solid rgba(76,126,163,.3);background:#07111d;overflow:hidden;cursor:pointer;transition:.3s ease;box-shadow:0 10px 28px rgba(0,0,0,.25)}
-.infographic-card:nth-child(4),.infographic-card:nth-child(5){grid-column:span 1}
 .infographic-card:hover,.infographic-card:focus{transform:translateY(-5px);border-color:rgba(0,229,255,.65);box-shadow:0 14px 38px rgba(0,229,255,.13);outline:none}
 .infographic-number{position:absolute;z-index:3;top:12px;left:12px;width:38px;height:38px;display:grid;place-items:center;background:rgba(3,10,19,.9);border:1px solid rgba(0,229,255,.6);color:var(--cyan);font-family:var(--font-heading,Orbitron,sans-serif);font-weight:800;font-size:14px;box-shadow:0 0 18px rgba(0,229,255,.16)}
 .infographic-image-wrap{height:330px;background:#02060b;display:flex;align-items:center;justify-content:center;overflow:hidden;border-bottom:1px solid rgba(0,229,255,.16)}
@@ -1857,559 +1936,8 @@ input {
 .infographic-modal-header h3{margin:4px 0 0;color:#fff;font-family:var(--font-heading,Orbitron,sans-serif);font-size:16px}
 .infographic-modal-body{flex:1;min-height:0;padding:14px;display:flex;align-items:center;justify-content:center;overflow:auto;background:radial-gradient(circle at center,rgba(0,229,255,.05),transparent 50%)}
 .infographic-modal-body img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;box-shadow:0 15px 50px rgba(0,0,0,.5)}
-@media (max-width:1050px){.infographic-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.infographic-card:nth-child(4),.infographic-card:nth-child(5){grid-column:auto}}
+@media (max-width:1050px){.infographic-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:650px){.week-evidence-panel{padding:20px 14px}.infographic-grid{grid-template-columns:1fr}.infographic-image-wrap{height:360px}.evidence-heading h3{font-size:19px}}
-
-
-
-
-
-
-/* =========================================================
-   PORTAFOLIO ACADÉMICO - BASE DE DATOS II
-   RAFAEL MAX CAJAHUARINGA CAMASCA
-   ESTILO GENERAL
-   ========================================================= */
-
-/* ---------- CONFIGURACIÓN GENERAL ---------- */
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    background:
-        radial-gradient(circle at 20% 10%, rgba(0, 234, 255, 0.06), transparent 30%),
-        radial-gradient(circle at 80% 80%, rgba(0, 120, 255, 0.05), transparent 30%),
-        #03070d;
-    color: #ffffff;
-    min-height: 100vh;
-}
-
-
-/* =========================================================
-   SEMANA 1
-   ========================================================= */
-
-section {
-    width: 100%;
-}
-
-
-/* ---------- CONTENEDOR PRINCIPAL ---------- */
-
-.week-page {
-    width: 100%;
-    max-width: 1450px;
-    margin: 0 auto;
-    padding: 70px 40px 100px;
-}
-
-
-/* =========================================================
-   ENCABEZADO SEMANA 1
-   ========================================================= */
-
-.week-header {
-    text-align: center;
-    margin-bottom: 75px;
-}
-
-.week-label {
-    display: inline-block;
-    color: #00eaff;
-    font-size: 13px;
-    font-weight: 800;
-    letter-spacing: 4px;
-    margin-bottom: 18px;
-}
-
-.week-header h1 {
-    font-size: clamp(50px, 7vw, 100px);
-    line-height: 0.95;
-    margin: 10px 0 25px;
-    font-weight: 900;
-    letter-spacing: -4px;
-    text-transform: uppercase;
-}
-
-.week-header h1 span {
-    color: #00eaff;
-}
-
-.week-header p {
-    max-width: 850px;
-    margin: 0 auto;
-    color: #91a4b8;
-    font-size: 18px;
-    line-height: 1.7;
-}
-
-
-/* =========================================================
-   TÍTULOS DE ACTIVIDADES
-   ========================================================= */
-
-.activity-section {
-    margin-bottom: 90px;
-}
-
-.activity-title {
-    display: flex;
-    align-items: center;
-    gap: 22px;
-    margin-bottom: 35px;
-    padding: 22px 25px;
-    border: 1px solid rgba(0, 234, 255, 0.18);
-    border-radius: 16px;
-    background:
-        linear-gradient(
-            135deg,
-            rgba(0, 234, 255, 0.06),
-            rgba(8, 17, 29, 0.8)
-        );
-    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.25);
-}
-
-.activity-number {
-    min-width: 65px;
-    width: 65px;
-    height: 65px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border: 2px solid #00eaff;
-    border-radius: 15px;
-
-    color: #00eaff;
-    font-size: 22px;
-    font-weight: 900;
-
-    background: rgba(0, 234, 255, 0.05);
-
-    box-shadow:
-        0 0 20px rgba(0, 234, 255, 0.15);
-}
-
-.activity-title h2 {
-    margin: 0 0 8px;
-    font-size: 28px;
-    font-weight: 800;
-    text-transform: uppercase;
-}
-
-.activity-title p {
-    margin: 0;
-    color: #8295a9;
-    font-size: 14px;
-}
-
-
-/* =========================================================
-   GRID DE INFOGRAFÍAS
-   ========================================================= */
-
-.infografia-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 30px;
-}
-
-
-/* =========================================================
-   TARJETA DE INFOGRAFÍA
-   ========================================================= */
-
-.infografia-card {
-    overflow: hidden;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(10, 23, 38, 0.98),
-            rgba(4, 10, 18, 0.98)
-        );
-
-    border: 1px solid rgba(0, 234, 255, 0.16);
-    border-radius: 20px;
-
-    transition:
-        transform 0.3s ease,
-        border-color 0.3s ease,
-        box-shadow 0.3s ease;
-
-    box-shadow:
-        0 10px 40px rgba(0, 0, 0, 0.3);
-
-    position: relative;
-}
-
-
-/* Línea decorativa superior */
-
-.infografia-card::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-
-    width: 100%;
-    height: 3px;
-
-    background: #00eaff;
-
-    opacity: 0.8;
-}
-
-
-/* Hover */
-
-.infografia-card:hover {
-    transform: translateY(-8px);
-
-    border-color: #00eaff;
-
-    box-shadow:
-        0 15px 55px rgba(0, 234, 255, 0.15),
-        0 0 25px rgba(0, 234, 255, 0.05);
-}
-
-
-/* =========================================================
-   IMAGEN DE INFOGRAFÍA
-   ========================================================= */
-
-.infografia-image {
-    width: 100%;
-
-    /* Mantiene proporción sin deformar */
-    background: #02060b;
-
-    padding: 15px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border-bottom: 1px solid rgba(0, 234, 255, 0.12);
-}
-
-.infografia-image img {
-    width: 100%;
-    height: auto;
-
-    max-height: 850px;
-
-    object-fit: contain;
-
-    display: block;
-
-    border-radius: 10px;
-
-    transition:
-        transform 0.5s ease,
-        filter 0.5s ease;
-
-    cursor: zoom-in;
-}
-
-
-/* Zoom suave */
-
-.infografia-card:hover .infografia-image img {
-    transform: scale(1.015);
-}
-
-
-/* =========================================================
-   INFORMACIÓN DE LA INFOGRAFÍA
-   ========================================================= */
-
-.infografia-info {
-    padding: 25px;
-}
-
-.infografia-info span {
-    display: inline-block;
-
-    color: #00eaff;
-
-    font-size: 11px;
-    font-weight: 800;
-
-    letter-spacing: 2px;
-
-    margin-bottom: 8px;
-}
-
-.infografia-info h3 {
-    font-size: 22px;
-    line-height: 1.3;
-
-    margin: 0 0 10px;
-
-    font-weight: 800;
-    text-transform: uppercase;
-}
-
-.infografia-info p {
-    color: #8295a9;
-
-    line-height: 1.6;
-    font-size: 14px;
-
-    margin-bottom: 5px;
-}
-
-
-/* =========================================================
-   BOTÓN VER INFOGRAFÍA
-   ========================================================= */
-
-.btn-doc {
-    display: inline-flex;
-
-    align-items: center;
-    justify-content: center;
-
-    margin-top: 15px;
-
-    padding: 12px 22px;
-
-    border: 1px solid #00eaff;
-    border-radius: 8px;
-
-    color: #00eaff;
-
-    background: transparent;
-
-    text-decoration: none;
-
-    font-size: 13px;
-    font-weight: 700;
-
-    transition:
-        background 0.3s ease,
-        color 0.3s ease,
-        box-shadow 0.3s ease,
-        transform 0.3s ease;
-}
-
-.btn-doc:hover {
-    background: #00eaff;
-    color: #031018;
-
-    box-shadow:
-        0 0 20px rgba(0, 234, 255, 0.3);
-
-    transform: translateY(-2px);
-}
-
-
-/* =========================================================
-   DOCUMENTO PDF
-   ========================================================= */
-
-.document-section {
-    display: flex;
-
-    align-items: center;
-    justify-content: space-between;
-
-    gap: 30px;
-
-    padding: 35px;
-
-    margin-top: 40px;
-
-    border: 1px solid rgba(0, 234, 255, 0.18);
-    border-radius: 18px;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(0, 234, 255, 0.05),
-            rgba(255, 255, 255, 0.02)
-        );
-
-    box-shadow:
-        0 10px 40px rgba(0, 0, 0, 0.2);
-}
-
-.document-section span {
-    color: #00eaff;
-
-    font-size: 11px;
-    font-weight: 800;
-
-    letter-spacing: 2px;
-}
-
-.document-section h2 {
-    margin: 8px 0;
-
-    font-size: 25px;
-}
-
-.document-section p {
-    margin: 0;
-
-    color: #8295a9;
-
-    line-height: 1.6;
-}
-
-
-/* =========================================================
-   BOTÓN VOLVER
-   ========================================================= */
-
-.back-section {
-    text-align: center;
-
-    margin-top: 70px;
-}
-
-.back-section .btn-doc {
-    min-width: 180px;
-}
-
-
-/* =========================================================
-   SEPARADOR DECORATIVO
-   ========================================================= */
-
-.activity-section + .activity-section {
-    padding-top: 20px;
-}
-
-
-/* =========================================================
-   ANIMACIÓN
-   ========================================================= */
-
-@keyframes aparecer {
-    from {
-        opacity: 0;
-        transform: translateY(25px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.infografia-card {
-    animation: aparecer 0.6s ease both;
-}
-
-
-/* =========================================================
-   RESPONSIVE - TABLET
-   ========================================================= */
-
-@media (max-width: 950px) {
-
-    .week-page {
-        padding: 55px 25px 80px;
-    }
-
-    .infografia-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .week-header h1 {
-        font-size: clamp(45px, 10vw, 75px);
-    }
-
-    .activity-title {
-        padding: 20px;
-    }
-}
-
-
-/* =========================================================
-   RESPONSIVE - CELULAR
-   ========================================================= */
-
-@media (max-width: 600px) {
-
-    .week-page {
-        padding: 40px 15px 60px;
-    }
-
-    .week-header {
-        margin-bottom: 50px;
-    }
-
-    .week-header h1 {
-        font-size: 45px;
-        letter-spacing: -2px;
-    }
-
-    .week-header p {
-        font-size: 15px;
-    }
-
-    .activity-title {
-        align-items: flex-start;
-
-        gap: 15px;
-
-        padding: 18px;
-    }
-
-    .activity-number {
-        min-width: 52px;
-        width: 52px;
-        height: 52px;
-
-        font-size: 18px;
-    }
-
-    .activity-title h2 {
-        font-size: 20px;
-    }
-
-    .activity-title p {
-        font-size: 13px;
-    }
-
-    .infografia-grid {
-        gap: 20px;
-    }
-
-    .infografia-image {
-        padding: 8px;
-    }
-
-    .infografia-info {
-        padding: 20px;
-    }
-
-    .infografia-info h3 {
-        font-size: 18px;
-    }
-
-    .document-section {
-        flex-direction: column;
-
-        align-items: flex-start;
-
-        padding: 25px;
-    }
-}
-
 
 
 /* =========================================================
@@ -2428,57 +1956,11 @@ section {
         inset 0 0 40px rgba(0, 234, 255, 0.025);
 }
 
-.crud-header {
-    text-align: center;
-    margin-bottom: 40px;
-}
-
-.crud-kicker {
-    display: inline-block;
-    margin-bottom: 12px;
-    font-family: "Orbitron", sans-serif;
-    font-size: 0.75rem;
-    letter-spacing: 0.18em;
-    color: #00eaff;
-}
-
-.crud-header h2 {
-    margin: 0 0 15px;
-    font-family: "Orbitron", sans-serif;
-    font-size: clamp(1.8rem, 4vw, 3rem);
-    letter-spacing: 0.05em;
-}
-
-.crud-header p {
-    max-width: 760px;
-    margin: 0 auto 20px;
-    color: rgba(255, 255, 255, 0.72);
-    line-height: 1.7;
-}
-
-.crud-status {
-    display: inline-flex;
-    align-items: center;
-    gap: 9px;
-    padding: 9px 16px;
-    border: 1px solid rgba(0, 234, 255, 0.2);
-    border-radius: 999px;
-    color: rgba(255, 255, 255, 0.8);
-    font-size: 0.85rem;
-}
-
-.crud-status-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: #00eaff;
-    box-shadow: 0 0 12px #00eaff;
-}
-
 .crud-evidencias-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 22px;
+    margin-top: 25px;
 }
 
 .crud-evidencia-card {
@@ -2500,41 +1982,65 @@ section {
     box-shadow: 0 12px 35px rgba(0, 234, 255, 0.12);
 }
 
-.crud-evidencia-id {
+.crud-preview {
+    width: 100%;
+    height: 170px;
     margin-bottom: 18px;
-    font-family: "Orbitron", sans-serif;
-    font-size: 0.72rem;
-    letter-spacing: 0.12em;
-    color: #00eaff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border: 1px solid rgba(0, 234, 255, 0.16);
+    border-radius: 12px;
+    background: var(--void);
 }
 
-.crud-evidencia-semana {
+.crud-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.crud-pdf-preview,
+.crud-no-file {
+    flex-direction: column;
+    gap: 8px;
+    color: var(--steel-dim);
+    font-size: 12px;
+}
+
+.crud-pdf-icon {
+    font-size: 30px;
+}
+
+.crud-card-week {
     display: inline-block;
     margin-bottom: 10px;
     font-size: 0.78rem;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.55);
+    color: var(--cyan);
+    font-family: 'Orbitron', sans-serif;
 }
 
-.crud-evidencia-content h3 {
-    margin: 0 0 12px;
-    font-size: 1.05rem;
-    line-height: 1.45;
-}
-
-.crud-evidencia-actividad {
+.crud-card-activity {
     margin: 0 0 8px;
     color: rgba(255, 255, 255, 0.75);
     font-size: 0.9rem;
 }
 
-.crud-evidencia-tipo {
-    margin: 0 0 22px;
-    color: #00eaff;
-    font-size: 0.78rem;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
+.crud-card-content h3 {
+    margin: 0 0 12px;
+    font-size: 1.05rem;
+    line-height: 1.45;
+    color: white;
+}
+
+.crud-card-content p {
+    color: var(--steel-dim);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 18px;
 }
 
 .crud-btn-ver {
@@ -2546,8 +2052,8 @@ section {
     border: 1px solid rgba(0, 234, 255, 0.45);
     border-radius: 8px;
     color: #fff;
-    text-decoration: none;
     background: rgba(0, 234, 255, 0.06);
+    cursor: pointer;
     transition:
         background 0.2s ease,
         border-color 0.2s ease,
@@ -2560,8 +2066,41 @@ section {
     transform: translateY(-2px);
 }
 
+.crud-card-actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+}
+
+.crud-btn-editar,
+.crud-btn-eliminar {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 10px;
+    border-radius: 6px;
+    font-size: 11px;
+    cursor: pointer;
+    transition: .2s ease;
+}
+
+.crud-btn-editar {
+    border: 1px solid var(--cyan);
+    background: rgba(0, 229, 255, .06);
+    color: var(--cyan);
+}
+
+.crud-btn-eliminar {
+    border: 1px solid var(--crimson);
+    background: rgba(255, 56, 96, .06);
+    color: var(--crimson-bright);
+}
+
 .crud-loading,
-.crud-error {
+.crud-empty,
+.crud-error,
+.crud-week-empty {
     grid-column: 1 / -1;
     padding: 35px;
     text-align: center;
@@ -2570,12 +2109,13 @@ section {
     color: rgba(255, 255, 255, 0.7);
 }
 
-.crud-error {
-    color: #ff8f8f;
+.crud-empty-icon {
+    font-size: 30px;
+    margin-bottom: 12px;
 }
 
-.crud-error code {
-    color: #00eaff;
+.crud-error {
+    color: #ff8f8f;
 }
 
 
@@ -2597,6 +2137,8 @@ section {
         grid-template-columns: 1fr;
     }
 }
+
+
 /* =========================================================
    PASO 1 · SELECCIÓN DE ACCESO
 ========================================================= */
@@ -2862,9 +2404,7 @@ body[data-role="admin"] .crud-admin-panel {
 }
 
 .crud-btn-primary,
-.crud-btn-secondary,
-.crud-btn-edit,
-.crud-btn-delete {
+.crud-btn-secondary {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -2889,6 +2429,11 @@ body[data-role="admin"] .crud-admin-panel {
     box-shadow: 0 0 18px rgba(0, 229, 255, .18);
 }
 
+.crud-btn-primary:disabled {
+    opacity: .6;
+    cursor: not-allowed;
+}
+
 .crud-btn-secondary {
     border-color: var(--hairline);
     background: transparent;
@@ -2907,38 +2452,8 @@ body[data-role="admin"] .crud-admin-panel {
     font-size: 12px;
 }
 
-.crud-item-actions {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-    margin-top: 12px;
-}
-
-.crud-btn-edit,
-.crud-btn-delete {
-    padding: 7px 10px;
-    font-size: 11px;
-}
-
-.crud-btn-edit {
-    border-color: var(--cyan);
-    background: rgba(0, 229, 255, .06);
-    color: var(--cyan);
-}
-
-.crud-btn-delete {
-    border-color: var(--crimson);
-    background: rgba(255, 56, 96, .06);
+.crud-form-message.error {
     color: var(--crimson-bright);
-}
-
-.crud-file-preview {
-    width: 100%;
-    max-height: 180px;
-    object-fit: contain;
-    margin: 15px 0;
-    border: 1px solid var(--hairline);
-    background: var(--void);
 }
 
 @media (max-width: 650px) {
