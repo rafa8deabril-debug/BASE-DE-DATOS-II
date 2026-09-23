@@ -57,7 +57,57 @@
 
             <div class="login-divider"></div>
 
-            <form id="loginForm">
+            <!-- =================================================
+                 SELECCIÓN DE TIPO DE ACCESO
+            ================================================== -->
+            <div id="accessChoice" class="access-choice">
+
+                <p class="access-title">
+                    SELECCIONE SU TIPO DE ACCESO
+                </p>
+
+                <button
+                    type="button"
+                    id="guestAccessBtn"
+                    class="access-option guest-option"
+                >
+                    <span class="access-option-icon">
+                        <i class="fa-solid fa-eye"></i>
+                    </span>
+                    <span class="access-option-content">
+                        <strong>INGRESAR COMO INVITADO</strong>
+                        <small>Solo visualizar el portafolio y sus evidencias</small>
+                    </span>
+                    <i class="fa-solid fa-chevron-right access-arrow"></i>
+                </button>
+
+                <button
+                    type="button"
+                    id="adminAccessBtn"
+                    class="access-option admin-option"
+                >
+                    <span class="access-option-icon">
+                        <i class="fa-solid fa-user-shield"></i>
+                    </span>
+                    <span class="access-option-content">
+                        <strong>INGRESAR COMO ADMINISTRADOR</strong>
+                        <small>Gestionar y administrar las evidencias</small>
+                    </span>
+                    <i class="fa-solid fa-chevron-right access-arrow"></i>
+                </button>
+
+            </div>
+
+
+            <!-- =================================================
+                 FORMULARIO DE ADMINISTRADOR
+            ================================================== -->
+            <form id="loginForm" class="admin-login-form" hidden>
+
+                <div class="admin-mode-label">
+                    <i class="fa-solid fa-user-shield"></i>
+                    ACCESO DE ADMINISTRADOR
+                </div>
 
                 <div class="input-group">
 
@@ -98,10 +148,18 @@
 
                     <i class="fa-solid fa-right-to-bracket"></i>
 
-                    INGRESAR
+                    INGRESAR COMO ADMINISTRADOR
 
                 </button>
 
+                <button
+                    type="button"
+                    id="backToAccessBtn"
+                    class="back-access-btn"
+                >
+                    <i class="fa-solid fa-arrow-left"></i>
+                    Volver a selección de acceso
+                </button>
 
                 <p id="loginError" class="login-error"></p>
 
@@ -618,6 +676,11 @@
 
                             </div>
 
+                            <button type="button" class="week-evidence-btn" data-evidence-target="evidenciasSemana1" aria-expanded="false" aria-controls="evidenciasSemana1">
+                                <i class="fa-solid fa-images"></i>
+                                VER EVIDENCIAS
+                            </button>
+
                         </div>
 
                     </article>
@@ -628,8 +691,10 @@
                     ================================================== -->
 
                     <section
+                        id="evidenciasSemana1"
                         class="week-evidence-panel"
-                        aria-labelledby="evidenciasSemana1"
+                        aria-labelledby="evidenciasSemana1Titulo"
+                        hidden
                     >
 
                         <div class="evidence-heading">
@@ -642,7 +707,7 @@
 
                             </div>
 
-                            <h3 id="evidenciasSemana1">
+                            <h3 id="evidenciasSemana1Titulo">
                                 Trabajos realizados · Fundamentos de Base de Datos
                             </h3>
 
@@ -1292,11 +1357,10 @@
                         </h3>
 
                         <p>
-                            Las evidencias se cargan dinámicamente desde
-                            <strong>datos/evidencias.json</strong>.
-                            Actualmente se registran 22 evidencias:
-                            9 de Semana 1, 8 de Semana 2 · Actividad 2
-                            y 5 de Semana 2 · Actividad 3.
+                            Las evidencias agregadas desde el panel del administrador se guardan en el navegador.
+                            El registro permite crear, editar y eliminar evidencias sin modificar manualmente este HTML.
+                            Las evidencias existentes del portafolio se mantienen y las nuevas evidencias
+                            se incorporan desde el módulo CRUD.
                         </p>
 
                         <div
@@ -1312,6 +1376,93 @@
                             Cargando evidencias...
                         </div>
 
+                    </div>
+
+
+                    <!-- =================================================
+                         PANEL DEL ADMINISTRADOR · CRUD
+                    ================================================== -->
+
+                    <div class="crud-admin-panel" id="crudAdminPanel">
+
+                        <div class="crud-admin-header">
+                            <div>
+                                <span class="crud-admin-kicker">
+                                    <i class="fa-solid fa-user-shield"></i>
+                                    MODO ADMINISTRADOR
+                                </span>
+                                <h3>Administrar evidencias</h3>
+                                <p>Agrega nuevas evidencias, actualiza sus datos o elimínalas cuando sea necesario.</p>
+                            </div>
+                            <span class="crud-admin-badge">CRUD ACTIVO</span>
+                        </div>
+
+                        <form id="crudForm" class="crud-form" novalidate>
+
+                            <input type="hidden" id="crudId">
+
+                            <div class="crud-form-group">
+                                <label for="crudSemana">Semana</label>
+                                <select id="crudSemana" required>
+                                    <option value="">Seleccionar semana</option>
+                                    <option value="SEMANA 01">Semana 01</option>
+                                    <option value="SEMANA 02">Semana 02</option>
+                                    <option value="SEMANA 03">Semana 03</option>
+                                    <option value="SEMANA 04">Semana 04</option>
+                                </select>
+                            </div>
+
+                            <div class="crud-form-group">
+                                <label for="crudActividad">Actividad</label>
+                                <select id="crudActividad" required>
+                                    <option value="">Seleccionar actividad</option>
+                                    <option value="01">Actividad 01</option>
+                                    <option value="02">Actividad 02</option>
+                                    <option value="03">Actividad 03</option>
+                                    <option value="04">Actividad 04</option>
+                                    <option value="05">Actividad 05</option>
+                                    <option value="06">Actividad 06</option>
+                                    <option value="07">Actividad 07</option>
+                                    <option value="08">Actividad 08</option>
+                                    <option value="09">Actividad 09</option>
+                                </select>
+                            </div>
+
+                            <div class="crud-form-group crud-form-wide">
+                                <label for="crudTitulo">Título de la evidencia</label>
+                                <input id="crudTitulo" type="text" maxlength="150" placeholder="Ej.: Arquitectura Centralizada" required>
+                            </div>
+
+                            <div class="crud-form-group crud-form-wide">
+                                <label for="crudDescripcion">Descripción</label>
+                                <textarea id="crudDescripcion" rows="3" maxlength="400" placeholder="Describe brevemente la actividad..." required></textarea>
+                            </div>
+
+                            <div class="crud-form-group">
+                                <label for="crudTipo">Tipo de evidencia</label>
+                                <select id="crudTipo" required>
+                                    <option value="imagen">Infografía / Imagen</option>
+                                    <option value="pdf">Documento PDF</option>
+                                </select>
+                            </div>
+
+                            <div class="crud-form-group">
+                                <label for="crudArchivo">Archivo</label>
+                                <input id="crudArchivo" type="file" accept="image/*,.pdf" required>
+                                <small id="crudArchivoActual">Selecciona una imagen o PDF.</small>
+                            </div>
+
+                            <div class="crud-form-actions">
+                                <button type="submit" class="crud-btn-primary" id="crudGuardarBtn">
+                                    <i class="fa-solid fa-plus"></i> AGREGAR EVIDENCIA
+                                </button>
+                                <button type="button" class="crud-btn-secondary" id="crudCancelarBtn" hidden>
+                                    <i class="fa-solid fa-xmark"></i> CANCELAR EDICIÓN
+                                </button>
+                            </div>
+
+                            <p id="crudFormMessage" class="crud-form-message" aria-live="polite"></p>
+                        </form>
                     </div>
 
 
@@ -2363,7 +2514,97 @@
         const loginError =
             document.getElementById("loginError");
 
+        const accessChoice =
+            document.getElementById("accessChoice");
 
+        const guestAccessBtn =
+            document.getElementById("guestAccessBtn");
+
+        const adminAccessBtn =
+            document.getElementById("adminAccessBtn");
+
+        const backToAccessBtn =
+            document.getElementById("backToAccessBtn");
+
+
+        /* =================================================
+           FUNCIÓN PARA ABRIR EL PORTAFOLIO
+        ================================================= */
+        function enterPortfolio(role) {
+
+            document.body.dataset.role = role;
+            portfolio.dataset.role = role;
+
+            document.dispatchEvent(new CustomEvent("rolechanged", { detail: { role: role } }));
+
+            loginError.textContent = "";
+
+            loginScreen.classList.add("hidden");
+
+            setTimeout(function () {
+
+                portfolio.classList.add("visible");
+
+            }, 300);
+
+        }
+
+
+        /* =================================================
+           ACCESO COMO INVITADO
+        ================================================= */
+        guestAccessBtn.addEventListener(
+            "click",
+            function () {
+
+                enterPortfolio("guest");
+
+            }
+        );
+
+
+        /* =================================================
+           MOSTRAR ACCESO DE ADMINISTRADOR
+        ================================================= */
+        adminAccessBtn.addEventListener(
+            "click",
+            function () {
+
+                accessChoice.hidden = true;
+                loginForm.hidden = false;
+
+                loginError.textContent = "";
+
+                setTimeout(function () {
+
+                    document.getElementById("usuario").focus();
+
+                }, 100);
+
+            }
+        );
+
+
+        /* =================================================
+           VOLVER A LA SELECCIÓN
+        ================================================= */
+        backToAccessBtn.addEventListener(
+            "click",
+            function () {
+
+                loginForm.reset();
+                loginError.textContent = "";
+
+                loginForm.hidden = true;
+                accessChoice.hidden = false;
+
+            }
+        );
+
+
+        /* =================================================
+           LOGIN DEL ADMINISTRADOR
+        ================================================= */
         loginForm.addEventListener(
             "submit",
             function (event) {
@@ -2387,16 +2628,7 @@
                     password === passwordCorrecto
                 ) {
 
-                    loginError.textContent = "";
-
-                    loginScreen.classList.add("hidden");
-
-
-                    setTimeout(function () {
-
-                        portfolio.classList.add("visible");
-
-                    }, 300);
+                    enterPortfolio("admin");
 
                 } else {
 
@@ -3243,6 +3475,38 @@
 
             }
         );
+
+
+        /* =================================================
+           EVIDENCIAS POR SEMANA
+        ================================================= */
+
+        const evidenceButtons = document.querySelectorAll(".week-evidence-btn");
+
+        evidenceButtons.forEach(function (button) {
+            button.addEventListener("click", function (event) {
+                event.preventDefault();
+                event.stopPropagation();
+
+                const panel = document.getElementById(button.dataset.evidenceTarget);
+                if (!panel) return;
+
+                if (panel.hasAttribute("hidden")) {
+                    panel.removeAttribute("hidden");
+                    button.setAttribute("aria-expanded", "true");
+                    button.classList.add("active");
+                    button.innerHTML = '<i class="fa-solid fa-eye-slash"></i> OCULTAR EVIDENCIAS';
+                    setTimeout(function () {
+                        panel.scrollIntoView({ behavior: "smooth", block: "start" });
+                    }, 80);
+                } else {
+                    panel.setAttribute("hidden", "");
+                    button.setAttribute("aria-expanded", "false");
+                    button.classList.remove("active");
+                    button.innerHTML = '<i class="fa-solid fa-images"></i> VER EVIDENCIAS';
+                }
+            });
+        });
 
 
         /* =================================================
