@@ -39,6 +39,7 @@ body[data-role="guest"] .pdf-modal-actions{display:none}
 .wk-empty{padding:12px;border:1px dashed var(--hairline);color:var(--steel-dim);font-size:12px;text-align:center}
 
 .crud-section{margin:40px auto}
+.week-evidence-btn,.week-evidence-panel{display:none!important}
 
 @media (max-width:600px){
     .unit-block>summary{flex-wrap:wrap;padding:16px}

@@ -1,3870 +1,789 @@
 <!DOCTYPE html>
-
 <html lang="es">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Rafael Max Cajahuaringa Camasca · Portafolio · Base de Datos II</title>
-
-<!-- GOOGLE FONTS -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Orbitron:wght@500;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap"
-    rel="stylesheet">
-
-<!-- FONT AWESOME -->
-<link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
-<!-- CSS -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Orbitron:wght@500;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 <link rel="stylesheet" href="styles.css">
-
+<link rel="stylesheet" href="styles-unidades.css">
 </head>
 
-<body>
-
-<!-- =====================================================
-     FONDO HUD
-====================================================== -->
+<body data-role="guest">
 
 <div class="hud-grid"></div>
 
-
-<!-- =====================================================
-     LOGIN
-====================================================== -->
-
-<section id="login-screen" class="login-screen">
-
+<section id="login-screen" class="login-screen hidden">
     <div class="login-box">
-
         <div class="login-line"></div>
-
-        <div class="login-logo-container">
-            <img src="logo.png" alt="UPLA" class="login-logo">
-        </div>
-
+        <div class="login-logo-container"><img src="logo.png" alt="UPLA" class="login-logo"></div>
         <p class="login-status">● SISTEMA ONLINE</p>
-
-        <h1>SISTEMA DE ACCESO</h1>
-
-        <div class="login-subtitle">
-            DATA ARENA · UPLA
-        </div>
-
+        <h1>ACCESO ADMINISTRADOR</h1>
+        <div class="login-subtitle">DATA ARENA · UPLA</div>
         <div class="login-divider"></div>
-
-        <!-- =================================================
-             SELECCIÓN DE TIPO DE ACCESO
-        ================================================== -->
-        <div id="accessChoice" class="access-choice">
-
-            <p class="access-title">
-                SELECCIONE SU TIPO DE ACCESO
-            </p>
-
-            <button
-                type="button"
-                id="guestAccessBtn"
-                class="access-option guest-option"
-            >
-                <span class="access-option-icon">
-                    <i class="fa-solid fa-eye"></i>
-                </span>
-                <span class="access-option-content">
-                    <strong>INGRESAR COMO INVITADO</strong>
-                    <small>Solo visualizar el portafolio y sus evidencias</small>
-                </span>
-                <i class="fa-solid fa-chevron-right access-arrow"></i>
-            </button>
-
-            <button
-                type="button"
-                id="adminAccessBtn"
-                class="access-option admin-option"
-            >
-                <span class="access-option-icon">
-                    <i class="fa-solid fa-user-shield"></i>
-                </span>
-                <span class="access-option-content">
-                    <strong>INGRESAR COMO ADMINISTRADOR</strong>
-                    <small>Gestionar y administrar las evidencias</small>
-                </span>
-                <i class="fa-solid fa-chevron-right access-arrow"></i>
-            </button>
-
-        </div>
-
-
-        <!-- =================================================
-             FORMULARIO DE ADMINISTRADOR
-        ================================================== -->
-        <form id="loginForm" class="admin-login-form" hidden>
-
-            <div class="admin-mode-label">
-                <i class="fa-solid fa-user-shield"></i>
-                ACCESO DE ADMINISTRADOR
-            </div>
-
+        <form id="loginForm" class="admin-login-form">
             <div class="input-group">
-
-                <label for="usuario">
-                    <i class="fa-solid fa-user"></i>
-                    USUARIO
-                </label>
-
-                <input
-                    type="text"
-                    id="usuario"
-                    placeholder="Ingrese usuario"
-                    autocomplete="off"
-                    required
-                >
-
+                <label for="usuario"><i class="fa-solid fa-user"></i> USUARIO</label>
+                <input type="text" id="usuario" placeholder="Ingrese usuario" autocomplete="off" required>
             </div>
-
-
             <div class="input-group">
-
-                <label for="password">
-                    <i class="fa-solid fa-lock"></i>
-                    CONTRASEÑA
-                </label>
-
-                <input
-                    type="password"
-                    id="password"
-                    placeholder="Ingrese contraseña"
-                    required
-                >
-
+                <label for="password"><i class="fa-solid fa-lock"></i> CONTRASEÑA</label>
+                <input type="password" id="password" placeholder="Ingrese contraseña" required>
             </div>
-
-
-            <button type="submit" class="login-btn">
-
-                <i class="fa-solid fa-right-to-bracket"></i>
-
-                INGRESAR COMO ADMINISTRADOR
-
-            </button>
-
-            <button
-                type="button"
-                id="backToAccessBtn"
-                class="back-access-btn"
-            >
-                <i class="fa-solid fa-arrow-left"></i>
-                Volver a selección de acceso
-            </button>
-
+            <button type="submit" class="login-btn"><i class="fa-solid fa-right-to-bracket"></i> INGRESAR</button>
+            <button type="button" id="backToAccessBtn" class="back-access-btn"><i class="fa-solid fa-arrow-left"></i> Volver como invitado</button>
             <p id="loginError" class="login-error"></p>
-
         </form>
-
-
-        <div class="login-footer">
-            UPLA · INGENIERÍA DE SISTEMAS Y COMPUTACIÓN
-        </div>
-
+        <div class="login-footer">UPLA · INGENIERÍA DE SISTEMAS Y COMPUTACIÓN</div>
     </div>
-
 </section>
 
-
-<!-- =====================================================
-     PORTAFOLIO
-====================================================== -->
-
-<div id="portfolio" class="portfolio-content">
-
-
-    <!-- =====================================================
-         NAVBAR
-    ====================================================== -->
+<div id="portfolio" class="portfolio-content visible">
 
     <header class="navbar">
-
         <div class="nav-container">
-
             <a href="#inicio" class="brand">
-
                 <img src="logo.png" alt="UPLA">
-
                 <div class="brand-text">
-
                     <strong>RAFAEL MAX</strong>
-
                     <span>CAJAHUARINGA CAMASCA</span>
-
-                    <small>
-                        INGENIERÍA DE SISTEMAS Y COMPUTACIÓN · UPLA
-                    </small>
-
+                    <small>INGENIERÍA DE SISTEMAS Y COMPUTACIÓN · UPLA</small>
                 </div>
-
             </a>
-
-
             <nav class="nav-links">
-
-                <a href="#inicio">Inicio</a>
-
-                <a href="#informacion">
-                    Información
-                </a>
-
-                <a href="#unidad1">
-                    Unidad I
-                </a>
-
-                <a href="#unidades">
-                    Unidades
-                </a>
-
-                <a href="#evaluacion">
-                    Evaluación
-                </a>
-
-                <a href="#contacto">
-                    Contacto
-                </a>
-
+                <a href="#inicio">Presentación</a>
+                <a href="#informacion">Información</a>
+                <a href="#trabajos">Trabajos</a>
+                <a href="#evidencias">Registro</a>
+                <a href="#contacto">Contacto</a>
+                <button type="button" id="adminBtn" class="nav-admin"><i class="fa-solid fa-user-shield"></i> ADMINISTRADOR</button>
             </nav>
-
         </div>
-
     </header>
-
-
-    <!-- =====================================================
-         MAIN
-    ====================================================== -->
 
     <main id="inicio">
 
-
-        <!-- =================================================
-             HERO
-        ================================================== -->
-
         <section class="hero">
-
             <div class="hero-container">
-
                 <div class="hero-content">
-
-                    <div class="eyebrow">
-
-                        <span></span>
-
-                        BASE DE DATOS II · DATA ARENA
-
-                    </div>
-
-
-                    <h1>
-                        PORTAFOLIO<br>
-                        <span>ACADÉMICO</span>
-                    </h1>
-
-
+                    <div class="eyebrow"><span></span>BASE DE DATOS II · DATA ARENA</div>
+                    <h1>PORTAFOLIO<br><span>ACADÉMICO</span></h1>
                     <p class="hero-description">
-
-                        Portafolio académico correspondiente a la asignatura
-                        <strong>Base de Datos II</strong>, donde se presentan los
-                        conocimientos, actividades y evidencias desarrolladas
-                        durante el semestre.
-
+                        Espacio dedicado a documentar y presentar los trabajos desarrollados en la asignatura
+                        <strong>Base de Datos II</strong> a lo largo del semestre, organizados por unidades y semanas.
                     </p>
-
-
                     <div class="hero-info">
-
-                        <div>
-                            <i class="fa-solid fa-user"></i>
-                            Rafael Max Cajahuaringa Camasca
-                        </div>
-
-                        <div>
-                            <i class="fa-solid fa-graduation-cap"></i>
-                            Ingeniería de Sistemas y Computación
-                        </div>
-
-                        <div>
-                            <i class="fa-solid fa-building-columns"></i>
-                            Universidad Peruana Los Andes · UPLA
-                        </div>
-
+                        <div><i class="fa-solid fa-user"></i> Rafael Max Cajahuaringa Camasca</div>
+                        <div><i class="fa-solid fa-id-card"></i> Código: T04119C</div>
+                        <div><i class="fa-solid fa-graduation-cap"></i> Ingeniería de Sistemas y Computación</div>
+                        <div><i class="fa-solid fa-building-columns"></i> Universidad Peruana Los Andes · UPLA</div>
                     </div>
-
                 </div>
-
-
                 <div class="hero-profile">
-
                     <div class="profile-frame">
-
                         <div class="profile-corner top-left"></div>
                         <div class="profile-corner top-right"></div>
                         <div class="profile-corner bottom-left"></div>
                         <div class="profile-corner bottom-right"></div>
-
-                        <img
-                            src="Rafael.jpeg"
-                            alt="Rafael Max Cajahuaringa Camasca"
-                        >
-
+                        <img src="Rafael.jpeg" alt="Rafael Max Cajahuaringa Camasca">
                     </div>
-
-
                     <div class="profile-label">
-
-                        <span>STUDENT ID</span>
-
-                        <strong>RAFAEL MAX</strong>
-
+                        <span>CÓDIGO</span>
+                        <strong>T04119C</strong>
                     </div>
-
                 </div>
-
             </div>
-
         </section>
-
-
-        <!-- =================================================
-             ESTADÍSTICAS
-        ================================================== -->
-
-        <section class="stats-section">
-
-            <div class="stats-container">
-
-                <div class="stat-card">
-
-                    <span>ASIGNATURA</span>
-
-                    <strong>
-                        BASE DE DATOS II
-                    </strong>
-
-                </div>
-
-
-                <div class="stat-card">
-
-                    <span>CÓDIGO</span>
-
-                    <strong>
-                        332151
-                    </strong>
-
-                </div>
-
-
-                <div class="stat-card">
-
-                    <span>UNIDADES</span>
-
-                    <strong>
-                        04
-                    </strong>
-
-                </div>
-
-
-                <div class="stat-card">
-
-                    <span>MODALIDAD</span>
-
-                    <strong>
-                        PRESENCIAL
-                    </strong>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =================================================
-             INFORMACIÓN ACADÉMICA
-        ================================================== -->
 
         <section id="informacion" class="section">
-
             <div class="section-heading">
-
-                <div class="section-number">
-                    01
-                </div>
-
-                <div>
-
-                    <span>IDENTIFICACIÓN</span>
-
-                    <h2>
-                        INFORMACIÓN ACADÉMICA
-                    </h2>
-
-                </div>
-
+                <div class="section-number">01</div>
+                <div><span>IDENTIFICACIÓN</span><h2>INFORMACIÓN ACADÉMICA</h2></div>
             </div>
-
-
             <div class="info-grid">
-
-
-                <article class="info-card large-card">
-
-                    <div class="card-icon">
-                        <i class="fa-solid fa-building-columns"></i>
-                    </div>
-
+                <article class="info-card">
+                    <div class="card-icon"><i class="fa-solid fa-building-columns"></i></div>
                     <span>UNIVERSIDAD</span>
-
-                    <h3>
-                        Universidad Peruana Los Andes
-                    </h3>
-
-                    <p>
-                        Facultad de Ingeniería · UPLA
-                    </p>
-
+                    <h3>Universidad Peruana Los Andes</h3>
+                    <p>Facultad de Ingeniería de Sistemas</p>
                 </article>
-
-
                 <article class="info-card">
-
-                    <div class="card-icon">
-                        <i class="fa-solid fa-microchip"></i>
-                    </div>
-
+                    <div class="card-icon"><i class="fa-solid fa-microchip"></i></div>
                     <span>CARRERA</span>
-
-                    <h3>
-                        Ingeniería de Sistemas y Computación
-                    </h3>
-
+                    <h3>Ingeniería de Sistemas y Computación</h3>
                 </article>
-
-
                 <article class="info-card">
-
-                    <div class="card-icon">
-                        <i class="fa-solid fa-database"></i>
-                    </div>
-
+                    <div class="card-icon"><i class="fa-solid fa-database"></i></div>
                     <span>ASIGNATURA</span>
-
-                    <h3>
-                        Base de Datos II
-                    </h3>
-
-                    <p>
-                        Código: 332151
-                    </p>
-
+                    <h3>Base de Datos II</h3>
+                    <p>Código: 332151 · Presencial</p>
                 </article>
-
-
                 <article class="info-card">
-
-                    <div class="card-icon">
-                        <i class="fa-solid fa-chalkboard-user"></i>
-                    </div>
-
+                    <div class="card-icon"><i class="fa-solid fa-chalkboard-user"></i></div>
                     <span>DOCENTE</span>
-
-                    <h3>
-                        Mg. Raúl Enrique Fernández Bejarano
-                    </h3>
-
+                    <h3>Mg. Raúl Enrique Fernández Bejarano</h3>
                 </article>
-
-
-                <article class="info-card">
-
-                    <div class="card-icon">
-                        <i class="fa-solid fa-user-graduate"></i>
-                    </div>
-
-                    <span>ESTUDIANTE</span>
-
-                    <h3>
-                        Rafael Max Cajahuaringa Camasca
-                    </h3>
-
-                </article>
-
             </div>
-
         </section>
 
-
-        <!-- =================================================
-             UNIDAD I
-        ================================================== -->
-
-        <section id="unidad1" class="section unit-section">
-
+        <section id="trabajos" class="section">
             <div class="section-heading">
+                <div class="section-number">02</div>
+                <div><span>TRABAJOS</span><h2>TRABAJOS POR UNIDADES</h2></div>
+            </div>
+            <div id="unidades"></div>
+        </section>
 
-                <div class="section-number">
-                    02
-                </div>
-
-                <div>
-
-                    <span>UNIDAD I</span>
-
-                    <h2>
-                        ARQUITECTURAS DE BASES DE DATOS
-                    </h2>
-
-                </div>
-
+        <section id="evidencias" class="crud-section">
+            <div class="section-heading">
+                <div class="section-number">03</div>
+                <div><span>REGISTRO ACADÉMICO</span><h2>GESTIÓN DE EVIDENCIAS</h2></div>
             </div>
 
-
-            <div class="unit-intro">
-
-                <div class="unit-badge">
-                    UNIDAD 01
-                </div>
-
-                <div>
-
-                    <h3>
-                        Arquitecturas de Bases de Datos y Configuración del Entorno Corporativo
-                    </h3>
-
-                    <p>
-
-                        Identifica las arquitecturas de base de datos mediante su
-                        capacidad de implementación en gestores DBMS vigentes para
-                        determinar cómo almacenar, organizar e integrar los datos.
-
-                    </p>
-
-                </div>
-
+            <div class="evidence-heading">
+                <div class="evidence-kicker"><span></span>BASE DE DATOS DE EVIDENCIAS</div>
+                <h3>Registro documental del portafolio</h3>
+                <p>Las evidencias agregadas por el administrador se guardan en este navegador y aparecen automáticamente en su semana y actividad dentro de Trabajos.</p>
+                <div id="crudContador" style="margin-top:15px;color:var(--cyan);font-family:'Orbitron',sans-serif;font-size:13px;letter-spacing:1px;">Cargando evidencias...</div>
             </div>
 
-
-            <!-- MATERIAL -->
-
-            <div
-                class="material-card"
-                tabindex="0"
-                role="button"
-                data-week-label="MATERIAL DE LECTURA"
-                data-pdf="Material/Capitulo1_Introduccion_BD.pdf"
-            >
-
-                <div class="material-icon">
-                    <i class="fa-solid fa-book-open"></i>
-                </div>
-
-                <div class="material-content">
-
-                    <span>
-                        UNIDAD I · TEORÍA DE APOYO
-                    </span>
-
-                    <h3>
-                        Introducción a la administración de base de datos
-                    </h3>
-
-                    <p>
-
-                        Material de lectura proporcionado por el docente.
-                        Repasa las características de una base de datos,
-                        los componentes y funciones de un DBMS, la evolución
-                        de la tecnología de bases de datos y las arquitecturas
-                        cliente/servidor.
-
-                    </p>
-
-                    <div class="week-pdf-hint">
-
-                        <i class="fa-solid fa-file-pdf"></i>
-
-                        Abrir material
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <p
-                style="
-                color: var(--steel-dim);
-                font-size: 12px;
-                margin: 20px 0 15px;
-                letter-spacing: 0.5px;
-                "
-            >
-
-                <i
-                    class="fa-solid fa-circle-info"
-                    style="
-                    color: var(--cyan);
-                    margin-right: 6px;
-                    "
-                ></i>
-
-                Toca una semana para cargar o revisar el PDF de esa evidencia.
-
-            </p>
-
-
-            <!-- =================================================
-                 SEMANAS
-            ================================================== -->
-
-            <div class="weeks-grid">
-
-
-                <!-- =================================================
-                     SEMANA 1
-                ================================================== -->
-
-                <article
-                    class="week-card"
-                    tabindex="0"
-                    role="button"
-                    data-week-label="SEMANA 01"
-                    data-pdf="Semana 1/APLICACIONES 3.pdf"
-                >
-
-                    <div class="week-card-main">
-
-                        <div class="week-number">
-                            01
-                        </div>
-
-                        <div class="week-content">
-
-                            <span>
-                                SEMANA 01
-                            </span>
-
-                            <h3>
-                                Formulación del Proyecto y Selección de la Arquitectura
-                            </h3>
-
-                            <p>
-
-                                Definición del alcance de un proyecto analítico
-                                basado en un caso empresarial real, seleccionando
-                                y justificando una arquitectura centralizada,
-                                distribuida o en la nube.
-
-                            </p>
-
-                            <div class="week-pdf-hint">
-
-                                <i class="fa-solid fa-file-pdf"></i>
-
-                                Ver / cargar PDF
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                    <button type="button" class="week-evidence-btn" data-evidence-target="evidenciasSemana1" aria-expanded="false" aria-controls="evidenciasSemana1">
-                        <i class="fa-solid fa-images"></i>
-                        VER EVIDENCIAS
-                    </button>
-
-                </article>
-
-
-                <!-- =================================================
-                     EVIDENCIAS SEMANA 1
-                ================================================== -->
-
-                <section
-                    id="evidenciasSemana1"
-                    class="week-evidence-panel"
-                    aria-labelledby="evidenciasSemana1Titulo"
-                    hidden
-                >
-
-                    <div class="evidence-heading">
-
-                        <div class="evidence-kicker">
-
-                            <span></span>
-
-                            SEMANA 01 · EVIDENCIAS
-
-                        </div>
-
-                        <h3 id="evidenciasSemana1Titulo">
-                            Trabajos realizados · Fundamentos de Base de Datos
-                        </h3>
-
-                        <p>
-                            Compendio visual de las nueve infografías
-                            desarrolladas durante la Semana 1.
-                        </p>
-
-                    </div>
-
-
-                    <div class="evidence-activity-group">
-
-                        <div class="evidence-activity-header">
-                            <div class="evidence-activity-number">01</div>
-                            <div>
-                                <h4>ACTIVIDAD 01</h4>
-                                <span>4 infografías · Arquitecturas de Base de Datos</span>
-                            </div>
-                        </div>
-
-                        <div class="infographic-grid">
-
-                        <article
-                            class="infographic-card"
-                            data-infographic="Semana 1/infografias/actividad-01/arquitectura-centralizada.png"
-                            data-infographic-title="01 · Arquitectura Centralizada"
-                        >
-
-                            <div class="infographic-number">
-                                01
-                            </div>
-
-                            <div class="infographic-image-wrap">
-
-                                <img
-                                    src="Semana 1/infografias/actividad-01/arquitectura-centralizada.png"
-                                    alt="Infografía Arquitectura Centralizada"
-                                    loading="lazy"
-                                >
-
-                            </div>
-
-                            <div class="infographic-info">
-
-                                <span>
-                                    ACTIVIDAD 01 · INFOGRAFÍA 01
-                                </span>
-
-                                <h4>
-                                    Arquitectura Centralizada
-                                </h4>
-
-                                <p>
-                                    Conceptos, características,
-                                    funcionamiento, ventajas y
-                                    desventajas.
-                                </p>
-
-                                <button
-                                    type="button"
-                                    class="infographic-btn"
-                                >
-                                    Ver infografía
-                                    <i class="fa-solid fa-expand"></i>
-                                </button>
-
-                            </div>
-
-                        </article>
-
-
-                        <article
-                            class="infographic-card"
-                            data-infographic="Semana 1/infografias/actividad-01/arquitectura-cliente-servidor.png"
-                            data-infographic-title="02 · Arquitectura Cliente-Servidor"
-                        >
-
-                            <div class="infographic-number">
-                                02
-                            </div>
-
-                            <div class="infographic-image-wrap">
-
-                                <img
-                                    src="Semana 1/infografias/actividad-01/arquitectura-cliente-servidor.png"
-                                    alt="Infografía Arquitectura Cliente Servidor"
-                                    loading="lazy"
-                                >
-
-                            </div>
-
-                            <div class="infographic-info">
-
-                                <span>
-                                    ACTIVIDAD 01 · INFOGRAFÍA 02
-                                </span>
-
-                                <h4>
-                                    Arquitectura Cliente-Servidor
-                                </h4>
-
-                                <p>
-                                    Modelo cliente-servidor,
-                                    componentes, comunicación y
-                                    funcionamiento.
-                                </p>
-
-                                <button
-                                    type="button"
-                                    class="infographic-btn"
-                                >
-                                    Ver infografía
-                                    <i class="fa-solid fa-expand"></i>
-                                </button>
-
-                            </div>
-
-                        </article>
-
-
-                        <article
-                            class="infographic-card"
-                            data-infographic="Semana 1/infografias/actividad-01/arquitectura-distribuida.png"
-                            data-infographic-title="03 · Arquitectura Distribuida"
-                        >
-
-                            <div class="infographic-number">
-                                03
-                            </div>
-
-                            <div class="infographic-image-wrap">
-
-                                <img
-                                    src="Semana 1/infografias/actividad-01/arquitectura-distribuida.png"
-                                    alt="Infografía Arquitectura Distribuida"
-                                    loading="lazy"
-                                >
-
-                            </div>
-
-                            <div class="infographic-info">
-
-                                <span>
-                                    ACTIVIDAD 01 · INFOGRAFÍA 03
-                                </span>
-
-                                <h4>
-                                    Arquitectura Distribuida
-                                </h4>
-
-                                <p>
-                                    Organización distribuida de
-                                    recursos, comunicación entre nodos,
-                                    ventajas y aplicaciones.
-                                </p>
-
-                                <button
-                                    type="button"
-                                    class="infographic-btn"
-                                >
-                                    Ver infografía
-                                    <i class="fa-solid fa-expand"></i>
-                                </button>
-
-                            </div>
-
-                        </article>
-
-
-                        <article
-                            class="infographic-card"
-                            data-infographic="Semana 1/infografias/actividad-01/arquitectura-nube-multitenencia.png"
-                            data-infographic-title="04 · Arquitectura en la Nube y Multitenencia"
-                        >
-
-                            <div class="infographic-number">
-                                04
-                            </div>
-
-                            <div class="infographic-image-wrap">
-
-                                <img
-                                    src="Semana 1/infografias/actividad-01/arquitectura-nube-multitenencia.png"
-                                    alt="Infografía Arquitectura en la Nube y Multitenencia"
-                                    loading="lazy"
-                                >
-
-                            </div>
-
-                            <div class="infographic-info">
-
-                                <span>
-                                    ACTIVIDAD 01 · INFOGRAFÍA 04
-                                </span>
-
-                                <h4>
-                                    Arquitectura en la Nube y Multitenencia
-                                </h4>
-
-                                <p>
-                                    Servicios en la nube, multitenencia,
-                                    beneficios y aplicaciones.
-                                </p>
-
-                                <button
-                                    type="button"
-                                    class="infographic-btn"
-                                >
-                                    Ver infografía
-                                    <i class="fa-solid fa-expand"></i>
-                                </button>
-
-                            </div>
-
-                        </article>
-
-                        </div>
-
-                    </div>
-
-                    <div class="evidence-activity-group">
-
-                        <div class="evidence-activity-header">
-                            <div class="evidence-activity-number">02</div>
-                            <div>
-                                <h4>ACTIVIDAD 02</h4>
-                                <span>5 infografías · Características y Evolución de los SGBD</span>
-                            </div>
-                        </div>
-
-                        <div class="infographic-grid">
-
-                        <article
-                            class="infographic-card"
-                            data-infographic="Semana 1/infografias/actividad-02/caracteristicas-base-datos.png"
-                            data-infographic-title="05 · Características de la Base de Datos"
-                        >
-
-                            <div class="infographic-number">
-                                05
-                            </div>
-
-                            <div class="infographic-image-wrap">
-
-                                <img
-                                    src="Semana 1/infografias/actividad-02/caracteristicas-base-datos.png"
-                                    alt="Infografía Características de la Base de Datos"
-                                    loading="lazy"
-                                >
-
-                            </div>
-
-                            <div class="infographic-info">
-
-                                <span>
-                                    ACTIVIDAD 02 · INFOGRAFÍA 01
-                                </span>
-
-                                <h4>
-                                    Características de la Base de Datos
-                                </h4>
-
-                                <p>
-                                    Persistencia, compartición,
-                                    interrelación, seguridad y gestión
-                                    organizada de la información.
-                                </p>
-
-                                <button
-                                    type="button"
-                                    class="infographic-btn"
-                                >
-                                    Ver infografía
-                                    <i class="fa-solid fa-expand"></i>
-                                </button>
-
-                            </div>
-
-                        </article>
-
-
-                        <article
-                            class="infographic-card"
-                            data-infographic="Semana 1/infografias/actividad-02/caracteristicas-sgbd.png"
-                            data-infographic-title="06 · Características de los SGBD"
-                        >
-
-                            <div class="infographic-number">
-                                06
-                            </div>
-
-                            <div class="infographic-image-wrap">
-
-                                <img
-                                    src="Semana 1/infografias/actividad-02/caracteristicas-sgbd.png"
-                                    alt="Infografía Características de los SGBD"
-                                    loading="lazy"
-                                >
-
-                            </div>
-
-                            <div class="infographic-info">
-
-                                <span>
-                                    ACTIVIDAD 02 · INFOGRAFÍA 02
-                                </span>
-
-                                <h4>
-                                    Características de los SGBD
-                                </h4>
-
-                                <p>
-                                    Funciones principales de los
-                                    Sistemas de Gestión de Bases de
-                                    Datos.
-                                </p>
-
-                                <button
-                                    type="button"
-                                    class="infographic-btn"
-                                >
-                                    Ver infografía
-                                    <i class="fa-solid fa-expand"></i>
-                                </button>
-
-                            </div>
-
-                        </article>
-
-
-                        <article
-                            class="infographic-card"
-                            data-infographic="Semana 1/infografias/actividad-02/tecnologia-base-datos-mercado.png"
-                            data-infographic-title="07 · Desarrollo de la Tecnología de Base de Datos y Estructura de Mercado"
-                        >
-
-                            <div class="infographic-number">
-                                07
-                            </div>
-
-                            <div class="infographic-image-wrap">
-
-                                <img
-                                    src="Semana 1/infografias/actividad-02/tecnologia-base-datos-mercado.png"
-                                    alt="Infografía Desarrollo de la Tecnología de Base de Datos y Estructura de Mercado"
-                                    loading="lazy"
-                                >
-
-                            </div>
-
-                            <div class="infographic-info">
-
-                                <span>
-                                    ACTIVIDAD 02 · INFOGRAFÍA 03
-                                </span>
-
-                                <h4>
-                                    Desarrollo de la Tecnología de Base de Datos y Estructura de Mercado
-                                </h4>
-
-                                <p>
-                                    Evolución tecnológica, generaciones
-                                    de DBMS y transformación del mercado.
-                                </p>
-
-                                <button
-                                    type="button"
-                                    class="infographic-btn"
-                                >
-                                    Ver infografía
-                                    <i class="fa-solid fa-expand"></i>
-                                </button>
-
-                            </div>
-
-                        </article>
-
-
-                        <article
-                            class="infographic-card"
-                            data-infographic="Semana 1/infografias/actividad-02/arquitecturas-sistemas-administracion.png"
-                            data-infographic-title="08 · Arquitecturas de los Sistemas de Administración de Bases de Datos"
-                        >
-
-                            <div class="infographic-number">
-                                08
-                            </div>
-
-                            <div class="infographic-image-wrap">
-
-                                <img
-                                    src="Semana 1/infografias/actividad-02/arquitecturas-sistemas-administracion.png"
-                                    alt="Infografía Arquitecturas de los Sistemas de Administración de Bases de Datos"
-                                    loading="lazy"
-                                >
-
-                            </div>
-
-                            <div class="infographic-info">
-
-                                <span>
-                                    ACTIVIDAD 02 · INFOGRAFÍA 04
-                                </span>
-
-                                <h4>
-                                    Arquitecturas de los Sistemas de Administración de Bases de Datos
-                                </h4>
-
-                                <p>
-                                    Arquitectura de tres esquemas,
-                                    independencia de datos,
-                                    procesamiento distribuido y
-                                    cliente-servidor.
-                                </p>
-
-                                <button
-                                    type="button"
-                                    class="infographic-btn"
-                                >
-                                    Ver infografía
-                                    <i class="fa-solid fa-expand"></i>
-                                </button>
-
-                            </div>
-
-                        </article>
-
-
-                        <article
-                            class="infographic-card"
-                            data-infographic="Semana 1/infografias/actividad-02/impactos-organizacionales.png"
-                            data-infographic-title="09 · Impactos Organizacionales de la Tecnología de Base de Datos"
-                        >
-
-                            <div class="infographic-number">
-                                09
-                            </div>
-
-                            <div class="infographic-image-wrap">
-
-                                <img
-                                    src="Semana 1/infografias/actividad-02/impactos-organizacionales.png"
-                                    alt="Infografía Impactos Organizacionales de la Tecnología de Base de Datos"
-                                    loading="lazy"
-                                >
-
-                            </div>
-
-                            <div class="infographic-info">
-
-                                <span>
-                                    ACTIVIDAD 02 · INFOGRAFÍA 05
-                                </span>
-
-                                <h4>
-                                    Impactos Organizacionales de la Tecnología de Base de Datos
-                                </h4>
-
-                                <p>
-                                    Cambios organizacionales,
-                                    administración de recursos,
-                                    usuarios y responsabilidades.
-                                </p>
-
-                                <button
-                                    type="button"
-                                    class="infographic-btn"
-                                >
-                                    Ver infografía
-                                    <i class="fa-solid fa-expand"></i>
-                                </button>
-
-                            </div>
-
-                        </article>
-
-                        </div>
-
-                    </div>
-
-                </section>
-
-
-                <!-- =================================================
-                     SEMANA 2
-                ================================================== -->
-
-                <article
-                    class="week-card"
-                    tabindex="0"
-                    role="button"
-                    data-week-label="SEMANA 02"
-                    data-pdf="Semana 2/APLICACIONES 4.pdf"
-                >
-
-                    <div class="week-card-main">
-
-                        <div class="week-number">
-                            02
-                        </div>
-
-                        <div class="week-content">
-
-                            <span>
-                                SEMANA 02
-                            </span>
-
-                            <h3>
-                                Despliegue y Configuración de Motores de Datos
-                            </h3>
-
-                            <p>
-
-                                Instalación y configuración óptima del
-                                Sistema de Gestión de Bases de Datos
-                                empresarial.
-
-                            </p>
-
-                            <div class="week-pdf-hint">
-
-                                <i class="fa-solid fa-file-pdf"></i>
-
-                                Ver / cargar PDF
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </article>
-
-
-                <!-- =================================================
-                     SEMANA 3
-                ================================================== -->
-
-                <article
-                    class="week-card"
-                    tabindex="0"
-                    role="button"
-                    data-week-label="SEMANA 03"
-                    data-pdf="Semana 3/APLICACIONES 5.pdf"
-                >
-
-                    <div class="week-card-main">
-
-                        <div class="week-number">
-                            03
-                        </div>
-
-                        <div class="week-content">
-
-                            <span>
-                                SEMANA 03
-                            </span>
-
-                            <h3>
-                                Modelamiento Físico y Mecanismos de Integración
-                            </h3>
-
-                            <p>
-
-                                Estructuración e implementación de esquemas
-                                y tablas maestras dentro del DBMS.
-
-                            </p>
-
-                            <div class="week-pdf-hint">
-
-                                <i class="fa-solid fa-file-pdf"></i>
-
-                                Ver / cargar PDF
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </article>
-
-
-                <!-- =================================================
-                     SEMANA 4
-                ================================================== -->
-
-                <article
-                    class="week-card"
-                    tabindex="0"
-                    role="button"
-                    data-week-label="SEMANA 04"
-                    data-pdf=""
-                >
-
-                    <div class="week-card-main">
-
-                        <div class="week-number">
-                            04
-                        </div>
-
-                        <div class="week-content">
-
-                            <span>
-                                SEMANA 04
-                            </span>
-
-                            <h3>
-                                Sustentación y Validación de la Infraestructura de Datos
-                            </h3>
-
-                            <p>
-
-                                Sustentación del primer avance mediante
-                                informe técnico formal y demostración en vivo.
-
-                            </p>
-
-                            <div class="week-pdf-hint">
-
-                                <i class="fa-solid fa-file-pdf"></i>
-
-                                Ver / cargar PDF
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </article>
-
-            </div>
-
-
-            <!-- =================================================
-                 GESTIÓN DINÁMICA DE EVIDENCIAS
-                 CARGADAS DESDE datos/evidencias.json
-            ================================================== -->
-
-            <section
-                id="crud-evidencias-section"
-                class="crud-section"
-            >
-
-                <div class="section-heading">
-
-                    <div class="section-number">
-                        02A
-                    </div>
-
+            <div class="crud-admin-panel" id="crudAdminPanel">
+                <div class="crud-admin-header">
                     <div>
-
-                        <span>
-                            REGISTRO ACADÉMICO
-                        </span>
-
-                        <h2>
-                            GESTIÓN DE EVIDENCIAS
-                        </h2>
-
+                        <span class="crud-admin-kicker"><i class="fa-solid fa-user-shield"></i> MODO ADMINISTRADOR</span>
+                        <h3>Administrar evidencias</h3>
+                        <p>Agrega nuevas evidencias, actualiza sus datos o elimínalas cuando sea necesario.</p>
                     </div>
-
+                    <span class="crud-admin-badge">CRUD ACTIVO</span>
                 </div>
-
-
-                <div class="evidence-heading">
-
-                    <div class="evidence-kicker">
-
-                        <span></span>
-
-                        BASE DE DATOS DE EVIDENCIAS
-
+                <form id="crudForm" class="crud-form" novalidate>
+                    <input type="hidden" id="crudId">
+                    <div class="crud-form-group">
+                        <label for="crudSemana">Semana</label>
+                        <select id="crudSemana" required>
+                            <option value="">Seleccionar semana</option>
+                            <option value="SEMANA 01">Semana 01</option>
+                            <option value="SEMANA 02">Semana 02</option>
+                            <option value="SEMANA 03">Semana 03</option>
+                            <option value="SEMANA 04">Semana 04</option>
+                        </select>
                     </div>
-
-                    <h3>
-                        Registro documental del portafolio
-                    </h3>
-
-                    <p>
-                        Las evidencias agregadas desde el panel del administrador se guardan en el navegador.
-                        El registro permite crear, editar y eliminar evidencias sin modificar manualmente este HTML.
-                        Las evidencias existentes del portafolio se mantienen y las nuevas evidencias
-                        se incorporan desde el módulo CRUD.
-                    </p>
-
-                    <div
-                        id="crudContador"
-                        style="
-                        margin-top:15px;
-                        color:var(--cyan);
-                        font-family:'Orbitron',sans-serif;
-                        font-size:13px;
-                        letter-spacing:1px;
-                        "
-                    >
-                        Cargando evidencias...
+                    <div class="crud-form-group">
+                        <label for="crudActividad">Actividad</label>
+                        <select id="crudActividad" required>
+                            <option value="">Seleccionar actividad</option>
+                            <option value="01">Actividad 01</option><option value="02">Actividad 02</option>
+                            <option value="03">Actividad 03</option><option value="04">Actividad 04</option>
+                            <option value="05">Actividad 05</option><option value="06">Actividad 06</option>
+                            <option value="07">Actividad 07</option><option value="08">Actividad 08</option>
+                            <option value="09">Actividad 09</option>
+                        </select>
                     </div>
-
-                </div>
-
-
-                <!-- =================================================
-                     PANEL DEL ADMINISTRADOR · CRUD
-                ================================================== -->
-
-                <div class="crud-admin-panel" id="crudAdminPanel">
-
-                    <div class="crud-admin-header">
-                        <div>
-                            <span class="crud-admin-kicker">
-                                <i class="fa-solid fa-user-shield"></i>
-                                MODO ADMINISTRADOR
-                            </span>
-                            <h3>Administrar evidencias</h3>
-                            <p>Agrega nuevas evidencias, actualiza sus datos o elimínalas cuando sea necesario.</p>
-                        </div>
-                        <span class="crud-admin-badge">CRUD ACTIVO</span>
+                    <div class="crud-form-group crud-form-wide">
+                        <label for="crudTitulo">Título de la evidencia</label>
+                        <input id="crudTitulo" type="text" maxlength="150" placeholder="Ej.: Arquitectura Centralizada" required>
                     </div>
-
-                    <form id="crudForm" class="crud-form" novalidate>
-
-                        <input type="hidden" id="crudId">
-
-                        <div class="crud-form-group">
-                            <label for="crudSemana">Semana</label>
-                            <select id="crudSemana" required>
-                                <option value="">Seleccionar semana</option>
-                                <option value="SEMANA 01">Semana 01</option>
-                                <option value="SEMANA 02">Semana 02</option>
-                                <option value="SEMANA 03">Semana 03</option>
-                                <option value="SEMANA 04">Semana 04</option>
-                            </select>
-                        </div>
-
-                        <div class="crud-form-group">
-                            <label for="crudActividad">Actividad</label>
-                            <select id="crudActividad" required>
-                                <option value="">Seleccionar actividad</option>
-                                <option value="01">Actividad 01</option>
-                                <option value="02">Actividad 02</option>
-                                <option value="03">Actividad 03</option>
-                                <option value="04">Actividad 04</option>
-                                <option value="05">Actividad 05</option>
-                                <option value="06">Actividad 06</option>
-                                <option value="07">Actividad 07</option>
-                                <option value="08">Actividad 08</option>
-                                <option value="09">Actividad 09</option>
-                            </select>
-                        </div>
-
-                        <div class="crud-form-group crud-form-wide">
-                            <label for="crudTitulo">Título de la evidencia</label>
-                            <input id="crudTitulo" type="text" maxlength="150" placeholder="Ej.: Arquitectura Centralizada" required>
-                        </div>
-
-                        <div class="crud-form-group crud-form-wide">
-                            <label for="crudDescripcion">Descripción</label>
-                            <textarea id="crudDescripcion" rows="3" maxlength="400" placeholder="Describe brevemente la actividad..." required></textarea>
-                        </div>
-
-                        <div class="crud-form-group">
-                            <label for="crudTipo">Tipo de evidencia</label>
-                            <select id="crudTipo" required>
-                                <option value="imagen">Infografía / Imagen</option>
-                                <option value="pdf">Documento PDF</option>
-                            </select>
-                        </div>
-
-                        <div class="crud-form-group">
-                            <label for="crudArchivo">Archivo</label>
-                            <input id="crudArchivo" type="file" accept="image/*,.pdf">
-                            <small id="crudArchivoActual">Selecciona una imagen o PDF.</small>
-                        </div>
-
-                        <div class="crud-form-actions">
-                            <button type="submit" class="crud-btn-primary" id="crudGuardarBtn">
-                                <i class="fa-solid fa-plus"></i> AGREGAR EVIDENCIA
-                            </button>
-                            <button type="button" class="crud-btn-secondary" id="crudCancelarBtn" hidden>
-                                <i class="fa-solid fa-xmark"></i> CANCELAR EDICIÓN
-                            </button>
-                        </div>
-
-                        <p id="crudFormMessage" class="crud-form-message" aria-live="polite"></p>
-                    </form>
-                </div>
-
-
-                <div
-                    id="crudEvidencias"
-                    class="crud-evidencias-grid"
-                >
-
-                    <div class="crud-loading">
-
-                        <i class="fa-solid fa-spinner fa-spin"></i>
-
-                        Cargando registros...
-
+                    <div class="crud-form-group crud-form-wide">
+                        <label for="crudDescripcion">Descripción</label>
+                        <textarea id="crudDescripcion" rows="3" maxlength="400" placeholder="Describe brevemente la actividad..." required></textarea>
                     </div>
+                    <div class="crud-form-group">
+                        <label for="crudTipo">Tipo de evidencia</label>
+                        <select id="crudTipo" required>
+                            <option value="imagen">Infografía / Imagen</option>
+                            <option value="pdf">Documento PDF</option>
+                        </select>
+                    </div>
+                    <div class="crud-form-group">
+                        <label for="crudArchivo">Archivo</label>
+                        <input id="crudArchivo" type="file" accept="image/*,.pdf">
+                        <small id="crudArchivoActual">Selecciona una imagen o PDF.</small>
+                    </div>
+                    <div class="crud-form-actions">
+                        <button type="submit" class="crud-btn-primary" id="crudGuardarBtn"><i class="fa-solid fa-plus"></i> AGREGAR EVIDENCIA</button>
+                        <button type="button" class="crud-btn-secondary" id="crudCancelarBtn" hidden><i class="fa-solid fa-xmark"></i> CANCELAR EDICIÓN</button>
+                    </div>
+                    <p id="crudFormMessage" class="crud-form-message" aria-live="polite"></p>
+                </form>
+            </div>
 
-                </div>
-
-            </section>
-
+            <div id="crudEvidencias" class="crud-evidencias-grid">
+                <div class="crud-loading"><i class="fa-solid fa-spinner fa-spin"></i> Cargando registros...</div>
+            </div>
         </section>
-
-
-        <!-- =================================================
-             UNIDADES II III IV
-        ================================================== -->
-
-        <section id="unidades" class="section">
-
-            <div class="section-heading">
-
-                <div class="section-number">
-                    03
-                </div>
-
-                <div>
-
-                    <span>PLAN ACADÉMICO</span>
-
-                    <h2>
-                        UNIDADES II · III · IV
-                    </h2>
-
-                </div>
-
-            </div>
-
-
-            <div class="units-grid">
-
-
-                <article class="unit-card">
-
-                    <div class="unit-card-top">
-
-                        <span>
-                            UNIDAD II
-                        </span>
-
-                        <i class="fa-solid fa-server"></i>
-
-                    </div>
-
-                    <h3>
-                        Administración de Instancias, Estructuras de Almacenamiento y Gestión de Datos Masivos
-                    </h3>
-
-                    <p>
-                        Asignación de memoria, archivos primarios y secundarios,
-                        archivos de log, indexación y pruebas de carga masiva.
-                    </p>
-
-                    <div class="unit-tags">
-
-                        <span>.MDF</span>
-                        <span>.NDF</span>
-                        <span>.LDF</span>
-                        <span>INDEXACIÓN</span>
-
-                    </div>
-
-                </article>
-
-
-                <article class="unit-card">
-
-                    <div class="unit-card-top">
-
-                        <span>
-                            UNIDAD III
-                        </span>
-
-                        <i class="fa-solid fa-shield-halved"></i>
-
-                    </div>
-
-                    <h3>
-                        Seguridad Corporativa, Conectividad de Red y Alta Disponibilidad de Datos
-                    </h3>
-
-                    <p>
-                        Configuración TCP/IP, control de accesos RBAC,
-                        auditorías, automatización de respaldos y
-                        planes de contingencia.
-                    </p>
-
-                    <div class="unit-tags">
-
-                        <span>TCP/IP</span>
-                        <span>RBAC</span>
-                        <span>JOBS</span>
-                        <span>BACKUP</span>
-
-                    </div>
-
-                </article>
-
-
-                <article class="unit-card">
-
-                    <div class="unit-card-top">
-
-                        <span>
-                            UNIDAD IV
-                        </span>
-
-                        <i class="fa-solid fa-chart-line"></i>
-
-                    </div>
-
-                    <h3>
-                        Monitoreo de Servidores, Optimización del Desempeño y Recuperación
-                    </h3>
-
-                    <p>
-                        Monitoreo en tiempo real, afinamiento de consultas
-                        SQL, tecnología Flashback y sustentación final.
-                    </p>
-
-                    <div class="unit-tags">
-
-                        <span>MONITOREO</span>
-                        <span>SQL TUNING</span>
-                        <span>FLASHBACK</span>
-
-                    </div>
-
-                </article>
-
-            </div>
-
-        </section>
-
-
-        <!-- =================================================
-             EVIDENCIAS
-        ================================================== -->
-
-        <section class="section">
-
-            <div class="section-heading">
-
-                <div class="section-number">
-                    04
-                </div>
-
-                <div>
-
-                    <span>EVIDENCIAS</span>
-
-                    <h2>
-                        APRENDIZAJE ACADÉMICO
-                    </h2>
-
-                </div>
-
-            </div>
-
-
-            <div class="evidence-grid">
-
-                <article class="evidence-card">
-
-                    <div class="evidence-icon">
-                        EC
-                    </div>
-
-                    <h3>
-                        Evidencias de Conocimiento
-                    </h3>
-
-                    <p>
-                        Cuestionarios, guías teóricas resueltas
-                        y evaluaciones escritas.
-                    </p>
-
-                </article>
-
-
-                <article class="evidence-card">
-
-                    <div class="evidence-icon">
-                        ED
-                    </div>
-
-                    <h3>
-                        Evidencias de Desempeño
-                    </h3>
-
-                    <p>
-                        Informes de laboratorio, participación activa
-                        y demostraciones prácticas.
-                    </p>
-
-                </article>
-
-
-                <article class="evidence-card">
-
-                    <div class="evidence-icon">
-                        EP
-                    </div>
-
-                    <h3>
-                        Evidencias de Producto
-                    </h3>
-
-                    <p>
-                        Scripts SQL, diseños de esquemas, carpetas
-                        de trabajo e informes técnicos.
-                    </p>
-
-                </article>
-
-            </div>
-
-        </section>
-
-
-        <!-- =================================================
-             EVALUACIÓN
-        ================================================== -->
-
-        <section id="evaluacion" class="section evaluation-section">
-
-            <div class="section-heading">
-
-                <div class="section-number">
-                    05
-                </div>
-
-                <div>
-
-                    <span>SISTEMA DE EVALUACIÓN</span>
-
-                    <h2>
-                        CRITERIOS ACADÉMICOS
-                    </h2>
-
-                </div>
-
-            </div>
-
-
-            <div class="evaluation-grid">
-
-
-                <div class="evaluation-chart">
-
-                    <div class="percentage-item">
-
-                        <div>
-                            <span>UNIDAD I</span>
-                            <strong>10%</strong>
-                        </div>
-
-                        <div class="percentage-bar">
-                            <span style="width:10%;"></span>
-                        </div>
-
-                    </div>
-
-
-                    <div class="percentage-item">
-
-                        <div>
-                            <span>UNIDAD II</span>
-                            <strong>15%</strong>
-                        </div>
-
-                        <div class="percentage-bar">
-                            <span style="width:15%;"></span>
-                        </div>
-
-                    </div>
-
-
-                    <div class="percentage-item">
-
-                        <div>
-                            <span>UNIDAD III</span>
-                            <strong>20%</strong>
-                        </div>
-
-                        <div class="percentage-bar">
-                            <span style="width:20%;"></span>
-                        </div>
-
-                    </div>
-
-
-                    <div class="percentage-item">
-
-                        <div>
-                            <span>UNIDAD IV</span>
-                            <strong>25%</strong>
-                        </div>
-
-                        <div class="percentage-bar">
-                            <span style="width:25%;"></span>
-                        </div>
-
-                    </div>
-
-
-                    <div class="percentage-item">
-
-                        <div>
-                            <span>DESEMPEÑO FINAL</span>
-                            <strong>30%</strong>
-                        </div>
-
-                        <div class="percentage-bar">
-                            <span style="width:30%;"></span>
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <div class="requirements-card">
-
-                    <div class="requirement">
-
-                        <i class="fa-solid fa-check"></i>
-
-                        <div>
-
-                            <span>NOTA MÍNIMA</span>
-
-                            <strong>13</strong>
-
-                            <p>
-                                Para ingresantes desde 2026-I.
-                            </p>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="requirement">
-
-                        <i class="fa-solid fa-clock"></i>
-
-                        <div>
-
-                            <span>ASISTENCIA</span>
-
-                            <strong>70%</strong>
-
-                            <p>
-                                Mínimo de asistencia obligatoria.
-                            </p>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="requirement">
-
-                        <i class="fa-solid fa-file-circle-check"></i>
-
-                        <div>
-
-                            <span>SUSTITUTORIA</span>
-
-                            <strong>40%</strong>
-
-                            <p>
-                                Reemplaza la nota más baja bajo
-                                las condiciones establecidas.
-                            </p>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =================================================
-             RAKION
-        ================================================== -->
-
-        <section class="section rakion-section">
-
-            <div class="rakion-box">
-
-                <div class="rakion-icon">
-
-                    <i class="fa-solid fa-gamepad"></i>
-
-                </div>
-
-                <div>
-
-                    <span>
-                        CASO DE ESTUDIO
-                    </span>
-
-                    <h2>
-                        ¿QUÉ ES RAKION?
-                    </h2>
-
-                    <p>
-
-                        Rakion se utiliza como concepto visual y caso
-                        de estudio práctico para representar escenarios
-                        relacionados con bases de datos de alta
-                        concurrencia, eventos en tiempo real y
-                        almacenamiento masivo.
-
-                    </p>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =================================================
-             CONTACTO
-        ================================================== -->
 
         <section id="contacto" class="section contact-section">
-
             <div class="section-heading">
-
-                <div class="section-number">
-                    06
-                </div>
-
-                <div>
-
-                    <span>INFORMACIÓN</span>
-
-                    <h2>
-                        CONTACTO
-                    </h2>
-
-                </div>
-
+                <div class="section-number">04</div>
+                <div><span>INFORMACIÓN</span><h2>CONTACTO</h2></div>
             </div>
-
-
             <div class="contact-card">
-
-
-                <div class="contact-item">
-
-                    <i class="fa-solid fa-user"></i>
-
-                    <div>
-
-                        <span>ESTUDIANTE</span>
-
-                        <strong>
-                            Rafael Max Cajahuaringa Camasca
-                        </strong>
-
-                    </div>
-
-                </div>
-
-
-                <div class="contact-item">
-
-                    <i class="fa-solid fa-phone"></i>
-
-                    <div>
-
-                        <span>
-                            TELÉFONO / WHATSAPP
-                        </span>
-
-                        <strong>
-                            982192749
-                        </strong>
-
-                    </div>
-
-                </div>
-
-
-                <div class="contact-item">
-
-                    <i class="fa-solid fa-location-dot"></i>
-
-                    <div>
-
-                        <span>
-                            UBICACIÓN
-                        </span>
-
-                        <strong>
-                            Huancayo · Perú
-                        </strong>
-
-                    </div>
-
-                </div>
-
-
-                <div class="contact-item">
-
-                    <i class="fa-solid fa-graduation-cap"></i>
-
-                    <div>
-
-                        <span>
-                            UNIVERSIDAD
-                        </span>
-
-                        <strong>
-                            Universidad Peruana Los Andes
-                        </strong>
-
-                    </div>
-
-                </div>
-
+                <div class="contact-item"><i class="fa-solid fa-user"></i><div><span>ESTUDIANTE</span><strong>Rafael Max Cajahuaringa Camasca</strong></div></div>
+                <div class="contact-item"><i class="fa-solid fa-id-card"></i><div><span>CÓDIGO</span><strong>T04119C</strong></div></div>
+                <div class="contact-item"><i class="fa-solid fa-phone"></i><div><span>TELÉFONO / WHATSAPP</span><strong>982192749</strong></div></div>
+                <div class="contact-item"><i class="fa-solid fa-location-dot"></i><div><span>UBICACIÓN</span><strong>Huancayo · Perú</strong></div></div>
             </div>
-
         </section>
-
     </main>
 
-
-    <!-- =====================================================
-         FOOTER
-    ====================================================== -->
-
     <footer class="footer">
-
         <div>
-
-            <strong>
-                RAFAEL MAX CAJAHUARINGA CAMASCA
-            </strong>
-
-            <span>
-                BASE DE DATOS II · UPLA
-            </span>
-
+            <strong>RAFAEL MAX CAJAHUARINGA CAMASCA</strong>
+            <span>BASE DE DATOS II · UPLA</span>
         </div>
-
-        <p>
-            © 2026 · Portafolio Académico
-        </p>
-
+        <p>© 2026 · Portafolio Académico</p>
     </footer>
-
 </div>
-
-
-<!-- =====================================================
-     MÚSICA
-====================================================== -->
 
 <div class="music-player">
-
-    <audio id="bgMusic" loop preload="none">
-
-        <source
-            src="musica.mp3"
-            type="audio/mpeg"
-        >
-
-    </audio>
-
-
-    <button
-        id="musicToggle"
-        class="music-toggle"
-        aria-label="Reproducir música de fondo"
-        title="Música de fondo"
-    >
-
+    <audio id="bgMusic" loop preload="none"><source src="musica.mp3" type="audio/mpeg"></audio>
+    <button id="musicToggle" class="music-toggle" aria-label="Reproducir música de fondo" title="Música de fondo">
         <i class="fa-solid fa-play"></i>
-
-        <span class="music-note">
-
-            <i class="fa-solid fa-music"></i>
-
-        </span>
-
+        <span class="music-note"><i class="fa-solid fa-music"></i></span>
     </button>
-
 </div>
-
-
-<!-- =====================================================
-     CHATBOT
-====================================================== -->
 
 <div class="chatbot-container">
-
-    <button
-        id="chatToggle"
-        class="chat-toggle"
-        aria-label="Abrir asistente"
-    >
-
-        <i class="fa-solid fa-robot"></i>
-
-    </button>
-
-
+    <button id="chatToggle" class="chat-toggle" aria-label="Abrir asistente"><i class="fa-solid fa-robot"></i></button>
     <div id="chatWindow" class="chat-window">
-
         <div class="chat-header">
-
             <div class="chat-header-info">
-
-                <div class="bot-icon">
-                    <i class="fa-solid fa-robot"></i>
-                </div>
-
+                <div class="bot-icon"><i class="fa-solid fa-robot"></i></div>
                 <div>
-
-                    <h3>
-                        RAKION AI
-                    </h3>
-
-                    <span>
-                        <i class="fa-solid fa-circle"></i>
-                        ASISTENTE ACADÉMICO
-                    </span>
-
+                    <h3>RAKION AI</h3>
+                    <span><i class="fa-solid fa-circle"></i> ASISTENTE ACADÉMICO</span>
                 </div>
-
             </div>
-
-
-            <button
-                id="chatClose"
-                class="chat-close"
-            >
-
-                <i class="fa-solid fa-xmark"></i>
-
-            </button>
-
+            <button id="chatClose" class="chat-close" aria-label="Cerrar"><i class="fa-solid fa-xmark"></i></button>
         </div>
-
-
-        <div
-            id="chatMessages"
-            class="chat-messages"
-        >
-
+        <div id="chatMessages" class="chat-messages">
             <div class="message bot-message">
-
-                <div class="message-label">
-                    RAKION AI
-                </div>
-
-                Hola. Soy el asistente académico del
-                portafolio de
-                <strong>
-                    Rafael Max Cajahuaringa Camasca
-                </strong>.
-
+                <div class="message-label">RAKION AI</div>
+                Hola. Soy el asistente académico del portafolio de <strong>Rafael Max Cajahuaringa Camasca</strong>.
                 <br><br>
-
-                Puedo responder preguntas sobre
-                <strong>
-                    Base de Datos II
-                </strong>,
-                unidades, semanas, evidencias,
-                evaluación y contacto.
-
+                Puedo responder sobre <strong>Base de Datos II</strong>, unidades, semanas, evidencias y contacto.
             </div>
-
         </div>
-
-
-        <div class="quick-questions">
-
-            <button
-                class="quick-btn"
-                data-question="¿Quién es Rafael?"
-            >
-                ¿Quién es Rafael?
-            </button>
-
-            <button
-                class="quick-btn"
-                data-question="¿Qué carrera estudia?"
-            >
-                Carrera
-            </button>
-
-            <button
-                class="quick-btn"
-                data-question="¿Qué curso corresponde al portafolio?"
-            >
-                Curso
-            </button>
-
-            <button
-                class="quick-btn"
-                data-question="¿Quién es el docente?"
-            >
-                Docente
-            </button>
-
-            <button
-                class="quick-btn"
-                data-question="¿Qué contiene la Unidad I?"
-            >
-                Unidad I
-            </button>
-
-            <button
-                class="quick-btn"
-                data-question="¿Qué se trabajó en la Semana 1?"
-            >
-                Semana 1
-            </button>
-
-            <button
-                class="quick-btn"
-                data-question="¿Qué se trabajó en la Semana 2?"
-            >
-                Semana 2
-            </button>
-
-            <button
-                class="quick-btn"
-                data-question="¿Qué se trabajó en la Semana 3?"
-            >
-                Semana 3
-            </button>
-
-            <button
-                class="quick-btn"
-                data-question="¿Qué se trabajó en la Semana 4?"
-            >
-                Semana 4
-            </button>
-
-            <button
-                class="quick-btn"
-                data-question="¿Qué contiene la Unidad II?"
-            >
-                Unidad II
-            </button>
-
-            <button
-                class="quick-btn"
-                data-question="¿Qué contiene la Unidad III?"
-            >
-                Unidad III
-            </button>
-
-            <button
-                class="quick-btn"
-                data-question="¿Qué contiene la Unidad IV?"
-            >
-                Unidad IV
-            </button>
-
-            <button
-                class="quick-btn"
-                data-question="¿Cómo puedo ver las evidencias?"
-            >
-                Evidencias
-            </button>
-
-            <button
-                class="quick-btn"
-                data-question="¿Cuál es la nota mínima?"
-            >
-                Evaluación
-            </button>
-
-            <button
-                class="quick-btn"
-                data-question="¿Cómo contacto a Rafael?"
-            >
-                Contacto
-            </button>
-
-        </div>
-
-
-        <form
-            id="chatForm"
-            class="chat-input-area"
-        >
-
-            <input
-                type="text"
-                id="chatInput"
-                placeholder="Escribe tu pregunta..."
-                autocomplete="off"
-            >
-
-            <button
-                type="submit"
-                aria-label="Enviar pregunta"
-            >
-
-                <i class="fa-solid fa-paper-plane"></i>
-
-            </button>
-
+        <div id="quickQuestions" class="quick-questions"></div>
+        <form id="chatForm" class="chat-input-area">
+            <input type="text" id="chatInput" placeholder="Escribe tu pregunta..." autocomplete="off">
+            <button type="submit" aria-label="Enviar pregunta"><i class="fa-solid fa-paper-plane"></i></button>
         </form>
-
     </div>
-
 </div>
 
-
-<!-- =====================================================
-     MODAL INFOGRAFÍAS
-====================================================== -->
-
-<div
-    id="infographicModal"
-    class="infographic-modal"
-    aria-hidden="true"
->
-
+<div id="infographicModal" class="infographic-modal" aria-hidden="true">
     <div class="infographic-modal-box">
-
         <div class="infographic-modal-header">
-
             <div>
-
-                <span id="infographicModalWeek">
-                    SEMANA 01 · EVIDENCIA
-                </span>
-
-                <h3 id="infographicModalTitle">
-                    Infografía
-                </h3>
-
+                <span id="infographicModalWeek">SEMANA 01 · EVIDENCIA</span>
+                <h3 id="infographicModalTitle">Infografía</h3>
             </div>
-
-
-            <button
-                id="infographicModalClose"
-                class="pdf-modal-close"
-                aria-label="Cerrar"
-            >
-
-                <i class="fa-solid fa-xmark"></i>
-
-            </button>
-
+            <button id="infographicModalClose" class="pdf-modal-close" aria-label="Cerrar"><i class="fa-solid fa-xmark"></i></button>
         </div>
-
-
         <div class="infographic-modal-body">
-
-            <img
-                id="infographicViewer"
-                src=""
-                alt="Vista ampliada de la infografía"
-            >
-
+            <img id="infographicViewer" src="" alt="Vista ampliada de la infografía">
         </div>
-
     </div>
-
 </div>
 
-
-<!-- =====================================================
-     MODAL PDF
-====================================================== -->
-
-<div
-    id="pdfModal"
-    class="pdf-modal"
->
-
+<div id="pdfModal" class="pdf-modal">
     <div class="pdf-modal-box">
-
-
         <div class="pdf-modal-header">
-
             <div>
-
-                <span id="pdfModalWeek">
-                    SEMANA
-                </span>
-
-                <h3 id="pdfModalTitle">
-                    Título de la semana
-                </h3>
-
+                <span id="pdfModalWeek">SEMANA</span>
+                <h3 id="pdfModalTitle">Título</h3>
             </div>
-
-
-            <button
-                id="pdfModalClose"
-                class="pdf-modal-close"
-                aria-label="Cerrar"
-            >
-
-                <i class="fa-solid fa-xmark"></i>
-
-            </button>
-
+            <button id="pdfModalClose" class="pdf-modal-close" aria-label="Cerrar"><i class="fa-solid fa-xmark"></i></button>
         </div>
-
-
         <div class="pdf-modal-body">
-
-
-            <div
-                id="pdfViewerWrap"
-                class="pdf-viewer-wrap"
-            >
-
-                <iframe
-                    id="pdfViewer"
-                    class="pdf-viewer"
-                    title="Vista previa del PDF"
-                ></iframe>
-
+            <div id="pdfViewerWrap" class="pdf-viewer-wrap">
+                <iframe id="pdfViewer" class="pdf-viewer" title="Vista previa del PDF"></iframe>
             </div>
-
-
-            <div
-                id="pdfEmptyState"
-                class="pdf-empty-state"
-            >
-
+            <div id="pdfEmptyState" class="pdf-empty-state">
                 <i class="fa-solid fa-file-pdf"></i>
-
-                <p>
-                    Aún no hay ningún PDF cargado para esta semana.
-                </p>
-
+                <p>Aún no hay ningún PDF cargado para esta evidencia.</p>
             </div>
-
-
             <div class="pdf-modal-actions">
-
-                <label
-                    class="pdf-upload-btn"
-                    for="pdfFileInput"
-                >
-
-                    <i class="fa-solid fa-upload"></i>
-
-                    Subir PDF
-
-                </label>
-
-
-                <input
-                    type="file"
-                    id="pdfFileInput"
-                    accept="application/pdf"
-                    hidden
-                >
-
-
+                <label class="pdf-upload-btn" for="pdfFileInput"><i class="fa-solid fa-upload"></i> Subir PDF</label>
+                <input type="file" id="pdfFileInput" accept="application/pdf" hidden>
                 <div class="pdf-fixed-link">
-
-                    <input
-                        type="text"
-                        id="pdfFixedPath"
-                        placeholder="ej: pdfs/semana1.pdf"
-                    >
-
-                    <button
-                        id="pdfFixedLoad"
-                        type="button"
-                    >
-                        Abrir enlace
-                    </button>
-
+                    <input type="text" id="pdfFixedPath" placeholder="ej: pdfs/semana1.pdf">
+                    <button id="pdfFixedLoad" type="button">Abrir enlace</button>
                 </div>
-
             </div>
-
         </div>
-
     </div>
-
 </div>
-
-
-<!-- =====================================================
-     CRUD / EVIDENCIAS JSON
-     
-     IMPORTANTE:
-     crud.js se carga AQUÍ y no en el HEAD.
-     Así #crudEvidencias y #crudContador ya existen.
-====================================================== -->
 
 <script src="crud.js"></script>
 
-
-<!-- =====================================================
-     JAVASCRIPT PRINCIPAL
-====================================================== -->
-
 <script>
+const $ = id => document.getElementById(id);
 
+const IMG1 = "Semana 1/infografias/actividad-01/";
+const IMG2 = "Semana 1/infografias/actividad-02/";
+const S2 = "Semana 2/infografias/";
 
-    /* =================================================
-       LOGIN
-    ================================================= */
-
-    const loginForm =
-        document.getElementById("loginForm");
-
-    const loginScreen =
-        document.getElementById("login-screen");
-
-    const portfolio =
-        document.getElementById("portfolio");
-
-    const loginError =
-        document.getElementById("loginError");
-
-    const accessChoice =
-        document.getElementById("accessChoice");
-
-    const guestAccessBtn =
-        document.getElementById("guestAccessBtn");
-
-    const adminAccessBtn =
-        document.getElementById("adminAccessBtn");
-
-    const backToAccessBtn =
-        document.getElementById("backToAccessBtn");
-
-
-    /* =================================================
-       FUNCIÓN PARA ABRIR EL PORTAFOLIO
-    ================================================= */
-    function enterPortfolio(role) {
-
-        document.body.dataset.role = role;
-        portfolio.dataset.role = role;
-
-        document.dispatchEvent(new CustomEvent("rolechanged", { detail: { role: role } }));
-
-        loginError.textContent = "";
-
-        loginScreen.classList.add("hidden");
-
-        setTimeout(function () {
-
-            portfolio.classList.add("visible");
-
-        }, 300);
-
+const UNIDADES = [
+    {
+        n: "I", activa: true, estado: "EN CURSO",
+        titulo: "Arquitecturas de Bases de Datos y Configuración del Entorno Corporativo",
+        desc: "Identifica las arquitecturas de base de datos mediante su capacidad de implementación en gestores DBMS vigentes para determinar cómo almacenar, organizar e integrar los datos.",
+        material: { t: "Introducción a la administración de base de datos", pdf: "Material/Capitulo1_Introduccion_BD.pdf" },
+        semanas: [
+            {
+                n: 1, titulo: "Formulación del Proyecto y Selección de la Arquitectura", pdf: "Semana 1/APLICACIONES 3.pdf",
+                acts: [
+                    { t: "Actividad 1 · Arquitecturas", items: [
+                        ["Arquitectura Centralizada", "img", IMG1 + "arquitectura-centralizada.png"],
+                        ["Arquitectura Cliente-Servidor", "img", IMG1 + "arquitectura-cliente-servidor.png"],
+                        ["Arquitectura Distribuida", "img", IMG1 + "arquitectura-distribuida.png"],
+                        ["Arquitectura en la Nube y Multitenencia", "img", IMG1 + "arquitectura-nube-multitenencia.png"]
+                    ]},
+                    { t: "Actividad 2 · Características y evolución de los SGBD", items: [
+                        ["Características de la Base de Datos", "img", IMG2 + "caracteristicas-base-datos.png"],
+                        ["Características de los SGBD", "img", IMG2 + "caracteristicas-sgbd.png"],
+                        ["Desarrollo de la Tecnología de Base de Datos y Estructura de Mercado", "img", IMG2 + "tecnologia-base-datos-mercado.png"],
+                        ["Arquitecturas de los Sistemas de Administración de Bases de Datos", "img", IMG2 + "arquitecturas-sistemas-administracion.png"],
+                        ["Impactos Organizacionales de la Tecnología de Base de Datos", "img", IMG2 + "impactos-organizacionales.png"]
+                    ]}
+                ]
+            },
+            {
+                n: 2, titulo: "Despliegue y Configuración de Motores de Datos",
+                acts: [
+                    { t: "Actividad 1 · Manual de instalación de MS-SQL Server", items: [["Manual de instalación de MS-SQL Server", "pdf", "Semana 2/APLICACIONES 4.pdf"]] },
+                    { t: "Actividad 2 · Reglamento de Grados y Títulos", items: Array.from({ length: 8 }, (_, k) => [
+                        "Capítulo " + (k + 1), "img",
+                        S2 + "actividad-02/infografia-" + String(k + 1).padStart(2, "0") + ".png",
+                        "Capítulo " + (k + 1) + " · Reglamento de Grados y Títulos"
+                    ])},
+                    { t: "Actividad 3 · Sistemas de Gestión de Bases de Datos", items: [
+                        ["MS-SQL Server", "img", S2 + "actividad-03/ms-sql-server.png"],
+                        ["MySQL", "img", S2 + "actividad-03/mysql.png"],
+                        ["Oracle", "img", S2 + "actividad-03/oracle.png"],
+                        ["PostgreSQL", "img", S2 + "actividad-03/postgresql.png"],
+                        ["MongoDB", "img", S2 + "actividad-03/mongodb.png"]
+                    ]}
+                ]
+            },
+            {
+                n: 3, titulo: "Modelamiento Físico y Mecanismos de Integración", pdf: "Semana 3/APLICACIONES 5.pdf",
+                acts: [
+                    { t: "Actividad 1 · Cadena Editorial", items: [["CadenaEditorial.sql", "sql", "Semana 3/CadenaEditorial.sql"]] },
+                    { t: "Actividad 2 · Empresa de Material Informático", items: [["EmpresaMaterialInformatico.sql", "sql", "Semana 3/EmpresaMaterialInformatico.sql"]] },
+                    { t: "Actividad 3 · Grados y Títulos", items: [["GradosTitulos_corregido.sql", "sql", "Semana 3/GradosTitulos_corregido (1).sql"]] }
+                ]
+            },
+            { n: 4, titulo: "Sustentación y Validación de la Infraestructura de Datos" }
+        ]
+    },
+    {
+        n: "II", estado: "PRÓXIMAMENTE",
+        titulo: "Administración de Instancias, Estructuras de Almacenamiento y Gestión de Datos Masivos",
+        desc: "Asignación de memoria, archivos primarios y secundarios (.MDF, .NDF, .LDF), indexación y pruebas de carga masiva."
+    },
+    {
+        n: "III", estado: "PRÓXIMAMENTE",
+        titulo: "Seguridad Corporativa, Conectividad de Red y Alta Disponibilidad de Datos",
+        desc: "Configuración TCP/IP, control de accesos RBAC, auditorías, automatización de respaldos y planes de contingencia."
+    },
+    {
+        n: "IV", estado: "PRÓXIMAMENTE",
+        titulo: "Monitoreo de Servidores, Optimización del Desempeño y Recuperación",
+        desc: "Monitoreo en tiempo real, afinamiento de consultas SQL, tecnología Flashback y sustentación final."
     }
-
-
-    /* =================================================
-       ACCESO COMO INVITADO
-    ================================================= */
-    guestAccessBtn.addEventListener(
-        "click",
-        function () {
-
-            enterPortfolio("guest");
-
-        }
-    );
-
-
-    /* =================================================
-       MOSTRAR ACCESO DE ADMINISTRADOR
-    ================================================= */
-    adminAccessBtn.addEventListener(
-        "click",
-        function () {
-
-            accessChoice.hidden = true;
-            loginForm.hidden = false;
-
-            loginError.textContent = "";
-
-            setTimeout(function () {
-
-                document.getElementById("usuario").focus();
-
-            }, 100);
-
-        }
-    );
-
-
-    /* =================================================
-       VOLVER A LA SELECCIÓN
-    ================================================= */
-    backToAccessBtn.addEventListener(
-        "click",
-        function () {
-
-            loginForm.reset();
-            loginError.textContent = "";
-
-            loginForm.hidden = true;
-            accessChoice.hidden = false;
-
-        }
-    );
-
-
-    /* =================================================
-       LOGIN DEL ADMINISTRADOR
-    ================================================= */
-    loginForm.addEventListener(
-        "submit",
-        function (event) {
-
-            event.preventDefault();
-
-            const usuario =
-                document.getElementById("usuario").value.trim();
-
-            const password =
-                document.getElementById("password").value;
-
-
-            const usuarioCorrecto = "Rafael";
-
-            const passwordCorrecto = "123456";
-
-
-            if (
-                usuario === usuarioCorrecto &&
-                password === passwordCorrecto
-            ) {
-
-                enterPortfolio("admin");
-
-            } else {
-
-                loginError.textContent =
-                    "⚠ ACCESO DENEGADO · DATOS INCORRECTOS";
-
-                document.getElementById("password").value = "";
-
-            }
-
-        }
-    );
-
-
-    /* =================================================
-       CHATBOT
-    ================================================= */
-
-    const chatToggle =
-        document.getElementById("chatToggle");
-
-    const chatWindow =
-        document.getElementById("chatWindow");
-
-    const chatClose =
-        document.getElementById("chatClose");
-
-    const chatForm =
-        document.getElementById("chatForm");
-
-    const chatInput =
-        document.getElementById("chatInput");
-
-    const chatMessages =
-        document.getElementById("chatMessages");
-
-    const quickButtons =
-        document.querySelectorAll(".quick-btn");
-
-
-    chatToggle.addEventListener(
-        "click",
-        function () {
-
-            chatWindow.classList.toggle("active");
-
-            if (
-                chatWindow.classList.contains("active")
-            ) {
-
-                setTimeout(function () {
-
-                    chatInput.focus();
-
-                }, 100);
-
-            }
-
-        }
-    );
-
-
-    chatClose.addEventListener(
-        "click",
-        function () {
-
-            chatWindow.classList.remove("active");
-
-        }
-    );
-
-
-    function addMessage(text, type) {
-
-        const message =
-            document.createElement("div");
-
-        message.classList.add("message");
-
-
-        if (type === "bot") {
-
-            message.classList.add("bot-message");
-
-            message.innerHTML =
-                `<div class="message-label">RAKION AI</div>${text}`;
-
-        } else {
-
-            message.classList.add("user-message");
-
-            message.textContent = text;
-
-        }
-
-
-        chatMessages.appendChild(message);
-
-        chatMessages.scrollTop =
-            chatMessages.scrollHeight;
-
+];
+
+const pad = n => String(n).padStart(2, "0");
+
+function itemHTML(it, lb) {
+    const [t, k, x, ti] = it;
+    if (k === "sql") return `<a class="act-item" href="${encodeURI(x)}" download><i class="fa-solid fa-database"></i>${t}</a>`;
+    if (k === "link") return `<a class="act-item" href="${x}"><i class="fa-solid fa-arrow-up-right-from-square"></i>${t}</a>`;
+    const ic = k === "pdf" ? "fa-file-pdf" : "fa-image";
+    return `<button type="button" class="act-item" data-kind="${k}" data-target="${x}" data-title="${ti || t}" data-week="${lb}"><i class="fa-solid ${ic}"></i>${t}</button>`;
+}
+
+function semanaHTML(s, activa) {
+    const lb = "SEMANA " + pad(s.n);
+    const pdf = s.pdf
+        ? `<button type="button" class="act-item pdf-main" data-kind="pdf" data-target="${s.pdf}" data-title="${s.titulo}" data-week="${lb}"><i class="fa-solid fa-file-pdf"></i>Ver PDF de la semana</button>`
+        : "";
+    const acts = (s.acts || []).map((a, ai) =>
+        `<div class="act-box" data-act="${ai + 1}"><h5><i class="fa-solid fa-folder"></i>${a.t}</h5>${a.items.map(i => itemHTML(i, lb)).join("")}</div>`
+    ).join("");
+    const cuerpo = pdf + acts || `<div class="wk-empty">Sin evidencias registradas todavía.</div>`;
+    return `<article class="week-card${activa ? "" : " week-locked"}" data-week-label="${lb}">
+        <div class="week-card-main">
+            <div class="week-number">${pad(s.n)}</div>
+            <div class="week-content"><span>${lb}</span><h3>${s.titulo}</h3></div>
+        </div>
+        <div class="wk-body">${activa ? cuerpo : `<div class="wk-empty">Contenido por desarrollar.</div>`}</div>
+    </article>`;
+}
+
+function unidadHTML(u, i) {
+    const semanas = u.semanas || Array.from({ length: 4 }, (_, k) => ({ n: i * 4 + k + 1, titulo: "Semana " + pad(i * 4 + k + 1) }));
+    const material = u.material
+        ? `<div class="material-card" tabindex="0" role="button" data-kind="pdf" data-target="${u.material.pdf}" data-title="${u.material.t}" data-week="MATERIAL DE LECTURA">
+            <div class="material-icon"><i class="fa-solid fa-book-open"></i></div>
+            <div class="material-content"><span>UNIDAD ${u.n} · TEORÍA DE APOYO</span><h3>${u.material.t}</h3></div>
+           </div>`
+        : "";
+    return `<details class="unit-block"${u.activa ? " open" : ""}>
+        <summary>
+            <span class="unit-badge">UNIDAD ${u.n}</span>
+            <h3>${u.titulo}</h3>
+            <span class="unit-state${u.activa ? " on" : ""}">${u.estado}</span>
+            <i class="fa-solid fa-chevron-down chev"></i>
+        </summary>
+        <div class="unit-body">
+            <p class="unit-desc">${u.desc}</p>
+            ${material}
+            <div class="unit-weeks">
+                ${semanas.map(s => semanaHTML(s, u.activa)).join("")}
+            </div>
+        </div>
+    </details>`;
+}
+
+$("unidades").innerHTML = UNIDADES.map(unidadHTML).join("");
+
+
+const loginScreen = $("login-screen");
+const loginForm = $("loginForm");
+const loginError = $("loginError");
+const adminBtn = $("adminBtn");
+
+function setRole(role) {
+    document.body.dataset.role = role;
+    document.dispatchEvent(new CustomEvent("rolechanged", { detail: { role } }));
+    adminBtn.innerHTML = role === "admin"
+        ? '<i class="fa-solid fa-right-from-bracket"></i> SALIR DE ADMIN'
+        : '<i class="fa-solid fa-user-shield"></i> ADMINISTRADOR';
+}
+
+function cerrarLogin() {
+    loginForm.reset();
+    loginError.textContent = "";
+    loginScreen.classList.add("hidden");
+}
+
+adminBtn.addEventListener("click", function () {
+    if (document.body.dataset.role === "admin") { setRole("guest"); return; }
+    loginScreen.classList.remove("hidden");
+    setTimeout(() => $("usuario").focus(), 100);
+});
+
+$("backToAccessBtn").addEventListener("click", cerrarLogin);
+
+loginForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+    if ($("usuario").value.trim() === "Rafael" && $("password").value === "123456") {
+        cerrarLogin();
+        setRole("admin");
+        $("evidencias").scrollIntoView({ behavior: "smooth" });
+    } else {
+        loginError.textContent = "⚠ ACCESO DENEGADO · DATOS INCORRECTOS";
+        $("password").value = "";
     }
-
-
-    function getBotResponse(question) {
-
-        const q =
-            question
-            .toLowerCase()
-            .normalize("NFD")
-            .replace(/[\u0300-\u036f]/g, "");
-
-
-        if (
-            q.includes("hola") ||
-            q.includes("buenas")
-        ) {
-
-            return `
-                Hola. Bienvenido al
-                <strong>RAKION AI ASSISTANT</strong>.
-                <br><br>
-                Puedo ayudarte con información académica
-                sobre Rafael, Base de Datos II, unidades,
-                semanas, evidencias y evaluación.
-            `;
-
-        }
-
-
-        if (
-            q.includes("quien es rafael") ||
-            q === "rafael"
-        ) {
-
-            return `
-                <strong>
-                    Rafael Max Cajahuaringa Camasca
-                </strong>
-                es el estudiante responsable de la
-                elaboración y presentación de este
-                portafolio académico.
-                <br><br>
-                Pertenece al programa de
-                <strong>
-                    Ingeniería de Sistemas y Computación
-                </strong>
-                de la
-                <strong>
-                    Universidad Peruana Los Andes (UPLA)
-                </strong>.
-            `;
-
-        }
-
-
-        if (
-            q.includes("carrera") ||
-            q.includes("que estudia")
-        ) {
-
-            return `
-                Rafael estudia la carrera profesional de
-                <strong>
-                    Ingeniería de Sistemas y Computación
-                </strong>.
-            `;
-
-        }
-
-
-        if (
-            q.includes("universidad") ||
-            q.includes("upla")
-        ) {
-
-            return `
-                Rafael estudia en la
-                <strong>
-                    Universidad Peruana Los Andes (UPLA)
-                </strong>,
-                Facultad de Ingeniería.
-            `;
-
-        }
-
-
-        if (
-            q.includes("curso") ||
-            q.includes("asignatura")
-        ) {
-
-            return `
-                El portafolio corresponde a la asignatura
-                <strong>Base de Datos II</strong>.
-                <br><br>
-                Código:
-                <strong>332151</strong>
-                <br>
-                Modalidad:
-                <strong>Presencial</strong>.
-            `;
-
-        }
-
-
-        if (
-            q.includes("docente") ||
-            q.includes("profesor") ||
-            q.includes("raul") ||
-            q.includes("fernandez")
-        ) {
-
-            return `
-                El docente de la asignatura es:
-                <br><br>
-                <strong>
-                    Mg. Raúl Enrique Fernández Bejarano
-                </strong>.
-            `;
-
-        }
-
-
-        if (
-            q.includes("unidad i") ||
-            q.includes("unidad 1")
-        ) {
-
-            return `
-                <strong>UNIDAD I</strong>
-                <br><br>
-                <strong>
-                    Arquitecturas de Bases de Datos
-                    y Configuración del Entorno Corporativo
-                </strong>.
-                <br><br>
-                La unidad aborda:
-                <br>
-                • Selección de arquitectura.
-                <br>
-                • Despliegue del DBMS.
-                <br>
-                • Modelamiento físico.
-                <br>
-                • Integración de datos.
-                <br>
-                • Sustentación del primer avance.
-            `;
-
-        }
-
-
-        if (
-            q.includes("semana 1") ||
-            q.includes("semana uno")
-        ) {
-
-            return `
-                <strong>SEMANA 1</strong>
-                <br><br>
-                <strong>
-                    Formulación del Proyecto y
-                    Selección de la Arquitectura
-                </strong>.
-                <br><br>
-                Durante esta semana se desarrollaron
-                actividades relacionadas con arquitecturas
-                de bases de datos y fundamentos de
-                administración.
-                <br><br>
-                El portafolio contiene
-                <strong>9 infografías</strong>:
-                4 de Actividad 01 y 5 de Actividad 02.
-            `;
-
-        }
-
-
-        if (
-            q.includes("semana 2") ||
-            q.includes("semana dos")
-        ) {
-
-            return `
-                <strong>SEMANA 2</strong>
-                <br><br>
-                <strong>
-                    Despliegue y Configuración
-                    de Motores de Datos
-                </strong>.
-                <br><br>
-
-                La Semana 2 contiene
-                <strong>3 actividades</strong>.
-
-                <br><br>
-
-                <strong>Actividad 01:</strong>
-                <br>
-                Evidencia en formato PDF:
-                <strong>APLICACIONES 4.pdf</strong>.
-
-                <br><br>
-
-                <strong>Actividad 02:</strong>
-                <br>
-                8 evidencias correspondientes a los
-                capítulos del
-                <strong>
-                    Reglamento de Grados y Títulos
-                </strong>.
-
-                <br><br>
-
-                <strong>Actividad 03:</strong>
-                <br>
-                5 evidencias relacionadas con:
-                MongoDB, MS-SQL Server, MySQL,
-                Oracle y PostgreSQL.
-            `;
-
-        }
-
-
-        if (
-            q.includes("semana 3") ||
-            q.includes("semana tres")
-        ) {
-
-            return `
-                <strong>SEMANA 3</strong>
-                <br><br>
-                <strong>
-                    Modelamiento Físico y
-                    Mecanismos de Integración
-                </strong>.
-            `;
-
-        }
-
-
-        if (
-            q.includes("semana 4") ||
-            q.includes("semana cuatro")
-        ) {
-
-            return `
-                <strong>SEMANA 4</strong>
-                <br><br>
-                <strong>
-                    Sustentación y Validación
-                    de la Infraestructura de Datos
-                </strong>.
-            `;
-
-        }
-
-
-        if (
-            q.includes("unidad ii") ||
-            q.includes("unidad 2")
-        ) {
-
-            return `
-                <strong>UNIDAD II</strong>
-                <br><br>
-                Administración de Instancias,
-                Estructuras de Almacenamiento y
-                Gestión de Datos Masivos.
-            `;
-
-        }
-
-
-        if (
-            q.includes("unidad iii") ||
-            q.includes("unidad 3")
-        ) {
-
-            return `
-                <strong>UNIDAD III</strong>
-                <br><br>
-                Seguridad Corporativa,
-                Conectividad de Red y Alta
-                Disponibilidad de Datos.
-            `;
-
-        }
-
-
-        if (
-            q.includes("unidad iv") ||
-            q.includes("unidad 4")
-        ) {
-
-            return `
-                <strong>UNIDAD IV</strong>
-                <br><br>
-                Monitoreo de Servidores,
-                Optimización del Desempeño
-                y Recuperación.
-            `;
-
-        }
-
-
-        if (
-            q.includes("evidencia") ||
-            q.includes("trabajos")
-        ) {
-
-            return `
-                Las evidencias registradas actualmente
-                en el sistema son:
-
-                <br><br>
-
-                <strong>
-                    SEMANA 1
-                </strong>
-                <br>
-                9 evidencias.
-
-                <br><br>
-
-                <strong>
-                    SEMANA 2 · ACTIVIDAD 02
-                </strong>
-                <br>
-                8 evidencias correspondientes a los
-                capítulos del Reglamento de Grados y Títulos.
-
-                <br><br>
-
-                <strong>
-                    SEMANA 2 · ACTIVIDAD 03
-                </strong>
-                <br>
-                5 evidencias correspondientes a
-                MongoDB, MS-SQL Server, MySQL,
-                Oracle y PostgreSQL.
-
-                <br><br>
-
-                Total registrado:
-                <strong>
-                    22 evidencias.
-                </strong>
-            `;
-
-        }
-
-
-        if (
-            q.includes("reglamento") ||
-            q.includes("capitulo")
-        ) {
-
-            return `
-                En la Semana 2, Actividad 02,
-                se registraron
-                <strong>8 evidencias</strong>:
-
-                <br><br>
-
-                Capítulo 1 de Reglamento de Grados y Títulos.
-                <br>
-                Capítulo 2 de Reglamento de Grados y Títulos.
-                <br>
-                Capítulo 3 de Reglamento de Grados y Títulos.
-                <br>
-                Capítulo 4 de Reglamento de Grados y Títulos.
-                <br>
-                Capítulo 5 de Reglamento de Grados y Títulos.
-                <br>
-                Capítulo 6 de Reglamento de Grados y Títulos.
-                <br>
-                Capítulo 7 de Reglamento de Grados y Títulos.
-                <br>
-                Capítulo 8 de Reglamento de Grados y Títulos.
-            `;
-
-        }
-
-
-        if (
-            q.includes("mongodb") ||
-            q.includes("ms sql") ||
-            q.includes("sql server") ||
-            q.includes("mysql") ||
-            q.includes("oracle") ||
-            q.includes("postgresql")
-        ) {
-
-            return `
-                La Actividad 03 de la Semana 2
-                contiene cinco evidencias relacionadas
-                con sistemas gestores de bases de datos:
-
-                <br><br>
-
-                • MongoDB
-                <br>
-                • MS-SQL Server
-                <br>
-                • MySQL
-                <br>
-                • Oracle
-                <br>
-                • PostgreSQL
-            `;
-
-        }
-
-
-        if (
-            q.includes("evaluacion") ||
-            q.includes("nota")
-        ) {
-
-            return `
-                <strong>
-                    SISTEMA DE EVALUACIÓN
-                </strong>
-                <br><br>
-                Unidad I: <strong>10%</strong>
-                <br>
-                Unidad II: <strong>15%</strong>
-                <br>
-                Unidad III: <strong>20%</strong>
-                <br>
-                Unidad IV: <strong>25%</strong>
-                <br>
-                Desempeño Final: <strong>30%</strong>
-                <br><br>
-                Nota mínima indicada:
-                <strong>13</strong>.
-                <br>
-                Asistencia mínima:
-                <strong>70%</strong>.
-            `;
-
-        }
-
-
-        if (
-            q.includes("contacto") ||
-            q.includes("telefono") ||
-            q.includes("whatsapp")
-        ) {
-
-            return `
-                Puedes contactar a Rafael mediante:
-                <br><br>
-                <strong>
-                    Teléfono / WhatsApp:
-                </strong>
-                982192749
-            `;
-
-        }
-
-
-        return `
-            No tengo esa información registrada todavía.
-            <br><br>
-            Puedes preguntarme por:
-            <br>
-            • Rafael
-            <br>
-            • Carrera
-            <br>
-            • Curso
-            <br>
-            • Docente
-            <br>
-            • Unidad I
-            <br>
-            • Semana 1
-            <br>
-            • Semana 2
-            <br>
-            • Reglamento
-            <br>
-            • MongoDB
-            <br>
-            • MySQL
-            <br>
-            • Oracle
-            <br>
-            • PostgreSQL
-            <br>
-            • Evidencias
-            <br>
-            • Evaluación
-            <br>
-            • Contacto
-        `;
-
+});
+
+
+const chatWindow = $("chatWindow");
+const chatInput = $("chatInput");
+const chatMessages = $("chatMessages");
+
+$("chatToggle").addEventListener("click", function () {
+    chatWindow.classList.toggle("active");
+    if (chatWindow.classList.contains("active")) setTimeout(() => chatInput.focus(), 100);
+});
+$("chatClose").addEventListener("click", () => chatWindow.classList.remove("active"));
+
+function addMessage(text, type) {
+    const m = document.createElement("div");
+    m.classList.add("message", type === "bot" ? "bot-message" : "user-message");
+    if (type === "bot") m.innerHTML = `<div class="message-label">RAKION AI</div>${text}`;
+    else m.textContent = text;
+    chatMessages.appendChild(m);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+const BOT = [
+    [/hola|buenas/, "Hola. Puedo ayudarte con información sobre Rafael, Base de Datos II, unidades, semanas, evidencias y contacto."],
+    [/codigo/, "El código de estudiante de Rafael es <strong>T04119C</strong>. El código del curso es <strong>332151</strong>."],
+    [/quien es rafael|^rafael$/, "<strong>Rafael Max Cajahuaringa Camasca</strong> es estudiante de <strong>Ingeniería de Sistemas y Computación</strong> en la <strong>UPLA</strong> y autor de este portafolio."],
+    [/carrera|que estudia/, "Rafael estudia <strong>Ingeniería de Sistemas y Computación</strong>."],
+    [/universidad|upla/, "Rafael estudia en la <strong>Universidad Peruana Los Andes (UPLA)</strong>, Facultad de Ingeniería."],
+    [/docente|profesor|raul|fernandez/, "El docente de la asignatura es <strong>Mg. Raúl Enrique Fernández Bejarano</strong>."],
+    [/curso|asignatura/, "El portafolio corresponde a <strong>Base de Datos II</strong>. Código: <strong>332151</strong>. Modalidad: <strong>Presencial</strong>."],
+    [/unidad (iv|4)/, "<strong>UNIDAD IV</strong><br>Monitoreo de Servidores, Optimización del Desempeño y Recuperación."],
+    [/unidad (iii|3)/, "<strong>UNIDAD III</strong><br>Seguridad Corporativa, Conectividad de Red y Alta Disponibilidad de Datos."],
+    [/unidad (ii|2)/, "<strong>UNIDAD II</strong><br>Administración de Instancias, Estructuras de Almacenamiento y Gestión de Datos Masivos."],
+    [/unidad (i|1)/, "<strong>UNIDAD I</strong> (en curso)<br>Arquitecturas de Bases de Datos y Configuración del Entorno Corporativo. Tiene 4 semanas: selección de arquitectura, despliegue del DBMS, modelamiento físico y sustentación."],
+    [/semana (1|uno)/, "<strong>SEMANA 1</strong><br>Formulación del Proyecto y Selección de la Arquitectura. Contiene <strong>9 infografías</strong>: 4 de la Actividad 1 (arquitecturas) y 5 de la Actividad 2 (características y evolución de los SGBD)."],
+    [/semana (2|dos)/, "<strong>SEMANA 2</strong><br>Despliegue y Configuración de Motores de Datos.<br><br>Actividad 1: Manual SQL Server (PDF).<br>Actividad 2: 8 capítulos del Reglamento de Grados y Títulos.<br>Actividad 3: MongoDB, MS-SQL Server, MySQL, Oracle y PostgreSQL."],
+    [/semana (3|tres)/, "<strong>SEMANA 3</strong><br>Modelamiento Físico y Mecanismos de Integración. Contiene 3 actividades con scripts SQL: Cadena Editorial, Empresa de Material Informático y Grados y Títulos."],
+    [/semana (4|cuatro)/, "<strong>SEMANA 4</strong><br>Sustentación y Validación de la Infraestructura de Datos."],
+    [/reglamento|capitulo/, "En la Semana 2, Actividad 2, hay <strong>8 infografías</strong>, una por cada capítulo del Reglamento de Grados y Títulos."],
+    [/mongodb|sql|mysql|oracle|postgres/, "La Actividad 3 de la Semana 2 reúne 5 sistemas gestores: MongoDB, MS-SQL Server, MySQL, Oracle y PostgreSQL."],
+    [/administrador|admin|invitado/, "El portafolio se abre como invitado (solo lectura). El botón <strong>ADMINISTRADOR</strong> del menú permite iniciar sesión para agregar, editar o eliminar evidencias."],
+    [/evidencia|trabajos/, "Abre la Unidad I y entra a cada semana: cada actividad tiene un botón por evidencia. Semana 1: 9 infografías. Semana 2: 1 PDF, 8 capítulos y 5 gestores."],
+    [/contacto|telefono|whatsapp/, "Puedes contactar a Rafael por teléfono / WhatsApp: <strong>982192749</strong>."]
+];
+
+const NO_INFO = "No tengo esa información registrada todavía. Prueba con: Rafael, curso, docente, Unidad I, Semana 1, Semana 2, evidencias o contacto.";
+
+function getBotResponse(question) {
+    const q = question.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    const hit = BOT.find(([re]) => re.test(q));
+    return hit ? hit[1] : NO_INFO;
+}
+
+function sendQuestion(question) {
+    question = question.trim();
+    if (!question) return;
+    addMessage(question, "user");
+    chatInput.value = "";
+    setTimeout(() => addMessage(getBotResponse(question), "bot"), 400);
+}
+
+$("chatForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+    sendQuestion(chatInput.value);
+});
+
+[
+    ["¿Quién es Rafael?", "¿Quién es Rafael?"], ["Carrera", "¿Qué carrera estudia?"],
+    ["Curso", "¿Qué curso corresponde al portafolio?"], ["Docente", "¿Quién es el docente?"],
+    ["Unidad I", "¿Qué contiene la Unidad I?"], ["Semana 1", "¿Qué se trabajó en la Semana 1?"],
+    ["Semana 2", "¿Qué se trabajó en la Semana 2?"], ["Semana 3", "¿Qué se trabajó en la Semana 3?"],
+    ["Semana 4", "¿Qué se trabajó en la Semana 4?"], ["Unidad II", "¿Qué contiene la Unidad II?"],
+    ["Unidad III", "¿Qué contiene la Unidad III?"], ["Unidad IV", "¿Qué contiene la Unidad IV?"],
+    ["Evidencias", "¿Cómo puedo ver las evidencias?"], ["Contacto", "¿Cómo contacto a Rafael?"]
+].forEach(function ([label, question]) {
+    const b = document.createElement("button");
+    b.type = "button";
+    b.className = "quick-btn";
+    b.textContent = label;
+    b.addEventListener("click", () => sendQuestion(question));
+    $("quickQuestions").appendChild(b);
+});
+
+
+const musicToggle = $("musicToggle");
+const bgMusic = $("bgMusic");
+
+musicToggle.addEventListener("click", function () {
+    const icon = musicToggle.querySelector("i");
+    if (bgMusic.paused) {
+        bgMusic.play().then(function () {
+            musicToggle.classList.add("playing");
+            icon.className = "fa-solid fa-pause";
+        }).catch(function () {
+            alert('No se pudo reproducir la música. Verifica que "musica.mp3" exista en la carpeta principal.');
+        });
+    } else {
+        bgMusic.pause();
+        musicToggle.classList.remove("playing");
+        icon.className = "fa-solid fa-play";
     }
+});
 
 
-    function sendQuestion(question) {
+const infographicModal = $("infographicModal");
+const infographicViewer = $("infographicViewer");
 
-        question = question.trim();
+function abrirImagen(src, title, week) {
+    infographicViewer.src = src;
+    infographicViewer.alt = title;
+    $("infographicModalTitle").textContent = title;
+    $("infographicModalWeek").textContent = (week || "SEMANA") + " · EVIDENCIA";
+    infographicModal.classList.add("active");
+    infographicModal.setAttribute("aria-hidden", "false");
+    document.body.classList.add("modal-open");
+}
 
-        if (question === "") return;
+function closeInfographic() {
+    infographicModal.classList.remove("active");
+    infographicModal.setAttribute("aria-hidden", "true");
+    infographicViewer.src = "";
+    document.body.classList.remove("modal-open");
+}
 
-        addMessage(question, "user");
+$("infographicModalClose").addEventListener("click", closeInfographic);
+infographicModal.addEventListener("click", e => { if (e.target === infographicModal) closeInfographic(); });
 
-        chatInput.value = "";
 
+const pdfModal = $("pdfModal");
+const pdfViewer = $("pdfViewer");
+const pdfViewerWrap = $("pdfViewerWrap");
+const pdfEmptyState = $("pdfEmptyState");
+const pdfFileInput = $("pdfFileInput");
+const pdfFixedPath = $("pdfFixedPath");
+let currentBlobUrl = null;
 
-        setTimeout(function () {
-
-            const response =
-                getBotResponse(question);
-
-            addMessage(response, "bot");
-
-        }, 400);
-
+function liberarBlob() {
+    if (currentBlobUrl) {
+        URL.revokeObjectURL(currentBlobUrl);
+        currentBlobUrl = null;
     }
+}
 
+function showPdf(url) {
+    liberarBlob();
+    pdfViewer.src = url;
+    pdfViewerWrap.style.display = "block";
+    pdfEmptyState.style.display = "none";
+}
 
-    chatForm.addEventListener(
-        "submit",
-        function (event) {
+function clearPdf() {
+    liberarBlob();
+    pdfViewer.src = "";
+    pdfViewerWrap.style.display = "none";
+    pdfEmptyState.style.display = "flex";
+}
 
-            event.preventDefault();
+function abrirPdf(url, title, week) {
+    $("pdfModalWeek").textContent = week || "SEMANA";
+    $("pdfModalTitle").textContent = title || "";
+    pdfFixedPath.value = url || "";
+    pdfFileInput.value = "";
+    clearPdf();
+    if (url) showPdf(url);
+    pdfModal.classList.add("active");
+    document.body.classList.add("modal-open");
+}
 
-            sendQuestion(chatInput.value);
+function closePdfModal() {
+    pdfModal.classList.remove("active");
+    document.body.classList.remove("modal-open");
+    clearPdf();
+    pdfFileInput.value = "";
+}
 
-        }
-    );
+document.addEventListener("click", function (e) {
+    const el = e.target.closest("[data-kind]");
+    if (!el) return;
+    const { kind, target, title, week } = el.dataset;
+    if (kind === "img") abrirImagen(target, title, week);
+    if (kind === "pdf") abrirPdf(target, title, week);
+});
 
-
-    quickButtons.forEach(
-        function (button) {
-
-            button.addEventListener(
-                "click",
-                function () {
-
-                    sendQuestion(
-                        button.dataset.question
-                    );
-
-                }
-            );
-
-        }
-    );
-
-
-    /* =================================================
-       MÚSICA
-    ================================================= */
-
-    const musicToggle =
-        document.getElementById("musicToggle");
-
-    const bgMusic =
-        document.getElementById("bgMusic");
-
-
-    musicToggle.addEventListener(
-        "click",
-        function () {
-
-            if (bgMusic.paused) {
-
-                bgMusic.play()
-                    .then(function () {
-
-                        musicToggle.classList.add("playing");
-
-                        musicToggle.querySelector("i")
-                            .className =
-                            "fa-solid fa-pause";
-
-                    })
-                    .catch(function () {
-
-                        alert(
-                            'No se pudo reproducir la música. Verifica que "musica.mp3" exista en la carpeta principal.'
-                        );
-
-                    });
-
-            } else {
-
-                bgMusic.pause();
-
-                musicToggle.classList.remove("playing");
-
-                musicToggle.querySelector("i")
-                    .className =
-                    "fa-solid fa-play";
-
-            }
-
-        }
-    );
-
-
-    /* =================================================
-       GALERÍA DE INFOGRAFÍAS
-    ================================================= */
-
-    const infographicCards =
-        document.querySelectorAll(
-            ".infographic-card"
-        );
-
-    const infographicModal =
-        document.getElementById(
-            "infographicModal"
-        );
-
-    const infographicViewer =
-        document.getElementById(
-            "infographicViewer"
-        );
-
-    const infographicModalTitle =
-        document.getElementById(
-            "infographicModalTitle"
-        );
-
-    const infographicModalWeek =
-        document.getElementById(
-            "infographicModalWeek"
-        );
-
-    const infographicModalClose =
-        document.getElementById(
-            "infographicModalClose"
-        );
-
-
-    function openInfographic(card) {
-
-        infographicViewer.src =
-            card.dataset.infographic;
-
-        infographicViewer.alt =
-            card.dataset.infographicTitle;
-
-        infographicModalTitle.textContent =
-            card.dataset.infographicTitle;
-
-        infographicModalWeek.textContent =
-            card.dataset.infographicWeek ||
-            "SEMANA 01 · EVIDENCIA";
-
-        infographicModal.classList.add("active");
-
-        infographicModal.setAttribute(
-            "aria-hidden",
-            "false"
-        );
-
-        document.body.classList.add(
-            "modal-open"
-        );
-
+document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") {
+        if (pdfModal.classList.contains("active")) closePdfModal();
+        if (infographicModal.classList.contains("active")) closeInfographic();
+        if (!loginScreen.classList.contains("hidden")) cerrarLogin();
+        return;
     }
-
-
-    function closeInfographic() {
-
-        infographicModal.classList.remove(
-            "active"
-        );
-
-        infographicModal.setAttribute(
-            "aria-hidden",
-            "true"
-        );
-
-        infographicViewer.src = "";
-
-        document.body.classList.remove(
-            "modal-open"
-        );
-
+    const el = e.target.closest && e.target.closest(".material-card[data-kind]");
+    if (el && (e.key === "Enter" || e.key === " ")) {
+        e.preventDefault();
+        el.click();
     }
+});
 
+$("pdfModalClose").addEventListener("click", closePdfModal);
+pdfModal.addEventListener("click", e => { if (e.target === pdfModal) closePdfModal(); });
 
-    infographicCards.forEach(
-        function (card) {
-
-            card.addEventListener(
-                "click",
-                function () {
-
-                    openInfographic(card);
-
-                }
-            );
-
-
-            card.addEventListener(
-                "keydown",
-                function (event) {
-
-                    if (
-                        event.key === "Enter" ||
-                        event.key === " "
-                    ) {
-
-                        event.preventDefault();
-
-                        openInfographic(card);
-
-                    }
-
-                }
-            );
-
-        }
-    );
-
-
-    infographicModalClose.addEventListener(
-        "click",
-        closeInfographic
-    );
-
-
-    infographicModal.addEventListener(
-        "click",
-        function (event) {
-
-            if (
-                event.target === infographicModal
-            ) {
-
-                closeInfographic();
-
-            }
-
-        }
-    );
-
-
-    /* =================================================
-       PDF
-    ================================================= */
-
-    const weekCards =
-        document.querySelectorAll(
-            ".week-card, .material-card"
-        );
-
-    const pdfModal =
-        document.getElementById(
-            "pdfModal"
-        );
-
-    const pdfModalClose =
-        document.getElementById(
-            "pdfModalClose"
-        );
-
-    const pdfModalWeek =
-        document.getElementById(
-            "pdfModalWeek"
-        );
-
-    const pdfModalTitle =
-        document.getElementById(
-            "pdfModalTitle"
-        );
-
-    const pdfViewer =
-        document.getElementById(
-            "pdfViewer"
-        );
-
-    const pdfViewerWrap =
-        document.getElementById(
-            "pdfViewerWrap"
-        );
-
-    const pdfEmptyState =
-        document.getElementById(
-            "pdfEmptyState"
-        );
-
-    const pdfFileInput =
-        document.getElementById(
-            "pdfFileInput"
-        );
-
-    const pdfFixedPath =
-        document.getElementById(
-            "pdfFixedPath"
-        );
-
-    const pdfFixedLoad =
-        document.getElementById(
-            "pdfFixedLoad"
-        );
-
-
-    let currentBlobUrl = null;
-
-
-    function showPdf(url) {
-
-        if (currentBlobUrl) {
-
-            URL.revokeObjectURL(
-                currentBlobUrl
-            );
-
-            currentBlobUrl = null;
-
-        }
-
-        pdfViewer.src = url;
-
-        pdfViewerWrap.style.display =
-            "block";
-
-        pdfEmptyState.style.display =
-            "none";
-
+pdfFileInput.addEventListener("change", function () {
+    const file = pdfFileInput.files[0];
+    if (!file) return;
+    if (file.type !== "application/pdf") {
+        alert("Por favor selecciona un archivo PDF.");
+        return;
     }
+    const url = URL.createObjectURL(file);
+    showPdf(url);
+    currentBlobUrl = url;
+});
 
+$("pdfFixedLoad").addEventListener("click", function () {
+    const path = pdfFixedPath.value.trim();
+    if (path) showPdf(path);
+});
 
-    function clearPdf() {
+const EVID = new Map();
 
-        if (currentBlobUrl) {
+function dataUrlABlob(d) {
+    const [h, b] = d.split(",");
+    const bin = atob(b);
+    const u = new Uint8Array(bin.length);
+    for (let i = 0; i < bin.length; i++) u[i] = bin.charCodeAt(i);
+    return new Blob([u], { type: h.match(/:(.*?);/)[1] });
+}
 
-            URL.revokeObjectURL(
-                currentBlobUrl
-            );
-
-            currentBlobUrl = null;
-
-        }
-
-        pdfViewer.src = "";
-
-        pdfViewerWrap.style.display =
-            "none";
-
-        pdfEmptyState.style.display =
-            "flex";
-
+function abrirEvidenciaGuardada(id) {
+    const ev = EVID.get(Number(id));
+    if (!ev || !ev.archivo) return;
+    const week = "SEMANA " + pad(ev.semanaNumero);
+    if (ev.tipo === "pdf") {
+        abrirPdf("", ev.titulo, week);
+        const url = URL.createObjectURL(dataUrlABlob(ev.archivo));
+        showPdf(url);
+        currentBlobUrl = url;
+    } else {
+        abrirImagen(ev.archivo, ev.titulo, week);
     }
+}
 
-
-    function openPdfModal(card) {
-
-        const weekLabel =
-            card.dataset.weekLabel ||
-            "SEMANA";
-
-        const weekTitleEl =
-            card.querySelector("h3");
-
-        const weekTitle =
-            weekTitleEl
-                ? weekTitleEl.textContent.trim()
-                : "";
-
-
-        pdfModalWeek.textContent =
-            weekLabel;
-
-        pdfModalTitle.textContent =
-            weekTitle;
-
-        pdfFixedPath.value =
-            card.dataset.pdf || "";
-
-        pdfFileInput.value = "";
-
-
-        clearPdf();
-
-
-        const defaultPdf =
-            card.dataset.pdf;
-
-
-        if (defaultPdf) {
-
-            showPdf(defaultPdf);
-
+async function integrarEvidencias() {
+    let lista;
+    try { lista = await window.obtenerTodasLasEvidencias(); } catch (err) { return; }
+    EVID.clear();
+    document.querySelectorAll(".wk-body").forEach(function (body) {
+        body.querySelectorAll("[data-ev], .act-box.dyn").forEach(n => n.remove());
+    });
+    lista.forEach(function (ev) {
+        EVID.set(ev.id, ev);
+        const card = document.querySelector(`.week-card[data-week-label="SEMANA ${pad(ev.semanaNumero)}"]`);
+        if (!card) return;
+        const body = card.querySelector(".wk-body");
+        let box = body.querySelector(`.act-box[data-act="${ev.actividadNumero}"]`);
+        if (!box) {
+            box = document.createElement("div");
+            box.className = "act-box dyn";
+            box.dataset.act = ev.actividadNumero;
+            box.innerHTML = `<h5><i class="fa-solid fa-folder"></i>Actividad ${ev.actividadNumero}</h5>`;
+            const next = [...body.querySelectorAll(".act-box")].find(b => Number(b.dataset.act) > ev.actividadNumero);
+            if (next) body.insertBefore(box, next); else body.appendChild(box);
         }
-
-
-        pdfModal.classList.add(
-            "active"
-        );
-
-        document.body.classList.add(
-            "modal-open"
-        );
-
-    }
-
-
-    function closePdfModal() {
-
-        pdfModal.classList.remove(
-            "active"
-        );
-
-        document.body.classList.remove(
-            "modal-open"
-        );
-
-        clearPdf();
-
-        pdfFileInput.value = "";
-
-    }
-
-
-    weekCards.forEach(
-        function (card) {
-
-            card.addEventListener(
-                "click",
-                function () {
-
-                    /*
-                     * SEMANA 02 conserva su página independiente.
-                     */
-                    if (
-                        card.dataset.weekLabel === "SEMANA 02"
-                    ) {
-
-                        window.location.href =
-                            "Semana 2/index.html";
-
-                        return;
-
-                    }
-
-
-                    openPdfModal(card);
-
-                }
-            );
-
-
-            card.addEventListener(
-                "keydown",
-                function (event) {
-
-                    if (
-                        event.key === "Enter" ||
-                        event.key === " "
-                    ) {
-
-                        event.preventDefault();
-
-
-                        if (
-                            card.dataset.weekLabel === "SEMANA 02"
-                        ) {
-
-                            window.location.href =
-                                "Semana 2/index.html";
-
-                            return;
-
-                        }
-
-
-                        openPdfModal(card);
-
-                    }
-
-                }
-            );
-
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "act-item";
+        btn.dataset.ev = ev.id;
+        const ic = document.createElement("i");
+        ic.className = "fa-solid " + (ev.tipo === "pdf" ? "fa-file-pdf" : "fa-image");
+        btn.append(ic, ev.titulo);
+        box.appendChild(btn);
+    });
+    document.querySelectorAll(".wk-body").forEach(function (body) {
+        const vacio = !body.querySelector(".act-box, .pdf-main");
+        const ph = body.querySelector(".wk-empty");
+        if (vacio && !ph) {
+            const d = document.createElement("div");
+            d.className = "wk-empty";
+            d.textContent = "Sin evidencias registradas todavía.";
+            body.appendChild(d);
+        } else if (!vacio && ph) {
+            ph.remove();
         }
-    );
+    });
+}
 
+document.addEventListener("click", function (e) {
+    const b = e.target.closest("[data-ev]");
+    if (b) abrirEvidenciaGuardada(b.dataset.ev);
+});
 
-    pdfModalClose.addEventListener(
-        "click",
-        closePdfModal
-    );
-
-
-    pdfModal.addEventListener(
-        "click",
-        function (event) {
-
-            if (
-                event.target === pdfModal
-            ) {
-
-                closePdfModal();
-
-            }
-
-        }
-    );
-
-
-    document.addEventListener(
-        "keydown",
-        function (event) {
-
-            if (
-                event.key === "Escape"
-            ) {
-
-                if (
-                    pdfModal.classList.contains(
-                        "active"
-                    )
-                ) {
-
-                    closePdfModal();
-
-                }
-
-                if (
-                    infographicModal.classList.contains(
-                        "active"
-                    )
-                ) {
-
-                    closeInfographic();
-
-                }
-
-            }
-
-        }
-    );
-
-
-    pdfFileInput.addEventListener(
-        "change",
-        function () {
-
-            const file =
-                pdfFileInput.files[0];
-
-            if (!file) return;
-
-
-            if (
-                file.type !==
-                "application/pdf"
-            ) {
-
-                alert(
-                    "Por favor selecciona un archivo PDF."
-                );
-
-                return;
-
-            }
-
-
-            const url =
-                URL.createObjectURL(file);
-
-            currentBlobUrl = url;
-
-            showPdf(url);
-
-        }
-    );
-
-
-    pdfFixedLoad.addEventListener(
-        "click",
-        function () {
-
-            const path =
-                pdfFixedPath.value.trim();
-
-            if (!path) return;
-
-            showPdf(path);
-
-        }
-    );
-
+new MutationObserver(integrarEvidencias).observe($("crudContador"), { childList: true, characterData: true, subtree: true });
 </script>
 
 </body>
-
 </html>

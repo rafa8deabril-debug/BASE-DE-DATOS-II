@@ -989,7 +989,6 @@
             }
 
             const evidencia = {
-                id: id || undefined,
                 semanaNumero: semana,
                 semana: nombreSemana(semana),
                 actividadNumero: actividad,
@@ -1002,6 +1001,18 @@
                 fecha: evidenciaExistente?.fecha || new Date().toISOString(),
                 fechaActualizacion: new Date().toISOString()
             };
+
+            // IMPORTANTE: la propiedad "id" solo se agrega cuando ya existe
+            // un registro que editar. Si se deja como "id: undefined" en el
+            // objeto (aunque sea undefined), IndexedDB la trata como una
+            // clave presente pero inválida y lanza:
+            // "Evaluating the object store's key path yielded a value
+            //  that is not a valid key". Al omitir la propiedad por
+            // completo en los registros nuevos, el generador automático
+            // de claves (autoIncrement) puede asignar el id correctamente.
+            if (id) {
+                evidencia.id = id;
+            }
 
             await guardarEvidencia(evidencia);
 
@@ -1043,6 +1054,19 @@
     async function configurarCRUD() {
 
         try {
+
+            // Los botones "VER EVIDENCIAS" y sus paneles se preparan
+            // de inmediato, ANTES de abrir la base de datos. Esto es
+            // clave: abrir IndexedDB es asíncrono y puede tardar un
+            // instante. Si el botón esperaba a que la base de datos
+            // estuviera lista para recibir su comportamiento de clic,
+            // un clic justo al cargar la página "se escapaba" hacia
+            // la tarjeta completa y abría el modal de PDF en vez del
+            // panel de evidencias. Ahora el panel puede abrirse y
+            // cerrarse al instante; solo el contenido (las evidencias
+            // guardadas) se rellena después, cuando la base de datos
+            // esté lista.
+            prepararEstructuraSemanas();
 
             await abrirBaseDatos();
 
