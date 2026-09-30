@@ -378,17 +378,23 @@ const UNIDADES = [
                     { t: "Actividad 2 · Empresa de Material Informático", items: [["EmpresaMaterialInformatico.sql", "sql", "Semana 3/EmpresaMaterialInformatico.sql"]] },
                     { t: "Actividad 3 · Grados y Títulos", items: [["GradosTitulos_corregido.sql", "sql", "Semana 3/GradosTitulos_corregido (1).sql"]] },
                     { t: "Actividad 4 · Infografías de Base de Datos", items: [
-                        ["Introducción a los SGBD", "img", "Semana 3/infografias/01_Introduccion_SGBD.png"],
-                        ["Tipos de SGBD", "img", "Semana 3/infografias/02_Tipos_SGBD.png"],
-                        ["Funciones de los SGBD", "img", "Semana 3/infografias/03_Funciones_SGBD.png"],
-                        ["Ventajas de los SGBD", "img", "Semana 3/infografias/04_Ventajas_SGBD.png"],
-                        ["Arquitectura de Base de Datos", "img", "Semana 3/infografias/05_Arquitectura_BD.png"],
-                        ["Sistemas de Gestión de Base de Datos", "img", "Semana 3/infografias/06_Sistemas_Gestion_BD.png"],
-                        ["Referencias", "img", "Semana 3/infografias/07_Referencias.png"]
+                        ["Introducción a los SGBD", "img", "Semana 3/01_Introduccion_SGBD.png"],
+                        ["Tipos de SGBD", "img", "Semana 3/02_Tipos_SGBD.png"],
+                        ["Funciones de los SGBD", "img", "Semana 3/03_Funciones_SGBD.png"],
+                        ["Ventajas de los SGBD", "img", "Semana 3/04_Ventajas_SGBD.png"],
+                        ["Arquitectura de Base de Datos", "img", "Semana 3/05_Arquitectura_BD.png"],
+                        ["Sistemas de Gestión de Base de Datos", "img", "Semana 3/06_Sistemas_Gestion_BD.png"],
+                        ["Referencias", "img", "Semana 3/07_Referencias.png"]
                     ]}
                 ]
             },
-            { n: 4, titulo: "Sustentación y Validación de la Infraestructura de Datos" }
+            {
+                n: 4, titulo: "Sustentación y Validación de la Infraestructura de Datos",
+                acts: [
+                    { t: "Actividad 1 · Cuestionario Resuelto", items: [["Cadena_Editorial_Cuestionario_Resuelto.pdf", "pdf", "Semana 4/Cadena_Editorial_Cuestionario_Resuelto.pdf"]] },
+                    { t: "Actividad 2 · Script Cadena Editorial", items: [["cadenaEditorialSemana4.sql", "sql", "Semana 4/cadenaEditorialSemana4.sql"]] }
+                ]
+            }
         ]
     },
     {
@@ -413,6 +419,7 @@ const pad = n => String(n).padStart(2, "0");
 function itemHTML(it, lb) {
     const [t, k, x, ti] = it;
     if (k === "sql") return `<a class="act-item" href="${encodeURI(x)}" download><i class="fa-solid fa-database"></i>${t}</a>`;
+    if (k === "doc") return `<a class="act-item" href="${encodeURI(x)}" download><i class="fa-solid fa-file-word"></i>${t}</a>`;
     if (k === "link") return `<a class="act-item" href="${x}"><i class="fa-solid fa-arrow-up-right-from-square"></i>${t}</a>`;
     const ic = k === "pdf" ? "fa-file-pdf" : "fa-image";
     return `<button type="button" class="act-item" data-kind="${k}" data-target="${x}" data-title="${ti || t}" data-week="${lb}"><i class="fa-solid ${ic}"></i>${t}</button>`;
@@ -538,7 +545,7 @@ const BOT = [
     [/semana (1|uno)/, "<strong>SEMANA 1</strong><br>Formulación del Proyecto y Selección de la Arquitectura. Contiene <strong>9 infografías</strong>: 4 de la Actividad 1 (arquitecturas) y 5 de la Actividad 2 (características y evolución de los SGBD)."],
     [/semana (2|dos)/, "<strong>SEMANA 2</strong><br>Despliegue y Configuración de Motores de Datos.<br><br>Actividad 1: Manual SQL Server (PDF).<br>Actividad 2: 8 capítulos del Reglamento de Grados y Títulos.<br>Actividad 3: MongoDB, MS-SQL Server, MySQL, Oracle y PostgreSQL."],
     [/semana (3|tres)/, "<strong>SEMANA 3</strong><br>Modelamiento Físico y Mecanismos de Integración. Contiene 3 actividades con scripts SQL: Cadena Editorial, Empresa de Material Informático y Grados y Títulos."],
-    [/semana (4|cuatro)/, "<strong>SEMANA 4</strong><br>Sustentación y Validación de la Infraestructura de Datos."],
+    [/semana (4|cuatro)/, "<strong>SEMANA 4</strong><br>Sustentación y Validación de la Infraestructura de Datos. Contiene el cuestionario resuelto de Cadena Editorial y su script SQL."],
     [/reglamento|capitulo/, "En la Semana 2, Actividad 2, hay <strong>8 infografías</strong>, una por cada capítulo del Reglamento de Grados y Títulos."],
     [/mongodb|sql|mysql|oracle|postgres/, "La Actividad 3 de la Semana 2 reúne 5 sistemas gestores: MongoDB, MS-SQL Server, MySQL, Oracle y PostgreSQL."],
     [/administrador|admin|invitado/, "El portafolio se abre como invitado (solo lectura). El botón <strong>ADMINISTRADOR</strong> del menú permite iniciar sesión para agregar, editar o eliminar evidencias."],
