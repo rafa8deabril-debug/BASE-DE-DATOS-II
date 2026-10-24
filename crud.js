@@ -7,7 +7,7 @@
    - Editar evidencias
    - Eliminar evidencias
    - Guardar imágenes y PDF en IndexedDB
-   - Relacionar evidencias con Semana 01 - 04
+   - Relacionar evidencias con Semana 01 - 08
    - Relacionar evidencias con Actividad 01 - 09
    - Mostrar las evidencias dentro de cada semana
    - Administrador: puede gestionar
@@ -25,6 +25,7 @@
     const DB_NAME = "PortafolioBDII";
     const DB_VERSION = 1;
     const STORE_NAME = "evidencias";
+    const SEMANA_MAXIMA = 8;
 
     let db = null;
 
@@ -294,7 +295,7 @@
                 numeroSemana = Number(resultado[1]);
             }
 
-            if (numeroSemana < 1 || numeroSemana > 4) {
+            if (numeroSemana < 1 || numeroSemana > SEMANA_MAXIMA) {
                 return;
             }
 
@@ -538,7 +539,7 @@
 
         prepararEstructuraSemanas();
 
-        for (let semana = 1; semana <= 4; semana++) {
+        for (let semana = 1; semana <= SEMANA_MAXIMA; semana++) {
 
             const panel = document.getElementById("evidenciasSemana" + semana);
 
@@ -910,7 +911,7 @@
         // VALIDACIONES
         // -------------------------------------------------
 
-        if (semana < 1 || semana > 4) {
+        if (semana < 1 || semana > SEMANA_MAXIMA) {
             mostrarMensajeFormulario("⚠️ Selecciona una semana válida.", "error");
             return;
         }

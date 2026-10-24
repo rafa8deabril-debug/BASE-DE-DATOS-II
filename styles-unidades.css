@@ -16,6 +16,7 @@ body[data-role="guest"] .pdf-modal-actions{display:none}
 .unit-block>summary h3{flex:1;color:#fff;font:700 20px/1.25 'Rajdhani',sans-serif}
 .unit-state{padding:5px 9px;border:1px solid var(--hairline);color:var(--steel-dim);font:700 9px 'Orbitron',sans-serif;letter-spacing:1px;white-space:nowrap}
 .unit-state.on{border-color:var(--cyan);color:var(--cyan)}
+.unit-state.done{border-color:#00ff88;color:#00ff88}
 .chev{color:var(--cyan);transition:transform .25s}
 .unit-block[open]>summary .chev{transform:rotate(180deg)}
 .unit-body{padding:22px 25px 26px}

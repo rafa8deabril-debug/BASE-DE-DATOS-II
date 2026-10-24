@@ -169,6 +169,10 @@
                             <option value="SEMANA 02">Semana 02</option>
                             <option value="SEMANA 03">Semana 03</option>
                             <option value="SEMANA 04">Semana 04</option>
+                            <option value="SEMANA 05">Semana 05</option>
+                            <option value="SEMANA 06">Semana 06</option>
+                            <option value="SEMANA 07">Semana 07</option>
+                            <option value="SEMANA 08">Semana 08</option>
                         </select>
                     </div>
                     <div class="crud-form-group">
@@ -330,7 +334,7 @@ const S2 = "Semana 2/infografias/";
 
 const UNIDADES = [
     {
-        n: "I", activa: true, estado: "EN CURSO",
+        n: "I", activa: false, estado: "COMPLETADA",
         titulo: "Arquitecturas de Bases de Datos y Configuración del Entorno Corporativo",
         desc: "Identifica las arquitecturas de base de datos mediante su capacidad de implementación en gestores DBMS vigentes para determinar cómo almacenar, organizar e integrar los datos.",
         material: { t: "Introducción a la administración de base de datos", pdf: "Material/Capitulo1_Introduccion_BD.pdf" },
@@ -420,9 +424,35 @@ const UNIDADES = [
         ]
     },
     {
-        n: "II", estado: "PRÓXIMAMENTE",
+        n: "II", activa: true, estado: "EN CURSO",
         titulo: "Administración de Instancias, Estructuras de Almacenamiento y Gestión de Datos Masivos",
-        desc: "Asignación de memoria, archivos primarios y secundarios (.MDF, .NDF, .LDF), indexación y pruebas de carga masiva."
+        desc: "Asignación de memoria, archivos primarios y secundarios (.MDF, .NDF, .LDF), indexación y pruebas de carga masiva.",
+        semanas: [
+            {
+                n: 5, titulo: "Creación de Cuenta y Entorno en Azure",
+                acts: [
+                    { t: "Actividad 1 · Manual 1", items: [
+                        ["Manual 1 · Creación de cuenta Azure", "pdf", "Semana 5/Manual_1_Creacion_cuenta_Azure_t04119c (1).pdf"]
+                    ]}
+                ]
+            },
+            {
+                n: 6, titulo: "Servidor, Base de Datos y Conexión en Azure",
+                acts: [
+                    { t: "Actividad 1 · Manual 2", items: [
+                        ["Manual 2 · Servidor y BD Grados y Títulos", "pdf", "Semana 6/Manual_2_Servidor_y_BD_Grados_y_Titulos_t04119c (1).pdf"]
+                    ]},
+                    { t: "Actividad 2 · Manual 3", items: [
+                        ["Manual 3 · Creación de tablas", "pdf", "Semana 6/Manual_3_Creacion_de_tablas_t04119c (1).pdf"]
+                    ]},
+                    { t: "Actividad 3 · Manual 4", items: [
+                        ["Manual 4 · Conexión Azure SSMS", "pdf", "Semana 6/Manual_4_Conexion_Azure_SSMS_t04119c (1).pdf"]
+                    ]}
+                ]
+            },
+            { n: 7, titulo: "Semana 7" },
+            { n: 8, titulo: "Semana 8" }
+        ]
     },
     {
         n: "III", estado: "PRÓXIMAMENTE",
@@ -449,19 +479,22 @@ function itemHTML(it, lb) {
 
 function semanaHTML(s, activa) {
     const lb = "SEMANA " + pad(s.n);
+    const tieneContenido = !!(s.pdf || (s.acts && s.acts.length));
     const pdf = s.pdf
         ? `<button type="button" class="act-item pdf-main" data-kind="pdf" data-target="${s.pdf}" data-title="${s.titulo}" data-week="${lb}"><i class="fa-solid fa-file-pdf"></i>Ver PDF de la semana</button>`
         : "";
     const acts = (s.acts || []).map((a, ai) =>
         `<div class="act-box" data-act="${ai + 1}"><h5><i class="fa-solid fa-folder"></i>${a.t}</h5>${a.items.map(i => itemHTML(i, lb)).join("")}</div>`
     ).join("");
-    const cuerpo = pdf + acts || `<div class="wk-empty">Sin evidencias registradas todavía.</div>`;
-    return `<article class="week-card${activa ? "" : " week-locked"}" data-week-label="${lb}">
+    const cuerpo = tieneContenido
+        ? (pdf + acts)
+        : `<div class="wk-empty">${activa ? "Sin evidencias registradas todavía." : "Contenido por desarrollar."}</div>`;
+    return `<article class="week-card${tieneContenido ? "" : " week-locked"}" data-week-label="${lb}">
         <div class="week-card-main">
             <div class="week-number">${pad(s.n)}</div>
             <div class="week-content"><span>${lb}</span><h3>${s.titulo}</h3></div>
         </div>
-        <div class="wk-body">${activa ? cuerpo : `<div class="wk-empty">Contenido por desarrollar.</div>`}</div>
+        <div class="wk-body">${cuerpo}</div>
     </article>`;
 }
 
@@ -477,7 +510,7 @@ function unidadHTML(u, i) {
         <summary>
             <span class="unit-badge">UNIDAD ${u.n}</span>
             <h3>${u.titulo}</h3>
-            <span class="unit-state${u.activa ? " on" : ""}">${u.estado}</span>
+            <span class="unit-state${u.activa ? " on" : u.estado === "COMPLETADA" ? " done" : ""}">${u.estado}</span>
             <i class="fa-solid fa-chevron-down chev"></i>
         </summary>
         <div class="unit-body">
@@ -562,20 +595,21 @@ const BOT = [
     [/curso|asignatura/, "El portafolio corresponde a <strong>Base de Datos II</strong>. Código: <strong>332151</strong>. Modalidad: <strong>Presencial</strong>."],
     [/unidad (iv|4)/, "<strong>UNIDAD IV</strong><br>Monitoreo de Servidores, Optimización del Desempeño y Recuperación."],
     [/unidad (iii|3)/, "<strong>UNIDAD III</strong><br>Seguridad Corporativa, Conectividad de Red y Alta Disponibilidad de Datos."],
-    [/unidad (ii|2)/, "<strong>UNIDAD II</strong><br>Administración de Instancias, Estructuras de Almacenamiento y Gestión de Datos Masivos."],
-    [/unidad (i|1)/, "<strong>UNIDAD I</strong> (en curso)<br>Arquitecturas de Bases de Datos y Configuración del Entorno Corporativo. Tiene 4 semanas: selección de arquitectura, despliegue del DBMS, modelamiento físico y sustentación."],
+    [/unidad (ii|2)/, "<strong>UNIDAD II</strong> (en curso)<br>Administración de Instancias, Estructuras de Almacenamiento y Gestión de Datos Masivos."],
+    [/unidad (i|1)/, "<strong>UNIDAD I</strong> (completada)<br>Arquitecturas de Bases de Datos y Configuración del Entorno Corporativo. Tiene 4 semanas: selección de arquitectura, despliegue del DBMS, modelamiento físico y sustentación."],
     [/semana (1|uno)/, "<strong>SEMANA 1</strong><br>Formulación del Proyecto y Selección de la Arquitectura. Contiene <strong>9 infografías</strong>: 4 de la Actividad 1 (arquitecturas) y 5 de la Actividad 2 (características y evolución de los SGBD)."],
     [/semana (2|dos)/, "<strong>SEMANA 2</strong><br>Despliegue y Configuración de Motores de Datos.<br><br>Actividad 1: Manual SQL Server (PDF).<br>Actividad 2: 8 capítulos del Reglamento de Grados y Títulos.<br>Actividad 3: MongoDB, MS-SQL Server, MySQL, Oracle y PostgreSQL."],
     [/semana (3|tres)/, "<strong>SEMANA 3</strong><br>Modelamiento Físico y Mecanismos de Integración. Contiene 3 actividades con scripts SQL: Cadena Editorial, Empresa de Material Informático y Grados y Títulos."],
     [/semana (4|cuatro)/, "<strong>SEMANA 4</strong><br>Sustentación y Validación de la Infraestructura de Datos. Contiene el cuestionario resuelto de Cadena Editorial y su script SQL."],
+    [/semana (5|cinco)/, "<strong>SEMANA 5</strong><br>Primera semana de la Unidad II. Aún no tiene evidencias registradas."],
     [/reglamento|capitulo/, "En la Semana 2, Actividad 2, hay <strong>8 infografías</strong>, una por cada capítulo del Reglamento de Grados y Títulos."],
     [/mongodb|sql|mysql|oracle|postgres/, "La Actividad 3 de la Semana 2 reúne 5 sistemas gestores: MongoDB, MS-SQL Server, MySQL, Oracle y PostgreSQL."],
     [/administrador|admin|invitado/, "El portafolio se abre como invitado (solo lectura). El botón <strong>ADMINISTRADOR</strong> del menú permite iniciar sesión para agregar, editar o eliminar evidencias."],
-    [/evidencia|trabajos/, "Abre la Unidad I y entra a cada semana: cada actividad tiene un botón por evidencia. Semana 1: 9 infografías. Semana 2: 1 PDF, 8 capítulos y 5 gestores."],
+    [/evidencia|trabajos/, "Abre cualquier unidad y entra a cada semana: cada actividad tiene un botón por evidencia."],
     [/contacto|telefono|whatsapp/, "Puedes contactar a Rafael por teléfono / WhatsApp: <strong>982192749</strong>."]
 ];
 
-const NO_INFO = "No tengo esa información registrada todavía. Prueba con: Rafael, curso, docente, Unidad I, Semana 1, Semana 2, evidencias o contacto.";
+const NO_INFO = "No tengo esa información registrada todavía. Prueba con: Rafael, curso, docente, Unidad I, Unidad II, evidencias o contacto.";
 
 function getBotResponse(question) {
     const q = question.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
@@ -599,9 +633,7 @@ $("chatForm").addEventListener("submit", function (e) {
 [
     ["¿Quién es Rafael?", "¿Quién es Rafael?"], ["Carrera", "¿Qué carrera estudia?"],
     ["Curso", "¿Qué curso corresponde al portafolio?"], ["Docente", "¿Quién es el docente?"],
-    ["Unidad I", "¿Qué contiene la Unidad I?"], ["Semana 1", "¿Qué se trabajó en la Semana 1?"],
-    ["Semana 2", "¿Qué se trabajó en la Semana 2?"], ["Semana 3", "¿Qué se trabajó en la Semana 3?"],
-    ["Semana 4", "¿Qué se trabajó en la Semana 4?"], ["Unidad II", "¿Qué contiene la Unidad II?"],
+    ["Unidad I", "¿Qué contiene la Unidad I?"], ["Unidad II", "¿Qué contiene la Unidad II?"],
     ["Unidad III", "¿Qué contiene la Unidad III?"], ["Unidad IV", "¿Qué contiene la Unidad IV?"],
     ["Evidencias", "¿Cómo puedo ver las evidencias?"], ["Contacto", "¿Cómo contacto a Rafael?"]
 ].forEach(function ([label, question]) {
