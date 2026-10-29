@@ -10,7 +10,30 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 <link rel="stylesheet" href="styles.css">
 <link rel="stylesheet" href="styles-unidades.css">
-</head>
+<style>
+/* RAKION AI PRO: tarjetas y botones de navegación */
+.rakion-action{display:inline-flex;align-items:center;justify-content:center;margin:4px 3px 4px 0;padding:7px 10px;border:1px solid #00d8f6;border-radius:7px;background:rgba(0,216,246,.10);color:#d7faff;font:600 12px Rajdhani,Arial,sans-serif;cursor:pointer;white-space:normal;text-align:center;transition:.2s}
+.rakion-action:hover,.rakion-action:focus-visible{background:#00d8f6;color:#041122;outline:2px solid rgba(0,216,246,.35)}
+.rakion-result{display:flex;align-items:center;justify-content:space-between;gap:8px;border-bottom:1px solid rgba(0,216,246,.16);padding:9px 0;line-height:1.4}
+.rakion-result span{flex:1;min-width:0;overflow-wrap:anywhere}.rakion-result small{color:#8cb3c7}
+.rakion-file{flex-shrink:0;font-size:11px}
+.rakion-code{background:#031329;color:#e6f8ff;border:1px solid #1261a0;border-radius:8px;padding:12px;white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px;line-height:1.5}
+.chat-messages{scroll-behavior:smooth}.chat-messages .bot-message{overflow-wrap:anywhere}
+@media(max-width:460px){.rakion-result{align-items:flex-start;flex-direction:column}.rakion-file{align-self:flex-start}}
+
+/* VISOR PRO: imagen nítida, zoom y descarga para todas las unidades */
+.infographic-modal-box{width:min(1450px,98vw)!important;height:min(97vh,1100px)!important}
+.infographic-modal-body{display:block!important;text-align:center;overflow:auto!important;scrollbar-color:#00d8f6 #06101b}
+.infographic-modal-body img{display:block;margin:auto;max-width:100%;max-height:none!important;width:auto;height:auto;object-fit:contain;transform-origin:top center}
+.infographic-modal-body.zoomed img{max-width:none!important;width:150%!important;cursor:zoom-out}
+.infographic-toolbar{display:flex;align-items:center;justify-content:center;gap:9px;flex-wrap:wrap;padding:9px 12px;border-bottom:1px solid #155f86;background:#07162c}
+.infographic-toolbar button,.infographic-toolbar a,.pdf-download-action{display:inline-flex;align-items:center;gap:7px;padding:8px 13px;border:1px solid #00d8f6;border-radius:6px;color:#c8faff;background:#08233b;font:600 13px Arial,sans-serif;text-decoration:none;cursor:pointer}
+.infographic-toolbar button:hover,.infographic-toolbar a:hover,.pdf-download-action:hover{background:#00d8f6;color:#051125}
+.infographic-toolbar .zoom-note{font:12px Arial,sans-serif;color:#9bb6ca}
+.pdf-download-row{display:flex;justify-content:flex-end;padding:8px 12px;background:#07162c;border-bottom:1px solid #155f86}
+.rakion-download{border-color:#62e6ac!important;color:#bbffe0!important}
+@media(max-width:600px){.infographic-modal{padding:4px!important}.infographic-modal-box{width:100%!important;height:98vh!important}.infographic-toolbar{gap:5px}.infographic-toolbar button,.infographic-toolbar a{padding:7px;font-size:11px}}
+</style></head>
 
 <body data-role="guest">
 
@@ -268,12 +291,12 @@
                 <div class="message-label">RAKION AI</div>
                 Hola. Soy el asistente académico del portafolio de <strong>Rafael Max Cajahuaringa Camasca</strong>.
                 <br><br>
-                Puedo responder sobre <strong>Base de Datos II</strong>, unidades, semanas, evidencias y contacto.
+                Puedo ayudarte con <strong>todas las unidades del portafolio</strong>, llevarte a las semanas 1–8, explicar arquitecturas, SGBD, proyectos SQL, Azure e indexación, y <strong>abrir o descargar infografías y documentos</strong>. Prueba: <strong>«Abre la infografía 8 de la semana 8»</strong>.
             </div>
         </div>
         <div id="quickQuestions" class="quick-questions"></div>
         <form id="chatForm" class="chat-input-area">
-            <input type="text" id="chatInput" placeholder="Escribe tu pregunta..." autocomplete="off">
+            <input type="text" id="chatInput" placeholder="Pregunta por una semana, evidencia o tema..." autocomplete="off">
             <button type="submit" aria-label="Enviar pregunta"><i class="fa-solid fa-paper-plane"></i></button>
         </form>
     </div>
@@ -288,7 +311,14 @@
             </div>
             <button id="infographicModalClose" class="pdf-modal-close" aria-label="Cerrar"><i class="fa-solid fa-xmark"></i></button>
         </div>
-        <div class="infographic-modal-body">
+        <div class="infographic-toolbar">
+            <button type="button" id="infographicFit"><i class="fa-solid fa-expand"></i> Ajustar</button>
+            <button type="button" id="infographicZoom"><i class="fa-solid fa-magnifying-glass-plus"></i> Ampliar 150%</button>
+            <a id="infographicDownload" href="#" download><i class="fa-solid fa-download"></i> Descargar infografía</a>
+            <a id="infographicOriginal" href="#" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-arrow-up-right-from-square"></i> Abrir original</a>
+            <span class="zoom-note">Puedes descargar la imagen en su resolución original.</span>
+        </div>
+        <div class="infographic-modal-body" id="infographicBody">
             <img id="infographicViewer" src="" alt="Vista ampliada de la infografía">
         </div>
     </div>
@@ -304,6 +334,7 @@
             <button id="pdfModalClose" class="pdf-modal-close" aria-label="Cerrar"><i class="fa-solid fa-xmark"></i></button>
         </div>
         <div class="pdf-modal-body">
+            <div class="pdf-download-row"><a class="pdf-download-action" id="pdfDownload" href="#" download><i class="fa-solid fa-download"></i> Descargar PDF</a></div>
             <div id="pdfViewerWrap" class="pdf-viewer-wrap">
                 <iframe id="pdfViewer" class="pdf-viewer" title="Vista previa del PDF"></iframe>
             </div>
@@ -630,64 +661,255 @@ function addMessage(text, type) {
     chatMessages.scrollTop = chatMessages.scrollHeight;
 }
 
-const BOT = [
-    [/hola|buenas/, "Hola. Puedo ayudarte con información sobre Rafael, Base de Datos II, unidades, semanas, evidencias y contacto."],
-    [/codigo/, "El código de estudiante de Rafael es <strong>T04119C</strong>. El código del curso es <strong>332151</strong>."],
-    [/quien es rafael|^rafael$/, "<strong>Rafael Max Cajahuaringa Camasca</strong> es estudiante de <strong>Ingeniería de Sistemas y Computación</strong> en la <strong>UPLA</strong> y autor de este portafolio."],
-    [/carrera|que estudia/, "Rafael estudia <strong>Ingeniería de Sistemas y Computación</strong>."],
-    [/universidad|upla/, "Rafael estudia en la <strong>Universidad Peruana Los Andes (UPLA)</strong>, Facultad de Ingeniería."],
-    [/docente|profesor|raul|fernandez/, "El docente de la asignatura es <strong>Mg. Raúl Enrique Fernández Bejarano</strong>."],
-    [/curso|asignatura/, "El portafolio corresponde a <strong>Base de Datos II</strong>. Código: <strong>332151</strong>. Modalidad: <strong>Presencial</strong>."],
-    [/unidad (iv|4)/, "<strong>UNIDAD IV</strong><br>Monitoreo de Servidores, Optimización del Desempeño y Recuperación."],
-    [/unidad (iii|3)/, "<strong>UNIDAD III</strong><br>Seguridad Corporativa, Conectividad de Red y Alta Disponibilidad de Datos."],
-    [/unidad (ii|2)/, "<strong>UNIDAD II</strong> (en curso)<br>Administración de Instancias, Estructuras de Almacenamiento y Gestión de Datos Masivos."],
-    [/unidad (i|1)/, "<strong>UNIDAD I</strong> (completada)<br>Arquitecturas de Bases de Datos y Configuración del Entorno Corporativo. Tiene 4 semanas: selección de arquitectura, despliegue del DBMS, modelamiento físico y sustentación."],
-    [/semana (1|uno)/, "<strong>SEMANA 1</strong><br>Formulación del Proyecto y Selección de la Arquitectura. Contiene <strong>9 infografías</strong>: 4 de la Actividad 1 (arquitecturas) y 5 de la Actividad 2 (características y evolución de los SGBD)."],
-    [/semana (2|dos)/, "<strong>SEMANA 2</strong><br>Despliegue y Configuración de Motores de Datos.<br><br>Actividad 1: Manual SQL Server (PDF).<br>Actividad 2: 8 capítulos del Reglamento de Grados y Títulos.<br>Actividad 3: MongoDB, MS-SQL Server, MySQL, Oracle y PostgreSQL."],
-    [/semana (3|tres)/, "<strong>SEMANA 3</strong><br>Modelamiento Físico y Mecanismos de Integración. Contiene 3 actividades con scripts SQL: Cadena Editorial, Empresa de Material Informático y Grados y Títulos."],
-    [/semana (4|cuatro)/, "<strong>SEMANA 4</strong><br>Sustentación y Validación de la Infraestructura de Datos. Contiene el cuestionario resuelto de Cadena Editorial y su script SQL."],
-    [/semana (5|cinco)/, "<strong>SEMANA 5</strong><br>Primera semana de la Unidad II. Aún no tiene evidencias registradas."],
-    [/reglamento|capitulo/, "En la Semana 2, Actividad 2, hay <strong>8 infografías</strong>, una por cada capítulo del Reglamento de Grados y Títulos."],
-    [/mongodb|sql|mysql|oracle|postgres/, "La Actividad 3 de la Semana 2 reúne 5 sistemas gestores: MongoDB, MS-SQL Server, MySQL, Oracle y PostgreSQL."],
-    [/administrador|admin|invitado/, "El portafolio se abre como invitado (solo lectura). El botón <strong>ADMINISTRADOR</strong> del menú permite iniciar sesión para agregar, editar o eliminar evidencias."],
-    [/evidencia|trabajos/, "Abre cualquier unidad y entra a cada semana: cada actividad tiene un botón por evidencia."],
-    [/contacto|telefono|whatsapp/, "Puedes contactar a Rafael por teléfono / WhatsApp: <strong>982192749</strong>."]
+// RAKION AI: catálogo conectado directamente a las unidades y evidencias del portafolio.
+// Asistente local por reglas: no envía mensajes a servidores externos.
+const normalizar = value => String(value).toLowerCase().normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9 ]/g, " ").replace(/\s+/g, " ").trim();
+const escaparChat = value => String(value).replace(/[&<>"']/g, c => ({
+    '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;'
+})[c]);
+const SEMANAS_NOMBRES = {
+    1: "Formulación del proyecto y arquitecturas",
+    2: "Motores de datos y reglamento",
+    3: "Modelamiento físico y scripts SQL",
+    4: "Validación y cuestionario",
+    5: "Microsoft Azure: cuenta, servidor, tablas y conexión",
+    6: "Arquitectura física, almacenamiento y filegroups",
+    7: "Almacenamiento y administración de filegroups",
+    8: "Esquemas lógicos e indexación"
+};
+const EXPLICACIONES = [
+    { keys: [/arquitectura centralizada|centralizada/], titulo:"Arquitectura centralizada", texto:"En una arquitectura centralizada, el almacenamiento y el procesamiento principales residen en un sistema central. Facilita el control, pero requiere planificar disponibilidad y escalabilidad. Material: Unidad I, semana 1, actividad 1.", semana:1 },
+    { keys: [/cliente servidor|cliente-servidor/], titulo:"Arquitectura cliente-servidor", texto:"El cliente solicita servicios y el servidor de base de datos atiende consultas y operaciones. Es un modelo habitual para aplicaciones empresariales. Unidad I, semana 1.", semana:1 },
+    { keys: [/arquitectura distribuida|distribuida/], titulo:"Arquitectura distribuida", texto:"Distribuye datos o procesamiento entre varios nodos. Exige considerar coordinación, consistencia, redes y tolerancia a fallos. Unidad I, semana 1.", semana:1 },
+    { keys: [/multitenencia|multi tenant|multi-tenant/], titulo:"Arquitectura en la nube y multitenencia", texto:"La multitenencia permite compartir infraestructura entre diferentes clientes con aislamiento lógico. En la semana 1 hay una infografía específica sobre nube y multitenencia.", semana:1 },
+    { keys: [/sgbd|dbms|gestor de base|gestores de base/], titulo:"Sistemas de gestión de bases de datos", texto:"Un SGBD administra almacenamiento, consultas, integridad, acceso y recuperación. El portafolio compara SQL Server, MySQL, Oracle, PostgreSQL y MongoDB en la semana 2, actividad 3; además incluye conceptos de SGBD en las semanas 1 y 3.", semana:2 },
+    { keys: [/mysql|postgresql|oracle|mongodb|sql server/], titulo:"Motores de bases de datos", texto:"La Unidad I, semana 2, incluye infografías de SQL Server, MySQL, Oracle, PostgreSQL y MongoDB. Sus modelos, licencias y características pueden variar; consulta cada material desde la semana 2.", semana:2 },
+    { keys: [/reglamento|grados y titulos|grados titulos/], titulo:"Reglamento y base de datos de Grados y Títulos", texto:"En la semana 2 se encuentran ocho infografías sobre capítulos del Reglamento de Grados y Títulos; en la semana 3 hay un script SQL de Grados y Títulos, y en la semana 5 un manual de Azure relacionado.", semana:2 },
+    { keys: [/cadena editorial|editorial/], titulo:"Proyecto Cadena Editorial", texto:"La Unidad I incluye el script CadenaEditorial.sql en la semana 3 y el cuestionario resuelto, script e infografías del cuestionario en la semana 4. Puedes abrir o descargar esas evidencias desde el portafolio.", semana:3 },
+    { keys: [/material informatico|empresa material/], titulo:"Empresa de Material Informático", texto:"La semana 3, actividad 2, contiene el script EmpresaMaterialInformatico.sql como evidencia del modelamiento físico.", semana:3 },
+    { keys: [/cuestionario|sustentacion|validacion/], titulo:"Cuestionario y validación", texto:"La semana 4 de la Unidad I reúne un cuestionario PDF, un script SQL y veinte infografías de preguntas y respuestas. El contenido detallado se consulta abriendo cada evidencia.", semana:4 },
+    { keys: [/seguridad corporativa|alta disponibilidad|rbac|respaldo|auditoria/], titulo:"Unidad III · Contenido previsto", texto:"La Unidad III está marcada como PRÓXIMAMENTE. Su descripción menciona conectividad TCP/IP, RBAC, auditorías, respaldos y contingencia. Aún no hay semanas o evidencias publicadas en el catálogo.", semana:4 },
+    { keys: [/flashback|monitoreo de servidores|optimizacion del desempeno|recuperacion/], titulo:"Unidad IV · Contenido previsto", texto:"La Unidad IV está marcada como PRÓXIMAMENTE. Se proyectan monitoreo de servidores, afinamiento de consultas y recuperación; todavía no hay evidencias publicadas.", semana:4 },
+    { keys: [/azure sql|azure|nube/], titulo:"Microsoft Azure y Azure SQL", texto:"<strong>Azure</strong> es la plataforma en la nube donde se puede crear un servidor lógico y una base de datos Azure SQL. En la <strong>semana 5</strong> se documentan la cuenta, el servidor, las tablas y la conexión con SSMS. Para conectarse, hay que usar el nombre real del servidor, una autenticación válida y reglas de red apropiadas.", semana:5 },
+    { keys: [/ssms|management studio|conexion/], titulo:"Conexión con SQL Server Management Studio", texto:"<strong>SSMS</strong> permite administrar SQL Server y Azure SQL Database. Se indica el servidor, el método de autenticación y las credenciales autorizadas. En Azure se comprueba que el firewall permita la IP del cliente. Consulta la <strong>semana 5, actividad 4</strong>.", semana:5 },
+    { keys: [/create table|crear tabla|creacion de tabla|clave primaria|primary key/], titulo:"Creación de tablas", texto:"<strong>CREATE TABLE</strong> define columnas, tipos de datos y restricciones. Una <strong>PRIMARY KEY</strong> identifica cada fila y <strong>FOREIGN KEY</strong> permite relacionar tablas. Consulta la <strong>semana 5, actividad 3</strong> y su manual.", semana:5 },
+    { keys: [/filegroup|grupo de archivos/], titulo:"Filegroups en SQL Server", texto:"Un <strong>filegroup</strong> agrupa archivos de datos para administrar su ubicación y crecimiento. Puede usarse para distribuir objetos y planificar el almacenamiento. Las semanas <strong>6 y 7</strong> incluyen infografías sobre creación, asignación, filegroup predeterminado y solo lectura.", semana:6 },
+    { keys: [/mdf|ndf|ldf|archivo primario|archivo secundario/], titulo:"Archivos de bases de datos", texto:"En SQL Server, <strong>.mdf</strong> suele identificar el archivo de datos principal, <strong>.ndf</strong> archivos de datos secundarios y <strong>.ldf</strong> el registro de transacciones. Las infografías de las semanas 6 y 7 tratan su organización y monitoreo.", semana:6 },
+    { keys: [/pagina|extent|autogrowth|crecimiento|tamano inicial/], titulo:"Páginas, extents y crecimiento", texto:"SQL Server organiza datos en <strong>páginas</strong> de 8 KB y <strong>extents</strong> de ocho páginas (64 KB). <strong>Autogrowth</strong> define cómo crece un archivo cuando necesita espacio; debe configurarse y monitorearse. Revisa las infografías 05, 07 y 10 de las semanas 6 y 7.", semana:6 },
+    { keys: [/particion|partition/], titulo:"Particionamiento de tablas", texto:"El <strong>particionamiento</strong> divide lógicamente los datos de una tabla o índice en particiones según una función y un esquema. Puede ayudar a administrar conjuntos grandes de datos. Revisa la infografía 09 de las semanas 6 y 7.", semana:7 },
+    { keys: [/schema|esquema logico|esquemas/], titulo:"Esquemas lógicos", texto:"Un <strong>esquema</strong> es un espacio de nombres para organizar objetos como tablas y vistas. Se crea con <code>CREATE SCHEMA</code>; por ejemplo, <code>Ventas.Pedido</code>. La <strong>semana 8</strong> contiene las infografías 01 a 03 sobre organización y uso de esquemas.", semana:8 },
+    { keys: [/clustered|nonclustered|indice agrupado|indice no agrupado/], titulo:"Índices clustered y nonclustered", texto:"Un índice <strong>clustered</strong> determina el orden lógico de las filas en el nivel hoja; una tabla admite uno. Un índice <strong>nonclustered</strong> es una estructura separada con claves y localizadores de filas. Consulta la infografía 05 de la <strong>semana 8</strong>.", semana:8 },
+    { keys: [/include|columnas incluidas|cubriente|key lookup/], titulo:"Índices con INCLUDE", texto:"La cláusula <code>INCLUDE</code> agrega columnas no clave al nivel hoja de un índice nonclustered. Puede cubrir consultas y evitar lecturas adicionales, aunque aumenta el almacenamiento y el costo de mantenimiento. Consulta la infografía 07 de la <strong>semana 8</strong>.", semana:8 },
+    { keys: [/indice filtrado|indices filtrados|filtered index/], titulo:"Índices filtrados", texto:"Un <strong>índice filtrado</strong> incluye solo filas que cumplen un predicado <code>WHERE</code>, por ejemplo pedidos pendientes. Puede ahorrar espacio y acelerar consultas específicas. Consulta la infografía 08 de la <strong>semana 8</strong>.", semana:8 },
+    { keys: [/fragmentacion|reorganize|rebuild|mantenimiento/], titulo:"Mantenimiento de índices", texto:"La <strong>fragmentación</strong> se puede examinar con <code>sys.dm_db_index_physical_stats</code>. <code>ALTER INDEX ... REORGANIZE</code> reorganiza el índice y <code>... REBUILD</code> lo reconstruye. La decisión depende del tamaño, la carga y las mediciones reales; consulta la infografía 09 de la <strong>semana 8</strong>.", semana:8 },
+    { keys: [/dmv|index usage|indices usados|uso de indices/], titulo:"Monitoreo de índices", texto:"Las vistas de administración dinámica, como <code>sys.dm_db_index_usage_stats</code>, permiten observar búsquedas, exploraciones y actualizaciones de índices. Los contadores pueden reiniciarse, así que deben interpretarse con contexto. Consulta la infografía 10 de la <strong>semana 8</strong>.", semana:8 },
+    { keys: [/indice|indexacion|index/], titulo:"Indexación", texto:"Un <strong>índice</strong> ayuda a localizar filas sin recorrer toda la tabla en ciertos planes de consulta. Su utilidad depende de filtros, uniones, ordenamientos y selectividad. La <strong>semana 8</strong> incluye diez infografías sobre tipos, diseño, cobertura y mantenimiento.", semana:8 }
 ];
-
-const NO_INFO = "No tengo esa información registrada todavía. Prueba con: Rafael, curso, docente, Unidad I, Unidad II, evidencias o contacto.";
-
+function datosSemana(n) {
+    for (const u of UNIDADES) {
+        const s = (u.semanas || []).find(w => w.n === n);
+        if (s) return { unidad:u, semana:s };
+    }
+    return null;
+}
+function listaEvidencias(n) {
+    const info = datosSemana(n);
+    if (!info) return [];
+    const result = [];
+    if (info.semana.pdf) result.push({ titulo:"PDF de la semana", tipo:"pdf", ruta:info.semana.pdf });
+    for (const act of info.semana.acts || []) {
+        for (const [titulo,tipo,ruta] of act.items || []) result.push({ titulo, tipo, ruta, actividad:act.t });
+    }
+    return result;
+}
+function botonSemana(n) {
+    return `<button type="button" class="rakion-action" data-rakion-week="${n}">↗ Ver semana ${n}</button>`;
+}
+function botonEvidencia(n, indice, titulo) {
+    const item=listaEvidencias(n)[indice];
+    const descarga=item && item.ruta ? `<button type="button" class="rakion-action rakion-download" data-rakion-download="${n}:${indice}">↓ Descargar</button>` : '';
+    return `<button type="button" class="rakion-action rakion-file" data-rakion-file="${n}:${indice}" title="Abrir ${escaparChat(titulo)}">↗ Abrir archivo</button>${descarga}`;
+}
+function enlaceSeccion(id, titulo) {
+    return `<button type="button" class="rakion-action" data-rakion-section="${id}">↗ ${escaparChat(titulo)}</button>`;
+}
+function listaEvidenciasConIndice(n) {
+    return listaEvidencias(n).map((item, indice)=>({...item,indice}));
+}
+function resumenSemana(n, listar=false) {
+    const info=datosSemana(n);
+    if (!info) return 'Esa semana aún no figura en el catálogo.';
+    const e=listaEvidenciasConIndice(n), imgs=e.filter(x=>x.tipo==='img').length, pdfs=e.filter(x=>x.tipo==='pdf').length;
+    let out=`<strong>SEMANA ${String(n).padStart(2,'0')} · UNIDAD ${info.unidad.n}</strong><br>${escaparChat(info.semana.titulo)}<br><br>`;
+    out+=`Material disponible: <strong>${imgs} infografías</strong> y <strong>${pdfs} PDF</strong>.`;
+    const acts=info.semana.acts||[];
+    if(acts.length) out+=`<br><br><strong>Actividades:</strong><br>${acts.map(a=>'• '+escaparChat(a.t)).join('<br>')}`;
+    if(listar) out+=`<br><br><strong>Documentos disponibles:</strong><br>${e.map(x=>`<div class="rakion-result"><span>${escaparChat(x.titulo)} <small>(${x.tipo.toUpperCase()})</small></span>${botonEvidencia(n,x.indice,x.titulo)}</div>`).join('')}`;
+    return out+`<br><br>${botonSemana(n)}`;
+}
+function resumenUnidad(roman) {
+    const u=UNIDADES.find(x=>x.n===roman);
+    if(!u) return 'No se encontró la unidad.';
+    const sem=u.semanas||[];
+    return `<strong>UNIDAD ${roman} · ${escaparChat(u.estado)}</strong><br>${escaparChat(u.titulo)}<br><br>${escaparChat(u.desc)}<br><br>${sem.map(s=>`• Semana ${s.n}: ${escaparChat(s.titulo)} ${botonSemana(s.n)}`).join('<br>')||'Contenido por desarrollar.'}<br><br>${enlaceSeccion('trabajos','Ver todas las unidades')}`;
+}
+function buscarEvidencias(q, semana=null) {
+    const palabras=normalizar(q).replace(/\b(busca|buscar|encuentra|donde|esta|ver|mostrar|abrir|evidencia|infografia|manual|pdf|archivo|de|la|el|en|sobre|quiero|necesito|actividad|semana|numero|nro)\b/g,' ').replace(/\b[0-9]+\b/g,' ').trim().split(' ').filter(x=>x.length>2);
+    if(!palabras.length) return null;
+    const resultados=[];
+    for(const u of UNIDADES) for(const s of u.semanas||[]) {
+        if(semana!==null && s.n!==semana) continue;
+        for(const item of listaEvidenciasConIndice(s.n)) {
+            const nombre=normalizar(item.titulo+' '+(item.actividad||'')+' '+item.ruta);
+            const puntos=palabras.reduce((v,p)=>v+(nombre.includes(p)?1:0),0);
+            if(puntos>=Math.max(1,Math.ceil(palabras.length*.55))) resultados.push({item,semana:s.n,puntos});
+        }
+    }
+    resultados.sort((a,b)=>b.puntos-a.puntos);
+    if(!resultados.length) return null;
+    return `<strong>Resultados (${resultados.length}):</strong><br>${resultados.slice(0,8).map(r=>`<div class="rakion-result"><span>Semana ${r.semana} · ${escaparChat(r.item.titulo)}</span>${botonEvidencia(r.semana,r.item.indice,r.item.titulo)}</div>`).join('')}${resultados.length>8?'<br>Mostrando los 8 resultados más relevantes.':''}`;
+}
+function abrirArchivoRakion(n,indice) {
+    const item=listaEvidencias(n)[indice];
+    if(!item) { addMessage('No encontré ese archivo en el catálogo.', 'bot');return; }
+    chatWindow.classList.remove('active');
+    const week='SEMANA '+String(n).padStart(2,'0');
+    if(item.tipo==='img') abrirImagen(item.ruta,item.titulo,week);
+    else if(item.tipo==='pdf') abrirPdf(item.ruta,item.titulo,week);
+    else window.open(encodeURI(item.ruta),'_blank','noopener,noreferrer');
+}
+function abrirSeccionRakion(id) {
+    const el=document.getElementById(id);
+    if(!el) return;
+    chatWindow.classList.remove('active');
+    el.scrollIntoView({behavior:'smooth',block:'start'});
+}
+function menuRakion() {
+    return `<strong>CENTRO DE AYUDA · RAKION AI</strong><br>Accede directamente a los materiales del portafolio, consulta contenidos y revisa ejemplos SQL.<br><br>`+
+      [1,2,3,4,5,6,7,8].map(botonSemana).join(' ')+`<br>${enlaceSeccion('trabajos','Todas las unidades')} ${enlaceSeccion('contacto','Contacto')}<br><br><strong>Consultas sugeridas:</strong><br>• «Abre la infografía 8 de la semana 8»<br>• «Muéstrame las arquitecturas de la semana 1»<br>• «¿Qué gestores de bases de datos se estudian en la semana 2?»<br>• «¿Qué scripts SQL hay en la semana 3?»<br>• «Descargar infografía 3 de la semana 4»<br>• «Muéstrame los manuales de la semana 5»<br>• «Explica CREATE SCHEMA con un ejemplo»<br>• «¿Qué diferencia hay entre clustered y nonclustered?»<br>• «¿Cómo conecto Azure SQL con SSMS?»`;
+}
+const SQL_RAKION=[
+ {p:/create schema|crear esquema|esquema logico/,titulo:'Crear un esquema',sql:'CREATE SCHEMA Ventas;\nGO',exp:'Los esquemas organizan objetos y permiten administrar permisos. Antes de crear uno, verifica que no exista.',semana:8},
+ {p:/create table|crear tabla|tabla sql/,titulo:'Crear una tabla',sql:'CREATE TABLE dbo.Ejemplo (\n  Id INT PRIMARY KEY,\n  Nombre NVARCHAR(100) NOT NULL\n);',exp:'CREATE TABLE define columnas, tipos y restricciones. Es un ejemplo didáctico que puedes adaptar.',semana:5},
+ {p:/create index|indice nonclustered|crear indice/,titulo:'Crear un índice no agrupado',sql:'CREATE NONCLUSTERED INDEX IX_Ejemplo_Nombre\nON dbo.Ejemplo (Nombre);',exp:'Un índice puede acelerar búsquedas, pero añade costo de almacenamiento y escritura. Comprueba primero que la tabla exista.',semana:8},
+ {p:/sys\.indexes|ver indices|listar indices/,titulo:'Consultar índices',sql:'SELECT name, type_desc, is_unique\nFROM sys.indexes\nWHERE object_id = OBJECT_ID(\'dbo.Ejemplo\');',exp:'sys.indexes permite revisar los índices de un objeto en la base de datos actual.',semana:8},
+ {p:/filegroup|grupo de archivos/,titulo:'Consultar filegroups',sql:'SELECT name, type_desc, is_default\nFROM sys.filegroups;',exp:'Muestra los grupos de archivos de datos registrados en la base actual. Azure SQL Database puede tener restricciones distintas de SQL Server.',semana:6}
+];
+function ejemploSQLRakion(q) {
+    const caso=SQL_RAKION.find(x=>x.p.test(q));
+    if(!caso) return null;
+    return `<strong>${caso.titulo}</strong><br><pre class="rakion-code">${escaparChat(caso.sql)}</pre>${caso.exp}<br><br>${botonSemana(caso.semana)}`;
+}
+const AYUDA_RAKION=menuRakion();
 function getBotResponse(question) {
-    const q = question.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-    const hit = BOT.find(([re]) => re.test(q));
-    return hit ? hit[1] : NO_INFO;
+    const q=normalizar(question);
+    if(!q) return AYUDA_RAKION;
+    if(/^(hola|buenas|buenos dias|buenas tardes)/.test(q)) return '¡Hola! Soy <strong>RAKION AI</strong>, tu guía del portafolio académico.<br><br>'+AYUDA_RAKION;
+    if(/ayuda|que puedes hacer|opciones|preguntas|menu|inicio del chat/.test(q)) return AYUDA_RAKION;
+    if(/contacto|correo|email|escribir al autor/.test(q)) return 'Puedes acceder a la sección de contacto del portafolio. '+enlaceSeccion('contacto','Ir a Contacto');
+    if(/ir a (inicio|portada)|ver inicio/.test(q)) return 'Te llevo a la portada. '+enlaceSeccion('inicio','Ir al inicio');
+    if(/ir a (trabajos|evidencias|unidades)|ver trabajos/.test(q)) return 'Accede a la sección de unidades y evidencias. '+enlaceSeccion('trabajos','Ir a trabajos');
+    if(/codigo de estudiante|codigo de rafael|matricula/.test(q)) return 'Código académico del portafolio: <strong>T04119C</strong>.';
+    if(/quien es rafael|quien es el autor|^rafael$/.test(q)) return '<strong>Rafael Max Cajahuaringa Camasca</strong>, estudiante de Ingeniería de Sistemas y Computación en la UPLA y autor del portafolio.';
+    if(/carrera|que estudia/.test(q)) return 'Ingeniería de Sistemas y Computación · UPLA.';
+    if(/universidad|upla/.test(q)) return 'Universidad Peruana Los Andes (UPLA). '+enlaceSeccion('inicio','Ver presentación');
+    if(/docente|profesor|raul|fernandez/.test(q)) return 'Docente registrado: <strong>Mg. Raúl Enrique Fernández Bejarano</strong>.';
+    if(/curso|asignatura/.test(q)&&!/semana/.test(q)) return 'Asignatura: <strong>Base de Datos II</strong>. Código: <strong>332151</strong>. Modalidad: presencial.';
+    if(/administrador|invitado|permisos del portafolio/.test(q)) return 'Las evidencias son consultables en modo invitado. Los cambios requieren los controles administrativos del sitio.';
+    const semanaMatch=q.match(/\b(?:semana|sem)\s*0?([1-9]|1[0-6])\b/);
+    const n=semanaMatch?Number(semanaMatch[1]):null;
+    const numFile=q.match(/\b(?:infografia|manual|archivo|pdf)\s*(?:numero|nro|n|no)?\s*0?([1-9]|10)\b/);
+    if(n!==null && numFile && /abr|ver|mostr|busc|llev|ir|encontr|quiero|necesito|descarg/.test(q)) {
+        const num=Number(numFile[1]);
+        const clase=/manual/.test(q)?'manual':/pdf/.test(q)?'pdf':'infografia';
+        const coincidencias=listaEvidenciasConIndice(n).filter(x=>normalizar(x.titulo).includes(clase==='infografia'?'infografia':clase));
+        const item=coincidencias.find(x=>new RegExp('(?:infografia|manual)\\s*0?'+num+'\\b').test(normalizar(x.titulo)))||coincidencias[num-1];
+        if(item) return `<strong>Archivo localizado:</strong><br>${escaparChat(item.titulo)}<br>${botonEvidencia(n,item.indice,item.titulo)}`;
+    }
+    if(n!==null && /manual|infografia|pdf|evidencia|archivo|lista|todas|contenido|que hay|mostrar|abrir|ver/.test(q)) {
+        const tipo=/manual/.test(q)?'manual':/infografia/.test(q)?'img':/pdf/.test(q)?'pdf':null;
+        if(tipo) {
+            const arr=listaEvidenciasConIndice(n).filter(x=>tipo==='manual'?normalizar(x.titulo).includes('manual'):x.tipo===tipo);
+            if(arr.length) return `<strong>Semana ${n} · ${arr.length} resultados</strong><br>`+arr.map(x=>`<div class="rakion-result"><span>${escaparChat(x.titulo)}</span>${botonEvidencia(n,x.indice,x.titulo)}</div>`).join('');
+        }
+        return resumenSemana(n,true);
+    }
+    if(n!==null) return resumenSemana(n,false);
+    const unit=q.match(/\bunidad\s*(iv|iii|ii|i|[1-4])\b/);
+    if(unit) return resumenUnidad(({'1':'I','2':'II','3':'III','4':'IV'})[unit[1]]||unit[1].toUpperCase());
+    if(/cuantas|cantidad|total|resumen|todas las semanas/.test(q)&&/evidencia|infografia|pdf|manual|semana/.test(q)) {
+        return `<strong>RESUMEN GENERAL · UNIDADES I Y II</strong><br>`+[1,2,3,4,5,6,7,8].map(n=>{const a=listaEvidencias(n);return `• Semana ${n}: ${a.filter(x=>x.tipo==='img').length} infografías, ${a.filter(x=>x.tipo==='pdf').length} PDF, ${a.filter(x=>x.tipo==='sql').length} SQL ${botonSemana(n)}`}).join('<br>')+`<br><br>Unidades III y IV: previstas, sin evidencias publicadas.`;
+    }
+    if(/sql|consulta|codigo|ejemplo|script|sintaxis|como crear|como consultar/.test(q)) {
+        const ej=ejemploSQLRakion(q);
+        if(ej) return ej;
+    }
+    if(/diferencia|comparar|comparacion|versus| vs /.test(q)) {
+        if(/clustered|nonclustered|agrupad/.test(q)) return '<strong>CLUSTERED vs NONCLUSTERED</strong><br>El índice clustered determina la organización de las filas en el nivel hoja; solo puede existir uno por tabla. Los nonclustered son estructuras separadas que referencian las filas. Su conveniencia depende de las consultas y la carga de escritura.<br>'+botonSemana(8);
+        if(/mdf|ndf|ldf/.test(q)) return '<strong>MDF / NDF / LDF</strong><br>MDF: archivo principal de datos; NDF: archivo secundario de datos; LDF: registro de transacciones. Revisa almacenamiento en la semana 6.<br>'+botonSemana(6);
+        if(/schema|esquema|indice/.test(q)) return '<strong>Esquema e índice</strong><br>El esquema agrupa y organiza objetos lógicamente; el índice es una estructura para facilitar accesos a datos. Ambos se estudian en la semana 8.<br>'+botonSemana(8);
+    }
+    if(/que es|que son|explica|explicame|concepto|diferencia entre/.test(q)) {
+        const tema=EXPLICACIONES.find(x=>x.keys.some(re=>re.test(q)));
+        if(tema) return `<strong>${tema.titulo}</strong><br>${tema.texto}<br><br>${botonSemana(tema.semana)}`;
+    }
+    if(/busca|buscar|encuentra|donde|abrir|ver|mostrar|manual|infografia|evidencia|archivo|pdf/.test(q)) {
+        const result=buscarEvidencias(q);
+        if(result) return result;
+    }
+    const tema=EXPLICACIONES.find(x=>x.keys.some(re=>re.test(q)));
+    if(tema) return `<strong>${tema.titulo}</strong><br>${tema.texto}<br><br>${botonSemana(tema.semana)}`;
+    return buscarEvidencias(q)||'No tengo una respuesta exacta para esa pregunta. Soy un asistente local basado en el contenido registrado, no un servicio de IA generativa. '+AYUDA_RAKION;
 }
-
-function sendQuestion(question) {
-    question = question.trim();
-    if (!question) return;
-    addMessage(question, "user");
-    chatInput.value = "";
-    setTimeout(() => addMessage(getBotResponse(question), "bot"), 400);
+function irASemana(n) {
+    const target=[...document.querySelectorAll('.week-card')].find(el=>el.dataset.weekLabel === 'SEMANA '+String(n).padStart(2,'0'));
+    if(!target) return;
+    const details=target.closest('details');
+    if(details) details.open=true;
+    chatWindow.classList.remove('active');
+    target.scrollIntoView({behavior:'smooth',block:'start'});
+    target.style.transition='box-shadow .25s';
+    target.style.boxShadow='0 0 0 2px var(--cyan), 0 0 22px rgba(0,229,255,.3)';
+    setTimeout(()=>target.style.boxShadow='',2400);
 }
-
-$("chatForm").addEventListener("submit", function (e) {
-    e.preventDefault();
-    sendQuestion(chatInput.value);
+chatMessages.addEventListener('click',event=>{
+    const btn=event.target.closest('[data-rakion-week]');
+    if(btn) irASemana(Number(btn.dataset.rakionWeek));
+    const file=event.target.closest('[data-rakion-file]');
+    if(file){const [n,i]=file.dataset.rakionFile.split(':').map(Number);abrirArchivoRakion(n,i);}
+    const download=event.target.closest('[data-rakion-download]');
+    if(download){
+        const [n,i]=download.dataset.rakionDownload.split(':').map(Number);
+        const item=listaEvidencias(n)[i];
+        if(item && item.ruta){const a=document.createElement('a');a.href=encodeURI(item.ruta);a.download=item.ruta.split('/').pop();document.body.appendChild(a);a.click();a.remove();}
+    }
+    const section=event.target.closest('[data-rakion-section]');
+    if(section) abrirSeccionRakion(section.dataset.rakionSection);
 });
-
+function sendQuestion(question) {
+    question=question.trim();
+    if(!question) return;
+    addMessage(question,'user');
+    chatInput.value='';
+    setTimeout(()=>addMessage(getBotResponse(question),'bot'),220);
+}
+$('chatForm').addEventListener('submit',function(e){e.preventDefault();sendQuestion(chatInput.value)});
 [
-    ["¿Quién es Rafael?", "¿Quién es Rafael?"], ["Carrera", "¿Qué carrera estudia?"],
-    ["Curso", "¿Qué curso corresponde al portafolio?"], ["Docente", "¿Quién es el docente?"],
-    ["Unidad I", "¿Qué contiene la Unidad I?"], ["Unidad II", "¿Qué contiene la Unidad II?"],
-    ["Unidad III", "¿Qué contiene la Unidad III?"], ["Unidad IV", "¿Qué contiene la Unidad IV?"],
-    ["Evidencias", "¿Cómo puedo ver las evidencias?"], ["Contacto", "¿Cómo contacto a Rafael?"]
-].forEach(function ([label, question]) {
-    const b = document.createElement("button");
-    b.type = "button";
-    b.className = "quick-btn";
-    b.textContent = label;
-    b.addEventListener("click", () => sendQuestion(question));
-    $("quickQuestions").appendChild(b);
+    ['Inicio','Ir a inicio'],['Trabajos','Ir a trabajos'],['Contacto','Ir a contacto'],
+    ['Semana 1','Mostrar evidencias semana 1'],['Semana 2','Mostrar evidencias semana 2'],
+    ['Semana 3','Mostrar evidencias semana 3'],['Semana 4','Mostrar evidencias semana 4'],
+    ['Semana 5','Mostrar evidencias semana 5'],['Semana 6','Mostrar evidencias semana 6'],
+    ['Semana 7','Mostrar evidencias semana 7'],['Semana 8','Mostrar evidencias semana 8'],
+    ['Manuales S5','Mostrar manuales de semana 5'],['Infografías S8','Mostrar infografías semana 8'],
+    ['SQL: tablas','Ejemplo SQL CREATE TABLE'],['SQL: índices','Ejemplo SQL CREATE INDEX'],
+    ['Filegroups','¿Qué es un filegroup?'],['Azure','¿Qué es Azure SQL?'],
+    ['Esquemas','¿Qué es un esquema lógico?'],['Índices','Diferencia entre clustered y nonclustered'],
+    ['Unidad I','Unidad I'],['Unidad II','Unidad II'],['Unidad III','Unidad III'],['Unidad IV','Unidad IV'],['Ayuda','¿Qué puedes hacer?']
+].forEach(([label,question])=>{
+    const btn=document.createElement('button');btn.type='button';btn.className='quick-btn';
+    btn.textContent=label;btn.addEventListener('click',()=>sendQuestion(question));
+    $('quickQuestions').appendChild(btn);
 });
 
 
@@ -715,7 +937,13 @@ const infographicModal = $("infographicModal");
 const infographicViewer = $("infographicViewer");
 
 function abrirImagen(src, title, week) {
-    infographicViewer.src = src;
+    document.getElementById('infographicBody').classList.remove('zoomed');
+    document.getElementById('infographicBody').scrollTop=0;
+    const archivo = src.split('/').pop().split('?')[0];
+    const dl=document.getElementById('infographicDownload');
+    dl.href=encodeURI(src); dl.download=archivo;
+    document.getElementById('infographicOriginal').href=encodeURI(src);
+    infographicViewer.src = encodeURI(src);
     infographicViewer.alt = title;
     $("infographicModalTitle").textContent = title;
     $("infographicModalWeek").textContent = (week || "SEMANA") + " · EVIDENCIA";
@@ -731,6 +959,8 @@ function closeInfographic() {
     document.body.classList.remove("modal-open");
 }
 
+document.getElementById('infographicZoom').addEventListener('click',()=>document.getElementById('infographicBody').classList.add('zoomed'));
+document.getElementById('infographicFit').addEventListener('click',()=>{const b=document.getElementById('infographicBody');b.classList.remove('zoomed');b.scrollTop=0;b.scrollLeft=0;});
 $("infographicModalClose").addEventListener("click", closeInfographic);
 infographicModal.addEventListener("click", e => { if (e.target === infographicModal) closeInfographic(); });
 
@@ -765,6 +995,10 @@ function clearPdf() {
 }
 
 function abrirPdf(url, title, week) {
+    const dl=document.getElementById('pdfDownload');
+    dl.href=url?encodeURI(url):'#';
+    dl.download=url?url.split('/').pop().split('?')[0]:'documento.pdf';
+    dl.hidden=!url;
     $("pdfModalWeek").textContent = week || "SEMANA";
     $("pdfModalTitle").textContent = title || "";
     pdfFixedPath.value = url || "";
