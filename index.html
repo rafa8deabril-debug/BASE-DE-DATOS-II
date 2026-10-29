@@ -426,32 +426,77 @@ const UNIDADES = [
     {
         n: "II", activa: true, estado: "EN CURSO",
         titulo: "Administración de Instancias, Estructuras de Almacenamiento y Gestión de Datos Masivos",
-        desc: "Asignación de memoria, archivos primarios y secundarios (.MDF, .NDF, .LDF), indexación y pruebas de carga masiva.",
+        desc: "Creación de recursos en Azure, almacenamiento, filegroups, esquemas e indexación.",
         semanas: [
-            {
-                n: 5, titulo: "Creación de Cuenta y Entorno en Azure",
-                acts: [
-                    { t: "Actividad 1 · Manual 1", items: [
+            { n: 5, titulo: "Microsoft Azure: cuenta, servidor, tablas y conexión", acts: [
+                    { t: "Actividad 1 · Cuenta Microsoft Azure", items: [
+                        ["Infografía 01 · Creación de cuenta Microsoft Azure", "img", "Semana 5/Infografia_Creacion_de_cuenta_de_Microsoft_Azure_Semana05.png"],
                         ["Manual 1 · Creación de cuenta Azure", "pdf", "Semana 5/Manual_1_Creacion_cuenta_Azure_t04119c (1).pdf"]
-                    ]}
-                ]
-            },
-            {
-                n: 6, titulo: "Servidor, Base de Datos y Conexión en Azure",
-                acts: [
-                    { t: "Actividad 1 · Manual 2", items: [
-                        ["Manual 2 · Servidor y BD Grados y Títulos", "pdf", "Semana 6/Manual_2_Servidor_y_BD_Grados_y_Titulos_t04119c (1).pdf"]
-                    ]},
-                    { t: "Actividad 2 · Manual 3", items: [
-                        ["Manual 3 · Creación de tablas", "pdf", "Semana 6/Manual_3_Creacion_de_tablas_t04119c (1).pdf"]
-                    ]},
-                    { t: "Actividad 3 · Manual 4", items: [
-                        ["Manual 4 · Conexión Azure SSMS", "pdf", "Semana 6/Manual_4_Conexion_Azure_SSMS_t04119c (1).pdf"]
-                    ]}
-                ]
-            },
-            { n: 7, titulo: "Semana 7" },
-            { n: 8, titulo: "Semana 8" }
+                    ] },
+                    { t: "Actividad 2 · Servidor y base de datos en Azure", items: [
+                        ["Infografía 02 · Servidor y base de datos en Azure", "img", "Semana 5/Servidor y base de datos en Azure.png"],
+                        ["Manual 2 · Servidor y BD Grados y Títulos", "pdf", "Semana 5/Manual_2_Servidor_y_BD_Grados_y_Titulos_t04119c (1).pdf"]
+                    ] },
+                    { t: "Actividad 3 · Creación de tablas", items: [
+                        ["Infografía 03 · Creación de tablas", "img", "Semana 5/Creacion_de_tablas.png"],
+                        ["Manual 3 · Creación de tablas", "pdf", "Semana 5/Manual_3_Creacion_de_tablas_t04119c (1).pdf"]
+                    ] },
+                    { t: "Actividad 4 · Conexión de Azure con SSMS", items: [
+                        ["Infografía 04 · Conexión de Azure con SQL Server Management Studio", "img", "Semana 5/Conexion_de_Azure_con_SQL_Server_Management_Studio.png"],
+                        ["Manual 4 · Conexión Azure SSMS", "pdf", "Semana 5/Manual_4_Conexion_Azure_SSMS_t04119c (1).pdf"]
+                    ] },
+            ] },
+            { n: 6, titulo: "Arquitectura física y filegroups", acts: [
+                    { t: "Actividad 4 · 10 infografías de almacenamiento y filegroups", items: [
+                        ["Infografía 01 · Arquitectura física del almacenamiento", "img", "Semana 6/Infografia_01_Arquitectura_fisica_del_almacenamiento_Sem06_Act04.png"],
+                        ["Infografía 02 · Fundamentos teóricos de los filegroups", "img", "Semana 6/Infografia_02_Fundamentos_teoricos_de_los_filegroups_Sem06_Act04.png"],
+                        ["Infografía 03 · Creación de grupos y bases de datos", "img", "Semana 6/Infografia_03_Creacion_de_grupos_y_bases_de_datos_Sem06_Act04.png"],
+                        ["Infografía 04 · Asignación estratégica de tablas", "img", "Semana 6/Infografia_04_Asignacion_estrategica_de_tablas_Sem06_Act04.png"],
+                        ["Infografía 05 · Páginas y extents", "img", "Semana 6/Infografia_05_Paginas_y_extents_Sem06_Act04.png"],
+                        ["Infografía 06 · Filegroup por defecto y solo lectura", "img", "Semana 6/Infografia_06_Filegroup_por_defecto_y_solo_lectura_Sem06_Act04.png"],
+                        ["Infografía 07 · Tamaño inicial y autogrowth", "img", "Semana 6/Infografia_07_Tamano_inicial_y_autogrowth_Sem06_Act04.png"],
+                        ["Infografía 08 · Mover tablas e índices entre filegroups", "img", "Semana 6/Infografia_08_Mover_tablas_e_indices_entre_filegroups_Sem06_Act04.png"],
+                        ["Infografía 09 · Particionamiento de tablas", "img", "Semana 6/Infografia_09_Particionamiento_de_tablas_Sem06_Act04.png"],
+                        ["Infografía 10 · Monitoreo del espacio por archivo", "img", "Semana 6/Infografia_10_Monitoreo_del_espacio_por_archivo_Sem06_Act04.png"]
+                    ] },
+                    { t: "Material de la semana 6", items: [
+                        ["Semana 6 · Documento PDF", "pdf", "Semana 6/SEMANA 6.pdf"]
+                    ] },
+            ] },
+            { n: 7, titulo: "Arquitectura de almacenamiento y filegroups", acts: [
+                    { t: "Infografías de la semana 7", items: [
+                        ["Infografía 01 · Arquitectura física del almacenamiento", "img", "Semana 7/Infografia_01_Arquitectura_fisica_del_almacenamiento.png"],
+                        ["Infografía 02 · Fundamentos teóricos de los filegroups", "img", "Semana 7/Infografia_02_Fundamentos_teoricos_de_los_filegroups.png"],
+                        ["Infografía 03 · Creación de grupos y bases de datos", "img", "Semana 7/Infografia_03_Creacion_de_grupos_y_bases_de_datos.png"],
+                        ["Infografía 04 · Asignación estratégica de tablas", "img", "Semana 7/Infografia_04_Asignacion_estrategica_de_tablas.png"],
+                        ["Infografía 05 · Páginas y extents", "img", "Semana 7/Infografia_05_Paginas_y_extents.png"],
+                        ["Infografía 06 · Filegroup por defecto y solo lectura", "img", "Semana 7/Infografia_06_Filegroup_por_defecto_y_solo_lectura.png"],
+                        ["Infografía 07 · Tamaño inicial y autogrowth", "img", "Semana 7/Infografia_07_Tamano_inicial_y_autogrowth.png"],
+                        ["Infografía 08 · Mover tablas e índices entre filegroups", "img", "Semana 7/Infografia_08_Mover_tablas_e_indices_entre_filegroups.png"],
+                        ["Infografía 09 · Particionamiento de tablas", "img", "Semana 7/Infografia_09_Particionamiento_de_tablas.png"],
+                        ["Infografía 10 · Monitoreo del espacio por archivo", "img", "Semana 7/Infografia_10_Monitoreo_del_espacio_por_archivo.png"]
+                    ] },
+                    { t: "Material de la semana 7", items: [
+                        ["Semana 7 · Documento PDF", "pdf", "Semana 7/Semana 7.pdf"]
+                    ] },
+            ] },
+            { n: 8, titulo: "Esquemas lógicos e indexación", acts: [
+                    { t: "Actividad 2 · 10 infografías de esquemas e índices", items: [
+                        ["Infografía 01 · Esquemas lógicos e indexación", "img", "Semana 8/Infografia_01_Esquemas_logicos_e_indexacion.png"],
+                        ["Infografía 02 · Organización de esquemas lógicos", "img", "Semana 8/Infografia_02_Organizacion_de_esquemas_logicos.png"],
+                        ["Infografía 03 · Esquemas lógicos en SQL Server", "img", "Semana 8/Infografia_03_Esquemas_logicos_en_SQL_Server.png"],
+                        ["Infografía 04 · Fundamentos de la indexación", "img", "Semana 8/Infografia_04_Fundamentos_de_la_indexacion.png"],
+                        ["Infografía 05 · Índices Clustered y Nonclustered", "img", "Semana 8/Infografia_05_Indices_Clustered_y_Nonclustered.png"],
+                        ["Infografía 06 · Diseño de índices según patrones de consulta", "img", "Semana 8/Infografia_06_Diseno_de_indices_segun_patrones_de_consulta.png"],
+                        ["Infografía 07 · Índices con columnas incluidas", "img", "Semana 8/Infografia_07_Indices_con_columnas_incluidas.png"],
+                        ["Infografía 08 · Índices filtrados", "img", "Semana 8/Infografia_08_Indices_filtrados.png"],
+                        ["Infografía 09 · Fragmentación y mantenimiento de índices", "img", "Semana 8/Infografia_09_Fragmentacion_y_mantenimiento_de_indices.png"],
+                        ["Infografía 10 · Conclusiones", "img", "Semana 8/Infografia_10_Conclusiones.png"]
+                    ] },
+                    { t: "Material de la semana 8", items: [
+                        ["Semana 8 · Documento PDF", "pdf", "Semana 8/SEMANA 8.pdf"]
+                    ] },
+            ] }
         ]
     },
     {
